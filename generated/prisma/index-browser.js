@@ -128,8 +128,39 @@ exports.Prisma.UserScalarFieldEnum = {
   nid: 'nid',
   password: 'password',
   role: 'role',
+  status: 'status',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
+};
+
+exports.Prisma.BookScalarFieldEnum = {
+  id: 'id',
+  judul: 'judul',
+  isbn: 'isbn',
+  deskripsi: 'deskripsi',
+  tahunTerbit: 'tahunTerbit',
+  penerbit: 'penerbit',
+  jumlahHalaman: 'jumlahHalaman',
+  bahasa: 'bahasa',
+  sampul: 'sampul',
+  fileBuku: 'fileBuku',
+  tersedia: 'tersedia',
+  penulisId: 'penulisId',
+  kategoriId: 'kategoriId',
+  dibuatPada: 'dibuatPada',
+  diperbaruiPada: 'diperbaruiPada'
+};
+
+exports.Prisma.AuthorScalarFieldEnum = {
+  id: 'id',
+  nama: 'nama',
+  bio: 'bio'
+};
+
+exports.Prisma.CategoryScalarFieldEnum = {
+  id: 'id',
+  nama: 'nama',
+  deskripsi: 'deskripsi'
 };
 
 exports.Prisma.SortOrder = {
@@ -149,7 +180,10 @@ exports.Prisma.NullsOrder = {
 
 
 exports.Prisma.ModelName = {
-  User: 'User'
+  User: 'User',
+  Book: 'Book',
+  Author: 'Author',
+  Category: 'Category'
 };
 
 /**

@@ -17,7 +17,45 @@ model User {
   nid      String?
   password String
   role     String  @default("user")
+  status   String  @default("Active")
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+}
+
+model Book {
+  id            Int     @id @default(autoincrement())
+  judul         String
+  isbn          String  @unique
+  deskripsi     String?
+  tahunTerbit   Int
+  penerbit      String?
+  jumlahHalaman Int?
+  bahasa        String?
+  sampul        String? // URL gambar sampul
+  fileBuku      String? // URL atau path file digital (PDF/epub)
+  tersedia      Boolean @default(true)
+
+  penulisId  Int
+  kategoriId Int
+
+  penulis  Author   @relation(fields: [penulisId], references: [id])
+  kategori Category @relation(fields: [kategoriId], references: [id])
+
+  dibuatPada     DateTime @default(now())
+  diperbaruiPada DateTime @updatedAt
+}
+
+model Author {
+  id   Int     @id @default(autoincrement())
+  nama String
+  bio  String?
+  buku Book[]
+}
+
+model Category {
+  id        Int     @id @default(autoincrement())
+  nama      String  @unique
+  deskripsi String?
+  buku      Book[]
 }
