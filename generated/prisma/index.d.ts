@@ -33,6 +33,11 @@ export type Author = $Result.DefaultSelection<Prisma.$AuthorPayload>
  * 
  */
 export type Category = $Result.DefaultSelection<Prisma.$CategoryPayload>
+/**
+ * Model Borrowing
+ * 
+ */
+export type Borrowing = $Result.DefaultSelection<Prisma.$BorrowingPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -198,6 +203,16 @@ export class PrismaClient<
     * ```
     */
   get category(): Prisma.CategoryDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.borrowing`: Exposes CRUD operations for the **Borrowing** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Borrowings
+    * const borrowings = await prisma.borrowing.findMany()
+    * ```
+    */
+  get borrowing(): Prisma.BorrowingDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -641,7 +656,8 @@ export namespace Prisma {
     User: 'User',
     Book: 'Book',
     Author: 'Author',
-    Category: 'Category'
+    Category: 'Category',
+    Borrowing: 'Borrowing'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -660,7 +676,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "book" | "author" | "category"
+      modelProps: "user" | "book" | "author" | "category" | "borrowing"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -960,6 +976,80 @@ export namespace Prisma {
           }
         }
       }
+      Borrowing: {
+        payload: Prisma.$BorrowingPayload<ExtArgs>
+        fields: Prisma.BorrowingFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.BorrowingFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BorrowingPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.BorrowingFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BorrowingPayload>
+          }
+          findFirst: {
+            args: Prisma.BorrowingFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BorrowingPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.BorrowingFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BorrowingPayload>
+          }
+          findMany: {
+            args: Prisma.BorrowingFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BorrowingPayload>[]
+          }
+          create: {
+            args: Prisma.BorrowingCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BorrowingPayload>
+          }
+          createMany: {
+            args: Prisma.BorrowingCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.BorrowingCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BorrowingPayload>[]
+          }
+          delete: {
+            args: Prisma.BorrowingDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BorrowingPayload>
+          }
+          update: {
+            args: Prisma.BorrowingUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BorrowingPayload>
+          }
+          deleteMany: {
+            args: Prisma.BorrowingDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.BorrowingUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.BorrowingUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BorrowingPayload>[]
+          }
+          upsert: {
+            args: Prisma.BorrowingUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BorrowingPayload>
+          }
+          aggregate: {
+            args: Prisma.BorrowingAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateBorrowing>
+          }
+          groupBy: {
+            args: Prisma.BorrowingGroupByArgs<ExtArgs>
+            result: $Utils.Optional<BorrowingGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.BorrowingCountArgs<ExtArgs>
+            result: $Utils.Optional<BorrowingCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1048,6 +1138,7 @@ export namespace Prisma {
     book?: BookOmit
     author?: AuthorOmit
     category?: CategoryOmit
+    borrowing?: BorrowingOmit
   }
 
   /* Types for Logging */
@@ -1135,6 +1226,68 @@ export namespace Prisma {
   /**
    * Count Types
    */
+
+
+  /**
+   * Count Type UserCountOutputType
+   */
+
+  export type UserCountOutputType = {
+    Borrowing: number
+  }
+
+  export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    Borrowing?: boolean | UserCountOutputTypeCountBorrowingArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserCountOutputType
+     */
+    select?: UserCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountBorrowingArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: BorrowingWhereInput
+  }
+
+
+  /**
+   * Count Type BookCountOutputType
+   */
+
+  export type BookCountOutputType = {
+    Borrowing: number
+  }
+
+  export type BookCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    Borrowing?: boolean | BookCountOutputTypeCountBorrowingArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * BookCountOutputType without action
+   */
+  export type BookCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BookCountOutputType
+     */
+    select?: BookCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * BookCountOutputType without action
+   */
+  export type BookCountOutputTypeCountBorrowingArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: BorrowingWhereInput
+  }
 
 
   /**
@@ -1376,7 +1529,7 @@ export namespace Prisma {
     role: string
     status: string
     createdAt: Date
-    updatedAt: Date
+    updatedAt: Date | null
     _count: UserCountAggregateOutputType | null
     _min: UserMinAggregateOutputType | null
     _max: UserMaxAggregateOutputType | null
@@ -1407,6 +1560,8 @@ export namespace Prisma {
     status?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    Borrowing?: boolean | User$BorrowingArgs<ExtArgs>
+    _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -1449,10 +1604,18 @@ export namespace Prisma {
   }
 
   export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "nama" | "email" | "nim" | "nid" | "password" | "role" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
+  export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    Borrowing?: boolean | User$BorrowingArgs<ExtArgs>
+    _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type UserIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
 
   export type $UserPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "User"
-    objects: {}
+    objects: {
+      Borrowing: Prisma.$BorrowingPayload<ExtArgs>[]
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       nama: string
@@ -1463,7 +1626,7 @@ export namespace Prisma {
       role: string
       status: string
       createdAt: Date
-      updatedAt: Date
+      updatedAt: Date | null
     }, ExtArgs["result"]["user"]>
     composites: {}
   }
@@ -1858,6 +2021,7 @@ export namespace Prisma {
    */
   export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    Borrowing<T extends User$BorrowingArgs<ExtArgs> = {}>(args?: Subset<T, User$BorrowingArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BorrowingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1914,6 +2078,10 @@ export namespace Prisma {
      */
     omit?: UserOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
      * Filter, which User to fetch.
      */
     where: UserWhereUniqueInput
@@ -1932,6 +2100,10 @@ export namespace Prisma {
      */
     omit?: UserOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
      * Filter, which User to fetch.
      */
     where: UserWhereUniqueInput
@@ -1949,6 +2121,10 @@ export namespace Prisma {
      * Omit specific fields from the User
      */
     omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
     /**
      * Filter, which User to fetch.
      */
@@ -1998,6 +2174,10 @@ export namespace Prisma {
      */
     omit?: UserOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
      * Filter, which User to fetch.
      */
     where?: UserWhereInput
@@ -2046,6 +2226,10 @@ export namespace Prisma {
      */
     omit?: UserOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
      * Filter, which Users to fetch.
      */
     where?: UserWhereInput
@@ -2088,6 +2272,10 @@ export namespace Prisma {
      * Omit specific fields from the User
      */
     omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
     /**
      * The data needed to create a User.
      */
@@ -2136,6 +2324,10 @@ export namespace Prisma {
      * Omit specific fields from the User
      */
     omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
     /**
      * The data needed to update a User.
      */
@@ -2203,6 +2395,10 @@ export namespace Prisma {
      */
     omit?: UserOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
      * The filter to search for the User to update in case it exists.
      */
     where: UserWhereUniqueInput
@@ -2229,6 +2425,10 @@ export namespace Prisma {
      */
     omit?: UserOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
      * Filter which User to delete.
      */
     where: UserWhereUniqueInput
@@ -2249,6 +2449,30 @@ export namespace Prisma {
   }
 
   /**
+   * User.Borrowing
+   */
+  export type User$BorrowingArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Borrowing
+     */
+    select?: BorrowingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Borrowing
+     */
+    omit?: BorrowingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BorrowingInclude<ExtArgs> | null
+    where?: BorrowingWhereInput
+    orderBy?: BorrowingOrderByWithRelationInput | BorrowingOrderByWithRelationInput[]
+    cursor?: BorrowingWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: BorrowingScalarFieldEnum | BorrowingScalarFieldEnum[]
+  }
+
+  /**
    * User without action
    */
   export type UserDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2260,6 +2484,10 @@ export namespace Prisma {
      * Omit specific fields from the User
      */
     omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
   }
 
 
@@ -2279,6 +2507,7 @@ export namespace Prisma {
     id: number | null
     tahunTerbit: number | null
     jumlahHalaman: number | null
+    stok: number | null
     penulisId: number | null
     kategoriId: number | null
   }
@@ -2287,6 +2516,7 @@ export namespace Prisma {
     id: number | null
     tahunTerbit: number | null
     jumlahHalaman: number | null
+    stok: number | null
     penulisId: number | null
     kategoriId: number | null
   }
@@ -2301,12 +2531,12 @@ export namespace Prisma {
     jumlahHalaman: number | null
     bahasa: string | null
     sampul: string | null
-    fileBuku: string | null
     tersedia: boolean | null
+    stok: number | null
     penulisId: number | null
     kategoriId: number | null
-    dibuatPada: Date | null
-    diperbaruiPada: Date | null
+    createdAt: Date | null
+    updatedAt: Date | null
   }
 
   export type BookMaxAggregateOutputType = {
@@ -2319,12 +2549,12 @@ export namespace Prisma {
     jumlahHalaman: number | null
     bahasa: string | null
     sampul: string | null
-    fileBuku: string | null
     tersedia: boolean | null
+    stok: number | null
     penulisId: number | null
     kategoriId: number | null
-    dibuatPada: Date | null
-    diperbaruiPada: Date | null
+    createdAt: Date | null
+    updatedAt: Date | null
   }
 
   export type BookCountAggregateOutputType = {
@@ -2337,12 +2567,12 @@ export namespace Prisma {
     jumlahHalaman: number
     bahasa: number
     sampul: number
-    fileBuku: number
     tersedia: number
+    stok: number
     penulisId: number
     kategoriId: number
-    dibuatPada: number
-    diperbaruiPada: number
+    createdAt: number
+    updatedAt: number
     _all: number
   }
 
@@ -2351,6 +2581,7 @@ export namespace Prisma {
     id?: true
     tahunTerbit?: true
     jumlahHalaman?: true
+    stok?: true
     penulisId?: true
     kategoriId?: true
   }
@@ -2359,6 +2590,7 @@ export namespace Prisma {
     id?: true
     tahunTerbit?: true
     jumlahHalaman?: true
+    stok?: true
     penulisId?: true
     kategoriId?: true
   }
@@ -2373,12 +2605,12 @@ export namespace Prisma {
     jumlahHalaman?: true
     bahasa?: true
     sampul?: true
-    fileBuku?: true
     tersedia?: true
+    stok?: true
     penulisId?: true
     kategoriId?: true
-    dibuatPada?: true
-    diperbaruiPada?: true
+    createdAt?: true
+    updatedAt?: true
   }
 
   export type BookMaxAggregateInputType = {
@@ -2391,12 +2623,12 @@ export namespace Prisma {
     jumlahHalaman?: true
     bahasa?: true
     sampul?: true
-    fileBuku?: true
     tersedia?: true
+    stok?: true
     penulisId?: true
     kategoriId?: true
-    dibuatPada?: true
-    diperbaruiPada?: true
+    createdAt?: true
+    updatedAt?: true
   }
 
   export type BookCountAggregateInputType = {
@@ -2409,12 +2641,12 @@ export namespace Prisma {
     jumlahHalaman?: true
     bahasa?: true
     sampul?: true
-    fileBuku?: true
     tersedia?: true
+    stok?: true
     penulisId?: true
     kategoriId?: true
-    dibuatPada?: true
-    diperbaruiPada?: true
+    createdAt?: true
+    updatedAt?: true
     _all?: true
   }
 
@@ -2514,12 +2746,12 @@ export namespace Prisma {
     jumlahHalaman: number | null
     bahasa: string | null
     sampul: string | null
-    fileBuku: string | null
     tersedia: boolean
+    stok: number
     penulisId: number
     kategoriId: number
-    dibuatPada: Date
-    diperbaruiPada: Date
+    createdAt: Date
+    updatedAt: Date | null
     _count: BookCountAggregateOutputType | null
     _avg: BookAvgAggregateOutputType | null
     _sum: BookSumAggregateOutputType | null
@@ -2551,14 +2783,16 @@ export namespace Prisma {
     jumlahHalaman?: boolean
     bahasa?: boolean
     sampul?: boolean
-    fileBuku?: boolean
     tersedia?: boolean
+    stok?: boolean
     penulisId?: boolean
     kategoriId?: boolean
-    dibuatPada?: boolean
-    diperbaruiPada?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
     penulis?: boolean | AuthorDefaultArgs<ExtArgs>
     kategori?: boolean | CategoryDefaultArgs<ExtArgs>
+    Borrowing?: boolean | Book$BorrowingArgs<ExtArgs>
+    _count?: boolean | BookCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["book"]>
 
   export type BookSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -2571,12 +2805,12 @@ export namespace Prisma {
     jumlahHalaman?: boolean
     bahasa?: boolean
     sampul?: boolean
-    fileBuku?: boolean
     tersedia?: boolean
+    stok?: boolean
     penulisId?: boolean
     kategoriId?: boolean
-    dibuatPada?: boolean
-    diperbaruiPada?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
     penulis?: boolean | AuthorDefaultArgs<ExtArgs>
     kategori?: boolean | CategoryDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["book"]>
@@ -2591,12 +2825,12 @@ export namespace Prisma {
     jumlahHalaman?: boolean
     bahasa?: boolean
     sampul?: boolean
-    fileBuku?: boolean
     tersedia?: boolean
+    stok?: boolean
     penulisId?: boolean
     kategoriId?: boolean
-    dibuatPada?: boolean
-    diperbaruiPada?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
     penulis?: boolean | AuthorDefaultArgs<ExtArgs>
     kategori?: boolean | CategoryDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["book"]>
@@ -2611,18 +2845,20 @@ export namespace Prisma {
     jumlahHalaman?: boolean
     bahasa?: boolean
     sampul?: boolean
-    fileBuku?: boolean
     tersedia?: boolean
+    stok?: boolean
     penulisId?: boolean
     kategoriId?: boolean
-    dibuatPada?: boolean
-    diperbaruiPada?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
   }
 
-  export type BookOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "judul" | "isbn" | "deskripsi" | "tahunTerbit" | "penerbit" | "jumlahHalaman" | "bahasa" | "sampul" | "fileBuku" | "tersedia" | "penulisId" | "kategoriId" | "dibuatPada" | "diperbaruiPada", ExtArgs["result"]["book"]>
+  export type BookOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "judul" | "isbn" | "deskripsi" | "tahunTerbit" | "penerbit" | "jumlahHalaman" | "bahasa" | "sampul" | "tersedia" | "stok" | "penulisId" | "kategoriId" | "createdAt" | "updatedAt", ExtArgs["result"]["book"]>
   export type BookInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     penulis?: boolean | AuthorDefaultArgs<ExtArgs>
     kategori?: boolean | CategoryDefaultArgs<ExtArgs>
+    Borrowing?: boolean | Book$BorrowingArgs<ExtArgs>
+    _count?: boolean | BookCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type BookIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     penulis?: boolean | AuthorDefaultArgs<ExtArgs>
@@ -2638,6 +2874,7 @@ export namespace Prisma {
     objects: {
       penulis: Prisma.$AuthorPayload<ExtArgs>
       kategori: Prisma.$CategoryPayload<ExtArgs>
+      Borrowing: Prisma.$BorrowingPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -2649,12 +2886,12 @@ export namespace Prisma {
       jumlahHalaman: number | null
       bahasa: string | null
       sampul: string | null
-      fileBuku: string | null
       tersedia: boolean
+      stok: number
       penulisId: number
       kategoriId: number
-      dibuatPada: Date
-      diperbaruiPada: Date
+      createdAt: Date
+      updatedAt: Date | null
     }, ExtArgs["result"]["book"]>
     composites: {}
   }
@@ -3051,6 +3288,7 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     penulis<T extends AuthorDefaultArgs<ExtArgs> = {}>(args?: Subset<T, AuthorDefaultArgs<ExtArgs>>): Prisma__AuthorClient<$Result.GetResult<Prisma.$AuthorPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     kategori<T extends CategoryDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CategoryDefaultArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    Borrowing<T extends Book$BorrowingArgs<ExtArgs> = {}>(args?: Subset<T, Book$BorrowingArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BorrowingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3089,12 +3327,12 @@ export namespace Prisma {
     readonly jumlahHalaman: FieldRef<"Book", 'Int'>
     readonly bahasa: FieldRef<"Book", 'String'>
     readonly sampul: FieldRef<"Book", 'String'>
-    readonly fileBuku: FieldRef<"Book", 'String'>
     readonly tersedia: FieldRef<"Book", 'Boolean'>
+    readonly stok: FieldRef<"Book", 'Int'>
     readonly penulisId: FieldRef<"Book", 'Int'>
     readonly kategoriId: FieldRef<"Book", 'Int'>
-    readonly dibuatPada: FieldRef<"Book", 'DateTime'>
-    readonly diperbaruiPada: FieldRef<"Book", 'DateTime'>
+    readonly createdAt: FieldRef<"Book", 'DateTime'>
+    readonly updatedAt: FieldRef<"Book", 'DateTime'>
   }
     
 
@@ -3491,6 +3729,30 @@ export namespace Prisma {
   }
 
   /**
+   * Book.Borrowing
+   */
+  export type Book$BorrowingArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Borrowing
+     */
+    select?: BorrowingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Borrowing
+     */
+    omit?: BorrowingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BorrowingInclude<ExtArgs> | null
+    where?: BorrowingWhereInput
+    orderBy?: BorrowingOrderByWithRelationInput | BorrowingOrderByWithRelationInput[]
+    cursor?: BorrowingWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: BorrowingScalarFieldEnum | BorrowingScalarFieldEnum[]
+  }
+
+  /**
    * Book without action
    */
   export type BookDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3533,18 +3795,24 @@ export namespace Prisma {
     id: number | null
     nama: string | null
     bio: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
   }
 
   export type AuthorMaxAggregateOutputType = {
     id: number | null
     nama: string | null
     bio: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
   }
 
   export type AuthorCountAggregateOutputType = {
     id: number
     nama: number
     bio: number
+    createdAt: number
+    updatedAt: number
     _all: number
   }
 
@@ -3561,18 +3829,24 @@ export namespace Prisma {
     id?: true
     nama?: true
     bio?: true
+    createdAt?: true
+    updatedAt?: true
   }
 
   export type AuthorMaxAggregateInputType = {
     id?: true
     nama?: true
     bio?: true
+    createdAt?: true
+    updatedAt?: true
   }
 
   export type AuthorCountAggregateInputType = {
     id?: true
     nama?: true
     bio?: true
+    createdAt?: true
+    updatedAt?: true
     _all?: true
   }
 
@@ -3666,6 +3940,8 @@ export namespace Prisma {
     id: number
     nama: string
     bio: string | null
+    createdAt: Date
+    updatedAt: Date | null
     _count: AuthorCountAggregateOutputType | null
     _avg: AuthorAvgAggregateOutputType | null
     _sum: AuthorSumAggregateOutputType | null
@@ -3691,6 +3967,8 @@ export namespace Prisma {
     id?: boolean
     nama?: boolean
     bio?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
     buku?: boolean | Author$bukuArgs<ExtArgs>
     _count?: boolean | AuthorCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["author"]>
@@ -3699,21 +3977,27 @@ export namespace Prisma {
     id?: boolean
     nama?: boolean
     bio?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
   }, ExtArgs["result"]["author"]>
 
   export type AuthorSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     nama?: boolean
     bio?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
   }, ExtArgs["result"]["author"]>
 
   export type AuthorSelectScalar = {
     id?: boolean
     nama?: boolean
     bio?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
   }
 
-  export type AuthorOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "nama" | "bio", ExtArgs["result"]["author"]>
+  export type AuthorOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "nama" | "bio" | "createdAt" | "updatedAt", ExtArgs["result"]["author"]>
   export type AuthorInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     buku?: boolean | Author$bukuArgs<ExtArgs>
     _count?: boolean | AuthorCountOutputTypeDefaultArgs<ExtArgs>
@@ -3730,6 +4014,8 @@ export namespace Prisma {
       id: number
       nama: string
       bio: string | null
+      createdAt: Date
+      updatedAt: Date | null
     }, ExtArgs["result"]["author"]>
     composites: {}
   }
@@ -4157,6 +4443,8 @@ export namespace Prisma {
     readonly id: FieldRef<"Author", 'Int'>
     readonly nama: FieldRef<"Author", 'String'>
     readonly bio: FieldRef<"Author", 'String'>
+    readonly createdAt: FieldRef<"Author", 'DateTime'>
+    readonly updatedAt: FieldRef<"Author", 'DateTime'>
   }
     
 
@@ -4611,18 +4899,24 @@ export namespace Prisma {
     id: number | null
     nama: string | null
     deskripsi: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
   }
 
   export type CategoryMaxAggregateOutputType = {
     id: number | null
     nama: string | null
     deskripsi: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
   }
 
   export type CategoryCountAggregateOutputType = {
     id: number
     nama: number
     deskripsi: number
+    createdAt: number
+    updatedAt: number
     _all: number
   }
 
@@ -4639,18 +4933,24 @@ export namespace Prisma {
     id?: true
     nama?: true
     deskripsi?: true
+    createdAt?: true
+    updatedAt?: true
   }
 
   export type CategoryMaxAggregateInputType = {
     id?: true
     nama?: true
     deskripsi?: true
+    createdAt?: true
+    updatedAt?: true
   }
 
   export type CategoryCountAggregateInputType = {
     id?: true
     nama?: true
     deskripsi?: true
+    createdAt?: true
+    updatedAt?: true
     _all?: true
   }
 
@@ -4744,6 +5044,8 @@ export namespace Prisma {
     id: number
     nama: string
     deskripsi: string | null
+    createdAt: Date
+    updatedAt: Date | null
     _count: CategoryCountAggregateOutputType | null
     _avg: CategoryAvgAggregateOutputType | null
     _sum: CategorySumAggregateOutputType | null
@@ -4769,6 +5071,8 @@ export namespace Prisma {
     id?: boolean
     nama?: boolean
     deskripsi?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
     buku?: boolean | Category$bukuArgs<ExtArgs>
     _count?: boolean | CategoryCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["category"]>
@@ -4777,21 +5081,27 @@ export namespace Prisma {
     id?: boolean
     nama?: boolean
     deskripsi?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
   }, ExtArgs["result"]["category"]>
 
   export type CategorySelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     nama?: boolean
     deskripsi?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
   }, ExtArgs["result"]["category"]>
 
   export type CategorySelectScalar = {
     id?: boolean
     nama?: boolean
     deskripsi?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
   }
 
-  export type CategoryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "nama" | "deskripsi", ExtArgs["result"]["category"]>
+  export type CategoryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "nama" | "deskripsi" | "createdAt" | "updatedAt", ExtArgs["result"]["category"]>
   export type CategoryInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     buku?: boolean | Category$bukuArgs<ExtArgs>
     _count?: boolean | CategoryCountOutputTypeDefaultArgs<ExtArgs>
@@ -4808,6 +5118,8 @@ export namespace Prisma {
       id: number
       nama: string
       deskripsi: string | null
+      createdAt: Date
+      updatedAt: Date | null
     }, ExtArgs["result"]["category"]>
     composites: {}
   }
@@ -5235,6 +5547,8 @@ export namespace Prisma {
     readonly id: FieldRef<"Category", 'Int'>
     readonly nama: FieldRef<"Category", 'String'>
     readonly deskripsi: FieldRef<"Category", 'String'>
+    readonly createdAt: FieldRef<"Category", 'DateTime'>
+    readonly updatedAt: FieldRef<"Category", 'DateTime'>
   }
     
 
@@ -5666,6 +5980,1140 @@ export namespace Prisma {
 
 
   /**
+   * Model Borrowing
+   */
+
+  export type AggregateBorrowing = {
+    _count: BorrowingCountAggregateOutputType | null
+    _avg: BorrowingAvgAggregateOutputType | null
+    _sum: BorrowingSumAggregateOutputType | null
+    _min: BorrowingMinAggregateOutputType | null
+    _max: BorrowingMaxAggregateOutputType | null
+  }
+
+  export type BorrowingAvgAggregateOutputType = {
+    id: number | null
+    bookId: number | null
+    denda: number | null
+  }
+
+  export type BorrowingSumAggregateOutputType = {
+    id: number | null
+    bookId: number | null
+    denda: number | null
+  }
+
+  export type BorrowingMinAggregateOutputType = {
+    id: number | null
+    userId: string | null
+    bookId: number | null
+    tanggalPinjam: Date | null
+    tanggalKembali: Date | null
+    status: string | null
+    denda: number | null
+  }
+
+  export type BorrowingMaxAggregateOutputType = {
+    id: number | null
+    userId: string | null
+    bookId: number | null
+    tanggalPinjam: Date | null
+    tanggalKembali: Date | null
+    status: string | null
+    denda: number | null
+  }
+
+  export type BorrowingCountAggregateOutputType = {
+    id: number
+    userId: number
+    bookId: number
+    tanggalPinjam: number
+    tanggalKembali: number
+    status: number
+    denda: number
+    _all: number
+  }
+
+
+  export type BorrowingAvgAggregateInputType = {
+    id?: true
+    bookId?: true
+    denda?: true
+  }
+
+  export type BorrowingSumAggregateInputType = {
+    id?: true
+    bookId?: true
+    denda?: true
+  }
+
+  export type BorrowingMinAggregateInputType = {
+    id?: true
+    userId?: true
+    bookId?: true
+    tanggalPinjam?: true
+    tanggalKembali?: true
+    status?: true
+    denda?: true
+  }
+
+  export type BorrowingMaxAggregateInputType = {
+    id?: true
+    userId?: true
+    bookId?: true
+    tanggalPinjam?: true
+    tanggalKembali?: true
+    status?: true
+    denda?: true
+  }
+
+  export type BorrowingCountAggregateInputType = {
+    id?: true
+    userId?: true
+    bookId?: true
+    tanggalPinjam?: true
+    tanggalKembali?: true
+    status?: true
+    denda?: true
+    _all?: true
+  }
+
+  export type BorrowingAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Borrowing to aggregate.
+     */
+    where?: BorrowingWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Borrowings to fetch.
+     */
+    orderBy?: BorrowingOrderByWithRelationInput | BorrowingOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: BorrowingWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Borrowings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Borrowings.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Borrowings
+    **/
+    _count?: true | BorrowingCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: BorrowingAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: BorrowingSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: BorrowingMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: BorrowingMaxAggregateInputType
+  }
+
+  export type GetBorrowingAggregateType<T extends BorrowingAggregateArgs> = {
+        [P in keyof T & keyof AggregateBorrowing]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateBorrowing[P]>
+      : GetScalarType<T[P], AggregateBorrowing[P]>
+  }
+
+
+
+
+  export type BorrowingGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: BorrowingWhereInput
+    orderBy?: BorrowingOrderByWithAggregationInput | BorrowingOrderByWithAggregationInput[]
+    by: BorrowingScalarFieldEnum[] | BorrowingScalarFieldEnum
+    having?: BorrowingScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: BorrowingCountAggregateInputType | true
+    _avg?: BorrowingAvgAggregateInputType
+    _sum?: BorrowingSumAggregateInputType
+    _min?: BorrowingMinAggregateInputType
+    _max?: BorrowingMaxAggregateInputType
+  }
+
+  export type BorrowingGroupByOutputType = {
+    id: number
+    userId: string
+    bookId: number
+    tanggalPinjam: Date
+    tanggalKembali: Date | null
+    status: string
+    denda: number
+    _count: BorrowingCountAggregateOutputType | null
+    _avg: BorrowingAvgAggregateOutputType | null
+    _sum: BorrowingSumAggregateOutputType | null
+    _min: BorrowingMinAggregateOutputType | null
+    _max: BorrowingMaxAggregateOutputType | null
+  }
+
+  type GetBorrowingGroupByPayload<T extends BorrowingGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<BorrowingGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof BorrowingGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], BorrowingGroupByOutputType[P]>
+            : GetScalarType<T[P], BorrowingGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type BorrowingSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    bookId?: boolean
+    tanggalPinjam?: boolean
+    tanggalKembali?: boolean
+    status?: boolean
+    denda?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    book?: boolean | BookDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["borrowing"]>
+
+  export type BorrowingSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    bookId?: boolean
+    tanggalPinjam?: boolean
+    tanggalKembali?: boolean
+    status?: boolean
+    denda?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    book?: boolean | BookDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["borrowing"]>
+
+  export type BorrowingSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    bookId?: boolean
+    tanggalPinjam?: boolean
+    tanggalKembali?: boolean
+    status?: boolean
+    denda?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    book?: boolean | BookDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["borrowing"]>
+
+  export type BorrowingSelectScalar = {
+    id?: boolean
+    userId?: boolean
+    bookId?: boolean
+    tanggalPinjam?: boolean
+    tanggalKembali?: boolean
+    status?: boolean
+    denda?: boolean
+  }
+
+  export type BorrowingOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "bookId" | "tanggalPinjam" | "tanggalKembali" | "status" | "denda", ExtArgs["result"]["borrowing"]>
+  export type BorrowingInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    book?: boolean | BookDefaultArgs<ExtArgs>
+  }
+  export type BorrowingIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    book?: boolean | BookDefaultArgs<ExtArgs>
+  }
+  export type BorrowingIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    book?: boolean | BookDefaultArgs<ExtArgs>
+  }
+
+  export type $BorrowingPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Borrowing"
+    objects: {
+      user: Prisma.$UserPayload<ExtArgs>
+      book: Prisma.$BookPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      userId: string
+      bookId: number
+      tanggalPinjam: Date
+      tanggalKembali: Date | null
+      status: string
+      denda: number
+    }, ExtArgs["result"]["borrowing"]>
+    composites: {}
+  }
+
+  type BorrowingGetPayload<S extends boolean | null | undefined | BorrowingDefaultArgs> = $Result.GetResult<Prisma.$BorrowingPayload, S>
+
+  type BorrowingCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<BorrowingFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: BorrowingCountAggregateInputType | true
+    }
+
+  export interface BorrowingDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Borrowing'], meta: { name: 'Borrowing' } }
+    /**
+     * Find zero or one Borrowing that matches the filter.
+     * @param {BorrowingFindUniqueArgs} args - Arguments to find a Borrowing
+     * @example
+     * // Get one Borrowing
+     * const borrowing = await prisma.borrowing.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends BorrowingFindUniqueArgs>(args: SelectSubset<T, BorrowingFindUniqueArgs<ExtArgs>>): Prisma__BorrowingClient<$Result.GetResult<Prisma.$BorrowingPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Borrowing that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {BorrowingFindUniqueOrThrowArgs} args - Arguments to find a Borrowing
+     * @example
+     * // Get one Borrowing
+     * const borrowing = await prisma.borrowing.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends BorrowingFindUniqueOrThrowArgs>(args: SelectSubset<T, BorrowingFindUniqueOrThrowArgs<ExtArgs>>): Prisma__BorrowingClient<$Result.GetResult<Prisma.$BorrowingPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Borrowing that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BorrowingFindFirstArgs} args - Arguments to find a Borrowing
+     * @example
+     * // Get one Borrowing
+     * const borrowing = await prisma.borrowing.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends BorrowingFindFirstArgs>(args?: SelectSubset<T, BorrowingFindFirstArgs<ExtArgs>>): Prisma__BorrowingClient<$Result.GetResult<Prisma.$BorrowingPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Borrowing that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BorrowingFindFirstOrThrowArgs} args - Arguments to find a Borrowing
+     * @example
+     * // Get one Borrowing
+     * const borrowing = await prisma.borrowing.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends BorrowingFindFirstOrThrowArgs>(args?: SelectSubset<T, BorrowingFindFirstOrThrowArgs<ExtArgs>>): Prisma__BorrowingClient<$Result.GetResult<Prisma.$BorrowingPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Borrowings that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BorrowingFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Borrowings
+     * const borrowings = await prisma.borrowing.findMany()
+     * 
+     * // Get first 10 Borrowings
+     * const borrowings = await prisma.borrowing.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const borrowingWithIdOnly = await prisma.borrowing.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends BorrowingFindManyArgs>(args?: SelectSubset<T, BorrowingFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BorrowingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Borrowing.
+     * @param {BorrowingCreateArgs} args - Arguments to create a Borrowing.
+     * @example
+     * // Create one Borrowing
+     * const Borrowing = await prisma.borrowing.create({
+     *   data: {
+     *     // ... data to create a Borrowing
+     *   }
+     * })
+     * 
+     */
+    create<T extends BorrowingCreateArgs>(args: SelectSubset<T, BorrowingCreateArgs<ExtArgs>>): Prisma__BorrowingClient<$Result.GetResult<Prisma.$BorrowingPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Borrowings.
+     * @param {BorrowingCreateManyArgs} args - Arguments to create many Borrowings.
+     * @example
+     * // Create many Borrowings
+     * const borrowing = await prisma.borrowing.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends BorrowingCreateManyArgs>(args?: SelectSubset<T, BorrowingCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Borrowings and returns the data saved in the database.
+     * @param {BorrowingCreateManyAndReturnArgs} args - Arguments to create many Borrowings.
+     * @example
+     * // Create many Borrowings
+     * const borrowing = await prisma.borrowing.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Borrowings and only return the `id`
+     * const borrowingWithIdOnly = await prisma.borrowing.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends BorrowingCreateManyAndReturnArgs>(args?: SelectSubset<T, BorrowingCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BorrowingPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Borrowing.
+     * @param {BorrowingDeleteArgs} args - Arguments to delete one Borrowing.
+     * @example
+     * // Delete one Borrowing
+     * const Borrowing = await prisma.borrowing.delete({
+     *   where: {
+     *     // ... filter to delete one Borrowing
+     *   }
+     * })
+     * 
+     */
+    delete<T extends BorrowingDeleteArgs>(args: SelectSubset<T, BorrowingDeleteArgs<ExtArgs>>): Prisma__BorrowingClient<$Result.GetResult<Prisma.$BorrowingPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Borrowing.
+     * @param {BorrowingUpdateArgs} args - Arguments to update one Borrowing.
+     * @example
+     * // Update one Borrowing
+     * const borrowing = await prisma.borrowing.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends BorrowingUpdateArgs>(args: SelectSubset<T, BorrowingUpdateArgs<ExtArgs>>): Prisma__BorrowingClient<$Result.GetResult<Prisma.$BorrowingPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Borrowings.
+     * @param {BorrowingDeleteManyArgs} args - Arguments to filter Borrowings to delete.
+     * @example
+     * // Delete a few Borrowings
+     * const { count } = await prisma.borrowing.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends BorrowingDeleteManyArgs>(args?: SelectSubset<T, BorrowingDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Borrowings.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BorrowingUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Borrowings
+     * const borrowing = await prisma.borrowing.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends BorrowingUpdateManyArgs>(args: SelectSubset<T, BorrowingUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Borrowings and returns the data updated in the database.
+     * @param {BorrowingUpdateManyAndReturnArgs} args - Arguments to update many Borrowings.
+     * @example
+     * // Update many Borrowings
+     * const borrowing = await prisma.borrowing.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Borrowings and only return the `id`
+     * const borrowingWithIdOnly = await prisma.borrowing.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends BorrowingUpdateManyAndReturnArgs>(args: SelectSubset<T, BorrowingUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BorrowingPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Borrowing.
+     * @param {BorrowingUpsertArgs} args - Arguments to update or create a Borrowing.
+     * @example
+     * // Update or create a Borrowing
+     * const borrowing = await prisma.borrowing.upsert({
+     *   create: {
+     *     // ... data to create a Borrowing
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Borrowing we want to update
+     *   }
+     * })
+     */
+    upsert<T extends BorrowingUpsertArgs>(args: SelectSubset<T, BorrowingUpsertArgs<ExtArgs>>): Prisma__BorrowingClient<$Result.GetResult<Prisma.$BorrowingPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Borrowings.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BorrowingCountArgs} args - Arguments to filter Borrowings to count.
+     * @example
+     * // Count the number of Borrowings
+     * const count = await prisma.borrowing.count({
+     *   where: {
+     *     // ... the filter for the Borrowings we want to count
+     *   }
+     * })
+    **/
+    count<T extends BorrowingCountArgs>(
+      args?: Subset<T, BorrowingCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], BorrowingCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Borrowing.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BorrowingAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends BorrowingAggregateArgs>(args: Subset<T, BorrowingAggregateArgs>): Prisma.PrismaPromise<GetBorrowingAggregateType<T>>
+
+    /**
+     * Group by Borrowing.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BorrowingGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends BorrowingGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: BorrowingGroupByArgs['orderBy'] }
+        : { orderBy?: BorrowingGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, BorrowingGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetBorrowingGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Borrowing model
+   */
+  readonly fields: BorrowingFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Borrowing.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__BorrowingClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    book<T extends BookDefaultArgs<ExtArgs> = {}>(args?: Subset<T, BookDefaultArgs<ExtArgs>>): Prisma__BookClient<$Result.GetResult<Prisma.$BookPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Borrowing model
+   */
+  interface BorrowingFieldRefs {
+    readonly id: FieldRef<"Borrowing", 'Int'>
+    readonly userId: FieldRef<"Borrowing", 'String'>
+    readonly bookId: FieldRef<"Borrowing", 'Int'>
+    readonly tanggalPinjam: FieldRef<"Borrowing", 'DateTime'>
+    readonly tanggalKembali: FieldRef<"Borrowing", 'DateTime'>
+    readonly status: FieldRef<"Borrowing", 'String'>
+    readonly denda: FieldRef<"Borrowing", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Borrowing findUnique
+   */
+  export type BorrowingFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Borrowing
+     */
+    select?: BorrowingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Borrowing
+     */
+    omit?: BorrowingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BorrowingInclude<ExtArgs> | null
+    /**
+     * Filter, which Borrowing to fetch.
+     */
+    where: BorrowingWhereUniqueInput
+  }
+
+  /**
+   * Borrowing findUniqueOrThrow
+   */
+  export type BorrowingFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Borrowing
+     */
+    select?: BorrowingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Borrowing
+     */
+    omit?: BorrowingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BorrowingInclude<ExtArgs> | null
+    /**
+     * Filter, which Borrowing to fetch.
+     */
+    where: BorrowingWhereUniqueInput
+  }
+
+  /**
+   * Borrowing findFirst
+   */
+  export type BorrowingFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Borrowing
+     */
+    select?: BorrowingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Borrowing
+     */
+    omit?: BorrowingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BorrowingInclude<ExtArgs> | null
+    /**
+     * Filter, which Borrowing to fetch.
+     */
+    where?: BorrowingWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Borrowings to fetch.
+     */
+    orderBy?: BorrowingOrderByWithRelationInput | BorrowingOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Borrowings.
+     */
+    cursor?: BorrowingWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Borrowings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Borrowings.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Borrowings.
+     */
+    distinct?: BorrowingScalarFieldEnum | BorrowingScalarFieldEnum[]
+  }
+
+  /**
+   * Borrowing findFirstOrThrow
+   */
+  export type BorrowingFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Borrowing
+     */
+    select?: BorrowingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Borrowing
+     */
+    omit?: BorrowingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BorrowingInclude<ExtArgs> | null
+    /**
+     * Filter, which Borrowing to fetch.
+     */
+    where?: BorrowingWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Borrowings to fetch.
+     */
+    orderBy?: BorrowingOrderByWithRelationInput | BorrowingOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Borrowings.
+     */
+    cursor?: BorrowingWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Borrowings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Borrowings.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Borrowings.
+     */
+    distinct?: BorrowingScalarFieldEnum | BorrowingScalarFieldEnum[]
+  }
+
+  /**
+   * Borrowing findMany
+   */
+  export type BorrowingFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Borrowing
+     */
+    select?: BorrowingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Borrowing
+     */
+    omit?: BorrowingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BorrowingInclude<ExtArgs> | null
+    /**
+     * Filter, which Borrowings to fetch.
+     */
+    where?: BorrowingWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Borrowings to fetch.
+     */
+    orderBy?: BorrowingOrderByWithRelationInput | BorrowingOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Borrowings.
+     */
+    cursor?: BorrowingWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Borrowings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Borrowings.
+     */
+    skip?: number
+    distinct?: BorrowingScalarFieldEnum | BorrowingScalarFieldEnum[]
+  }
+
+  /**
+   * Borrowing create
+   */
+  export type BorrowingCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Borrowing
+     */
+    select?: BorrowingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Borrowing
+     */
+    omit?: BorrowingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BorrowingInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Borrowing.
+     */
+    data: XOR<BorrowingCreateInput, BorrowingUncheckedCreateInput>
+  }
+
+  /**
+   * Borrowing createMany
+   */
+  export type BorrowingCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Borrowings.
+     */
+    data: BorrowingCreateManyInput | BorrowingCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Borrowing createManyAndReturn
+   */
+  export type BorrowingCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Borrowing
+     */
+    select?: BorrowingSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Borrowing
+     */
+    omit?: BorrowingOmit<ExtArgs> | null
+    /**
+     * The data used to create many Borrowings.
+     */
+    data: BorrowingCreateManyInput | BorrowingCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BorrowingIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Borrowing update
+   */
+  export type BorrowingUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Borrowing
+     */
+    select?: BorrowingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Borrowing
+     */
+    omit?: BorrowingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BorrowingInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Borrowing.
+     */
+    data: XOR<BorrowingUpdateInput, BorrowingUncheckedUpdateInput>
+    /**
+     * Choose, which Borrowing to update.
+     */
+    where: BorrowingWhereUniqueInput
+  }
+
+  /**
+   * Borrowing updateMany
+   */
+  export type BorrowingUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Borrowings.
+     */
+    data: XOR<BorrowingUpdateManyMutationInput, BorrowingUncheckedUpdateManyInput>
+    /**
+     * Filter which Borrowings to update
+     */
+    where?: BorrowingWhereInput
+    /**
+     * Limit how many Borrowings to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Borrowing updateManyAndReturn
+   */
+  export type BorrowingUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Borrowing
+     */
+    select?: BorrowingSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Borrowing
+     */
+    omit?: BorrowingOmit<ExtArgs> | null
+    /**
+     * The data used to update Borrowings.
+     */
+    data: XOR<BorrowingUpdateManyMutationInput, BorrowingUncheckedUpdateManyInput>
+    /**
+     * Filter which Borrowings to update
+     */
+    where?: BorrowingWhereInput
+    /**
+     * Limit how many Borrowings to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BorrowingIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Borrowing upsert
+   */
+  export type BorrowingUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Borrowing
+     */
+    select?: BorrowingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Borrowing
+     */
+    omit?: BorrowingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BorrowingInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Borrowing to update in case it exists.
+     */
+    where: BorrowingWhereUniqueInput
+    /**
+     * In case the Borrowing found by the `where` argument doesn't exist, create a new Borrowing with this data.
+     */
+    create: XOR<BorrowingCreateInput, BorrowingUncheckedCreateInput>
+    /**
+     * In case the Borrowing was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<BorrowingUpdateInput, BorrowingUncheckedUpdateInput>
+  }
+
+  /**
+   * Borrowing delete
+   */
+  export type BorrowingDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Borrowing
+     */
+    select?: BorrowingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Borrowing
+     */
+    omit?: BorrowingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BorrowingInclude<ExtArgs> | null
+    /**
+     * Filter which Borrowing to delete.
+     */
+    where: BorrowingWhereUniqueInput
+  }
+
+  /**
+   * Borrowing deleteMany
+   */
+  export type BorrowingDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Borrowings to delete
+     */
+    where?: BorrowingWhereInput
+    /**
+     * Limit how many Borrowings to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Borrowing without action
+   */
+  export type BorrowingDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Borrowing
+     */
+    select?: BorrowingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Borrowing
+     */
+    omit?: BorrowingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BorrowingInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -5705,12 +7153,12 @@ export namespace Prisma {
     jumlahHalaman: 'jumlahHalaman',
     bahasa: 'bahasa',
     sampul: 'sampul',
-    fileBuku: 'fileBuku',
     tersedia: 'tersedia',
+    stok: 'stok',
     penulisId: 'penulisId',
     kategoriId: 'kategoriId',
-    dibuatPada: 'dibuatPada',
-    diperbaruiPada: 'diperbaruiPada'
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
   };
 
   export type BookScalarFieldEnum = (typeof BookScalarFieldEnum)[keyof typeof BookScalarFieldEnum]
@@ -5719,7 +7167,9 @@ export namespace Prisma {
   export const AuthorScalarFieldEnum: {
     id: 'id',
     nama: 'nama',
-    bio: 'bio'
+    bio: 'bio',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
   };
 
   export type AuthorScalarFieldEnum = (typeof AuthorScalarFieldEnum)[keyof typeof AuthorScalarFieldEnum]
@@ -5728,10 +7178,25 @@ export namespace Prisma {
   export const CategoryScalarFieldEnum: {
     id: 'id',
     nama: 'nama',
-    deskripsi: 'deskripsi'
+    deskripsi: 'deskripsi',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
   };
 
   export type CategoryScalarFieldEnum = (typeof CategoryScalarFieldEnum)[keyof typeof CategoryScalarFieldEnum]
+
+
+  export const BorrowingScalarFieldEnum: {
+    id: 'id',
+    userId: 'userId',
+    bookId: 'bookId',
+    tanggalPinjam: 'tanggalPinjam',
+    tanggalKembali: 'tanggalKembali',
+    status: 'status',
+    denda: 'denda'
+  };
+
+  export type BorrowingScalarFieldEnum = (typeof BorrowingScalarFieldEnum)[keyof typeof BorrowingScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -5842,7 +7307,8 @@ export namespace Prisma {
     role?: StringFilter<"User"> | string
     status?: StringFilter<"User"> | string
     createdAt?: DateTimeFilter<"User"> | Date | string
-    updatedAt?: DateTimeFilter<"User"> | Date | string
+    updatedAt?: DateTimeNullableFilter<"User"> | Date | string | null
+    Borrowing?: BorrowingListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -5855,7 +7321,8 @@ export namespace Prisma {
     role?: SortOrder
     status?: SortOrder
     createdAt?: SortOrder
-    updatedAt?: SortOrder
+    updatedAt?: SortOrderInput | SortOrder
+    Borrowing?: BorrowingOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -5871,7 +7338,8 @@ export namespace Prisma {
     role?: StringFilter<"User"> | string
     status?: StringFilter<"User"> | string
     createdAt?: DateTimeFilter<"User"> | Date | string
-    updatedAt?: DateTimeFilter<"User"> | Date | string
+    updatedAt?: DateTimeNullableFilter<"User"> | Date | string | null
+    Borrowing?: BorrowingListRelationFilter
   }, "id" | "email">
 
   export type UserOrderByWithAggregationInput = {
@@ -5884,7 +7352,7 @@ export namespace Prisma {
     role?: SortOrder
     status?: SortOrder
     createdAt?: SortOrder
-    updatedAt?: SortOrder
+    updatedAt?: SortOrderInput | SortOrder
     _count?: UserCountOrderByAggregateInput
     _max?: UserMaxOrderByAggregateInput
     _min?: UserMinOrderByAggregateInput
@@ -5903,7 +7371,7 @@ export namespace Prisma {
     role?: StringWithAggregatesFilter<"User"> | string
     status?: StringWithAggregatesFilter<"User"> | string
     createdAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
-    updatedAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
+    updatedAt?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
   }
 
   export type BookWhereInput = {
@@ -5919,14 +7387,15 @@ export namespace Prisma {
     jumlahHalaman?: IntNullableFilter<"Book"> | number | null
     bahasa?: StringNullableFilter<"Book"> | string | null
     sampul?: StringNullableFilter<"Book"> | string | null
-    fileBuku?: StringNullableFilter<"Book"> | string | null
     tersedia?: BoolFilter<"Book"> | boolean
+    stok?: IntFilter<"Book"> | number
     penulisId?: IntFilter<"Book"> | number
     kategoriId?: IntFilter<"Book"> | number
-    dibuatPada?: DateTimeFilter<"Book"> | Date | string
-    diperbaruiPada?: DateTimeFilter<"Book"> | Date | string
+    createdAt?: DateTimeFilter<"Book"> | Date | string
+    updatedAt?: DateTimeNullableFilter<"Book"> | Date | string | null
     penulis?: XOR<AuthorScalarRelationFilter, AuthorWhereInput>
     kategori?: XOR<CategoryScalarRelationFilter, CategoryWhereInput>
+    Borrowing?: BorrowingListRelationFilter
   }
 
   export type BookOrderByWithRelationInput = {
@@ -5939,14 +7408,15 @@ export namespace Prisma {
     jumlahHalaman?: SortOrderInput | SortOrder
     bahasa?: SortOrderInput | SortOrder
     sampul?: SortOrderInput | SortOrder
-    fileBuku?: SortOrderInput | SortOrder
     tersedia?: SortOrder
+    stok?: SortOrder
     penulisId?: SortOrder
     kategoriId?: SortOrder
-    dibuatPada?: SortOrder
-    diperbaruiPada?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrderInput | SortOrder
     penulis?: AuthorOrderByWithRelationInput
     kategori?: CategoryOrderByWithRelationInput
+    Borrowing?: BorrowingOrderByRelationAggregateInput
   }
 
   export type BookWhereUniqueInput = Prisma.AtLeast<{
@@ -5962,14 +7432,15 @@ export namespace Prisma {
     jumlahHalaman?: IntNullableFilter<"Book"> | number | null
     bahasa?: StringNullableFilter<"Book"> | string | null
     sampul?: StringNullableFilter<"Book"> | string | null
-    fileBuku?: StringNullableFilter<"Book"> | string | null
     tersedia?: BoolFilter<"Book"> | boolean
+    stok?: IntFilter<"Book"> | number
     penulisId?: IntFilter<"Book"> | number
     kategoriId?: IntFilter<"Book"> | number
-    dibuatPada?: DateTimeFilter<"Book"> | Date | string
-    diperbaruiPada?: DateTimeFilter<"Book"> | Date | string
+    createdAt?: DateTimeFilter<"Book"> | Date | string
+    updatedAt?: DateTimeNullableFilter<"Book"> | Date | string | null
     penulis?: XOR<AuthorScalarRelationFilter, AuthorWhereInput>
     kategori?: XOR<CategoryScalarRelationFilter, CategoryWhereInput>
+    Borrowing?: BorrowingListRelationFilter
   }, "id" | "isbn">
 
   export type BookOrderByWithAggregationInput = {
@@ -5982,12 +7453,12 @@ export namespace Prisma {
     jumlahHalaman?: SortOrderInput | SortOrder
     bahasa?: SortOrderInput | SortOrder
     sampul?: SortOrderInput | SortOrder
-    fileBuku?: SortOrderInput | SortOrder
     tersedia?: SortOrder
+    stok?: SortOrder
     penulisId?: SortOrder
     kategoriId?: SortOrder
-    dibuatPada?: SortOrder
-    diperbaruiPada?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrderInput | SortOrder
     _count?: BookCountOrderByAggregateInput
     _avg?: BookAvgOrderByAggregateInput
     _max?: BookMaxOrderByAggregateInput
@@ -6008,12 +7479,12 @@ export namespace Prisma {
     jumlahHalaman?: IntNullableWithAggregatesFilter<"Book"> | number | null
     bahasa?: StringNullableWithAggregatesFilter<"Book"> | string | null
     sampul?: StringNullableWithAggregatesFilter<"Book"> | string | null
-    fileBuku?: StringNullableWithAggregatesFilter<"Book"> | string | null
     tersedia?: BoolWithAggregatesFilter<"Book"> | boolean
+    stok?: IntWithAggregatesFilter<"Book"> | number
     penulisId?: IntWithAggregatesFilter<"Book"> | number
     kategoriId?: IntWithAggregatesFilter<"Book"> | number
-    dibuatPada?: DateTimeWithAggregatesFilter<"Book"> | Date | string
-    diperbaruiPada?: DateTimeWithAggregatesFilter<"Book"> | Date | string
+    createdAt?: DateTimeWithAggregatesFilter<"Book"> | Date | string
+    updatedAt?: DateTimeNullableWithAggregatesFilter<"Book"> | Date | string | null
   }
 
   export type AuthorWhereInput = {
@@ -6023,6 +7494,8 @@ export namespace Prisma {
     id?: IntFilter<"Author"> | number
     nama?: StringFilter<"Author"> | string
     bio?: StringNullableFilter<"Author"> | string | null
+    createdAt?: DateTimeFilter<"Author"> | Date | string
+    updatedAt?: DateTimeNullableFilter<"Author"> | Date | string | null
     buku?: BookListRelationFilter
   }
 
@@ -6030,6 +7503,8 @@ export namespace Prisma {
     id?: SortOrder
     nama?: SortOrder
     bio?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrderInput | SortOrder
     buku?: BookOrderByRelationAggregateInput
   }
 
@@ -6040,6 +7515,8 @@ export namespace Prisma {
     NOT?: AuthorWhereInput | AuthorWhereInput[]
     nama?: StringFilter<"Author"> | string
     bio?: StringNullableFilter<"Author"> | string | null
+    createdAt?: DateTimeFilter<"Author"> | Date | string
+    updatedAt?: DateTimeNullableFilter<"Author"> | Date | string | null
     buku?: BookListRelationFilter
   }, "id">
 
@@ -6047,6 +7524,8 @@ export namespace Prisma {
     id?: SortOrder
     nama?: SortOrder
     bio?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrderInput | SortOrder
     _count?: AuthorCountOrderByAggregateInput
     _avg?: AuthorAvgOrderByAggregateInput
     _max?: AuthorMaxOrderByAggregateInput
@@ -6061,6 +7540,8 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter<"Author"> | number
     nama?: StringWithAggregatesFilter<"Author"> | string
     bio?: StringNullableWithAggregatesFilter<"Author"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"Author"> | Date | string
+    updatedAt?: DateTimeNullableWithAggregatesFilter<"Author"> | Date | string | null
   }
 
   export type CategoryWhereInput = {
@@ -6070,6 +7551,8 @@ export namespace Prisma {
     id?: IntFilter<"Category"> | number
     nama?: StringFilter<"Category"> | string
     deskripsi?: StringNullableFilter<"Category"> | string | null
+    createdAt?: DateTimeFilter<"Category"> | Date | string
+    updatedAt?: DateTimeNullableFilter<"Category"> | Date | string | null
     buku?: BookListRelationFilter
   }
 
@@ -6077,6 +7560,8 @@ export namespace Prisma {
     id?: SortOrder
     nama?: SortOrder
     deskripsi?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrderInput | SortOrder
     buku?: BookOrderByRelationAggregateInput
   }
 
@@ -6087,6 +7572,8 @@ export namespace Prisma {
     OR?: CategoryWhereInput[]
     NOT?: CategoryWhereInput | CategoryWhereInput[]
     deskripsi?: StringNullableFilter<"Category"> | string | null
+    createdAt?: DateTimeFilter<"Category"> | Date | string
+    updatedAt?: DateTimeNullableFilter<"Category"> | Date | string | null
     buku?: BookListRelationFilter
   }, "id" | "nama">
 
@@ -6094,6 +7581,8 @@ export namespace Prisma {
     id?: SortOrder
     nama?: SortOrder
     deskripsi?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrderInput | SortOrder
     _count?: CategoryCountOrderByAggregateInput
     _avg?: CategoryAvgOrderByAggregateInput
     _max?: CategoryMaxOrderByAggregateInput
@@ -6108,6 +7597,78 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter<"Category"> | number
     nama?: StringWithAggregatesFilter<"Category"> | string
     deskripsi?: StringNullableWithAggregatesFilter<"Category"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"Category"> | Date | string
+    updatedAt?: DateTimeNullableWithAggregatesFilter<"Category"> | Date | string | null
+  }
+
+  export type BorrowingWhereInput = {
+    AND?: BorrowingWhereInput | BorrowingWhereInput[]
+    OR?: BorrowingWhereInput[]
+    NOT?: BorrowingWhereInput | BorrowingWhereInput[]
+    id?: IntFilter<"Borrowing"> | number
+    userId?: StringFilter<"Borrowing"> | string
+    bookId?: IntFilter<"Borrowing"> | number
+    tanggalPinjam?: DateTimeFilter<"Borrowing"> | Date | string
+    tanggalKembali?: DateTimeNullableFilter<"Borrowing"> | Date | string | null
+    status?: StringFilter<"Borrowing"> | string
+    denda?: IntFilter<"Borrowing"> | number
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    book?: XOR<BookScalarRelationFilter, BookWhereInput>
+  }
+
+  export type BorrowingOrderByWithRelationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    bookId?: SortOrder
+    tanggalPinjam?: SortOrder
+    tanggalKembali?: SortOrderInput | SortOrder
+    status?: SortOrder
+    denda?: SortOrder
+    user?: UserOrderByWithRelationInput
+    book?: BookOrderByWithRelationInput
+  }
+
+  export type BorrowingWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: BorrowingWhereInput | BorrowingWhereInput[]
+    OR?: BorrowingWhereInput[]
+    NOT?: BorrowingWhereInput | BorrowingWhereInput[]
+    userId?: StringFilter<"Borrowing"> | string
+    bookId?: IntFilter<"Borrowing"> | number
+    tanggalPinjam?: DateTimeFilter<"Borrowing"> | Date | string
+    tanggalKembali?: DateTimeNullableFilter<"Borrowing"> | Date | string | null
+    status?: StringFilter<"Borrowing"> | string
+    denda?: IntFilter<"Borrowing"> | number
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    book?: XOR<BookScalarRelationFilter, BookWhereInput>
+  }, "id">
+
+  export type BorrowingOrderByWithAggregationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    bookId?: SortOrder
+    tanggalPinjam?: SortOrder
+    tanggalKembali?: SortOrderInput | SortOrder
+    status?: SortOrder
+    denda?: SortOrder
+    _count?: BorrowingCountOrderByAggregateInput
+    _avg?: BorrowingAvgOrderByAggregateInput
+    _max?: BorrowingMaxOrderByAggregateInput
+    _min?: BorrowingMinOrderByAggregateInput
+    _sum?: BorrowingSumOrderByAggregateInput
+  }
+
+  export type BorrowingScalarWhereWithAggregatesInput = {
+    AND?: BorrowingScalarWhereWithAggregatesInput | BorrowingScalarWhereWithAggregatesInput[]
+    OR?: BorrowingScalarWhereWithAggregatesInput[]
+    NOT?: BorrowingScalarWhereWithAggregatesInput | BorrowingScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Borrowing"> | number
+    userId?: StringWithAggregatesFilter<"Borrowing"> | string
+    bookId?: IntWithAggregatesFilter<"Borrowing"> | number
+    tanggalPinjam?: DateTimeWithAggregatesFilter<"Borrowing"> | Date | string
+    tanggalKembali?: DateTimeNullableWithAggregatesFilter<"Borrowing"> | Date | string | null
+    status?: StringWithAggregatesFilter<"Borrowing"> | string
+    denda?: IntWithAggregatesFilter<"Borrowing"> | number
   }
 
   export type UserCreateInput = {
@@ -6120,7 +7681,8 @@ export namespace Prisma {
     role?: string
     status?: string
     createdAt?: Date | string
-    updatedAt?: Date | string
+    updatedAt?: Date | string | null
+    Borrowing?: BorrowingCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -6133,7 +7695,8 @@ export namespace Prisma {
     role?: string
     status?: string
     createdAt?: Date | string
-    updatedAt?: Date | string
+    updatedAt?: Date | string | null
+    Borrowing?: BorrowingUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserUpdateInput = {
@@ -6146,7 +7709,8 @@ export namespace Prisma {
     role?: StringFieldUpdateOperationsInput | string
     status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Borrowing?: BorrowingUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -6159,7 +7723,8 @@ export namespace Prisma {
     role?: StringFieldUpdateOperationsInput | string
     status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Borrowing?: BorrowingUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -6172,7 +7737,7 @@ export namespace Prisma {
     role?: string
     status?: string
     createdAt?: Date | string
-    updatedAt?: Date | string
+    updatedAt?: Date | string | null
   }
 
   export type UserUpdateManyMutationInput = {
@@ -6185,7 +7750,7 @@ export namespace Prisma {
     role?: StringFieldUpdateOperationsInput | string
     status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type UserUncheckedUpdateManyInput = {
@@ -6198,7 +7763,7 @@ export namespace Prisma {
     role?: StringFieldUpdateOperationsInput | string
     status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type BookCreateInput = {
@@ -6210,12 +7775,13 @@ export namespace Prisma {
     jumlahHalaman?: number | null
     bahasa?: string | null
     sampul?: string | null
-    fileBuku?: string | null
     tersedia?: boolean
-    dibuatPada?: Date | string
-    diperbaruiPada?: Date | string
+    stok?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
     penulis: AuthorCreateNestedOneWithoutBukuInput
     kategori: CategoryCreateNestedOneWithoutBukuInput
+    Borrowing?: BorrowingCreateNestedManyWithoutBookInput
   }
 
   export type BookUncheckedCreateInput = {
@@ -6228,12 +7794,13 @@ export namespace Prisma {
     jumlahHalaman?: number | null
     bahasa?: string | null
     sampul?: string | null
-    fileBuku?: string | null
     tersedia?: boolean
+    stok?: number
     penulisId: number
     kategoriId: number
-    dibuatPada?: Date | string
-    diperbaruiPada?: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+    Borrowing?: BorrowingUncheckedCreateNestedManyWithoutBookInput
   }
 
   export type BookUpdateInput = {
@@ -6245,12 +7812,13 @@ export namespace Prisma {
     jumlahHalaman?: NullableIntFieldUpdateOperationsInput | number | null
     bahasa?: NullableStringFieldUpdateOperationsInput | string | null
     sampul?: NullableStringFieldUpdateOperationsInput | string | null
-    fileBuku?: NullableStringFieldUpdateOperationsInput | string | null
     tersedia?: BoolFieldUpdateOperationsInput | boolean
-    dibuatPada?: DateTimeFieldUpdateOperationsInput | Date | string
-    diperbaruiPada?: DateTimeFieldUpdateOperationsInput | Date | string
+    stok?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     penulis?: AuthorUpdateOneRequiredWithoutBukuNestedInput
     kategori?: CategoryUpdateOneRequiredWithoutBukuNestedInput
+    Borrowing?: BorrowingUpdateManyWithoutBookNestedInput
   }
 
   export type BookUncheckedUpdateInput = {
@@ -6263,12 +7831,13 @@ export namespace Prisma {
     jumlahHalaman?: NullableIntFieldUpdateOperationsInput | number | null
     bahasa?: NullableStringFieldUpdateOperationsInput | string | null
     sampul?: NullableStringFieldUpdateOperationsInput | string | null
-    fileBuku?: NullableStringFieldUpdateOperationsInput | string | null
     tersedia?: BoolFieldUpdateOperationsInput | boolean
+    stok?: IntFieldUpdateOperationsInput | number
     penulisId?: IntFieldUpdateOperationsInput | number
     kategoriId?: IntFieldUpdateOperationsInput | number
-    dibuatPada?: DateTimeFieldUpdateOperationsInput | Date | string
-    diperbaruiPada?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Borrowing?: BorrowingUncheckedUpdateManyWithoutBookNestedInput
   }
 
   export type BookCreateManyInput = {
@@ -6281,12 +7850,12 @@ export namespace Prisma {
     jumlahHalaman?: number | null
     bahasa?: string | null
     sampul?: string | null
-    fileBuku?: string | null
     tersedia?: boolean
+    stok?: number
     penulisId: number
     kategoriId: number
-    dibuatPada?: Date | string
-    diperbaruiPada?: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
   }
 
   export type BookUpdateManyMutationInput = {
@@ -6298,10 +7867,10 @@ export namespace Prisma {
     jumlahHalaman?: NullableIntFieldUpdateOperationsInput | number | null
     bahasa?: NullableStringFieldUpdateOperationsInput | string | null
     sampul?: NullableStringFieldUpdateOperationsInput | string | null
-    fileBuku?: NullableStringFieldUpdateOperationsInput | string | null
     tersedia?: BoolFieldUpdateOperationsInput | boolean
-    dibuatPada?: DateTimeFieldUpdateOperationsInput | Date | string
-    diperbaruiPada?: DateTimeFieldUpdateOperationsInput | Date | string
+    stok?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type BookUncheckedUpdateManyInput = {
@@ -6314,17 +7883,19 @@ export namespace Prisma {
     jumlahHalaman?: NullableIntFieldUpdateOperationsInput | number | null
     bahasa?: NullableStringFieldUpdateOperationsInput | string | null
     sampul?: NullableStringFieldUpdateOperationsInput | string | null
-    fileBuku?: NullableStringFieldUpdateOperationsInput | string | null
     tersedia?: BoolFieldUpdateOperationsInput | boolean
+    stok?: IntFieldUpdateOperationsInput | number
     penulisId?: IntFieldUpdateOperationsInput | number
     kategoriId?: IntFieldUpdateOperationsInput | number
-    dibuatPada?: DateTimeFieldUpdateOperationsInput | Date | string
-    diperbaruiPada?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type AuthorCreateInput = {
     nama: string
     bio?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
     buku?: BookCreateNestedManyWithoutPenulisInput
   }
 
@@ -6332,12 +7903,16 @@ export namespace Prisma {
     id?: number
     nama: string
     bio?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
     buku?: BookUncheckedCreateNestedManyWithoutPenulisInput
   }
 
   export type AuthorUpdateInput = {
     nama?: StringFieldUpdateOperationsInput | string
     bio?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     buku?: BookUpdateManyWithoutPenulisNestedInput
   }
 
@@ -6345,6 +7920,8 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     nama?: StringFieldUpdateOperationsInput | string
     bio?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     buku?: BookUncheckedUpdateManyWithoutPenulisNestedInput
   }
 
@@ -6352,22 +7929,30 @@ export namespace Prisma {
     id?: number
     nama: string
     bio?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
   }
 
   export type AuthorUpdateManyMutationInput = {
     nama?: StringFieldUpdateOperationsInput | string
     bio?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type AuthorUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     nama?: StringFieldUpdateOperationsInput | string
     bio?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type CategoryCreateInput = {
     nama: string
     deskripsi?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
     buku?: BookCreateNestedManyWithoutKategoriInput
   }
 
@@ -6375,12 +7960,16 @@ export namespace Prisma {
     id?: number
     nama: string
     deskripsi?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
     buku?: BookUncheckedCreateNestedManyWithoutKategoriInput
   }
 
   export type CategoryUpdateInput = {
     nama?: StringFieldUpdateOperationsInput | string
     deskripsi?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     buku?: BookUpdateManyWithoutKategoriNestedInput
   }
 
@@ -6388,6 +7977,8 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     nama?: StringFieldUpdateOperationsInput | string
     deskripsi?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     buku?: BookUncheckedUpdateManyWithoutKategoriNestedInput
   }
 
@@ -6395,17 +7986,88 @@ export namespace Prisma {
     id?: number
     nama: string
     deskripsi?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
   }
 
   export type CategoryUpdateManyMutationInput = {
     nama?: StringFieldUpdateOperationsInput | string
     deskripsi?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type CategoryUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     nama?: StringFieldUpdateOperationsInput | string
     deskripsi?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type BorrowingCreateInput = {
+    tanggalPinjam?: Date | string
+    tanggalKembali?: Date | string | null
+    status?: string
+    denda?: number
+    user: UserCreateNestedOneWithoutBorrowingInput
+    book: BookCreateNestedOneWithoutBorrowingInput
+  }
+
+  export type BorrowingUncheckedCreateInput = {
+    id?: number
+    userId: string
+    bookId: number
+    tanggalPinjam?: Date | string
+    tanggalKembali?: Date | string | null
+    status?: string
+    denda?: number
+  }
+
+  export type BorrowingUpdateInput = {
+    tanggalPinjam?: DateTimeFieldUpdateOperationsInput | Date | string
+    tanggalKembali?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    denda?: IntFieldUpdateOperationsInput | number
+    user?: UserUpdateOneRequiredWithoutBorrowingNestedInput
+    book?: BookUpdateOneRequiredWithoutBorrowingNestedInput
+  }
+
+  export type BorrowingUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    userId?: StringFieldUpdateOperationsInput | string
+    bookId?: IntFieldUpdateOperationsInput | number
+    tanggalPinjam?: DateTimeFieldUpdateOperationsInput | Date | string
+    tanggalKembali?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    denda?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type BorrowingCreateManyInput = {
+    id?: number
+    userId: string
+    bookId: number
+    tanggalPinjam?: Date | string
+    tanggalKembali?: Date | string | null
+    status?: string
+    denda?: number
+  }
+
+  export type BorrowingUpdateManyMutationInput = {
+    tanggalPinjam?: DateTimeFieldUpdateOperationsInput | Date | string
+    tanggalKembali?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    denda?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type BorrowingUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    userId?: StringFieldUpdateOperationsInput | string
+    bookId?: IntFieldUpdateOperationsInput | number
+    tanggalPinjam?: DateTimeFieldUpdateOperationsInput | Date | string
+    tanggalKembali?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    denda?: IntFieldUpdateOperationsInput | number
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -6449,9 +8111,30 @@ export namespace Prisma {
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
+  export type DateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
+  export type BorrowingListRelationFilter = {
+    every?: BorrowingWhereInput
+    some?: BorrowingWhereInput
+    none?: BorrowingWhereInput
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
+  }
+
+  export type BorrowingOrderByRelationAggregateInput = {
+    _count?: SortOrder
   }
 
   export type UserCountOrderByAggregateInput = {
@@ -6543,6 +8226,20 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
+  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
+  }
+
   export type IntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[] | ListIntFieldRefInput<$PrismaModel>
@@ -6590,18 +8287,19 @@ export namespace Prisma {
     jumlahHalaman?: SortOrder
     bahasa?: SortOrder
     sampul?: SortOrder
-    fileBuku?: SortOrder
     tersedia?: SortOrder
+    stok?: SortOrder
     penulisId?: SortOrder
     kategoriId?: SortOrder
-    dibuatPada?: SortOrder
-    diperbaruiPada?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type BookAvgOrderByAggregateInput = {
     id?: SortOrder
     tahunTerbit?: SortOrder
     jumlahHalaman?: SortOrder
+    stok?: SortOrder
     penulisId?: SortOrder
     kategoriId?: SortOrder
   }
@@ -6616,12 +8314,12 @@ export namespace Prisma {
     jumlahHalaman?: SortOrder
     bahasa?: SortOrder
     sampul?: SortOrder
-    fileBuku?: SortOrder
     tersedia?: SortOrder
+    stok?: SortOrder
     penulisId?: SortOrder
     kategoriId?: SortOrder
-    dibuatPada?: SortOrder
-    diperbaruiPada?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type BookMinOrderByAggregateInput = {
@@ -6634,18 +8332,19 @@ export namespace Prisma {
     jumlahHalaman?: SortOrder
     bahasa?: SortOrder
     sampul?: SortOrder
-    fileBuku?: SortOrder
     tersedia?: SortOrder
+    stok?: SortOrder
     penulisId?: SortOrder
     kategoriId?: SortOrder
-    dibuatPada?: SortOrder
-    diperbaruiPada?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type BookSumOrderByAggregateInput = {
     id?: SortOrder
     tahunTerbit?: SortOrder
     jumlahHalaman?: SortOrder
+    stok?: SortOrder
     penulisId?: SortOrder
     kategoriId?: SortOrder
   }
@@ -6704,6 +8403,8 @@ export namespace Prisma {
     id?: SortOrder
     nama?: SortOrder
     bio?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type AuthorAvgOrderByAggregateInput = {
@@ -6714,12 +8415,16 @@ export namespace Prisma {
     id?: SortOrder
     nama?: SortOrder
     bio?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type AuthorMinOrderByAggregateInput = {
     id?: SortOrder
     nama?: SortOrder
     bio?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type AuthorSumOrderByAggregateInput = {
@@ -6730,6 +8435,8 @@ export namespace Prisma {
     id?: SortOrder
     nama?: SortOrder
     deskripsi?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type CategoryAvgOrderByAggregateInput = {
@@ -6740,16 +8447,86 @@ export namespace Prisma {
     id?: SortOrder
     nama?: SortOrder
     deskripsi?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type CategoryMinOrderByAggregateInput = {
     id?: SortOrder
     nama?: SortOrder
     deskripsi?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type CategorySumOrderByAggregateInput = {
     id?: SortOrder
+  }
+
+  export type UserScalarRelationFilter = {
+    is?: UserWhereInput
+    isNot?: UserWhereInput
+  }
+
+  export type BookScalarRelationFilter = {
+    is?: BookWhereInput
+    isNot?: BookWhereInput
+  }
+
+  export type BorrowingCountOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    bookId?: SortOrder
+    tanggalPinjam?: SortOrder
+    tanggalKembali?: SortOrder
+    status?: SortOrder
+    denda?: SortOrder
+  }
+
+  export type BorrowingAvgOrderByAggregateInput = {
+    id?: SortOrder
+    bookId?: SortOrder
+    denda?: SortOrder
+  }
+
+  export type BorrowingMaxOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    bookId?: SortOrder
+    tanggalPinjam?: SortOrder
+    tanggalKembali?: SortOrder
+    status?: SortOrder
+    denda?: SortOrder
+  }
+
+  export type BorrowingMinOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    bookId?: SortOrder
+    tanggalPinjam?: SortOrder
+    tanggalKembali?: SortOrder
+    status?: SortOrder
+    denda?: SortOrder
+  }
+
+  export type BorrowingSumOrderByAggregateInput = {
+    id?: SortOrder
+    bookId?: SortOrder
+    denda?: SortOrder
+  }
+
+  export type BorrowingCreateNestedManyWithoutUserInput = {
+    create?: XOR<BorrowingCreateWithoutUserInput, BorrowingUncheckedCreateWithoutUserInput> | BorrowingCreateWithoutUserInput[] | BorrowingUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: BorrowingCreateOrConnectWithoutUserInput | BorrowingCreateOrConnectWithoutUserInput[]
+    createMany?: BorrowingCreateManyUserInputEnvelope
+    connect?: BorrowingWhereUniqueInput | BorrowingWhereUniqueInput[]
+  }
+
+  export type BorrowingUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<BorrowingCreateWithoutUserInput, BorrowingUncheckedCreateWithoutUserInput> | BorrowingCreateWithoutUserInput[] | BorrowingUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: BorrowingCreateOrConnectWithoutUserInput | BorrowingCreateOrConnectWithoutUserInput[]
+    createMany?: BorrowingCreateManyUserInputEnvelope
+    connect?: BorrowingWhereUniqueInput | BorrowingWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -6764,6 +8541,38 @@ export namespace Prisma {
     set?: Date | string
   }
 
+  export type NullableDateTimeFieldUpdateOperationsInput = {
+    set?: Date | string | null
+  }
+
+  export type BorrowingUpdateManyWithoutUserNestedInput = {
+    create?: XOR<BorrowingCreateWithoutUserInput, BorrowingUncheckedCreateWithoutUserInput> | BorrowingCreateWithoutUserInput[] | BorrowingUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: BorrowingCreateOrConnectWithoutUserInput | BorrowingCreateOrConnectWithoutUserInput[]
+    upsert?: BorrowingUpsertWithWhereUniqueWithoutUserInput | BorrowingUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: BorrowingCreateManyUserInputEnvelope
+    set?: BorrowingWhereUniqueInput | BorrowingWhereUniqueInput[]
+    disconnect?: BorrowingWhereUniqueInput | BorrowingWhereUniqueInput[]
+    delete?: BorrowingWhereUniqueInput | BorrowingWhereUniqueInput[]
+    connect?: BorrowingWhereUniqueInput | BorrowingWhereUniqueInput[]
+    update?: BorrowingUpdateWithWhereUniqueWithoutUserInput | BorrowingUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: BorrowingUpdateManyWithWhereWithoutUserInput | BorrowingUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: BorrowingScalarWhereInput | BorrowingScalarWhereInput[]
+  }
+
+  export type BorrowingUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<BorrowingCreateWithoutUserInput, BorrowingUncheckedCreateWithoutUserInput> | BorrowingCreateWithoutUserInput[] | BorrowingUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: BorrowingCreateOrConnectWithoutUserInput | BorrowingCreateOrConnectWithoutUserInput[]
+    upsert?: BorrowingUpsertWithWhereUniqueWithoutUserInput | BorrowingUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: BorrowingCreateManyUserInputEnvelope
+    set?: BorrowingWhereUniqueInput | BorrowingWhereUniqueInput[]
+    disconnect?: BorrowingWhereUniqueInput | BorrowingWhereUniqueInput[]
+    delete?: BorrowingWhereUniqueInput | BorrowingWhereUniqueInput[]
+    connect?: BorrowingWhereUniqueInput | BorrowingWhereUniqueInput[]
+    update?: BorrowingUpdateWithWhereUniqueWithoutUserInput | BorrowingUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: BorrowingUpdateManyWithWhereWithoutUserInput | BorrowingUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: BorrowingScalarWhereInput | BorrowingScalarWhereInput[]
+  }
+
   export type AuthorCreateNestedOneWithoutBukuInput = {
     create?: XOR<AuthorCreateWithoutBukuInput, AuthorUncheckedCreateWithoutBukuInput>
     connectOrCreate?: AuthorCreateOrConnectWithoutBukuInput
@@ -6774,6 +8583,20 @@ export namespace Prisma {
     create?: XOR<CategoryCreateWithoutBukuInput, CategoryUncheckedCreateWithoutBukuInput>
     connectOrCreate?: CategoryCreateOrConnectWithoutBukuInput
     connect?: CategoryWhereUniqueInput
+  }
+
+  export type BorrowingCreateNestedManyWithoutBookInput = {
+    create?: XOR<BorrowingCreateWithoutBookInput, BorrowingUncheckedCreateWithoutBookInput> | BorrowingCreateWithoutBookInput[] | BorrowingUncheckedCreateWithoutBookInput[]
+    connectOrCreate?: BorrowingCreateOrConnectWithoutBookInput | BorrowingCreateOrConnectWithoutBookInput[]
+    createMany?: BorrowingCreateManyBookInputEnvelope
+    connect?: BorrowingWhereUniqueInput | BorrowingWhereUniqueInput[]
+  }
+
+  export type BorrowingUncheckedCreateNestedManyWithoutBookInput = {
+    create?: XOR<BorrowingCreateWithoutBookInput, BorrowingUncheckedCreateWithoutBookInput> | BorrowingCreateWithoutBookInput[] | BorrowingUncheckedCreateWithoutBookInput[]
+    connectOrCreate?: BorrowingCreateOrConnectWithoutBookInput | BorrowingCreateOrConnectWithoutBookInput[]
+    createMany?: BorrowingCreateManyBookInputEnvelope
+    connect?: BorrowingWhereUniqueInput | BorrowingWhereUniqueInput[]
   }
 
   export type IntFieldUpdateOperationsInput = {
@@ -6810,6 +8633,34 @@ export namespace Prisma {
     upsert?: CategoryUpsertWithoutBukuInput
     connect?: CategoryWhereUniqueInput
     update?: XOR<XOR<CategoryUpdateToOneWithWhereWithoutBukuInput, CategoryUpdateWithoutBukuInput>, CategoryUncheckedUpdateWithoutBukuInput>
+  }
+
+  export type BorrowingUpdateManyWithoutBookNestedInput = {
+    create?: XOR<BorrowingCreateWithoutBookInput, BorrowingUncheckedCreateWithoutBookInput> | BorrowingCreateWithoutBookInput[] | BorrowingUncheckedCreateWithoutBookInput[]
+    connectOrCreate?: BorrowingCreateOrConnectWithoutBookInput | BorrowingCreateOrConnectWithoutBookInput[]
+    upsert?: BorrowingUpsertWithWhereUniqueWithoutBookInput | BorrowingUpsertWithWhereUniqueWithoutBookInput[]
+    createMany?: BorrowingCreateManyBookInputEnvelope
+    set?: BorrowingWhereUniqueInput | BorrowingWhereUniqueInput[]
+    disconnect?: BorrowingWhereUniqueInput | BorrowingWhereUniqueInput[]
+    delete?: BorrowingWhereUniqueInput | BorrowingWhereUniqueInput[]
+    connect?: BorrowingWhereUniqueInput | BorrowingWhereUniqueInput[]
+    update?: BorrowingUpdateWithWhereUniqueWithoutBookInput | BorrowingUpdateWithWhereUniqueWithoutBookInput[]
+    updateMany?: BorrowingUpdateManyWithWhereWithoutBookInput | BorrowingUpdateManyWithWhereWithoutBookInput[]
+    deleteMany?: BorrowingScalarWhereInput | BorrowingScalarWhereInput[]
+  }
+
+  export type BorrowingUncheckedUpdateManyWithoutBookNestedInput = {
+    create?: XOR<BorrowingCreateWithoutBookInput, BorrowingUncheckedCreateWithoutBookInput> | BorrowingCreateWithoutBookInput[] | BorrowingUncheckedCreateWithoutBookInput[]
+    connectOrCreate?: BorrowingCreateOrConnectWithoutBookInput | BorrowingCreateOrConnectWithoutBookInput[]
+    upsert?: BorrowingUpsertWithWhereUniqueWithoutBookInput | BorrowingUpsertWithWhereUniqueWithoutBookInput[]
+    createMany?: BorrowingCreateManyBookInputEnvelope
+    set?: BorrowingWhereUniqueInput | BorrowingWhereUniqueInput[]
+    disconnect?: BorrowingWhereUniqueInput | BorrowingWhereUniqueInput[]
+    delete?: BorrowingWhereUniqueInput | BorrowingWhereUniqueInput[]
+    connect?: BorrowingWhereUniqueInput | BorrowingWhereUniqueInput[]
+    update?: BorrowingUpdateWithWhereUniqueWithoutBookInput | BorrowingUpdateWithWhereUniqueWithoutBookInput[]
+    updateMany?: BorrowingUpdateManyWithWhereWithoutBookInput | BorrowingUpdateManyWithWhereWithoutBookInput[]
+    deleteMany?: BorrowingScalarWhereInput | BorrowingScalarWhereInput[]
   }
 
   export type BookCreateNestedManyWithoutPenulisInput = {
@@ -6896,6 +8747,34 @@ export namespace Prisma {
     deleteMany?: BookScalarWhereInput | BookScalarWhereInput[]
   }
 
+  export type UserCreateNestedOneWithoutBorrowingInput = {
+    create?: XOR<UserCreateWithoutBorrowingInput, UserUncheckedCreateWithoutBorrowingInput>
+    connectOrCreate?: UserCreateOrConnectWithoutBorrowingInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type BookCreateNestedOneWithoutBorrowingInput = {
+    create?: XOR<BookCreateWithoutBorrowingInput, BookUncheckedCreateWithoutBorrowingInput>
+    connectOrCreate?: BookCreateOrConnectWithoutBorrowingInput
+    connect?: BookWhereUniqueInput
+  }
+
+  export type UserUpdateOneRequiredWithoutBorrowingNestedInput = {
+    create?: XOR<UserCreateWithoutBorrowingInput, UserUncheckedCreateWithoutBorrowingInput>
+    connectOrCreate?: UserCreateOrConnectWithoutBorrowingInput
+    upsert?: UserUpsertWithoutBorrowingInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutBorrowingInput, UserUpdateWithoutBorrowingInput>, UserUncheckedUpdateWithoutBorrowingInput>
+  }
+
+  export type BookUpdateOneRequiredWithoutBorrowingNestedInput = {
+    create?: XOR<BookCreateWithoutBorrowingInput, BookUncheckedCreateWithoutBorrowingInput>
+    connectOrCreate?: BookCreateOrConnectWithoutBorrowingInput
+    upsert?: BookUpsertWithoutBorrowingInput
+    connect?: BookWhereUniqueInput
+    update?: XOR<XOR<BookUpdateToOneWithWhereWithoutBorrowingInput, BookUpdateWithoutBorrowingInput>, BookUncheckedUpdateWithoutBorrowingInput>
+  }
+
   export type NestedStringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -6933,6 +8812,17 @@ export namespace Prisma {
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  }
+
+  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
 
   export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
@@ -7005,6 +8895,20 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
+  export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
+  }
+
   export type NestedBoolFilter<$PrismaModel = never> = {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel>
     not?: NestedBoolFilter<$PrismaModel> | boolean
@@ -7072,15 +8976,75 @@ export namespace Prisma {
     _max?: NestedBoolFilter<$PrismaModel>
   }
 
+  export type BorrowingCreateWithoutUserInput = {
+    tanggalPinjam?: Date | string
+    tanggalKembali?: Date | string | null
+    status?: string
+    denda?: number
+    book: BookCreateNestedOneWithoutBorrowingInput
+  }
+
+  export type BorrowingUncheckedCreateWithoutUserInput = {
+    id?: number
+    bookId: number
+    tanggalPinjam?: Date | string
+    tanggalKembali?: Date | string | null
+    status?: string
+    denda?: number
+  }
+
+  export type BorrowingCreateOrConnectWithoutUserInput = {
+    where: BorrowingWhereUniqueInput
+    create: XOR<BorrowingCreateWithoutUserInput, BorrowingUncheckedCreateWithoutUserInput>
+  }
+
+  export type BorrowingCreateManyUserInputEnvelope = {
+    data: BorrowingCreateManyUserInput | BorrowingCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type BorrowingUpsertWithWhereUniqueWithoutUserInput = {
+    where: BorrowingWhereUniqueInput
+    update: XOR<BorrowingUpdateWithoutUserInput, BorrowingUncheckedUpdateWithoutUserInput>
+    create: XOR<BorrowingCreateWithoutUserInput, BorrowingUncheckedCreateWithoutUserInput>
+  }
+
+  export type BorrowingUpdateWithWhereUniqueWithoutUserInput = {
+    where: BorrowingWhereUniqueInput
+    data: XOR<BorrowingUpdateWithoutUserInput, BorrowingUncheckedUpdateWithoutUserInput>
+  }
+
+  export type BorrowingUpdateManyWithWhereWithoutUserInput = {
+    where: BorrowingScalarWhereInput
+    data: XOR<BorrowingUpdateManyMutationInput, BorrowingUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type BorrowingScalarWhereInput = {
+    AND?: BorrowingScalarWhereInput | BorrowingScalarWhereInput[]
+    OR?: BorrowingScalarWhereInput[]
+    NOT?: BorrowingScalarWhereInput | BorrowingScalarWhereInput[]
+    id?: IntFilter<"Borrowing"> | number
+    userId?: StringFilter<"Borrowing"> | string
+    bookId?: IntFilter<"Borrowing"> | number
+    tanggalPinjam?: DateTimeFilter<"Borrowing"> | Date | string
+    tanggalKembali?: DateTimeNullableFilter<"Borrowing"> | Date | string | null
+    status?: StringFilter<"Borrowing"> | string
+    denda?: IntFilter<"Borrowing"> | number
+  }
+
   export type AuthorCreateWithoutBukuInput = {
     nama: string
     bio?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
   }
 
   export type AuthorUncheckedCreateWithoutBukuInput = {
     id?: number
     nama: string
     bio?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
   }
 
   export type AuthorCreateOrConnectWithoutBukuInput = {
@@ -7091,17 +9055,48 @@ export namespace Prisma {
   export type CategoryCreateWithoutBukuInput = {
     nama: string
     deskripsi?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
   }
 
   export type CategoryUncheckedCreateWithoutBukuInput = {
     id?: number
     nama: string
     deskripsi?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
   }
 
   export type CategoryCreateOrConnectWithoutBukuInput = {
     where: CategoryWhereUniqueInput
     create: XOR<CategoryCreateWithoutBukuInput, CategoryUncheckedCreateWithoutBukuInput>
+  }
+
+  export type BorrowingCreateWithoutBookInput = {
+    tanggalPinjam?: Date | string
+    tanggalKembali?: Date | string | null
+    status?: string
+    denda?: number
+    user: UserCreateNestedOneWithoutBorrowingInput
+  }
+
+  export type BorrowingUncheckedCreateWithoutBookInput = {
+    id?: number
+    userId: string
+    tanggalPinjam?: Date | string
+    tanggalKembali?: Date | string | null
+    status?: string
+    denda?: number
+  }
+
+  export type BorrowingCreateOrConnectWithoutBookInput = {
+    where: BorrowingWhereUniqueInput
+    create: XOR<BorrowingCreateWithoutBookInput, BorrowingUncheckedCreateWithoutBookInput>
+  }
+
+  export type BorrowingCreateManyBookInputEnvelope = {
+    data: BorrowingCreateManyBookInput | BorrowingCreateManyBookInput[]
+    skipDuplicates?: boolean
   }
 
   export type AuthorUpsertWithoutBukuInput = {
@@ -7118,12 +9113,16 @@ export namespace Prisma {
   export type AuthorUpdateWithoutBukuInput = {
     nama?: StringFieldUpdateOperationsInput | string
     bio?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type AuthorUncheckedUpdateWithoutBukuInput = {
     id?: IntFieldUpdateOperationsInput | number
     nama?: StringFieldUpdateOperationsInput | string
     bio?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type CategoryUpsertWithoutBukuInput = {
@@ -7140,12 +9139,32 @@ export namespace Prisma {
   export type CategoryUpdateWithoutBukuInput = {
     nama?: StringFieldUpdateOperationsInput | string
     deskripsi?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type CategoryUncheckedUpdateWithoutBukuInput = {
     id?: IntFieldUpdateOperationsInput | number
     nama?: StringFieldUpdateOperationsInput | string
     deskripsi?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type BorrowingUpsertWithWhereUniqueWithoutBookInput = {
+    where: BorrowingWhereUniqueInput
+    update: XOR<BorrowingUpdateWithoutBookInput, BorrowingUncheckedUpdateWithoutBookInput>
+    create: XOR<BorrowingCreateWithoutBookInput, BorrowingUncheckedCreateWithoutBookInput>
+  }
+
+  export type BorrowingUpdateWithWhereUniqueWithoutBookInput = {
+    where: BorrowingWhereUniqueInput
+    data: XOR<BorrowingUpdateWithoutBookInput, BorrowingUncheckedUpdateWithoutBookInput>
+  }
+
+  export type BorrowingUpdateManyWithWhereWithoutBookInput = {
+    where: BorrowingScalarWhereInput
+    data: XOR<BorrowingUpdateManyMutationInput, BorrowingUncheckedUpdateManyWithoutBookInput>
   }
 
   export type BookCreateWithoutPenulisInput = {
@@ -7157,11 +9176,12 @@ export namespace Prisma {
     jumlahHalaman?: number | null
     bahasa?: string | null
     sampul?: string | null
-    fileBuku?: string | null
     tersedia?: boolean
-    dibuatPada?: Date | string
-    diperbaruiPada?: Date | string
+    stok?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
     kategori: CategoryCreateNestedOneWithoutBukuInput
+    Borrowing?: BorrowingCreateNestedManyWithoutBookInput
   }
 
   export type BookUncheckedCreateWithoutPenulisInput = {
@@ -7174,11 +9194,12 @@ export namespace Prisma {
     jumlahHalaman?: number | null
     bahasa?: string | null
     sampul?: string | null
-    fileBuku?: string | null
     tersedia?: boolean
+    stok?: number
     kategoriId: number
-    dibuatPada?: Date | string
-    diperbaruiPada?: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+    Borrowing?: BorrowingUncheckedCreateNestedManyWithoutBookInput
   }
 
   export type BookCreateOrConnectWithoutPenulisInput = {
@@ -7220,12 +9241,12 @@ export namespace Prisma {
     jumlahHalaman?: IntNullableFilter<"Book"> | number | null
     bahasa?: StringNullableFilter<"Book"> | string | null
     sampul?: StringNullableFilter<"Book"> | string | null
-    fileBuku?: StringNullableFilter<"Book"> | string | null
     tersedia?: BoolFilter<"Book"> | boolean
+    stok?: IntFilter<"Book"> | number
     penulisId?: IntFilter<"Book"> | number
     kategoriId?: IntFilter<"Book"> | number
-    dibuatPada?: DateTimeFilter<"Book"> | Date | string
-    diperbaruiPada?: DateTimeFilter<"Book"> | Date | string
+    createdAt?: DateTimeFilter<"Book"> | Date | string
+    updatedAt?: DateTimeNullableFilter<"Book"> | Date | string | null
   }
 
   export type BookCreateWithoutKategoriInput = {
@@ -7237,11 +9258,12 @@ export namespace Prisma {
     jumlahHalaman?: number | null
     bahasa?: string | null
     sampul?: string | null
-    fileBuku?: string | null
     tersedia?: boolean
-    dibuatPada?: Date | string
-    diperbaruiPada?: Date | string
+    stok?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
     penulis: AuthorCreateNestedOneWithoutBukuInput
+    Borrowing?: BorrowingCreateNestedManyWithoutBookInput
   }
 
   export type BookUncheckedCreateWithoutKategoriInput = {
@@ -7254,11 +9276,12 @@ export namespace Prisma {
     jumlahHalaman?: number | null
     bahasa?: string | null
     sampul?: string | null
-    fileBuku?: string | null
     tersedia?: boolean
+    stok?: number
     penulisId: number
-    dibuatPada?: Date | string
-    diperbaruiPada?: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+    Borrowing?: BorrowingUncheckedCreateNestedManyWithoutBookInput
   }
 
   export type BookCreateOrConnectWithoutKategoriInput = {
@@ -7287,6 +9310,230 @@ export namespace Prisma {
     data: XOR<BookUpdateManyMutationInput, BookUncheckedUpdateManyWithoutKategoriInput>
   }
 
+  export type UserCreateWithoutBorrowingInput = {
+    id?: string
+    nama: string
+    email: string
+    nim?: string | null
+    nid?: string | null
+    password: string
+    role?: string
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+  }
+
+  export type UserUncheckedCreateWithoutBorrowingInput = {
+    id?: string
+    nama: string
+    email: string
+    nim?: string | null
+    nid?: string | null
+    password: string
+    role?: string
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+  }
+
+  export type UserCreateOrConnectWithoutBorrowingInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutBorrowingInput, UserUncheckedCreateWithoutBorrowingInput>
+  }
+
+  export type BookCreateWithoutBorrowingInput = {
+    judul: string
+    isbn: string
+    deskripsi?: string | null
+    tahunTerbit: number
+    penerbit?: string | null
+    jumlahHalaman?: number | null
+    bahasa?: string | null
+    sampul?: string | null
+    tersedia?: boolean
+    stok?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+    penulis: AuthorCreateNestedOneWithoutBukuInput
+    kategori: CategoryCreateNestedOneWithoutBukuInput
+  }
+
+  export type BookUncheckedCreateWithoutBorrowingInput = {
+    id?: number
+    judul: string
+    isbn: string
+    deskripsi?: string | null
+    tahunTerbit: number
+    penerbit?: string | null
+    jumlahHalaman?: number | null
+    bahasa?: string | null
+    sampul?: string | null
+    tersedia?: boolean
+    stok?: number
+    penulisId: number
+    kategoriId: number
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+  }
+
+  export type BookCreateOrConnectWithoutBorrowingInput = {
+    where: BookWhereUniqueInput
+    create: XOR<BookCreateWithoutBorrowingInput, BookUncheckedCreateWithoutBorrowingInput>
+  }
+
+  export type UserUpsertWithoutBorrowingInput = {
+    update: XOR<UserUpdateWithoutBorrowingInput, UserUncheckedUpdateWithoutBorrowingInput>
+    create: XOR<UserCreateWithoutBorrowingInput, UserUncheckedCreateWithoutBorrowingInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutBorrowingInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutBorrowingInput, UserUncheckedUpdateWithoutBorrowingInput>
+  }
+
+  export type UserUpdateWithoutBorrowingInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    nama?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    nim?: NullableStringFieldUpdateOperationsInput | string | null
+    nid?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: StringFieldUpdateOperationsInput | string
+    role?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type UserUncheckedUpdateWithoutBorrowingInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    nama?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    nim?: NullableStringFieldUpdateOperationsInput | string | null
+    nid?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: StringFieldUpdateOperationsInput | string
+    role?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type BookUpsertWithoutBorrowingInput = {
+    update: XOR<BookUpdateWithoutBorrowingInput, BookUncheckedUpdateWithoutBorrowingInput>
+    create: XOR<BookCreateWithoutBorrowingInput, BookUncheckedCreateWithoutBorrowingInput>
+    where?: BookWhereInput
+  }
+
+  export type BookUpdateToOneWithWhereWithoutBorrowingInput = {
+    where?: BookWhereInput
+    data: XOR<BookUpdateWithoutBorrowingInput, BookUncheckedUpdateWithoutBorrowingInput>
+  }
+
+  export type BookUpdateWithoutBorrowingInput = {
+    judul?: StringFieldUpdateOperationsInput | string
+    isbn?: StringFieldUpdateOperationsInput | string
+    deskripsi?: NullableStringFieldUpdateOperationsInput | string | null
+    tahunTerbit?: IntFieldUpdateOperationsInput | number
+    penerbit?: NullableStringFieldUpdateOperationsInput | string | null
+    jumlahHalaman?: NullableIntFieldUpdateOperationsInput | number | null
+    bahasa?: NullableStringFieldUpdateOperationsInput | string | null
+    sampul?: NullableStringFieldUpdateOperationsInput | string | null
+    tersedia?: BoolFieldUpdateOperationsInput | boolean
+    stok?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    penulis?: AuthorUpdateOneRequiredWithoutBukuNestedInput
+    kategori?: CategoryUpdateOneRequiredWithoutBukuNestedInput
+  }
+
+  export type BookUncheckedUpdateWithoutBorrowingInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    judul?: StringFieldUpdateOperationsInput | string
+    isbn?: StringFieldUpdateOperationsInput | string
+    deskripsi?: NullableStringFieldUpdateOperationsInput | string | null
+    tahunTerbit?: IntFieldUpdateOperationsInput | number
+    penerbit?: NullableStringFieldUpdateOperationsInput | string | null
+    jumlahHalaman?: NullableIntFieldUpdateOperationsInput | number | null
+    bahasa?: NullableStringFieldUpdateOperationsInput | string | null
+    sampul?: NullableStringFieldUpdateOperationsInput | string | null
+    tersedia?: BoolFieldUpdateOperationsInput | boolean
+    stok?: IntFieldUpdateOperationsInput | number
+    penulisId?: IntFieldUpdateOperationsInput | number
+    kategoriId?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type BorrowingCreateManyUserInput = {
+    id?: number
+    bookId: number
+    tanggalPinjam?: Date | string
+    tanggalKembali?: Date | string | null
+    status?: string
+    denda?: number
+  }
+
+  export type BorrowingUpdateWithoutUserInput = {
+    tanggalPinjam?: DateTimeFieldUpdateOperationsInput | Date | string
+    tanggalKembali?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    denda?: IntFieldUpdateOperationsInput | number
+    book?: BookUpdateOneRequiredWithoutBorrowingNestedInput
+  }
+
+  export type BorrowingUncheckedUpdateWithoutUserInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    bookId?: IntFieldUpdateOperationsInput | number
+    tanggalPinjam?: DateTimeFieldUpdateOperationsInput | Date | string
+    tanggalKembali?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    denda?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type BorrowingUncheckedUpdateManyWithoutUserInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    bookId?: IntFieldUpdateOperationsInput | number
+    tanggalPinjam?: DateTimeFieldUpdateOperationsInput | Date | string
+    tanggalKembali?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    denda?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type BorrowingCreateManyBookInput = {
+    id?: number
+    userId: string
+    tanggalPinjam?: Date | string
+    tanggalKembali?: Date | string | null
+    status?: string
+    denda?: number
+  }
+
+  export type BorrowingUpdateWithoutBookInput = {
+    tanggalPinjam?: DateTimeFieldUpdateOperationsInput | Date | string
+    tanggalKembali?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    denda?: IntFieldUpdateOperationsInput | number
+    user?: UserUpdateOneRequiredWithoutBorrowingNestedInput
+  }
+
+  export type BorrowingUncheckedUpdateWithoutBookInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    userId?: StringFieldUpdateOperationsInput | string
+    tanggalPinjam?: DateTimeFieldUpdateOperationsInput | Date | string
+    tanggalKembali?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    denda?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type BorrowingUncheckedUpdateManyWithoutBookInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    userId?: StringFieldUpdateOperationsInput | string
+    tanggalPinjam?: DateTimeFieldUpdateOperationsInput | Date | string
+    tanggalKembali?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    denda?: IntFieldUpdateOperationsInput | number
+  }
+
   export type BookCreateManyPenulisInput = {
     id?: number
     judul: string
@@ -7297,11 +9544,11 @@ export namespace Prisma {
     jumlahHalaman?: number | null
     bahasa?: string | null
     sampul?: string | null
-    fileBuku?: string | null
     tersedia?: boolean
+    stok?: number
     kategoriId: number
-    dibuatPada?: Date | string
-    diperbaruiPada?: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
   }
 
   export type BookUpdateWithoutPenulisInput = {
@@ -7313,11 +9560,12 @@ export namespace Prisma {
     jumlahHalaman?: NullableIntFieldUpdateOperationsInput | number | null
     bahasa?: NullableStringFieldUpdateOperationsInput | string | null
     sampul?: NullableStringFieldUpdateOperationsInput | string | null
-    fileBuku?: NullableStringFieldUpdateOperationsInput | string | null
     tersedia?: BoolFieldUpdateOperationsInput | boolean
-    dibuatPada?: DateTimeFieldUpdateOperationsInput | Date | string
-    diperbaruiPada?: DateTimeFieldUpdateOperationsInput | Date | string
+    stok?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     kategori?: CategoryUpdateOneRequiredWithoutBukuNestedInput
+    Borrowing?: BorrowingUpdateManyWithoutBookNestedInput
   }
 
   export type BookUncheckedUpdateWithoutPenulisInput = {
@@ -7330,11 +9578,12 @@ export namespace Prisma {
     jumlahHalaman?: NullableIntFieldUpdateOperationsInput | number | null
     bahasa?: NullableStringFieldUpdateOperationsInput | string | null
     sampul?: NullableStringFieldUpdateOperationsInput | string | null
-    fileBuku?: NullableStringFieldUpdateOperationsInput | string | null
     tersedia?: BoolFieldUpdateOperationsInput | boolean
+    stok?: IntFieldUpdateOperationsInput | number
     kategoriId?: IntFieldUpdateOperationsInput | number
-    dibuatPada?: DateTimeFieldUpdateOperationsInput | Date | string
-    diperbaruiPada?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Borrowing?: BorrowingUncheckedUpdateManyWithoutBookNestedInput
   }
 
   export type BookUncheckedUpdateManyWithoutPenulisInput = {
@@ -7347,11 +9596,11 @@ export namespace Prisma {
     jumlahHalaman?: NullableIntFieldUpdateOperationsInput | number | null
     bahasa?: NullableStringFieldUpdateOperationsInput | string | null
     sampul?: NullableStringFieldUpdateOperationsInput | string | null
-    fileBuku?: NullableStringFieldUpdateOperationsInput | string | null
     tersedia?: BoolFieldUpdateOperationsInput | boolean
+    stok?: IntFieldUpdateOperationsInput | number
     kategoriId?: IntFieldUpdateOperationsInput | number
-    dibuatPada?: DateTimeFieldUpdateOperationsInput | Date | string
-    diperbaruiPada?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type BookCreateManyKategoriInput = {
@@ -7364,11 +9613,11 @@ export namespace Prisma {
     jumlahHalaman?: number | null
     bahasa?: string | null
     sampul?: string | null
-    fileBuku?: string | null
     tersedia?: boolean
+    stok?: number
     penulisId: number
-    dibuatPada?: Date | string
-    diperbaruiPada?: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
   }
 
   export type BookUpdateWithoutKategoriInput = {
@@ -7380,11 +9629,12 @@ export namespace Prisma {
     jumlahHalaman?: NullableIntFieldUpdateOperationsInput | number | null
     bahasa?: NullableStringFieldUpdateOperationsInput | string | null
     sampul?: NullableStringFieldUpdateOperationsInput | string | null
-    fileBuku?: NullableStringFieldUpdateOperationsInput | string | null
     tersedia?: BoolFieldUpdateOperationsInput | boolean
-    dibuatPada?: DateTimeFieldUpdateOperationsInput | Date | string
-    diperbaruiPada?: DateTimeFieldUpdateOperationsInput | Date | string
+    stok?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     penulis?: AuthorUpdateOneRequiredWithoutBukuNestedInput
+    Borrowing?: BorrowingUpdateManyWithoutBookNestedInput
   }
 
   export type BookUncheckedUpdateWithoutKategoriInput = {
@@ -7397,11 +9647,12 @@ export namespace Prisma {
     jumlahHalaman?: NullableIntFieldUpdateOperationsInput | number | null
     bahasa?: NullableStringFieldUpdateOperationsInput | string | null
     sampul?: NullableStringFieldUpdateOperationsInput | string | null
-    fileBuku?: NullableStringFieldUpdateOperationsInput | string | null
     tersedia?: BoolFieldUpdateOperationsInput | boolean
+    stok?: IntFieldUpdateOperationsInput | number
     penulisId?: IntFieldUpdateOperationsInput | number
-    dibuatPada?: DateTimeFieldUpdateOperationsInput | Date | string
-    diperbaruiPada?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Borrowing?: BorrowingUncheckedUpdateManyWithoutBookNestedInput
   }
 
   export type BookUncheckedUpdateManyWithoutKategoriInput = {
@@ -7414,11 +9665,11 @@ export namespace Prisma {
     jumlahHalaman?: NullableIntFieldUpdateOperationsInput | number | null
     bahasa?: NullableStringFieldUpdateOperationsInput | string | null
     sampul?: NullableStringFieldUpdateOperationsInput | string | null
-    fileBuku?: NullableStringFieldUpdateOperationsInput | string | null
     tersedia?: BoolFieldUpdateOperationsInput | boolean
+    stok?: IntFieldUpdateOperationsInput | number
     penulisId?: IntFieldUpdateOperationsInput | number
-    dibuatPada?: DateTimeFieldUpdateOperationsInput | Date | string
-    diperbaruiPada?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
 

@@ -9,7 +9,7 @@ import authRouter from './routes/authRoutes.js'
 import authorRouter from './routes/authRoutes.js'
 import categoryRouter from './routes/categoryRoutes.js'
 import bookRouter from './routes/bookRoutes.js'
-
+import borrowingRouter from './routes/borrowingRoutes.js'
 dotenv.config()
 
 const app = express()
@@ -31,6 +31,7 @@ app.use('/api/auth', authRouter)
 app.use('/api', authorRouter)
 app.use('/api', categoryRouter)
 app.use('/api', bookRouter)
+app.use('/api', borrowingRouter)
 
 app.listen(PORT, () => {
     console.log(`🚀 Server is running on http://localhost:${PORT}`)

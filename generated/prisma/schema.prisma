@@ -10,52 +10,66 @@ datasource db {
 }
 
 model User {
-  id       String  @id @default(cuid())
-  nama     String
-  email    String  @unique
-  nim      String?
-  nid      String?
-  password String
-  role     String  @default("user")
-  status   String  @default("Active")
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id        String      @id @default(cuid())
+  nama      String
+  email     String      @unique
+  nim       String?
+  nid       String?
+  password  String
+  role      String      @default("user")
+  status    String      @default("Active")
+  createdAt DateTime    @default(now())
+  updatedAt DateTime?   @updatedAt
+  Borrowing Borrowing[]
 }
 
 model Book {
-  id            Int     @id @default(autoincrement())
+  id            Int         @id @default(autoincrement())
   judul         String
-  isbn          String  @unique
+  isbn          String      @unique
   deskripsi     String?
   tahunTerbit   Int
   penerbit      String?
   jumlahHalaman Int?
   bahasa        String?
-  sampul        String? // URL gambar sampul
-  fileBuku      String? // URL atau path file digital (PDF/epub)
-  tersedia      Boolean @default(true)
-
-  penulisId  Int
-  kategoriId Int
-
-  penulis  Author   @relation(fields: [penulisId], references: [id])
-  kategori Category @relation(fields: [kategoriId], references: [id])
-
-  dibuatPada     DateTime @default(now())
-  diperbaruiPada DateTime @updatedAt
+  sampul        String?
+  tersedia      Boolean     @default(true)
+  stok          Int         @default(1)
+  penulisId     Int
+  kategoriId    Int
+  penulis       Author      @relation(fields: [penulisId], references: [id])
+  kategori      Category    @relation(fields: [kategoriId], references: [id])
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime?   @updatedAt
+  Borrowing     Borrowing[]
 }
 
 model Author {
-  id   Int     @id @default(autoincrement())
-  nama String
-  bio  String?
-  buku Book[]
+  id        Int       @id @default(autoincrement())
+  nama      String
+  bio       String?
+  buku      Book[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime? @updatedAt
 }
 
 model Category {
-  id        Int     @id @default(autoincrement())
-  nama      String  @unique
+  id        Int       @id @default(autoincrement())
+  nama      String    @unique
   deskripsi String?
   buku      Book[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime? @updatedAt
+}
+
+model Borrowing {
+  id             Int       @id @default(autoincrement())
+  userId         String
+  bookId         Int
+  tanggalPinjam  DateTime  @default(now())
+  tanggalKembali DateTime?
+  status         String    @default("dipinjam")
+  denda          Int       @default(0)
+  user           User      @relation(fields: [userId], references: [id])
+  book           Book      @relation(fields: [bookId], references: [id])
 }
