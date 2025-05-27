@@ -32,9 +32,9 @@ model Book {
   penerbit      String?
   jumlahHalaman Int?
   bahasa        String?
-  sampul        String? // URL gambar sampul
-  fileBuku      String? // URL atau path file digital (PDF/epub)
+  sampul        String?
   tersedia      Boolean @default(true)
+  stok          Int
 
   penulisId  Int
   kategoriId Int
