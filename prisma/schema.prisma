@@ -27,14 +27,14 @@ model Book {
   id            Int     @id @default(autoincrement())
   judul         String
   isbn          String  @unique
-  deskripsi     String?
+  deskripsi     String? // nullable
   tahunTerbit   Int
-  penerbit      String?
-  jumlahHalaman Int?
-  bahasa        String?
-  sampul        String?
+  penerbit      String? // nullable
+  jumlahHalaman Int? // nullable
+  bahasa        String? // nullable
+  sampul        String? // nullable (misal URL gambar)
   tersedia      Boolean @default(true)
-  stok          Int
+  stok          Int     @default(1)
 
   penulisId  Int
   kategoriId Int
