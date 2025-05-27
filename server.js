@@ -7,6 +7,7 @@ import cookieParser from 'cookie-parser'
 import bodyParser from 'body-parser'
 import authRouter from './routes/authRoutes.js'
 import authorRouter from './routes/authRoutes.js'
+import categoryRouter from './routes/categoryRoutes.js'
 
 dotenv.config()
 
@@ -27,6 +28,7 @@ app.get('/', (req, res) => {
 
 app.use('/api/auth', authRouter)
 app.use('/api', authorRouter)
+app.use('/api', categoryRouter)
 
 app.listen(PORT, () => {
     console.log(`🚀 Server is running on http://localhost:${PORT}`)
