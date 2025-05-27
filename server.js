@@ -3,9 +3,10 @@ import cors from 'cors'
 import helmet from 'helmet'
 import morgan from 'morgan'
 import dotenv from 'dotenv'
-import authRouter from './routes/authRoutes.js'
 import cookieParser from 'cookie-parser'
 import bodyParser from 'body-parser'
+import authRouter from './routes/authRoutes.js'
+import authorRouter from './routes/authRoutes.js'
 
 dotenv.config()
 
@@ -25,6 +26,7 @@ app.get('/', (req, res) => {
 })
 
 app.use('/api/auth', authRouter)
+app.use('/api', authorRouter)
 
 app.listen(PORT, () => {
     console.log(`🚀 Server is running on http://localhost:${PORT}`)
