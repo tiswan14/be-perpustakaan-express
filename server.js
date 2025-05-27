@@ -8,6 +8,7 @@ import bodyParser from 'body-parser'
 import authRouter from './routes/authRoutes.js'
 import authorRouter from './routes/authRoutes.js'
 import categoryRouter from './routes/categoryRoutes.js'
+import bookRouter from './routes/bookRoutes.js'
 
 dotenv.config()
 
@@ -29,6 +30,7 @@ app.get('/', (req, res) => {
 app.use('/api/auth', authRouter)
 app.use('/api', authorRouter)
 app.use('/api', categoryRouter)
+app.use('/api', bookRouter)
 
 app.listen(PORT, () => {
     console.log(`🚀 Server is running on http://localhost:${PORT}`)
