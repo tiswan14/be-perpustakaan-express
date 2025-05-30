@@ -16,11 +16,11 @@ model User {
   nim       String?
   nid       String?
   password  String
-  role      String      @default("user")
-  status    String      @default("Active")
+  role      String      @default("mahasiswa")
+  status    String      @default("active")
   createdAt DateTime    @default(now())
   updatedAt DateTime?   @updatedAt
-  Borrowing Borrowing[]
+  Reservasi Reservasi[]
 }
 
 model Book {
@@ -41,7 +41,7 @@ model Book {
   kategori      Category    @relation(fields: [kategoriId], references: [id])
   createdAt     DateTime    @default(now())
   updatedAt     DateTime?   @updatedAt
-  Borrowing     Borrowing[]
+  Reservasi     Reservasi[]
 }
 
 model Author {
@@ -62,14 +62,19 @@ model Category {
   updatedAt DateTime? @updatedAt
 }
 
-model Borrowing {
+model Reservasi {
   id             Int       @id @default(autoincrement())
   userId         String
   bookId         Int
   tanggalPinjam  DateTime  @default(now())
   tanggalKembali DateTime?
-  status         String    @default("dipinjam")
+  tanggalAmbil   DateTime?
+  jamAmbil       String?
+  status         String    @default("reservasi")
+  catatanAdmin   String?
   denda          Int       @default(0)
   user           User      @relation(fields: [userId], references: [id])
   book           Book      @relation(fields: [bookId], references: [id])
+
+  @@map("reservasi")
 }

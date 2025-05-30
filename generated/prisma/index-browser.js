@@ -167,13 +167,16 @@ exports.Prisma.CategoryScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
-exports.Prisma.BorrowingScalarFieldEnum = {
+exports.Prisma.ReservasiScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
   bookId: 'bookId',
   tanggalPinjam: 'tanggalPinjam',
   tanggalKembali: 'tanggalKembali',
+  tanggalAmbil: 'tanggalAmbil',
+  jamAmbil: 'jamAmbil',
   status: 'status',
+  catatanAdmin: 'catatanAdmin',
   denda: 'denda'
 };
 
@@ -198,7 +201,7 @@ exports.Prisma.ModelName = {
   Book: 'Book',
   Author: 'Author',
   Category: 'Category',
-  Borrowing: 'Borrowing'
+  Reservasi: 'Reservasi'
 };
 
 /**

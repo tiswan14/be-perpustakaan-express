@@ -7,13 +7,17 @@ export const register = async (req, res) => {
     const { nama, email, nim, nid, password } = req.body
 
     if (!nama?.trim() || !email?.trim() || !password?.trim()) {
-        return res
-            .status(400)
-            .json({ message: 'Name, email, and password are required' })
+        return res.status(400).json({
+            status: false,
+            message: 'Nama, email, dan password wajib diisi',
+        })
     }
 
     if (!nim && !nid) {
-        return res.status(400).json({ message: 'NIM or NID must be provided' })
+        return res.status(400).json({
+            status: false,
+            message: 'NIM atau NID harus diisi',
+        })
     }
 
     try {
@@ -22,7 +26,10 @@ export const register = async (req, res) => {
         })
 
         if (existingEmail) {
-            return res.status(409).json({ message: 'Email already used' })
+            return res.status(409).json({
+                status: false,
+                message: 'Email sudah digunakan',
+            })
         }
 
         const hashedPassword = await bcrypt.hash(password, 10)
@@ -38,7 +45,8 @@ export const register = async (req, res) => {
         })
 
         res.status(201).json({
-            message: 'User registered',
+            status: true,
+            message: 'Pengguna berhasil didaftarkan',
             user: {
                 id: newUser.id,
                 nama: newUser.nama,
@@ -48,7 +56,10 @@ export const register = async (req, res) => {
             },
         })
     } catch {
-        res.status(500).json({ error: 'Server error' })
+        res.status(500).json({
+            status: false,
+            error: 'Terjadi kesalahan server',
+        })
     }
 }
 
@@ -56,9 +67,10 @@ export const login = async (req, res) => {
     const { email, password } = req.body
 
     if (!email?.trim() || !password?.trim()) {
-        return res
-            .status(400)
-            .json({ message: 'Email and password are required' })
+        return res.status(400).json({
+            status: false,
+            message: 'Email dan password wajib diisi',
+        })
     }
 
     try {
@@ -66,16 +78,13 @@ export const login = async (req, res) => {
             where: { email },
         })
 
-        if (!user) {
-            return res.status(404).json({ message: 'User not found' })
-        }
-
         const passwordMatch = await bcrypt.compare(password, user.password)
 
         if (!passwordMatch) {
-            return res
-                .status(401)
-                .json({ message: 'Email or password is incorrect' })
+            return res.status(401).json({
+                status: false,
+                message: 'Email atau password salah',
+            })
         }
 
         const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, {
@@ -92,7 +101,8 @@ export const login = async (req, res) => {
         const { password: _, ...userData } = user
 
         return res.status(200).json({
-            message: 'Login successfully',
+            status: true,
+            message: 'Login berhasil',
             data: {
                 user: userData,
                 token,
@@ -100,7 +110,10 @@ export const login = async (req, res) => {
         })
     } catch (error) {
         console.error(error)
-        return res.status(500).json({ message: 'Internal Server Error' })
+        return res.status(500).json({
+            status: false,
+            message: 'Kesalahan server internal',
+        })
     }
 }
 
@@ -108,9 +121,10 @@ export const logout = (req, res) => {
     try {
         const token = req.cookies.token
         if (!token) {
-            return res
-                .status(401)
-                .json({ message: 'Unauthorized: No token provided' })
+            return res.status(401).json({
+                status: false,
+                message: 'Tidak ada token, akses ditolak',
+            })
         }
 
         res.clearCookie('token', {
@@ -120,9 +134,15 @@ export const logout = (req, res) => {
             path: '/',
         })
 
-        return res.status(200).json({ message: 'Logout successful' })
+        return res.status(200).json({
+            status: true,
+            message: 'Logout berhasil',
+        })
     } catch {
-        return res.status(500).json({ message: 'Internal Server Error' })
+        return res.status(500).json({
+            status: false,
+            message: 'Kesalahan server internal',
+        })
     }
 }
 
@@ -131,9 +151,10 @@ export const getProfile = async (req, res) => {
         const token =
             req.cookies.token || req.headers.authorization?.split(' ')[1]
         if (!token) {
-            return res
-                .status(401)
-                .json({ message: 'Unauthorized: No token provided' })
+            return res.status(401).json({
+                status: false,
+                message: 'Tidak ada token, akses ditolak',
+            })
         }
 
         const decoded = jwt.verify(token, process.env.JWT_SECRET)
@@ -151,14 +172,21 @@ export const getProfile = async (req, res) => {
         })
 
         if (!user) {
-            return res.status(404).json({ message: 'User not found' })
+            return res.status(404).json({
+                status: false,
+                message: 'Pengguna tidak ditemukan',
+            })
         }
 
         res.json({
-            message: 'Profile data fetched successfully',
+            status: true,
+            message: 'Data profil berhasil diambil',
             user,
         })
     } catch {
-        res.status(401).json({ message: 'Invalid or expired token' })
+        res.status(401).json({
+            status: false,
+            message: 'Token tidak valid atau sudah kedaluwarsa',
+        })
     }
 }

@@ -34,10 +34,10 @@ export type Author = $Result.DefaultSelection<Prisma.$AuthorPayload>
  */
 export type Category = $Result.DefaultSelection<Prisma.$CategoryPayload>
 /**
- * Model Borrowing
+ * Model Reservasi
  * 
  */
-export type Borrowing = $Result.DefaultSelection<Prisma.$BorrowingPayload>
+export type Reservasi = $Result.DefaultSelection<Prisma.$ReservasiPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -205,14 +205,14 @@ export class PrismaClient<
   get category(): Prisma.CategoryDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.borrowing`: Exposes CRUD operations for the **Borrowing** model.
+   * `prisma.reservasi`: Exposes CRUD operations for the **Reservasi** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more Borrowings
-    * const borrowings = await prisma.borrowing.findMany()
+    * // Fetch zero or more Reservasis
+    * const reservasis = await prisma.reservasi.findMany()
     * ```
     */
-  get borrowing(): Prisma.BorrowingDelegate<ExtArgs, ClientOptions>;
+  get reservasi(): Prisma.ReservasiDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -657,7 +657,7 @@ export namespace Prisma {
     Book: 'Book',
     Author: 'Author',
     Category: 'Category',
-    Borrowing: 'Borrowing'
+    Reservasi: 'Reservasi'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -676,7 +676,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "book" | "author" | "category" | "borrowing"
+      modelProps: "user" | "book" | "author" | "category" | "reservasi"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -976,77 +976,77 @@ export namespace Prisma {
           }
         }
       }
-      Borrowing: {
-        payload: Prisma.$BorrowingPayload<ExtArgs>
-        fields: Prisma.BorrowingFieldRefs
+      Reservasi: {
+        payload: Prisma.$ReservasiPayload<ExtArgs>
+        fields: Prisma.ReservasiFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.BorrowingFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$BorrowingPayload> | null
+            args: Prisma.ReservasiFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReservasiPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.BorrowingFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$BorrowingPayload>
+            args: Prisma.ReservasiFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReservasiPayload>
           }
           findFirst: {
-            args: Prisma.BorrowingFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$BorrowingPayload> | null
+            args: Prisma.ReservasiFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReservasiPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.BorrowingFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$BorrowingPayload>
+            args: Prisma.ReservasiFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReservasiPayload>
           }
           findMany: {
-            args: Prisma.BorrowingFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$BorrowingPayload>[]
+            args: Prisma.ReservasiFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReservasiPayload>[]
           }
           create: {
-            args: Prisma.BorrowingCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$BorrowingPayload>
+            args: Prisma.ReservasiCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReservasiPayload>
           }
           createMany: {
-            args: Prisma.BorrowingCreateManyArgs<ExtArgs>
+            args: Prisma.ReservasiCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           createManyAndReturn: {
-            args: Prisma.BorrowingCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$BorrowingPayload>[]
+            args: Prisma.ReservasiCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReservasiPayload>[]
           }
           delete: {
-            args: Prisma.BorrowingDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$BorrowingPayload>
+            args: Prisma.ReservasiDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReservasiPayload>
           }
           update: {
-            args: Prisma.BorrowingUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$BorrowingPayload>
+            args: Prisma.ReservasiUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReservasiPayload>
           }
           deleteMany: {
-            args: Prisma.BorrowingDeleteManyArgs<ExtArgs>
+            args: Prisma.ReservasiDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.BorrowingUpdateManyArgs<ExtArgs>
+            args: Prisma.ReservasiUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateManyAndReturn: {
-            args: Prisma.BorrowingUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$BorrowingPayload>[]
+            args: Prisma.ReservasiUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReservasiPayload>[]
           }
           upsert: {
-            args: Prisma.BorrowingUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$BorrowingPayload>
+            args: Prisma.ReservasiUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReservasiPayload>
           }
           aggregate: {
-            args: Prisma.BorrowingAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateBorrowing>
+            args: Prisma.ReservasiAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateReservasi>
           }
           groupBy: {
-            args: Prisma.BorrowingGroupByArgs<ExtArgs>
-            result: $Utils.Optional<BorrowingGroupByOutputType>[]
+            args: Prisma.ReservasiGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ReservasiGroupByOutputType>[]
           }
           count: {
-            args: Prisma.BorrowingCountArgs<ExtArgs>
-            result: $Utils.Optional<BorrowingCountAggregateOutputType> | number
+            args: Prisma.ReservasiCountArgs<ExtArgs>
+            result: $Utils.Optional<ReservasiCountAggregateOutputType> | number
           }
         }
       }
@@ -1138,7 +1138,7 @@ export namespace Prisma {
     book?: BookOmit
     author?: AuthorOmit
     category?: CategoryOmit
-    borrowing?: BorrowingOmit
+    reservasi?: ReservasiOmit
   }
 
   /* Types for Logging */
@@ -1233,11 +1233,11 @@ export namespace Prisma {
    */
 
   export type UserCountOutputType = {
-    Borrowing: number
+    Reservasi: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    Borrowing?: boolean | UserCountOutputTypeCountBorrowingArgs
+    Reservasi?: boolean | UserCountOutputTypeCountReservasiArgs
   }
 
   // Custom InputTypes
@@ -1254,8 +1254,8 @@ export namespace Prisma {
   /**
    * UserCountOutputType without action
    */
-  export type UserCountOutputTypeCountBorrowingArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: BorrowingWhereInput
+  export type UserCountOutputTypeCountReservasiArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ReservasiWhereInput
   }
 
 
@@ -1264,11 +1264,11 @@ export namespace Prisma {
    */
 
   export type BookCountOutputType = {
-    Borrowing: number
+    Reservasi: number
   }
 
   export type BookCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    Borrowing?: boolean | BookCountOutputTypeCountBorrowingArgs
+    Reservasi?: boolean | BookCountOutputTypeCountReservasiArgs
   }
 
   // Custom InputTypes
@@ -1285,8 +1285,8 @@ export namespace Prisma {
   /**
    * BookCountOutputType without action
    */
-  export type BookCountOutputTypeCountBorrowingArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: BorrowingWhereInput
+  export type BookCountOutputTypeCountReservasiArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ReservasiWhereInput
   }
 
 
@@ -1560,7 +1560,7 @@ export namespace Prisma {
     status?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    Borrowing?: boolean | User$BorrowingArgs<ExtArgs>
+    Reservasi?: boolean | User$ReservasiArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -1605,7 +1605,7 @@ export namespace Prisma {
 
   export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "nama" | "email" | "nim" | "nid" | "password" | "role" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    Borrowing?: boolean | User$BorrowingArgs<ExtArgs>
+    Reservasi?: boolean | User$ReservasiArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -1614,7 +1614,7 @@ export namespace Prisma {
   export type $UserPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "User"
     objects: {
-      Borrowing: Prisma.$BorrowingPayload<ExtArgs>[]
+      Reservasi: Prisma.$ReservasiPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -2021,7 +2021,7 @@ export namespace Prisma {
    */
   export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    Borrowing<T extends User$BorrowingArgs<ExtArgs> = {}>(args?: Subset<T, User$BorrowingArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BorrowingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    Reservasi<T extends User$ReservasiArgs<ExtArgs> = {}>(args?: Subset<T, User$ReservasiArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReservasiPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2449,27 +2449,27 @@ export namespace Prisma {
   }
 
   /**
-   * User.Borrowing
+   * User.Reservasi
    */
-  export type User$BorrowingArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type User$ReservasiArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Borrowing
+     * Select specific fields to fetch from the Reservasi
      */
-    select?: BorrowingSelect<ExtArgs> | null
+    select?: ReservasiSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Borrowing
+     * Omit specific fields from the Reservasi
      */
-    omit?: BorrowingOmit<ExtArgs> | null
+    omit?: ReservasiOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: BorrowingInclude<ExtArgs> | null
-    where?: BorrowingWhereInput
-    orderBy?: BorrowingOrderByWithRelationInput | BorrowingOrderByWithRelationInput[]
-    cursor?: BorrowingWhereUniqueInput
+    include?: ReservasiInclude<ExtArgs> | null
+    where?: ReservasiWhereInput
+    orderBy?: ReservasiOrderByWithRelationInput | ReservasiOrderByWithRelationInput[]
+    cursor?: ReservasiWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: BorrowingScalarFieldEnum | BorrowingScalarFieldEnum[]
+    distinct?: ReservasiScalarFieldEnum | ReservasiScalarFieldEnum[]
   }
 
   /**
@@ -2791,7 +2791,7 @@ export namespace Prisma {
     updatedAt?: boolean
     penulis?: boolean | AuthorDefaultArgs<ExtArgs>
     kategori?: boolean | CategoryDefaultArgs<ExtArgs>
-    Borrowing?: boolean | Book$BorrowingArgs<ExtArgs>
+    Reservasi?: boolean | Book$ReservasiArgs<ExtArgs>
     _count?: boolean | BookCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["book"]>
 
@@ -2857,7 +2857,7 @@ export namespace Prisma {
   export type BookInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     penulis?: boolean | AuthorDefaultArgs<ExtArgs>
     kategori?: boolean | CategoryDefaultArgs<ExtArgs>
-    Borrowing?: boolean | Book$BorrowingArgs<ExtArgs>
+    Reservasi?: boolean | Book$ReservasiArgs<ExtArgs>
     _count?: boolean | BookCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type BookIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2874,7 +2874,7 @@ export namespace Prisma {
     objects: {
       penulis: Prisma.$AuthorPayload<ExtArgs>
       kategori: Prisma.$CategoryPayload<ExtArgs>
-      Borrowing: Prisma.$BorrowingPayload<ExtArgs>[]
+      Reservasi: Prisma.$ReservasiPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -3288,7 +3288,7 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     penulis<T extends AuthorDefaultArgs<ExtArgs> = {}>(args?: Subset<T, AuthorDefaultArgs<ExtArgs>>): Prisma__AuthorClient<$Result.GetResult<Prisma.$AuthorPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     kategori<T extends CategoryDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CategoryDefaultArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    Borrowing<T extends Book$BorrowingArgs<ExtArgs> = {}>(args?: Subset<T, Book$BorrowingArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BorrowingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    Reservasi<T extends Book$ReservasiArgs<ExtArgs> = {}>(args?: Subset<T, Book$ReservasiArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReservasiPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3729,27 +3729,27 @@ export namespace Prisma {
   }
 
   /**
-   * Book.Borrowing
+   * Book.Reservasi
    */
-  export type Book$BorrowingArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Book$ReservasiArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Borrowing
+     * Select specific fields to fetch from the Reservasi
      */
-    select?: BorrowingSelect<ExtArgs> | null
+    select?: ReservasiSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Borrowing
+     * Omit specific fields from the Reservasi
      */
-    omit?: BorrowingOmit<ExtArgs> | null
+    omit?: ReservasiOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: BorrowingInclude<ExtArgs> | null
-    where?: BorrowingWhereInput
-    orderBy?: BorrowingOrderByWithRelationInput | BorrowingOrderByWithRelationInput[]
-    cursor?: BorrowingWhereUniqueInput
+    include?: ReservasiInclude<ExtArgs> | null
+    where?: ReservasiWhereInput
+    orderBy?: ReservasiOrderByWithRelationInput | ReservasiOrderByWithRelationInput[]
+    cursor?: ReservasiWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: BorrowingScalarFieldEnum | BorrowingScalarFieldEnum[]
+    distinct?: ReservasiScalarFieldEnum | ReservasiScalarFieldEnum[]
   }
 
   /**
@@ -5980,281 +5980,314 @@ export namespace Prisma {
 
 
   /**
-   * Model Borrowing
+   * Model Reservasi
    */
 
-  export type AggregateBorrowing = {
-    _count: BorrowingCountAggregateOutputType | null
-    _avg: BorrowingAvgAggregateOutputType | null
-    _sum: BorrowingSumAggregateOutputType | null
-    _min: BorrowingMinAggregateOutputType | null
-    _max: BorrowingMaxAggregateOutputType | null
+  export type AggregateReservasi = {
+    _count: ReservasiCountAggregateOutputType | null
+    _avg: ReservasiAvgAggregateOutputType | null
+    _sum: ReservasiSumAggregateOutputType | null
+    _min: ReservasiMinAggregateOutputType | null
+    _max: ReservasiMaxAggregateOutputType | null
   }
 
-  export type BorrowingAvgAggregateOutputType = {
+  export type ReservasiAvgAggregateOutputType = {
     id: number | null
     bookId: number | null
     denda: number | null
   }
 
-  export type BorrowingSumAggregateOutputType = {
+  export type ReservasiSumAggregateOutputType = {
     id: number | null
     bookId: number | null
     denda: number | null
   }
 
-  export type BorrowingMinAggregateOutputType = {
-    id: number | null
-    userId: string | null
-    bookId: number | null
-    tanggalPinjam: Date | null
-    tanggalKembali: Date | null
-    status: string | null
-    denda: number | null
-  }
-
-  export type BorrowingMaxAggregateOutputType = {
+  export type ReservasiMinAggregateOutputType = {
     id: number | null
     userId: string | null
     bookId: number | null
     tanggalPinjam: Date | null
     tanggalKembali: Date | null
+    tanggalAmbil: Date | null
+    jamAmbil: string | null
     status: string | null
+    catatanAdmin: string | null
     denda: number | null
   }
 
-  export type BorrowingCountAggregateOutputType = {
+  export type ReservasiMaxAggregateOutputType = {
+    id: number | null
+    userId: string | null
+    bookId: number | null
+    tanggalPinjam: Date | null
+    tanggalKembali: Date | null
+    tanggalAmbil: Date | null
+    jamAmbil: string | null
+    status: string | null
+    catatanAdmin: string | null
+    denda: number | null
+  }
+
+  export type ReservasiCountAggregateOutputType = {
     id: number
     userId: number
     bookId: number
     tanggalPinjam: number
     tanggalKembali: number
+    tanggalAmbil: number
+    jamAmbil: number
     status: number
+    catatanAdmin: number
     denda: number
     _all: number
   }
 
 
-  export type BorrowingAvgAggregateInputType = {
+  export type ReservasiAvgAggregateInputType = {
     id?: true
     bookId?: true
     denda?: true
   }
 
-  export type BorrowingSumAggregateInputType = {
+  export type ReservasiSumAggregateInputType = {
     id?: true
     bookId?: true
     denda?: true
   }
 
-  export type BorrowingMinAggregateInputType = {
+  export type ReservasiMinAggregateInputType = {
     id?: true
     userId?: true
     bookId?: true
     tanggalPinjam?: true
     tanggalKembali?: true
+    tanggalAmbil?: true
+    jamAmbil?: true
     status?: true
+    catatanAdmin?: true
     denda?: true
   }
 
-  export type BorrowingMaxAggregateInputType = {
+  export type ReservasiMaxAggregateInputType = {
     id?: true
     userId?: true
     bookId?: true
     tanggalPinjam?: true
     tanggalKembali?: true
+    tanggalAmbil?: true
+    jamAmbil?: true
     status?: true
+    catatanAdmin?: true
     denda?: true
   }
 
-  export type BorrowingCountAggregateInputType = {
+  export type ReservasiCountAggregateInputType = {
     id?: true
     userId?: true
     bookId?: true
     tanggalPinjam?: true
     tanggalKembali?: true
+    tanggalAmbil?: true
+    jamAmbil?: true
     status?: true
+    catatanAdmin?: true
     denda?: true
     _all?: true
   }
 
-  export type BorrowingAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ReservasiAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which Borrowing to aggregate.
+     * Filter which Reservasi to aggregate.
      */
-    where?: BorrowingWhereInput
+    where?: ReservasiWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Borrowings to fetch.
+     * Determine the order of Reservasis to fetch.
      */
-    orderBy?: BorrowingOrderByWithRelationInput | BorrowingOrderByWithRelationInput[]
+    orderBy?: ReservasiOrderByWithRelationInput | ReservasiOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: BorrowingWhereUniqueInput
+    cursor?: ReservasiWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Borrowings from the position of the cursor.
+     * Take `±n` Reservasis from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Borrowings.
+     * Skip the first `n` Reservasis.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned Borrowings
+     * Count returned Reservasis
     **/
-    _count?: true | BorrowingCountAggregateInputType
+    _count?: true | ReservasiCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to average
     **/
-    _avg?: BorrowingAvgAggregateInputType
+    _avg?: ReservasiAvgAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to sum
     **/
-    _sum?: BorrowingSumAggregateInputType
+    _sum?: ReservasiSumAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: BorrowingMinAggregateInputType
+    _min?: ReservasiMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: BorrowingMaxAggregateInputType
+    _max?: ReservasiMaxAggregateInputType
   }
 
-  export type GetBorrowingAggregateType<T extends BorrowingAggregateArgs> = {
-        [P in keyof T & keyof AggregateBorrowing]: P extends '_count' | 'count'
+  export type GetReservasiAggregateType<T extends ReservasiAggregateArgs> = {
+        [P in keyof T & keyof AggregateReservasi]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateBorrowing[P]>
-      : GetScalarType<T[P], AggregateBorrowing[P]>
+        : GetScalarType<T[P], AggregateReservasi[P]>
+      : GetScalarType<T[P], AggregateReservasi[P]>
   }
 
 
 
 
-  export type BorrowingGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: BorrowingWhereInput
-    orderBy?: BorrowingOrderByWithAggregationInput | BorrowingOrderByWithAggregationInput[]
-    by: BorrowingScalarFieldEnum[] | BorrowingScalarFieldEnum
-    having?: BorrowingScalarWhereWithAggregatesInput
+  export type ReservasiGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ReservasiWhereInput
+    orderBy?: ReservasiOrderByWithAggregationInput | ReservasiOrderByWithAggregationInput[]
+    by: ReservasiScalarFieldEnum[] | ReservasiScalarFieldEnum
+    having?: ReservasiScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: BorrowingCountAggregateInputType | true
-    _avg?: BorrowingAvgAggregateInputType
-    _sum?: BorrowingSumAggregateInputType
-    _min?: BorrowingMinAggregateInputType
-    _max?: BorrowingMaxAggregateInputType
+    _count?: ReservasiCountAggregateInputType | true
+    _avg?: ReservasiAvgAggregateInputType
+    _sum?: ReservasiSumAggregateInputType
+    _min?: ReservasiMinAggregateInputType
+    _max?: ReservasiMaxAggregateInputType
   }
 
-  export type BorrowingGroupByOutputType = {
+  export type ReservasiGroupByOutputType = {
     id: number
     userId: string
     bookId: number
     tanggalPinjam: Date
     tanggalKembali: Date | null
+    tanggalAmbil: Date | null
+    jamAmbil: string | null
     status: string
+    catatanAdmin: string | null
     denda: number
-    _count: BorrowingCountAggregateOutputType | null
-    _avg: BorrowingAvgAggregateOutputType | null
-    _sum: BorrowingSumAggregateOutputType | null
-    _min: BorrowingMinAggregateOutputType | null
-    _max: BorrowingMaxAggregateOutputType | null
+    _count: ReservasiCountAggregateOutputType | null
+    _avg: ReservasiAvgAggregateOutputType | null
+    _sum: ReservasiSumAggregateOutputType | null
+    _min: ReservasiMinAggregateOutputType | null
+    _max: ReservasiMaxAggregateOutputType | null
   }
 
-  type GetBorrowingGroupByPayload<T extends BorrowingGroupByArgs> = Prisma.PrismaPromise<
+  type GetReservasiGroupByPayload<T extends ReservasiGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<BorrowingGroupByOutputType, T['by']> &
+      PickEnumerable<ReservasiGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof BorrowingGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof ReservasiGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], BorrowingGroupByOutputType[P]>
-            : GetScalarType<T[P], BorrowingGroupByOutputType[P]>
+              : GetScalarType<T[P], ReservasiGroupByOutputType[P]>
+            : GetScalarType<T[P], ReservasiGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type BorrowingSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type ReservasiSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     userId?: boolean
     bookId?: boolean
     tanggalPinjam?: boolean
     tanggalKembali?: boolean
+    tanggalAmbil?: boolean
+    jamAmbil?: boolean
     status?: boolean
+    catatanAdmin?: boolean
     denda?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
     book?: boolean | BookDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["borrowing"]>
+  }, ExtArgs["result"]["reservasi"]>
 
-  export type BorrowingSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type ReservasiSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     userId?: boolean
     bookId?: boolean
     tanggalPinjam?: boolean
     tanggalKembali?: boolean
+    tanggalAmbil?: boolean
+    jamAmbil?: boolean
     status?: boolean
+    catatanAdmin?: boolean
     denda?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
     book?: boolean | BookDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["borrowing"]>
+  }, ExtArgs["result"]["reservasi"]>
 
-  export type BorrowingSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type ReservasiSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     userId?: boolean
     bookId?: boolean
     tanggalPinjam?: boolean
     tanggalKembali?: boolean
+    tanggalAmbil?: boolean
+    jamAmbil?: boolean
     status?: boolean
+    catatanAdmin?: boolean
     denda?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
     book?: boolean | BookDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["borrowing"]>
+  }, ExtArgs["result"]["reservasi"]>
 
-  export type BorrowingSelectScalar = {
+  export type ReservasiSelectScalar = {
     id?: boolean
     userId?: boolean
     bookId?: boolean
     tanggalPinjam?: boolean
     tanggalKembali?: boolean
+    tanggalAmbil?: boolean
+    jamAmbil?: boolean
     status?: boolean
+    catatanAdmin?: boolean
     denda?: boolean
   }
 
-  export type BorrowingOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "bookId" | "tanggalPinjam" | "tanggalKembali" | "status" | "denda", ExtArgs["result"]["borrowing"]>
-  export type BorrowingInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ReservasiOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "bookId" | "tanggalPinjam" | "tanggalKembali" | "tanggalAmbil" | "jamAmbil" | "status" | "catatanAdmin" | "denda", ExtArgs["result"]["reservasi"]>
+  export type ReservasiInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
     book?: boolean | BookDefaultArgs<ExtArgs>
   }
-  export type BorrowingIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ReservasiIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
     book?: boolean | BookDefaultArgs<ExtArgs>
   }
-  export type BorrowingIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ReservasiIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
     book?: boolean | BookDefaultArgs<ExtArgs>
   }
 
-  export type $BorrowingPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "Borrowing"
+  export type $ReservasiPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Reservasi"
     objects: {
       user: Prisma.$UserPayload<ExtArgs>
       book: Prisma.$BookPayload<ExtArgs>
@@ -6265,138 +6298,141 @@ export namespace Prisma {
       bookId: number
       tanggalPinjam: Date
       tanggalKembali: Date | null
+      tanggalAmbil: Date | null
+      jamAmbil: string | null
       status: string
+      catatanAdmin: string | null
       denda: number
-    }, ExtArgs["result"]["borrowing"]>
+    }, ExtArgs["result"]["reservasi"]>
     composites: {}
   }
 
-  type BorrowingGetPayload<S extends boolean | null | undefined | BorrowingDefaultArgs> = $Result.GetResult<Prisma.$BorrowingPayload, S>
+  type ReservasiGetPayload<S extends boolean | null | undefined | ReservasiDefaultArgs> = $Result.GetResult<Prisma.$ReservasiPayload, S>
 
-  type BorrowingCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<BorrowingFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: BorrowingCountAggregateInputType | true
+  type ReservasiCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ReservasiFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ReservasiCountAggregateInputType | true
     }
 
-  export interface BorrowingDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Borrowing'], meta: { name: 'Borrowing' } }
+  export interface ReservasiDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Reservasi'], meta: { name: 'Reservasi' } }
     /**
-     * Find zero or one Borrowing that matches the filter.
-     * @param {BorrowingFindUniqueArgs} args - Arguments to find a Borrowing
+     * Find zero or one Reservasi that matches the filter.
+     * @param {ReservasiFindUniqueArgs} args - Arguments to find a Reservasi
      * @example
-     * // Get one Borrowing
-     * const borrowing = await prisma.borrowing.findUnique({
+     * // Get one Reservasi
+     * const reservasi = await prisma.reservasi.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUnique<T extends BorrowingFindUniqueArgs>(args: SelectSubset<T, BorrowingFindUniqueArgs<ExtArgs>>): Prisma__BorrowingClient<$Result.GetResult<Prisma.$BorrowingPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends ReservasiFindUniqueArgs>(args: SelectSubset<T, ReservasiFindUniqueArgs<ExtArgs>>): Prisma__ReservasiClient<$Result.GetResult<Prisma.$ReservasiPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find one Borrowing that matches the filter or throw an error with `error.code='P2025'`
+     * Find one Reservasi that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
-     * @param {BorrowingFindUniqueOrThrowArgs} args - Arguments to find a Borrowing
+     * @param {ReservasiFindUniqueOrThrowArgs} args - Arguments to find a Reservasi
      * @example
-     * // Get one Borrowing
-     * const borrowing = await prisma.borrowing.findUniqueOrThrow({
+     * // Get one Reservasi
+     * const reservasi = await prisma.reservasi.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUniqueOrThrow<T extends BorrowingFindUniqueOrThrowArgs>(args: SelectSubset<T, BorrowingFindUniqueOrThrowArgs<ExtArgs>>): Prisma__BorrowingClient<$Result.GetResult<Prisma.$BorrowingPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends ReservasiFindUniqueOrThrowArgs>(args: SelectSubset<T, ReservasiFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ReservasiClient<$Result.GetResult<Prisma.$ReservasiPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first Borrowing that matches the filter.
+     * Find the first Reservasi that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {BorrowingFindFirstArgs} args - Arguments to find a Borrowing
+     * @param {ReservasiFindFirstArgs} args - Arguments to find a Reservasi
      * @example
-     * // Get one Borrowing
-     * const borrowing = await prisma.borrowing.findFirst({
+     * // Get one Reservasi
+     * const reservasi = await prisma.reservasi.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirst<T extends BorrowingFindFirstArgs>(args?: SelectSubset<T, BorrowingFindFirstArgs<ExtArgs>>): Prisma__BorrowingClient<$Result.GetResult<Prisma.$BorrowingPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends ReservasiFindFirstArgs>(args?: SelectSubset<T, ReservasiFindFirstArgs<ExtArgs>>): Prisma__ReservasiClient<$Result.GetResult<Prisma.$ReservasiPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first Borrowing that matches the filter or
+     * Find the first Reservasi that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {BorrowingFindFirstOrThrowArgs} args - Arguments to find a Borrowing
+     * @param {ReservasiFindFirstOrThrowArgs} args - Arguments to find a Reservasi
      * @example
-     * // Get one Borrowing
-     * const borrowing = await prisma.borrowing.findFirstOrThrow({
+     * // Get one Reservasi
+     * const reservasi = await prisma.reservasi.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirstOrThrow<T extends BorrowingFindFirstOrThrowArgs>(args?: SelectSubset<T, BorrowingFindFirstOrThrowArgs<ExtArgs>>): Prisma__BorrowingClient<$Result.GetResult<Prisma.$BorrowingPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends ReservasiFindFirstOrThrowArgs>(args?: SelectSubset<T, ReservasiFindFirstOrThrowArgs<ExtArgs>>): Prisma__ReservasiClient<$Result.GetResult<Prisma.$ReservasiPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find zero or more Borrowings that matches the filter.
+     * Find zero or more Reservasis that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {BorrowingFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {ReservasiFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all Borrowings
-     * const borrowings = await prisma.borrowing.findMany()
+     * // Get all Reservasis
+     * const reservasis = await prisma.reservasi.findMany()
      * 
-     * // Get first 10 Borrowings
-     * const borrowings = await prisma.borrowing.findMany({ take: 10 })
+     * // Get first 10 Reservasis
+     * const reservasis = await prisma.reservasi.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const borrowingWithIdOnly = await prisma.borrowing.findMany({ select: { id: true } })
+     * const reservasiWithIdOnly = await prisma.reservasi.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends BorrowingFindManyArgs>(args?: SelectSubset<T, BorrowingFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BorrowingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends ReservasiFindManyArgs>(args?: SelectSubset<T, ReservasiFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReservasiPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
     /**
-     * Create a Borrowing.
-     * @param {BorrowingCreateArgs} args - Arguments to create a Borrowing.
+     * Create a Reservasi.
+     * @param {ReservasiCreateArgs} args - Arguments to create a Reservasi.
      * @example
-     * // Create one Borrowing
-     * const Borrowing = await prisma.borrowing.create({
+     * // Create one Reservasi
+     * const Reservasi = await prisma.reservasi.create({
      *   data: {
-     *     // ... data to create a Borrowing
+     *     // ... data to create a Reservasi
      *   }
      * })
      * 
      */
-    create<T extends BorrowingCreateArgs>(args: SelectSubset<T, BorrowingCreateArgs<ExtArgs>>): Prisma__BorrowingClient<$Result.GetResult<Prisma.$BorrowingPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends ReservasiCreateArgs>(args: SelectSubset<T, ReservasiCreateArgs<ExtArgs>>): Prisma__ReservasiClient<$Result.GetResult<Prisma.$ReservasiPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Create many Borrowings.
-     * @param {BorrowingCreateManyArgs} args - Arguments to create many Borrowings.
+     * Create many Reservasis.
+     * @param {ReservasiCreateManyArgs} args - Arguments to create many Reservasis.
      * @example
-     * // Create many Borrowings
-     * const borrowing = await prisma.borrowing.createMany({
+     * // Create many Reservasis
+     * const reservasi = await prisma.reservasi.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
      */
-    createMany<T extends BorrowingCreateManyArgs>(args?: SelectSubset<T, BorrowingCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends ReservasiCreateManyArgs>(args?: SelectSubset<T, ReservasiCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create many Borrowings and returns the data saved in the database.
-     * @param {BorrowingCreateManyAndReturnArgs} args - Arguments to create many Borrowings.
+     * Create many Reservasis and returns the data saved in the database.
+     * @param {ReservasiCreateManyAndReturnArgs} args - Arguments to create many Reservasis.
      * @example
-     * // Create many Borrowings
-     * const borrowing = await prisma.borrowing.createManyAndReturn({
+     * // Create many Reservasis
+     * const reservasi = await prisma.reservasi.createManyAndReturn({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      * 
-     * // Create many Borrowings and only return the `id`
-     * const borrowingWithIdOnly = await prisma.borrowing.createManyAndReturn({
+     * // Create many Reservasis and only return the `id`
+     * const reservasiWithIdOnly = await prisma.reservasi.createManyAndReturn({
      *   select: { id: true },
      *   data: [
      *     // ... provide data here
@@ -6406,28 +6442,28 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends BorrowingCreateManyAndReturnArgs>(args?: SelectSubset<T, BorrowingCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BorrowingPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends ReservasiCreateManyAndReturnArgs>(args?: SelectSubset<T, ReservasiCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReservasiPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Delete a Borrowing.
-     * @param {BorrowingDeleteArgs} args - Arguments to delete one Borrowing.
+     * Delete a Reservasi.
+     * @param {ReservasiDeleteArgs} args - Arguments to delete one Reservasi.
      * @example
-     * // Delete one Borrowing
-     * const Borrowing = await prisma.borrowing.delete({
+     * // Delete one Reservasi
+     * const Reservasi = await prisma.reservasi.delete({
      *   where: {
-     *     // ... filter to delete one Borrowing
+     *     // ... filter to delete one Reservasi
      *   }
      * })
      * 
      */
-    delete<T extends BorrowingDeleteArgs>(args: SelectSubset<T, BorrowingDeleteArgs<ExtArgs>>): Prisma__BorrowingClient<$Result.GetResult<Prisma.$BorrowingPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends ReservasiDeleteArgs>(args: SelectSubset<T, ReservasiDeleteArgs<ExtArgs>>): Prisma__ReservasiClient<$Result.GetResult<Prisma.$ReservasiPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Update one Borrowing.
-     * @param {BorrowingUpdateArgs} args - Arguments to update one Borrowing.
+     * Update one Reservasi.
+     * @param {ReservasiUpdateArgs} args - Arguments to update one Reservasi.
      * @example
-     * // Update one Borrowing
-     * const borrowing = await prisma.borrowing.update({
+     * // Update one Reservasi
+     * const reservasi = await prisma.reservasi.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -6437,30 +6473,30 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends BorrowingUpdateArgs>(args: SelectSubset<T, BorrowingUpdateArgs<ExtArgs>>): Prisma__BorrowingClient<$Result.GetResult<Prisma.$BorrowingPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends ReservasiUpdateArgs>(args: SelectSubset<T, ReservasiUpdateArgs<ExtArgs>>): Prisma__ReservasiClient<$Result.GetResult<Prisma.$ReservasiPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Delete zero or more Borrowings.
-     * @param {BorrowingDeleteManyArgs} args - Arguments to filter Borrowings to delete.
+     * Delete zero or more Reservasis.
+     * @param {ReservasiDeleteManyArgs} args - Arguments to filter Reservasis to delete.
      * @example
-     * // Delete a few Borrowings
-     * const { count } = await prisma.borrowing.deleteMany({
+     * // Delete a few Reservasis
+     * const { count } = await prisma.reservasi.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
      */
-    deleteMany<T extends BorrowingDeleteManyArgs>(args?: SelectSubset<T, BorrowingDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends ReservasiDeleteManyArgs>(args?: SelectSubset<T, ReservasiDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more Borrowings.
+     * Update zero or more Reservasis.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {BorrowingUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {ReservasiUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many Borrowings
-     * const borrowing = await prisma.borrowing.updateMany({
+     * // Update many Reservasis
+     * const reservasi = await prisma.reservasi.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -6470,14 +6506,14 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends BorrowingUpdateManyArgs>(args: SelectSubset<T, BorrowingUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends ReservasiUpdateManyArgs>(args: SelectSubset<T, ReservasiUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more Borrowings and returns the data updated in the database.
-     * @param {BorrowingUpdateManyAndReturnArgs} args - Arguments to update many Borrowings.
+     * Update zero or more Reservasis and returns the data updated in the database.
+     * @param {ReservasiUpdateManyAndReturnArgs} args - Arguments to update many Reservasis.
      * @example
-     * // Update many Borrowings
-     * const borrowing = await prisma.borrowing.updateManyAndReturn({
+     * // Update many Reservasis
+     * const reservasi = await prisma.reservasi.updateManyAndReturn({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -6486,8 +6522,8 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Update zero or more Borrowings and only return the `id`
-     * const borrowingWithIdOnly = await prisma.borrowing.updateManyAndReturn({
+     * // Update zero or more Reservasis and only return the `id`
+     * const reservasiWithIdOnly = await prisma.reservasi.updateManyAndReturn({
      *   select: { id: true },
      *   where: {
      *     // ... provide filter here
@@ -6500,56 +6536,56 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    updateManyAndReturn<T extends BorrowingUpdateManyAndReturnArgs>(args: SelectSubset<T, BorrowingUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BorrowingPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+    updateManyAndReturn<T extends ReservasiUpdateManyAndReturnArgs>(args: SelectSubset<T, ReservasiUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReservasiPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Create or update one Borrowing.
-     * @param {BorrowingUpsertArgs} args - Arguments to update or create a Borrowing.
+     * Create or update one Reservasi.
+     * @param {ReservasiUpsertArgs} args - Arguments to update or create a Reservasi.
      * @example
-     * // Update or create a Borrowing
-     * const borrowing = await prisma.borrowing.upsert({
+     * // Update or create a Reservasi
+     * const reservasi = await prisma.reservasi.upsert({
      *   create: {
-     *     // ... data to create a Borrowing
+     *     // ... data to create a Reservasi
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the Borrowing we want to update
+     *     // ... the filter for the Reservasi we want to update
      *   }
      * })
      */
-    upsert<T extends BorrowingUpsertArgs>(args: SelectSubset<T, BorrowingUpsertArgs<ExtArgs>>): Prisma__BorrowingClient<$Result.GetResult<Prisma.$BorrowingPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends ReservasiUpsertArgs>(args: SelectSubset<T, ReservasiUpsertArgs<ExtArgs>>): Prisma__ReservasiClient<$Result.GetResult<Prisma.$ReservasiPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
     /**
-     * Count the number of Borrowings.
+     * Count the number of Reservasis.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {BorrowingCountArgs} args - Arguments to filter Borrowings to count.
+     * @param {ReservasiCountArgs} args - Arguments to filter Reservasis to count.
      * @example
-     * // Count the number of Borrowings
-     * const count = await prisma.borrowing.count({
+     * // Count the number of Reservasis
+     * const count = await prisma.reservasi.count({
      *   where: {
-     *     // ... the filter for the Borrowings we want to count
+     *     // ... the filter for the Reservasis we want to count
      *   }
      * })
     **/
-    count<T extends BorrowingCountArgs>(
-      args?: Subset<T, BorrowingCountArgs>,
+    count<T extends ReservasiCountArgs>(
+      args?: Subset<T, ReservasiCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], BorrowingCountAggregateOutputType>
+          : GetScalarType<T['select'], ReservasiCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a Borrowing.
+     * Allows you to perform aggregations operations on a Reservasi.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {BorrowingAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {ReservasiAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -6569,13 +6605,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends BorrowingAggregateArgs>(args: Subset<T, BorrowingAggregateArgs>): Prisma.PrismaPromise<GetBorrowingAggregateType<T>>
+    aggregate<T extends ReservasiAggregateArgs>(args: Subset<T, ReservasiAggregateArgs>): Prisma.PrismaPromise<GetReservasiAggregateType<T>>
 
     /**
-     * Group by Borrowing.
+     * Group by Reservasi.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {BorrowingGroupByArgs} args - Group by arguments.
+     * @param {ReservasiGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -6590,14 +6626,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends BorrowingGroupByArgs,
+      T extends ReservasiGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: BorrowingGroupByArgs['orderBy'] }
-        : { orderBy?: BorrowingGroupByArgs['orderBy'] },
+        ? { orderBy: ReservasiGroupByArgs['orderBy'] }
+        : { orderBy?: ReservasiGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -6646,20 +6682,20 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, BorrowingGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetBorrowingGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, ReservasiGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetReservasiGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the Borrowing model
+   * Fields of the Reservasi model
    */
-  readonly fields: BorrowingFieldRefs;
+  readonly fields: ReservasiFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for Borrowing.
+   * The delegate class that acts as a "Promise-like" for Reservasi.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__BorrowingClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__ReservasiClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     book<T extends BookDefaultArgs<ExtArgs> = {}>(args?: Subset<T, BookDefaultArgs<ExtArgs>>): Prisma__BookClient<$Result.GetResult<Prisma.$BookPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
@@ -6689,427 +6725,430 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the Borrowing model
+   * Fields of the Reservasi model
    */
-  interface BorrowingFieldRefs {
-    readonly id: FieldRef<"Borrowing", 'Int'>
-    readonly userId: FieldRef<"Borrowing", 'String'>
-    readonly bookId: FieldRef<"Borrowing", 'Int'>
-    readonly tanggalPinjam: FieldRef<"Borrowing", 'DateTime'>
-    readonly tanggalKembali: FieldRef<"Borrowing", 'DateTime'>
-    readonly status: FieldRef<"Borrowing", 'String'>
-    readonly denda: FieldRef<"Borrowing", 'Int'>
+  interface ReservasiFieldRefs {
+    readonly id: FieldRef<"Reservasi", 'Int'>
+    readonly userId: FieldRef<"Reservasi", 'String'>
+    readonly bookId: FieldRef<"Reservasi", 'Int'>
+    readonly tanggalPinjam: FieldRef<"Reservasi", 'DateTime'>
+    readonly tanggalKembali: FieldRef<"Reservasi", 'DateTime'>
+    readonly tanggalAmbil: FieldRef<"Reservasi", 'DateTime'>
+    readonly jamAmbil: FieldRef<"Reservasi", 'String'>
+    readonly status: FieldRef<"Reservasi", 'String'>
+    readonly catatanAdmin: FieldRef<"Reservasi", 'String'>
+    readonly denda: FieldRef<"Reservasi", 'Int'>
   }
     
 
   // Custom InputTypes
   /**
-   * Borrowing findUnique
+   * Reservasi findUnique
    */
-  export type BorrowingFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ReservasiFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Borrowing
+     * Select specific fields to fetch from the Reservasi
      */
-    select?: BorrowingSelect<ExtArgs> | null
+    select?: ReservasiSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Borrowing
+     * Omit specific fields from the Reservasi
      */
-    omit?: BorrowingOmit<ExtArgs> | null
+    omit?: ReservasiOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: BorrowingInclude<ExtArgs> | null
+    include?: ReservasiInclude<ExtArgs> | null
     /**
-     * Filter, which Borrowing to fetch.
+     * Filter, which Reservasi to fetch.
      */
-    where: BorrowingWhereUniqueInput
+    where: ReservasiWhereUniqueInput
   }
 
   /**
-   * Borrowing findUniqueOrThrow
+   * Reservasi findUniqueOrThrow
    */
-  export type BorrowingFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ReservasiFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Borrowing
+     * Select specific fields to fetch from the Reservasi
      */
-    select?: BorrowingSelect<ExtArgs> | null
+    select?: ReservasiSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Borrowing
+     * Omit specific fields from the Reservasi
      */
-    omit?: BorrowingOmit<ExtArgs> | null
+    omit?: ReservasiOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: BorrowingInclude<ExtArgs> | null
+    include?: ReservasiInclude<ExtArgs> | null
     /**
-     * Filter, which Borrowing to fetch.
+     * Filter, which Reservasi to fetch.
      */
-    where: BorrowingWhereUniqueInput
+    where: ReservasiWhereUniqueInput
   }
 
   /**
-   * Borrowing findFirst
+   * Reservasi findFirst
    */
-  export type BorrowingFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ReservasiFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Borrowing
+     * Select specific fields to fetch from the Reservasi
      */
-    select?: BorrowingSelect<ExtArgs> | null
+    select?: ReservasiSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Borrowing
+     * Omit specific fields from the Reservasi
      */
-    omit?: BorrowingOmit<ExtArgs> | null
+    omit?: ReservasiOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: BorrowingInclude<ExtArgs> | null
+    include?: ReservasiInclude<ExtArgs> | null
     /**
-     * Filter, which Borrowing to fetch.
+     * Filter, which Reservasi to fetch.
      */
-    where?: BorrowingWhereInput
+    where?: ReservasiWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Borrowings to fetch.
+     * Determine the order of Reservasis to fetch.
      */
-    orderBy?: BorrowingOrderByWithRelationInput | BorrowingOrderByWithRelationInput[]
+    orderBy?: ReservasiOrderByWithRelationInput | ReservasiOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for Borrowings.
+     * Sets the position for searching for Reservasis.
      */
-    cursor?: BorrowingWhereUniqueInput
+    cursor?: ReservasiWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Borrowings from the position of the cursor.
+     * Take `±n` Reservasis from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Borrowings.
+     * Skip the first `n` Reservasis.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of Borrowings.
+     * Filter by unique combinations of Reservasis.
      */
-    distinct?: BorrowingScalarFieldEnum | BorrowingScalarFieldEnum[]
+    distinct?: ReservasiScalarFieldEnum | ReservasiScalarFieldEnum[]
   }
 
   /**
-   * Borrowing findFirstOrThrow
+   * Reservasi findFirstOrThrow
    */
-  export type BorrowingFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ReservasiFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Borrowing
+     * Select specific fields to fetch from the Reservasi
      */
-    select?: BorrowingSelect<ExtArgs> | null
+    select?: ReservasiSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Borrowing
+     * Omit specific fields from the Reservasi
      */
-    omit?: BorrowingOmit<ExtArgs> | null
+    omit?: ReservasiOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: BorrowingInclude<ExtArgs> | null
+    include?: ReservasiInclude<ExtArgs> | null
     /**
-     * Filter, which Borrowing to fetch.
+     * Filter, which Reservasi to fetch.
      */
-    where?: BorrowingWhereInput
+    where?: ReservasiWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Borrowings to fetch.
+     * Determine the order of Reservasis to fetch.
      */
-    orderBy?: BorrowingOrderByWithRelationInput | BorrowingOrderByWithRelationInput[]
+    orderBy?: ReservasiOrderByWithRelationInput | ReservasiOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for Borrowings.
+     * Sets the position for searching for Reservasis.
      */
-    cursor?: BorrowingWhereUniqueInput
+    cursor?: ReservasiWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Borrowings from the position of the cursor.
+     * Take `±n` Reservasis from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Borrowings.
+     * Skip the first `n` Reservasis.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of Borrowings.
+     * Filter by unique combinations of Reservasis.
      */
-    distinct?: BorrowingScalarFieldEnum | BorrowingScalarFieldEnum[]
+    distinct?: ReservasiScalarFieldEnum | ReservasiScalarFieldEnum[]
   }
 
   /**
-   * Borrowing findMany
+   * Reservasi findMany
    */
-  export type BorrowingFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ReservasiFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Borrowing
+     * Select specific fields to fetch from the Reservasi
      */
-    select?: BorrowingSelect<ExtArgs> | null
+    select?: ReservasiSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Borrowing
+     * Omit specific fields from the Reservasi
      */
-    omit?: BorrowingOmit<ExtArgs> | null
+    omit?: ReservasiOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: BorrowingInclude<ExtArgs> | null
+    include?: ReservasiInclude<ExtArgs> | null
     /**
-     * Filter, which Borrowings to fetch.
+     * Filter, which Reservasis to fetch.
      */
-    where?: BorrowingWhereInput
+    where?: ReservasiWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Borrowings to fetch.
+     * Determine the order of Reservasis to fetch.
      */
-    orderBy?: BorrowingOrderByWithRelationInput | BorrowingOrderByWithRelationInput[]
+    orderBy?: ReservasiOrderByWithRelationInput | ReservasiOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing Borrowings.
+     * Sets the position for listing Reservasis.
      */
-    cursor?: BorrowingWhereUniqueInput
+    cursor?: ReservasiWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Borrowings from the position of the cursor.
+     * Take `±n` Reservasis from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Borrowings.
+     * Skip the first `n` Reservasis.
      */
     skip?: number
-    distinct?: BorrowingScalarFieldEnum | BorrowingScalarFieldEnum[]
+    distinct?: ReservasiScalarFieldEnum | ReservasiScalarFieldEnum[]
   }
 
   /**
-   * Borrowing create
+   * Reservasi create
    */
-  export type BorrowingCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ReservasiCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Borrowing
+     * Select specific fields to fetch from the Reservasi
      */
-    select?: BorrowingSelect<ExtArgs> | null
+    select?: ReservasiSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Borrowing
+     * Omit specific fields from the Reservasi
      */
-    omit?: BorrowingOmit<ExtArgs> | null
+    omit?: ReservasiOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: BorrowingInclude<ExtArgs> | null
+    include?: ReservasiInclude<ExtArgs> | null
     /**
-     * The data needed to create a Borrowing.
+     * The data needed to create a Reservasi.
      */
-    data: XOR<BorrowingCreateInput, BorrowingUncheckedCreateInput>
+    data: XOR<ReservasiCreateInput, ReservasiUncheckedCreateInput>
   }
 
   /**
-   * Borrowing createMany
+   * Reservasi createMany
    */
-  export type BorrowingCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ReservasiCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many Borrowings.
+     * The data used to create many Reservasis.
      */
-    data: BorrowingCreateManyInput | BorrowingCreateManyInput[]
+    data: ReservasiCreateManyInput | ReservasiCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * Borrowing createManyAndReturn
+   * Reservasi createManyAndReturn
    */
-  export type BorrowingCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ReservasiCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Borrowing
+     * Select specific fields to fetch from the Reservasi
      */
-    select?: BorrowingSelectCreateManyAndReturn<ExtArgs> | null
+    select?: ReservasiSelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the Borrowing
+     * Omit specific fields from the Reservasi
      */
-    omit?: BorrowingOmit<ExtArgs> | null
+    omit?: ReservasiOmit<ExtArgs> | null
     /**
-     * The data used to create many Borrowings.
+     * The data used to create many Reservasis.
      */
-    data: BorrowingCreateManyInput | BorrowingCreateManyInput[]
+    data: ReservasiCreateManyInput | ReservasiCreateManyInput[]
     skipDuplicates?: boolean
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: BorrowingIncludeCreateManyAndReturn<ExtArgs> | null
+    include?: ReservasiIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
-   * Borrowing update
+   * Reservasi update
    */
-  export type BorrowingUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ReservasiUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Borrowing
+     * Select specific fields to fetch from the Reservasi
      */
-    select?: BorrowingSelect<ExtArgs> | null
+    select?: ReservasiSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Borrowing
+     * Omit specific fields from the Reservasi
      */
-    omit?: BorrowingOmit<ExtArgs> | null
+    omit?: ReservasiOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: BorrowingInclude<ExtArgs> | null
+    include?: ReservasiInclude<ExtArgs> | null
     /**
-     * The data needed to update a Borrowing.
+     * The data needed to update a Reservasi.
      */
-    data: XOR<BorrowingUpdateInput, BorrowingUncheckedUpdateInput>
+    data: XOR<ReservasiUpdateInput, ReservasiUncheckedUpdateInput>
     /**
-     * Choose, which Borrowing to update.
+     * Choose, which Reservasi to update.
      */
-    where: BorrowingWhereUniqueInput
+    where: ReservasiWhereUniqueInput
   }
 
   /**
-   * Borrowing updateMany
+   * Reservasi updateMany
    */
-  export type BorrowingUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ReservasiUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update Borrowings.
+     * The data used to update Reservasis.
      */
-    data: XOR<BorrowingUpdateManyMutationInput, BorrowingUncheckedUpdateManyInput>
+    data: XOR<ReservasiUpdateManyMutationInput, ReservasiUncheckedUpdateManyInput>
     /**
-     * Filter which Borrowings to update
+     * Filter which Reservasis to update
      */
-    where?: BorrowingWhereInput
+    where?: ReservasiWhereInput
     /**
-     * Limit how many Borrowings to update.
+     * Limit how many Reservasis to update.
      */
     limit?: number
   }
 
   /**
-   * Borrowing updateManyAndReturn
+   * Reservasi updateManyAndReturn
    */
-  export type BorrowingUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ReservasiUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Borrowing
+     * Select specific fields to fetch from the Reservasi
      */
-    select?: BorrowingSelectUpdateManyAndReturn<ExtArgs> | null
+    select?: ReservasiSelectUpdateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the Borrowing
+     * Omit specific fields from the Reservasi
      */
-    omit?: BorrowingOmit<ExtArgs> | null
+    omit?: ReservasiOmit<ExtArgs> | null
     /**
-     * The data used to update Borrowings.
+     * The data used to update Reservasis.
      */
-    data: XOR<BorrowingUpdateManyMutationInput, BorrowingUncheckedUpdateManyInput>
+    data: XOR<ReservasiUpdateManyMutationInput, ReservasiUncheckedUpdateManyInput>
     /**
-     * Filter which Borrowings to update
+     * Filter which Reservasis to update
      */
-    where?: BorrowingWhereInput
+    where?: ReservasiWhereInput
     /**
-     * Limit how many Borrowings to update.
+     * Limit how many Reservasis to update.
      */
     limit?: number
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: BorrowingIncludeUpdateManyAndReturn<ExtArgs> | null
+    include?: ReservasiIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
-   * Borrowing upsert
+   * Reservasi upsert
    */
-  export type BorrowingUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ReservasiUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Borrowing
+     * Select specific fields to fetch from the Reservasi
      */
-    select?: BorrowingSelect<ExtArgs> | null
+    select?: ReservasiSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Borrowing
+     * Omit specific fields from the Reservasi
      */
-    omit?: BorrowingOmit<ExtArgs> | null
+    omit?: ReservasiOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: BorrowingInclude<ExtArgs> | null
+    include?: ReservasiInclude<ExtArgs> | null
     /**
-     * The filter to search for the Borrowing to update in case it exists.
+     * The filter to search for the Reservasi to update in case it exists.
      */
-    where: BorrowingWhereUniqueInput
+    where: ReservasiWhereUniqueInput
     /**
-     * In case the Borrowing found by the `where` argument doesn't exist, create a new Borrowing with this data.
+     * In case the Reservasi found by the `where` argument doesn't exist, create a new Reservasi with this data.
      */
-    create: XOR<BorrowingCreateInput, BorrowingUncheckedCreateInput>
+    create: XOR<ReservasiCreateInput, ReservasiUncheckedCreateInput>
     /**
-     * In case the Borrowing was found with the provided `where` argument, update it with this data.
+     * In case the Reservasi was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<BorrowingUpdateInput, BorrowingUncheckedUpdateInput>
+    update: XOR<ReservasiUpdateInput, ReservasiUncheckedUpdateInput>
   }
 
   /**
-   * Borrowing delete
+   * Reservasi delete
    */
-  export type BorrowingDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ReservasiDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Borrowing
+     * Select specific fields to fetch from the Reservasi
      */
-    select?: BorrowingSelect<ExtArgs> | null
+    select?: ReservasiSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Borrowing
+     * Omit specific fields from the Reservasi
      */
-    omit?: BorrowingOmit<ExtArgs> | null
+    omit?: ReservasiOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: BorrowingInclude<ExtArgs> | null
+    include?: ReservasiInclude<ExtArgs> | null
     /**
-     * Filter which Borrowing to delete.
+     * Filter which Reservasi to delete.
      */
-    where: BorrowingWhereUniqueInput
+    where: ReservasiWhereUniqueInput
   }
 
   /**
-   * Borrowing deleteMany
+   * Reservasi deleteMany
    */
-  export type BorrowingDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ReservasiDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which Borrowings to delete
+     * Filter which Reservasis to delete
      */
-    where?: BorrowingWhereInput
+    where?: ReservasiWhereInput
     /**
-     * Limit how many Borrowings to delete.
+     * Limit how many Reservasis to delete.
      */
     limit?: number
   }
 
   /**
-   * Borrowing without action
+   * Reservasi without action
    */
-  export type BorrowingDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ReservasiDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Borrowing
+     * Select specific fields to fetch from the Reservasi
      */
-    select?: BorrowingSelect<ExtArgs> | null
+    select?: ReservasiSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Borrowing
+     * Omit specific fields from the Reservasi
      */
-    omit?: BorrowingOmit<ExtArgs> | null
+    omit?: ReservasiOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: BorrowingInclude<ExtArgs> | null
+    include?: ReservasiInclude<ExtArgs> | null
   }
 
 
@@ -7186,17 +7225,20 @@ export namespace Prisma {
   export type CategoryScalarFieldEnum = (typeof CategoryScalarFieldEnum)[keyof typeof CategoryScalarFieldEnum]
 
 
-  export const BorrowingScalarFieldEnum: {
+  export const ReservasiScalarFieldEnum: {
     id: 'id',
     userId: 'userId',
     bookId: 'bookId',
     tanggalPinjam: 'tanggalPinjam',
     tanggalKembali: 'tanggalKembali',
+    tanggalAmbil: 'tanggalAmbil',
+    jamAmbil: 'jamAmbil',
     status: 'status',
+    catatanAdmin: 'catatanAdmin',
     denda: 'denda'
   };
 
-  export type BorrowingScalarFieldEnum = (typeof BorrowingScalarFieldEnum)[keyof typeof BorrowingScalarFieldEnum]
+  export type ReservasiScalarFieldEnum = (typeof ReservasiScalarFieldEnum)[keyof typeof ReservasiScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -7308,7 +7350,7 @@ export namespace Prisma {
     status?: StringFilter<"User"> | string
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeNullableFilter<"User"> | Date | string | null
-    Borrowing?: BorrowingListRelationFilter
+    Reservasi?: ReservasiListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -7322,7 +7364,7 @@ export namespace Prisma {
     status?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrderInput | SortOrder
-    Borrowing?: BorrowingOrderByRelationAggregateInput
+    Reservasi?: ReservasiOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -7339,7 +7381,7 @@ export namespace Prisma {
     status?: StringFilter<"User"> | string
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeNullableFilter<"User"> | Date | string | null
-    Borrowing?: BorrowingListRelationFilter
+    Reservasi?: ReservasiListRelationFilter
   }, "id" | "email">
 
   export type UserOrderByWithAggregationInput = {
@@ -7395,7 +7437,7 @@ export namespace Prisma {
     updatedAt?: DateTimeNullableFilter<"Book"> | Date | string | null
     penulis?: XOR<AuthorScalarRelationFilter, AuthorWhereInput>
     kategori?: XOR<CategoryScalarRelationFilter, CategoryWhereInput>
-    Borrowing?: BorrowingListRelationFilter
+    Reservasi?: ReservasiListRelationFilter
   }
 
   export type BookOrderByWithRelationInput = {
@@ -7416,7 +7458,7 @@ export namespace Prisma {
     updatedAt?: SortOrderInput | SortOrder
     penulis?: AuthorOrderByWithRelationInput
     kategori?: CategoryOrderByWithRelationInput
-    Borrowing?: BorrowingOrderByRelationAggregateInput
+    Reservasi?: ReservasiOrderByRelationAggregateInput
   }
 
   export type BookWhereUniqueInput = Prisma.AtLeast<{
@@ -7440,7 +7482,7 @@ export namespace Prisma {
     updatedAt?: DateTimeNullableFilter<"Book"> | Date | string | null
     penulis?: XOR<AuthorScalarRelationFilter, AuthorWhereInput>
     kategori?: XOR<CategoryScalarRelationFilter, CategoryWhereInput>
-    Borrowing?: BorrowingListRelationFilter
+    Reservasi?: ReservasiListRelationFilter
   }, "id" | "isbn">
 
   export type BookOrderByWithAggregationInput = {
@@ -7601,74 +7643,89 @@ export namespace Prisma {
     updatedAt?: DateTimeNullableWithAggregatesFilter<"Category"> | Date | string | null
   }
 
-  export type BorrowingWhereInput = {
-    AND?: BorrowingWhereInput | BorrowingWhereInput[]
-    OR?: BorrowingWhereInput[]
-    NOT?: BorrowingWhereInput | BorrowingWhereInput[]
-    id?: IntFilter<"Borrowing"> | number
-    userId?: StringFilter<"Borrowing"> | string
-    bookId?: IntFilter<"Borrowing"> | number
-    tanggalPinjam?: DateTimeFilter<"Borrowing"> | Date | string
-    tanggalKembali?: DateTimeNullableFilter<"Borrowing"> | Date | string | null
-    status?: StringFilter<"Borrowing"> | string
-    denda?: IntFilter<"Borrowing"> | number
+  export type ReservasiWhereInput = {
+    AND?: ReservasiWhereInput | ReservasiWhereInput[]
+    OR?: ReservasiWhereInput[]
+    NOT?: ReservasiWhereInput | ReservasiWhereInput[]
+    id?: IntFilter<"Reservasi"> | number
+    userId?: StringFilter<"Reservasi"> | string
+    bookId?: IntFilter<"Reservasi"> | number
+    tanggalPinjam?: DateTimeFilter<"Reservasi"> | Date | string
+    tanggalKembali?: DateTimeNullableFilter<"Reservasi"> | Date | string | null
+    tanggalAmbil?: DateTimeNullableFilter<"Reservasi"> | Date | string | null
+    jamAmbil?: StringNullableFilter<"Reservasi"> | string | null
+    status?: StringFilter<"Reservasi"> | string
+    catatanAdmin?: StringNullableFilter<"Reservasi"> | string | null
+    denda?: IntFilter<"Reservasi"> | number
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     book?: XOR<BookScalarRelationFilter, BookWhereInput>
   }
 
-  export type BorrowingOrderByWithRelationInput = {
+  export type ReservasiOrderByWithRelationInput = {
     id?: SortOrder
     userId?: SortOrder
     bookId?: SortOrder
     tanggalPinjam?: SortOrder
     tanggalKembali?: SortOrderInput | SortOrder
+    tanggalAmbil?: SortOrderInput | SortOrder
+    jamAmbil?: SortOrderInput | SortOrder
     status?: SortOrder
+    catatanAdmin?: SortOrderInput | SortOrder
     denda?: SortOrder
     user?: UserOrderByWithRelationInput
     book?: BookOrderByWithRelationInput
   }
 
-  export type BorrowingWhereUniqueInput = Prisma.AtLeast<{
+  export type ReservasiWhereUniqueInput = Prisma.AtLeast<{
     id?: number
-    AND?: BorrowingWhereInput | BorrowingWhereInput[]
-    OR?: BorrowingWhereInput[]
-    NOT?: BorrowingWhereInput | BorrowingWhereInput[]
-    userId?: StringFilter<"Borrowing"> | string
-    bookId?: IntFilter<"Borrowing"> | number
-    tanggalPinjam?: DateTimeFilter<"Borrowing"> | Date | string
-    tanggalKembali?: DateTimeNullableFilter<"Borrowing"> | Date | string | null
-    status?: StringFilter<"Borrowing"> | string
-    denda?: IntFilter<"Borrowing"> | number
+    AND?: ReservasiWhereInput | ReservasiWhereInput[]
+    OR?: ReservasiWhereInput[]
+    NOT?: ReservasiWhereInput | ReservasiWhereInput[]
+    userId?: StringFilter<"Reservasi"> | string
+    bookId?: IntFilter<"Reservasi"> | number
+    tanggalPinjam?: DateTimeFilter<"Reservasi"> | Date | string
+    tanggalKembali?: DateTimeNullableFilter<"Reservasi"> | Date | string | null
+    tanggalAmbil?: DateTimeNullableFilter<"Reservasi"> | Date | string | null
+    jamAmbil?: StringNullableFilter<"Reservasi"> | string | null
+    status?: StringFilter<"Reservasi"> | string
+    catatanAdmin?: StringNullableFilter<"Reservasi"> | string | null
+    denda?: IntFilter<"Reservasi"> | number
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     book?: XOR<BookScalarRelationFilter, BookWhereInput>
   }, "id">
 
-  export type BorrowingOrderByWithAggregationInput = {
+  export type ReservasiOrderByWithAggregationInput = {
     id?: SortOrder
     userId?: SortOrder
     bookId?: SortOrder
     tanggalPinjam?: SortOrder
     tanggalKembali?: SortOrderInput | SortOrder
+    tanggalAmbil?: SortOrderInput | SortOrder
+    jamAmbil?: SortOrderInput | SortOrder
     status?: SortOrder
+    catatanAdmin?: SortOrderInput | SortOrder
     denda?: SortOrder
-    _count?: BorrowingCountOrderByAggregateInput
-    _avg?: BorrowingAvgOrderByAggregateInput
-    _max?: BorrowingMaxOrderByAggregateInput
-    _min?: BorrowingMinOrderByAggregateInput
-    _sum?: BorrowingSumOrderByAggregateInput
+    _count?: ReservasiCountOrderByAggregateInput
+    _avg?: ReservasiAvgOrderByAggregateInput
+    _max?: ReservasiMaxOrderByAggregateInput
+    _min?: ReservasiMinOrderByAggregateInput
+    _sum?: ReservasiSumOrderByAggregateInput
   }
 
-  export type BorrowingScalarWhereWithAggregatesInput = {
-    AND?: BorrowingScalarWhereWithAggregatesInput | BorrowingScalarWhereWithAggregatesInput[]
-    OR?: BorrowingScalarWhereWithAggregatesInput[]
-    NOT?: BorrowingScalarWhereWithAggregatesInput | BorrowingScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"Borrowing"> | number
-    userId?: StringWithAggregatesFilter<"Borrowing"> | string
-    bookId?: IntWithAggregatesFilter<"Borrowing"> | number
-    tanggalPinjam?: DateTimeWithAggregatesFilter<"Borrowing"> | Date | string
-    tanggalKembali?: DateTimeNullableWithAggregatesFilter<"Borrowing"> | Date | string | null
-    status?: StringWithAggregatesFilter<"Borrowing"> | string
-    denda?: IntWithAggregatesFilter<"Borrowing"> | number
+  export type ReservasiScalarWhereWithAggregatesInput = {
+    AND?: ReservasiScalarWhereWithAggregatesInput | ReservasiScalarWhereWithAggregatesInput[]
+    OR?: ReservasiScalarWhereWithAggregatesInput[]
+    NOT?: ReservasiScalarWhereWithAggregatesInput | ReservasiScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Reservasi"> | number
+    userId?: StringWithAggregatesFilter<"Reservasi"> | string
+    bookId?: IntWithAggregatesFilter<"Reservasi"> | number
+    tanggalPinjam?: DateTimeWithAggregatesFilter<"Reservasi"> | Date | string
+    tanggalKembali?: DateTimeNullableWithAggregatesFilter<"Reservasi"> | Date | string | null
+    tanggalAmbil?: DateTimeNullableWithAggregatesFilter<"Reservasi"> | Date | string | null
+    jamAmbil?: StringNullableWithAggregatesFilter<"Reservasi"> | string | null
+    status?: StringWithAggregatesFilter<"Reservasi"> | string
+    catatanAdmin?: StringNullableWithAggregatesFilter<"Reservasi"> | string | null
+    denda?: IntWithAggregatesFilter<"Reservasi"> | number
   }
 
   export type UserCreateInput = {
@@ -7682,7 +7739,7 @@ export namespace Prisma {
     status?: string
     createdAt?: Date | string
     updatedAt?: Date | string | null
-    Borrowing?: BorrowingCreateNestedManyWithoutUserInput
+    Reservasi?: ReservasiCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -7696,7 +7753,7 @@ export namespace Prisma {
     status?: string
     createdAt?: Date | string
     updatedAt?: Date | string | null
-    Borrowing?: BorrowingUncheckedCreateNestedManyWithoutUserInput
+    Reservasi?: ReservasiUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserUpdateInput = {
@@ -7710,7 +7767,7 @@ export namespace Prisma {
     status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    Borrowing?: BorrowingUpdateManyWithoutUserNestedInput
+    Reservasi?: ReservasiUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -7724,7 +7781,7 @@ export namespace Prisma {
     status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    Borrowing?: BorrowingUncheckedUpdateManyWithoutUserNestedInput
+    Reservasi?: ReservasiUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -7781,7 +7838,7 @@ export namespace Prisma {
     updatedAt?: Date | string | null
     penulis: AuthorCreateNestedOneWithoutBukuInput
     kategori: CategoryCreateNestedOneWithoutBukuInput
-    Borrowing?: BorrowingCreateNestedManyWithoutBookInput
+    Reservasi?: ReservasiCreateNestedManyWithoutBookInput
   }
 
   export type BookUncheckedCreateInput = {
@@ -7800,7 +7857,7 @@ export namespace Prisma {
     kategoriId: number
     createdAt?: Date | string
     updatedAt?: Date | string | null
-    Borrowing?: BorrowingUncheckedCreateNestedManyWithoutBookInput
+    Reservasi?: ReservasiUncheckedCreateNestedManyWithoutBookInput
   }
 
   export type BookUpdateInput = {
@@ -7818,7 +7875,7 @@ export namespace Prisma {
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     penulis?: AuthorUpdateOneRequiredWithoutBukuNestedInput
     kategori?: CategoryUpdateOneRequiredWithoutBukuNestedInput
-    Borrowing?: BorrowingUpdateManyWithoutBookNestedInput
+    Reservasi?: ReservasiUpdateManyWithoutBookNestedInput
   }
 
   export type BookUncheckedUpdateInput = {
@@ -7837,7 +7894,7 @@ export namespace Prisma {
     kategoriId?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    Borrowing?: BorrowingUncheckedUpdateManyWithoutBookNestedInput
+    Reservasi?: ReservasiUncheckedUpdateManyWithoutBookNestedInput
   }
 
   export type BookCreateManyInput = {
@@ -8005,68 +8062,89 @@ export namespace Prisma {
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
-  export type BorrowingCreateInput = {
+  export type ReservasiCreateInput = {
     tanggalPinjam?: Date | string
     tanggalKembali?: Date | string | null
+    tanggalAmbil?: Date | string | null
+    jamAmbil?: string | null
     status?: string
+    catatanAdmin?: string | null
     denda?: number
-    user: UserCreateNestedOneWithoutBorrowingInput
-    book: BookCreateNestedOneWithoutBorrowingInput
+    user: UserCreateNestedOneWithoutReservasiInput
+    book: BookCreateNestedOneWithoutReservasiInput
   }
 
-  export type BorrowingUncheckedCreateInput = {
+  export type ReservasiUncheckedCreateInput = {
     id?: number
     userId: string
     bookId: number
     tanggalPinjam?: Date | string
     tanggalKembali?: Date | string | null
+    tanggalAmbil?: Date | string | null
+    jamAmbil?: string | null
     status?: string
+    catatanAdmin?: string | null
     denda?: number
   }
 
-  export type BorrowingUpdateInput = {
+  export type ReservasiUpdateInput = {
     tanggalPinjam?: DateTimeFieldUpdateOperationsInput | Date | string
     tanggalKembali?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    tanggalAmbil?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    jamAmbil?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
+    catatanAdmin?: NullableStringFieldUpdateOperationsInput | string | null
     denda?: IntFieldUpdateOperationsInput | number
-    user?: UserUpdateOneRequiredWithoutBorrowingNestedInput
-    book?: BookUpdateOneRequiredWithoutBorrowingNestedInput
+    user?: UserUpdateOneRequiredWithoutReservasiNestedInput
+    book?: BookUpdateOneRequiredWithoutReservasiNestedInput
   }
 
-  export type BorrowingUncheckedUpdateInput = {
+  export type ReservasiUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     userId?: StringFieldUpdateOperationsInput | string
     bookId?: IntFieldUpdateOperationsInput | number
     tanggalPinjam?: DateTimeFieldUpdateOperationsInput | Date | string
     tanggalKembali?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    tanggalAmbil?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    jamAmbil?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
+    catatanAdmin?: NullableStringFieldUpdateOperationsInput | string | null
     denda?: IntFieldUpdateOperationsInput | number
   }
 
-  export type BorrowingCreateManyInput = {
+  export type ReservasiCreateManyInput = {
     id?: number
     userId: string
     bookId: number
     tanggalPinjam?: Date | string
     tanggalKembali?: Date | string | null
+    tanggalAmbil?: Date | string | null
+    jamAmbil?: string | null
     status?: string
+    catatanAdmin?: string | null
     denda?: number
   }
 
-  export type BorrowingUpdateManyMutationInput = {
+  export type ReservasiUpdateManyMutationInput = {
     tanggalPinjam?: DateTimeFieldUpdateOperationsInput | Date | string
     tanggalKembali?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    tanggalAmbil?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    jamAmbil?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
+    catatanAdmin?: NullableStringFieldUpdateOperationsInput | string | null
     denda?: IntFieldUpdateOperationsInput | number
   }
 
-  export type BorrowingUncheckedUpdateManyInput = {
+  export type ReservasiUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     userId?: StringFieldUpdateOperationsInput | string
     bookId?: IntFieldUpdateOperationsInput | number
     tanggalPinjam?: DateTimeFieldUpdateOperationsInput | Date | string
     tanggalKembali?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    tanggalAmbil?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    jamAmbil?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
+    catatanAdmin?: NullableStringFieldUpdateOperationsInput | string | null
     denda?: IntFieldUpdateOperationsInput | number
   }
 
@@ -8122,10 +8200,10 @@ export namespace Prisma {
     not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
 
-  export type BorrowingListRelationFilter = {
-    every?: BorrowingWhereInput
-    some?: BorrowingWhereInput
-    none?: BorrowingWhereInput
+  export type ReservasiListRelationFilter = {
+    every?: ReservasiWhereInput
+    some?: ReservasiWhereInput
+    none?: ReservasiWhereInput
   }
 
   export type SortOrderInput = {
@@ -8133,7 +8211,7 @@ export namespace Prisma {
     nulls?: NullsOrder
   }
 
-  export type BorrowingOrderByRelationAggregateInput = {
+  export type ReservasiOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -8473,60 +8551,69 @@ export namespace Prisma {
     isNot?: BookWhereInput
   }
 
-  export type BorrowingCountOrderByAggregateInput = {
+  export type ReservasiCountOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
     bookId?: SortOrder
     tanggalPinjam?: SortOrder
     tanggalKembali?: SortOrder
+    tanggalAmbil?: SortOrder
+    jamAmbil?: SortOrder
     status?: SortOrder
+    catatanAdmin?: SortOrder
     denda?: SortOrder
   }
 
-  export type BorrowingAvgOrderByAggregateInput = {
+  export type ReservasiAvgOrderByAggregateInput = {
     id?: SortOrder
     bookId?: SortOrder
     denda?: SortOrder
   }
 
-  export type BorrowingMaxOrderByAggregateInput = {
+  export type ReservasiMaxOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
     bookId?: SortOrder
     tanggalPinjam?: SortOrder
     tanggalKembali?: SortOrder
+    tanggalAmbil?: SortOrder
+    jamAmbil?: SortOrder
     status?: SortOrder
+    catatanAdmin?: SortOrder
     denda?: SortOrder
   }
 
-  export type BorrowingMinOrderByAggregateInput = {
+  export type ReservasiMinOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
     bookId?: SortOrder
     tanggalPinjam?: SortOrder
     tanggalKembali?: SortOrder
+    tanggalAmbil?: SortOrder
+    jamAmbil?: SortOrder
     status?: SortOrder
+    catatanAdmin?: SortOrder
     denda?: SortOrder
   }
 
-  export type BorrowingSumOrderByAggregateInput = {
+  export type ReservasiSumOrderByAggregateInput = {
     id?: SortOrder
     bookId?: SortOrder
     denda?: SortOrder
   }
 
-  export type BorrowingCreateNestedManyWithoutUserInput = {
-    create?: XOR<BorrowingCreateWithoutUserInput, BorrowingUncheckedCreateWithoutUserInput> | BorrowingCreateWithoutUserInput[] | BorrowingUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: BorrowingCreateOrConnectWithoutUserInput | BorrowingCreateOrConnectWithoutUserInput[]
-    createMany?: BorrowingCreateManyUserInputEnvelope
-    connect?: BorrowingWhereUniqueInput | BorrowingWhereUniqueInput[]
+  export type ReservasiCreateNestedManyWithoutUserInput = {
+    create?: XOR<ReservasiCreateWithoutUserInput, ReservasiUncheckedCreateWithoutUserInput> | ReservasiCreateWithoutUserInput[] | ReservasiUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ReservasiCreateOrConnectWithoutUserInput | ReservasiCreateOrConnectWithoutUserInput[]
+    createMany?: ReservasiCreateManyUserInputEnvelope
+    connect?: ReservasiWhereUniqueInput | ReservasiWhereUniqueInput[]
   }
 
-  export type BorrowingUncheckedCreateNestedManyWithoutUserInput = {
-    create?: XOR<BorrowingCreateWithoutUserInput, BorrowingUncheckedCreateWithoutUserInput> | BorrowingCreateWithoutUserInput[] | BorrowingUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: BorrowingCreateOrConnectWithoutUserInput | BorrowingCreateOrConnectWithoutUserInput[]
-    createMany?: BorrowingCreateManyUserInputEnvelope
-    connect?: BorrowingWhereUniqueInput | BorrowingWhereUniqueInput[]
+  export type ReservasiUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<ReservasiCreateWithoutUserInput, ReservasiUncheckedCreateWithoutUserInput> | ReservasiCreateWithoutUserInput[] | ReservasiUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ReservasiCreateOrConnectWithoutUserInput | ReservasiCreateOrConnectWithoutUserInput[]
+    createMany?: ReservasiCreateManyUserInputEnvelope
+    connect?: ReservasiWhereUniqueInput | ReservasiWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -8545,32 +8632,32 @@ export namespace Prisma {
     set?: Date | string | null
   }
 
-  export type BorrowingUpdateManyWithoutUserNestedInput = {
-    create?: XOR<BorrowingCreateWithoutUserInput, BorrowingUncheckedCreateWithoutUserInput> | BorrowingCreateWithoutUserInput[] | BorrowingUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: BorrowingCreateOrConnectWithoutUserInput | BorrowingCreateOrConnectWithoutUserInput[]
-    upsert?: BorrowingUpsertWithWhereUniqueWithoutUserInput | BorrowingUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: BorrowingCreateManyUserInputEnvelope
-    set?: BorrowingWhereUniqueInput | BorrowingWhereUniqueInput[]
-    disconnect?: BorrowingWhereUniqueInput | BorrowingWhereUniqueInput[]
-    delete?: BorrowingWhereUniqueInput | BorrowingWhereUniqueInput[]
-    connect?: BorrowingWhereUniqueInput | BorrowingWhereUniqueInput[]
-    update?: BorrowingUpdateWithWhereUniqueWithoutUserInput | BorrowingUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: BorrowingUpdateManyWithWhereWithoutUserInput | BorrowingUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: BorrowingScalarWhereInput | BorrowingScalarWhereInput[]
+  export type ReservasiUpdateManyWithoutUserNestedInput = {
+    create?: XOR<ReservasiCreateWithoutUserInput, ReservasiUncheckedCreateWithoutUserInput> | ReservasiCreateWithoutUserInput[] | ReservasiUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ReservasiCreateOrConnectWithoutUserInput | ReservasiCreateOrConnectWithoutUserInput[]
+    upsert?: ReservasiUpsertWithWhereUniqueWithoutUserInput | ReservasiUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: ReservasiCreateManyUserInputEnvelope
+    set?: ReservasiWhereUniqueInput | ReservasiWhereUniqueInput[]
+    disconnect?: ReservasiWhereUniqueInput | ReservasiWhereUniqueInput[]
+    delete?: ReservasiWhereUniqueInput | ReservasiWhereUniqueInput[]
+    connect?: ReservasiWhereUniqueInput | ReservasiWhereUniqueInput[]
+    update?: ReservasiUpdateWithWhereUniqueWithoutUserInput | ReservasiUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: ReservasiUpdateManyWithWhereWithoutUserInput | ReservasiUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: ReservasiScalarWhereInput | ReservasiScalarWhereInput[]
   }
 
-  export type BorrowingUncheckedUpdateManyWithoutUserNestedInput = {
-    create?: XOR<BorrowingCreateWithoutUserInput, BorrowingUncheckedCreateWithoutUserInput> | BorrowingCreateWithoutUserInput[] | BorrowingUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: BorrowingCreateOrConnectWithoutUserInput | BorrowingCreateOrConnectWithoutUserInput[]
-    upsert?: BorrowingUpsertWithWhereUniqueWithoutUserInput | BorrowingUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: BorrowingCreateManyUserInputEnvelope
-    set?: BorrowingWhereUniqueInput | BorrowingWhereUniqueInput[]
-    disconnect?: BorrowingWhereUniqueInput | BorrowingWhereUniqueInput[]
-    delete?: BorrowingWhereUniqueInput | BorrowingWhereUniqueInput[]
-    connect?: BorrowingWhereUniqueInput | BorrowingWhereUniqueInput[]
-    update?: BorrowingUpdateWithWhereUniqueWithoutUserInput | BorrowingUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: BorrowingUpdateManyWithWhereWithoutUserInput | BorrowingUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: BorrowingScalarWhereInput | BorrowingScalarWhereInput[]
+  export type ReservasiUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<ReservasiCreateWithoutUserInput, ReservasiUncheckedCreateWithoutUserInput> | ReservasiCreateWithoutUserInput[] | ReservasiUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ReservasiCreateOrConnectWithoutUserInput | ReservasiCreateOrConnectWithoutUserInput[]
+    upsert?: ReservasiUpsertWithWhereUniqueWithoutUserInput | ReservasiUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: ReservasiCreateManyUserInputEnvelope
+    set?: ReservasiWhereUniqueInput | ReservasiWhereUniqueInput[]
+    disconnect?: ReservasiWhereUniqueInput | ReservasiWhereUniqueInput[]
+    delete?: ReservasiWhereUniqueInput | ReservasiWhereUniqueInput[]
+    connect?: ReservasiWhereUniqueInput | ReservasiWhereUniqueInput[]
+    update?: ReservasiUpdateWithWhereUniqueWithoutUserInput | ReservasiUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: ReservasiUpdateManyWithWhereWithoutUserInput | ReservasiUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: ReservasiScalarWhereInput | ReservasiScalarWhereInput[]
   }
 
   export type AuthorCreateNestedOneWithoutBukuInput = {
@@ -8585,18 +8672,18 @@ export namespace Prisma {
     connect?: CategoryWhereUniqueInput
   }
 
-  export type BorrowingCreateNestedManyWithoutBookInput = {
-    create?: XOR<BorrowingCreateWithoutBookInput, BorrowingUncheckedCreateWithoutBookInput> | BorrowingCreateWithoutBookInput[] | BorrowingUncheckedCreateWithoutBookInput[]
-    connectOrCreate?: BorrowingCreateOrConnectWithoutBookInput | BorrowingCreateOrConnectWithoutBookInput[]
-    createMany?: BorrowingCreateManyBookInputEnvelope
-    connect?: BorrowingWhereUniqueInput | BorrowingWhereUniqueInput[]
+  export type ReservasiCreateNestedManyWithoutBookInput = {
+    create?: XOR<ReservasiCreateWithoutBookInput, ReservasiUncheckedCreateWithoutBookInput> | ReservasiCreateWithoutBookInput[] | ReservasiUncheckedCreateWithoutBookInput[]
+    connectOrCreate?: ReservasiCreateOrConnectWithoutBookInput | ReservasiCreateOrConnectWithoutBookInput[]
+    createMany?: ReservasiCreateManyBookInputEnvelope
+    connect?: ReservasiWhereUniqueInput | ReservasiWhereUniqueInput[]
   }
 
-  export type BorrowingUncheckedCreateNestedManyWithoutBookInput = {
-    create?: XOR<BorrowingCreateWithoutBookInput, BorrowingUncheckedCreateWithoutBookInput> | BorrowingCreateWithoutBookInput[] | BorrowingUncheckedCreateWithoutBookInput[]
-    connectOrCreate?: BorrowingCreateOrConnectWithoutBookInput | BorrowingCreateOrConnectWithoutBookInput[]
-    createMany?: BorrowingCreateManyBookInputEnvelope
-    connect?: BorrowingWhereUniqueInput | BorrowingWhereUniqueInput[]
+  export type ReservasiUncheckedCreateNestedManyWithoutBookInput = {
+    create?: XOR<ReservasiCreateWithoutBookInput, ReservasiUncheckedCreateWithoutBookInput> | ReservasiCreateWithoutBookInput[] | ReservasiUncheckedCreateWithoutBookInput[]
+    connectOrCreate?: ReservasiCreateOrConnectWithoutBookInput | ReservasiCreateOrConnectWithoutBookInput[]
+    createMany?: ReservasiCreateManyBookInputEnvelope
+    connect?: ReservasiWhereUniqueInput | ReservasiWhereUniqueInput[]
   }
 
   export type IntFieldUpdateOperationsInput = {
@@ -8635,32 +8722,32 @@ export namespace Prisma {
     update?: XOR<XOR<CategoryUpdateToOneWithWhereWithoutBukuInput, CategoryUpdateWithoutBukuInput>, CategoryUncheckedUpdateWithoutBukuInput>
   }
 
-  export type BorrowingUpdateManyWithoutBookNestedInput = {
-    create?: XOR<BorrowingCreateWithoutBookInput, BorrowingUncheckedCreateWithoutBookInput> | BorrowingCreateWithoutBookInput[] | BorrowingUncheckedCreateWithoutBookInput[]
-    connectOrCreate?: BorrowingCreateOrConnectWithoutBookInput | BorrowingCreateOrConnectWithoutBookInput[]
-    upsert?: BorrowingUpsertWithWhereUniqueWithoutBookInput | BorrowingUpsertWithWhereUniqueWithoutBookInput[]
-    createMany?: BorrowingCreateManyBookInputEnvelope
-    set?: BorrowingWhereUniqueInput | BorrowingWhereUniqueInput[]
-    disconnect?: BorrowingWhereUniqueInput | BorrowingWhereUniqueInput[]
-    delete?: BorrowingWhereUniqueInput | BorrowingWhereUniqueInput[]
-    connect?: BorrowingWhereUniqueInput | BorrowingWhereUniqueInput[]
-    update?: BorrowingUpdateWithWhereUniqueWithoutBookInput | BorrowingUpdateWithWhereUniqueWithoutBookInput[]
-    updateMany?: BorrowingUpdateManyWithWhereWithoutBookInput | BorrowingUpdateManyWithWhereWithoutBookInput[]
-    deleteMany?: BorrowingScalarWhereInput | BorrowingScalarWhereInput[]
+  export type ReservasiUpdateManyWithoutBookNestedInput = {
+    create?: XOR<ReservasiCreateWithoutBookInput, ReservasiUncheckedCreateWithoutBookInput> | ReservasiCreateWithoutBookInput[] | ReservasiUncheckedCreateWithoutBookInput[]
+    connectOrCreate?: ReservasiCreateOrConnectWithoutBookInput | ReservasiCreateOrConnectWithoutBookInput[]
+    upsert?: ReservasiUpsertWithWhereUniqueWithoutBookInput | ReservasiUpsertWithWhereUniqueWithoutBookInput[]
+    createMany?: ReservasiCreateManyBookInputEnvelope
+    set?: ReservasiWhereUniqueInput | ReservasiWhereUniqueInput[]
+    disconnect?: ReservasiWhereUniqueInput | ReservasiWhereUniqueInput[]
+    delete?: ReservasiWhereUniqueInput | ReservasiWhereUniqueInput[]
+    connect?: ReservasiWhereUniqueInput | ReservasiWhereUniqueInput[]
+    update?: ReservasiUpdateWithWhereUniqueWithoutBookInput | ReservasiUpdateWithWhereUniqueWithoutBookInput[]
+    updateMany?: ReservasiUpdateManyWithWhereWithoutBookInput | ReservasiUpdateManyWithWhereWithoutBookInput[]
+    deleteMany?: ReservasiScalarWhereInput | ReservasiScalarWhereInput[]
   }
 
-  export type BorrowingUncheckedUpdateManyWithoutBookNestedInput = {
-    create?: XOR<BorrowingCreateWithoutBookInput, BorrowingUncheckedCreateWithoutBookInput> | BorrowingCreateWithoutBookInput[] | BorrowingUncheckedCreateWithoutBookInput[]
-    connectOrCreate?: BorrowingCreateOrConnectWithoutBookInput | BorrowingCreateOrConnectWithoutBookInput[]
-    upsert?: BorrowingUpsertWithWhereUniqueWithoutBookInput | BorrowingUpsertWithWhereUniqueWithoutBookInput[]
-    createMany?: BorrowingCreateManyBookInputEnvelope
-    set?: BorrowingWhereUniqueInput | BorrowingWhereUniqueInput[]
-    disconnect?: BorrowingWhereUniqueInput | BorrowingWhereUniqueInput[]
-    delete?: BorrowingWhereUniqueInput | BorrowingWhereUniqueInput[]
-    connect?: BorrowingWhereUniqueInput | BorrowingWhereUniqueInput[]
-    update?: BorrowingUpdateWithWhereUniqueWithoutBookInput | BorrowingUpdateWithWhereUniqueWithoutBookInput[]
-    updateMany?: BorrowingUpdateManyWithWhereWithoutBookInput | BorrowingUpdateManyWithWhereWithoutBookInput[]
-    deleteMany?: BorrowingScalarWhereInput | BorrowingScalarWhereInput[]
+  export type ReservasiUncheckedUpdateManyWithoutBookNestedInput = {
+    create?: XOR<ReservasiCreateWithoutBookInput, ReservasiUncheckedCreateWithoutBookInput> | ReservasiCreateWithoutBookInput[] | ReservasiUncheckedCreateWithoutBookInput[]
+    connectOrCreate?: ReservasiCreateOrConnectWithoutBookInput | ReservasiCreateOrConnectWithoutBookInput[]
+    upsert?: ReservasiUpsertWithWhereUniqueWithoutBookInput | ReservasiUpsertWithWhereUniqueWithoutBookInput[]
+    createMany?: ReservasiCreateManyBookInputEnvelope
+    set?: ReservasiWhereUniqueInput | ReservasiWhereUniqueInput[]
+    disconnect?: ReservasiWhereUniqueInput | ReservasiWhereUniqueInput[]
+    delete?: ReservasiWhereUniqueInput | ReservasiWhereUniqueInput[]
+    connect?: ReservasiWhereUniqueInput | ReservasiWhereUniqueInput[]
+    update?: ReservasiUpdateWithWhereUniqueWithoutBookInput | ReservasiUpdateWithWhereUniqueWithoutBookInput[]
+    updateMany?: ReservasiUpdateManyWithWhereWithoutBookInput | ReservasiUpdateManyWithWhereWithoutBookInput[]
+    deleteMany?: ReservasiScalarWhereInput | ReservasiScalarWhereInput[]
   }
 
   export type BookCreateNestedManyWithoutPenulisInput = {
@@ -8747,32 +8834,32 @@ export namespace Prisma {
     deleteMany?: BookScalarWhereInput | BookScalarWhereInput[]
   }
 
-  export type UserCreateNestedOneWithoutBorrowingInput = {
-    create?: XOR<UserCreateWithoutBorrowingInput, UserUncheckedCreateWithoutBorrowingInput>
-    connectOrCreate?: UserCreateOrConnectWithoutBorrowingInput
+  export type UserCreateNestedOneWithoutReservasiInput = {
+    create?: XOR<UserCreateWithoutReservasiInput, UserUncheckedCreateWithoutReservasiInput>
+    connectOrCreate?: UserCreateOrConnectWithoutReservasiInput
     connect?: UserWhereUniqueInput
   }
 
-  export type BookCreateNestedOneWithoutBorrowingInput = {
-    create?: XOR<BookCreateWithoutBorrowingInput, BookUncheckedCreateWithoutBorrowingInput>
-    connectOrCreate?: BookCreateOrConnectWithoutBorrowingInput
+  export type BookCreateNestedOneWithoutReservasiInput = {
+    create?: XOR<BookCreateWithoutReservasiInput, BookUncheckedCreateWithoutReservasiInput>
+    connectOrCreate?: BookCreateOrConnectWithoutReservasiInput
     connect?: BookWhereUniqueInput
   }
 
-  export type UserUpdateOneRequiredWithoutBorrowingNestedInput = {
-    create?: XOR<UserCreateWithoutBorrowingInput, UserUncheckedCreateWithoutBorrowingInput>
-    connectOrCreate?: UserCreateOrConnectWithoutBorrowingInput
-    upsert?: UserUpsertWithoutBorrowingInput
+  export type UserUpdateOneRequiredWithoutReservasiNestedInput = {
+    create?: XOR<UserCreateWithoutReservasiInput, UserUncheckedCreateWithoutReservasiInput>
+    connectOrCreate?: UserCreateOrConnectWithoutReservasiInput
+    upsert?: UserUpsertWithoutReservasiInput
     connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutBorrowingInput, UserUpdateWithoutBorrowingInput>, UserUncheckedUpdateWithoutBorrowingInput>
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutReservasiInput, UserUpdateWithoutReservasiInput>, UserUncheckedUpdateWithoutReservasiInput>
   }
 
-  export type BookUpdateOneRequiredWithoutBorrowingNestedInput = {
-    create?: XOR<BookCreateWithoutBorrowingInput, BookUncheckedCreateWithoutBorrowingInput>
-    connectOrCreate?: BookCreateOrConnectWithoutBorrowingInput
-    upsert?: BookUpsertWithoutBorrowingInput
+  export type BookUpdateOneRequiredWithoutReservasiNestedInput = {
+    create?: XOR<BookCreateWithoutReservasiInput, BookUncheckedCreateWithoutReservasiInput>
+    connectOrCreate?: BookCreateOrConnectWithoutReservasiInput
+    upsert?: BookUpsertWithoutReservasiInput
     connect?: BookWhereUniqueInput
-    update?: XOR<XOR<BookUpdateToOneWithWhereWithoutBorrowingInput, BookUpdateWithoutBorrowingInput>, BookUncheckedUpdateWithoutBorrowingInput>
+    update?: XOR<XOR<BookUpdateToOneWithWhereWithoutReservasiInput, BookUpdateWithoutReservasiInput>, BookUncheckedUpdateWithoutReservasiInput>
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -8976,60 +9063,69 @@ export namespace Prisma {
     _max?: NestedBoolFilter<$PrismaModel>
   }
 
-  export type BorrowingCreateWithoutUserInput = {
+  export type ReservasiCreateWithoutUserInput = {
     tanggalPinjam?: Date | string
     tanggalKembali?: Date | string | null
+    tanggalAmbil?: Date | string | null
+    jamAmbil?: string | null
     status?: string
+    catatanAdmin?: string | null
     denda?: number
-    book: BookCreateNestedOneWithoutBorrowingInput
+    book: BookCreateNestedOneWithoutReservasiInput
   }
 
-  export type BorrowingUncheckedCreateWithoutUserInput = {
+  export type ReservasiUncheckedCreateWithoutUserInput = {
     id?: number
     bookId: number
     tanggalPinjam?: Date | string
     tanggalKembali?: Date | string | null
+    tanggalAmbil?: Date | string | null
+    jamAmbil?: string | null
     status?: string
+    catatanAdmin?: string | null
     denda?: number
   }
 
-  export type BorrowingCreateOrConnectWithoutUserInput = {
-    where: BorrowingWhereUniqueInput
-    create: XOR<BorrowingCreateWithoutUserInput, BorrowingUncheckedCreateWithoutUserInput>
+  export type ReservasiCreateOrConnectWithoutUserInput = {
+    where: ReservasiWhereUniqueInput
+    create: XOR<ReservasiCreateWithoutUserInput, ReservasiUncheckedCreateWithoutUserInput>
   }
 
-  export type BorrowingCreateManyUserInputEnvelope = {
-    data: BorrowingCreateManyUserInput | BorrowingCreateManyUserInput[]
+  export type ReservasiCreateManyUserInputEnvelope = {
+    data: ReservasiCreateManyUserInput | ReservasiCreateManyUserInput[]
     skipDuplicates?: boolean
   }
 
-  export type BorrowingUpsertWithWhereUniqueWithoutUserInput = {
-    where: BorrowingWhereUniqueInput
-    update: XOR<BorrowingUpdateWithoutUserInput, BorrowingUncheckedUpdateWithoutUserInput>
-    create: XOR<BorrowingCreateWithoutUserInput, BorrowingUncheckedCreateWithoutUserInput>
+  export type ReservasiUpsertWithWhereUniqueWithoutUserInput = {
+    where: ReservasiWhereUniqueInput
+    update: XOR<ReservasiUpdateWithoutUserInput, ReservasiUncheckedUpdateWithoutUserInput>
+    create: XOR<ReservasiCreateWithoutUserInput, ReservasiUncheckedCreateWithoutUserInput>
   }
 
-  export type BorrowingUpdateWithWhereUniqueWithoutUserInput = {
-    where: BorrowingWhereUniqueInput
-    data: XOR<BorrowingUpdateWithoutUserInput, BorrowingUncheckedUpdateWithoutUserInput>
+  export type ReservasiUpdateWithWhereUniqueWithoutUserInput = {
+    where: ReservasiWhereUniqueInput
+    data: XOR<ReservasiUpdateWithoutUserInput, ReservasiUncheckedUpdateWithoutUserInput>
   }
 
-  export type BorrowingUpdateManyWithWhereWithoutUserInput = {
-    where: BorrowingScalarWhereInput
-    data: XOR<BorrowingUpdateManyMutationInput, BorrowingUncheckedUpdateManyWithoutUserInput>
+  export type ReservasiUpdateManyWithWhereWithoutUserInput = {
+    where: ReservasiScalarWhereInput
+    data: XOR<ReservasiUpdateManyMutationInput, ReservasiUncheckedUpdateManyWithoutUserInput>
   }
 
-  export type BorrowingScalarWhereInput = {
-    AND?: BorrowingScalarWhereInput | BorrowingScalarWhereInput[]
-    OR?: BorrowingScalarWhereInput[]
-    NOT?: BorrowingScalarWhereInput | BorrowingScalarWhereInput[]
-    id?: IntFilter<"Borrowing"> | number
-    userId?: StringFilter<"Borrowing"> | string
-    bookId?: IntFilter<"Borrowing"> | number
-    tanggalPinjam?: DateTimeFilter<"Borrowing"> | Date | string
-    tanggalKembali?: DateTimeNullableFilter<"Borrowing"> | Date | string | null
-    status?: StringFilter<"Borrowing"> | string
-    denda?: IntFilter<"Borrowing"> | number
+  export type ReservasiScalarWhereInput = {
+    AND?: ReservasiScalarWhereInput | ReservasiScalarWhereInput[]
+    OR?: ReservasiScalarWhereInput[]
+    NOT?: ReservasiScalarWhereInput | ReservasiScalarWhereInput[]
+    id?: IntFilter<"Reservasi"> | number
+    userId?: StringFilter<"Reservasi"> | string
+    bookId?: IntFilter<"Reservasi"> | number
+    tanggalPinjam?: DateTimeFilter<"Reservasi"> | Date | string
+    tanggalKembali?: DateTimeNullableFilter<"Reservasi"> | Date | string | null
+    tanggalAmbil?: DateTimeNullableFilter<"Reservasi"> | Date | string | null
+    jamAmbil?: StringNullableFilter<"Reservasi"> | string | null
+    status?: StringFilter<"Reservasi"> | string
+    catatanAdmin?: StringNullableFilter<"Reservasi"> | string | null
+    denda?: IntFilter<"Reservasi"> | number
   }
 
   export type AuthorCreateWithoutBukuInput = {
@@ -9072,30 +9168,36 @@ export namespace Prisma {
     create: XOR<CategoryCreateWithoutBukuInput, CategoryUncheckedCreateWithoutBukuInput>
   }
 
-  export type BorrowingCreateWithoutBookInput = {
+  export type ReservasiCreateWithoutBookInput = {
     tanggalPinjam?: Date | string
     tanggalKembali?: Date | string | null
+    tanggalAmbil?: Date | string | null
+    jamAmbil?: string | null
     status?: string
+    catatanAdmin?: string | null
     denda?: number
-    user: UserCreateNestedOneWithoutBorrowingInput
+    user: UserCreateNestedOneWithoutReservasiInput
   }
 
-  export type BorrowingUncheckedCreateWithoutBookInput = {
+  export type ReservasiUncheckedCreateWithoutBookInput = {
     id?: number
     userId: string
     tanggalPinjam?: Date | string
     tanggalKembali?: Date | string | null
+    tanggalAmbil?: Date | string | null
+    jamAmbil?: string | null
     status?: string
+    catatanAdmin?: string | null
     denda?: number
   }
 
-  export type BorrowingCreateOrConnectWithoutBookInput = {
-    where: BorrowingWhereUniqueInput
-    create: XOR<BorrowingCreateWithoutBookInput, BorrowingUncheckedCreateWithoutBookInput>
+  export type ReservasiCreateOrConnectWithoutBookInput = {
+    where: ReservasiWhereUniqueInput
+    create: XOR<ReservasiCreateWithoutBookInput, ReservasiUncheckedCreateWithoutBookInput>
   }
 
-  export type BorrowingCreateManyBookInputEnvelope = {
-    data: BorrowingCreateManyBookInput | BorrowingCreateManyBookInput[]
+  export type ReservasiCreateManyBookInputEnvelope = {
+    data: ReservasiCreateManyBookInput | ReservasiCreateManyBookInput[]
     skipDuplicates?: boolean
   }
 
@@ -9151,20 +9253,20 @@ export namespace Prisma {
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
-  export type BorrowingUpsertWithWhereUniqueWithoutBookInput = {
-    where: BorrowingWhereUniqueInput
-    update: XOR<BorrowingUpdateWithoutBookInput, BorrowingUncheckedUpdateWithoutBookInput>
-    create: XOR<BorrowingCreateWithoutBookInput, BorrowingUncheckedCreateWithoutBookInput>
+  export type ReservasiUpsertWithWhereUniqueWithoutBookInput = {
+    where: ReservasiWhereUniqueInput
+    update: XOR<ReservasiUpdateWithoutBookInput, ReservasiUncheckedUpdateWithoutBookInput>
+    create: XOR<ReservasiCreateWithoutBookInput, ReservasiUncheckedCreateWithoutBookInput>
   }
 
-  export type BorrowingUpdateWithWhereUniqueWithoutBookInput = {
-    where: BorrowingWhereUniqueInput
-    data: XOR<BorrowingUpdateWithoutBookInput, BorrowingUncheckedUpdateWithoutBookInput>
+  export type ReservasiUpdateWithWhereUniqueWithoutBookInput = {
+    where: ReservasiWhereUniqueInput
+    data: XOR<ReservasiUpdateWithoutBookInput, ReservasiUncheckedUpdateWithoutBookInput>
   }
 
-  export type BorrowingUpdateManyWithWhereWithoutBookInput = {
-    where: BorrowingScalarWhereInput
-    data: XOR<BorrowingUpdateManyMutationInput, BorrowingUncheckedUpdateManyWithoutBookInput>
+  export type ReservasiUpdateManyWithWhereWithoutBookInput = {
+    where: ReservasiScalarWhereInput
+    data: XOR<ReservasiUpdateManyMutationInput, ReservasiUncheckedUpdateManyWithoutBookInput>
   }
 
   export type BookCreateWithoutPenulisInput = {
@@ -9181,7 +9283,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string | null
     kategori: CategoryCreateNestedOneWithoutBukuInput
-    Borrowing?: BorrowingCreateNestedManyWithoutBookInput
+    Reservasi?: ReservasiCreateNestedManyWithoutBookInput
   }
 
   export type BookUncheckedCreateWithoutPenulisInput = {
@@ -9199,7 +9301,7 @@ export namespace Prisma {
     kategoriId: number
     createdAt?: Date | string
     updatedAt?: Date | string | null
-    Borrowing?: BorrowingUncheckedCreateNestedManyWithoutBookInput
+    Reservasi?: ReservasiUncheckedCreateNestedManyWithoutBookInput
   }
 
   export type BookCreateOrConnectWithoutPenulisInput = {
@@ -9263,7 +9365,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string | null
     penulis: AuthorCreateNestedOneWithoutBukuInput
-    Borrowing?: BorrowingCreateNestedManyWithoutBookInput
+    Reservasi?: ReservasiCreateNestedManyWithoutBookInput
   }
 
   export type BookUncheckedCreateWithoutKategoriInput = {
@@ -9281,7 +9383,7 @@ export namespace Prisma {
     penulisId: number
     createdAt?: Date | string
     updatedAt?: Date | string | null
-    Borrowing?: BorrowingUncheckedCreateNestedManyWithoutBookInput
+    Reservasi?: ReservasiUncheckedCreateNestedManyWithoutBookInput
   }
 
   export type BookCreateOrConnectWithoutKategoriInput = {
@@ -9310,7 +9412,7 @@ export namespace Prisma {
     data: XOR<BookUpdateManyMutationInput, BookUncheckedUpdateManyWithoutKategoriInput>
   }
 
-  export type UserCreateWithoutBorrowingInput = {
+  export type UserCreateWithoutReservasiInput = {
     id?: string
     nama: string
     email: string
@@ -9323,7 +9425,7 @@ export namespace Prisma {
     updatedAt?: Date | string | null
   }
 
-  export type UserUncheckedCreateWithoutBorrowingInput = {
+  export type UserUncheckedCreateWithoutReservasiInput = {
     id?: string
     nama: string
     email: string
@@ -9336,12 +9438,12 @@ export namespace Prisma {
     updatedAt?: Date | string | null
   }
 
-  export type UserCreateOrConnectWithoutBorrowingInput = {
+  export type UserCreateOrConnectWithoutReservasiInput = {
     where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutBorrowingInput, UserUncheckedCreateWithoutBorrowingInput>
+    create: XOR<UserCreateWithoutReservasiInput, UserUncheckedCreateWithoutReservasiInput>
   }
 
-  export type BookCreateWithoutBorrowingInput = {
+  export type BookCreateWithoutReservasiInput = {
     judul: string
     isbn: string
     deskripsi?: string | null
@@ -9358,7 +9460,7 @@ export namespace Prisma {
     kategori: CategoryCreateNestedOneWithoutBukuInput
   }
 
-  export type BookUncheckedCreateWithoutBorrowingInput = {
+  export type BookUncheckedCreateWithoutReservasiInput = {
     id?: number
     judul: string
     isbn: string
@@ -9376,23 +9478,23 @@ export namespace Prisma {
     updatedAt?: Date | string | null
   }
 
-  export type BookCreateOrConnectWithoutBorrowingInput = {
+  export type BookCreateOrConnectWithoutReservasiInput = {
     where: BookWhereUniqueInput
-    create: XOR<BookCreateWithoutBorrowingInput, BookUncheckedCreateWithoutBorrowingInput>
+    create: XOR<BookCreateWithoutReservasiInput, BookUncheckedCreateWithoutReservasiInput>
   }
 
-  export type UserUpsertWithoutBorrowingInput = {
-    update: XOR<UserUpdateWithoutBorrowingInput, UserUncheckedUpdateWithoutBorrowingInput>
-    create: XOR<UserCreateWithoutBorrowingInput, UserUncheckedCreateWithoutBorrowingInput>
+  export type UserUpsertWithoutReservasiInput = {
+    update: XOR<UserUpdateWithoutReservasiInput, UserUncheckedUpdateWithoutReservasiInput>
+    create: XOR<UserCreateWithoutReservasiInput, UserUncheckedCreateWithoutReservasiInput>
     where?: UserWhereInput
   }
 
-  export type UserUpdateToOneWithWhereWithoutBorrowingInput = {
+  export type UserUpdateToOneWithWhereWithoutReservasiInput = {
     where?: UserWhereInput
-    data: XOR<UserUpdateWithoutBorrowingInput, UserUncheckedUpdateWithoutBorrowingInput>
+    data: XOR<UserUpdateWithoutReservasiInput, UserUncheckedUpdateWithoutReservasiInput>
   }
 
-  export type UserUpdateWithoutBorrowingInput = {
+  export type UserUpdateWithoutReservasiInput = {
     id?: StringFieldUpdateOperationsInput | string
     nama?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
@@ -9405,7 +9507,7 @@ export namespace Prisma {
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
-  export type UserUncheckedUpdateWithoutBorrowingInput = {
+  export type UserUncheckedUpdateWithoutReservasiInput = {
     id?: StringFieldUpdateOperationsInput | string
     nama?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
@@ -9418,18 +9520,18 @@ export namespace Prisma {
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
-  export type BookUpsertWithoutBorrowingInput = {
-    update: XOR<BookUpdateWithoutBorrowingInput, BookUncheckedUpdateWithoutBorrowingInput>
-    create: XOR<BookCreateWithoutBorrowingInput, BookUncheckedCreateWithoutBorrowingInput>
+  export type BookUpsertWithoutReservasiInput = {
+    update: XOR<BookUpdateWithoutReservasiInput, BookUncheckedUpdateWithoutReservasiInput>
+    create: XOR<BookCreateWithoutReservasiInput, BookUncheckedCreateWithoutReservasiInput>
     where?: BookWhereInput
   }
 
-  export type BookUpdateToOneWithWhereWithoutBorrowingInput = {
+  export type BookUpdateToOneWithWhereWithoutReservasiInput = {
     where?: BookWhereInput
-    data: XOR<BookUpdateWithoutBorrowingInput, BookUncheckedUpdateWithoutBorrowingInput>
+    data: XOR<BookUpdateWithoutReservasiInput, BookUncheckedUpdateWithoutReservasiInput>
   }
 
-  export type BookUpdateWithoutBorrowingInput = {
+  export type BookUpdateWithoutReservasiInput = {
     judul?: StringFieldUpdateOperationsInput | string
     isbn?: StringFieldUpdateOperationsInput | string
     deskripsi?: NullableStringFieldUpdateOperationsInput | string | null
@@ -9446,7 +9548,7 @@ export namespace Prisma {
     kategori?: CategoryUpdateOneRequiredWithoutBukuNestedInput
   }
 
-  export type BookUncheckedUpdateWithoutBorrowingInput = {
+  export type BookUncheckedUpdateWithoutReservasiInput = {
     id?: IntFieldUpdateOperationsInput | number
     judul?: StringFieldUpdateOperationsInput | string
     isbn?: StringFieldUpdateOperationsInput | string
@@ -9464,73 +9566,97 @@ export namespace Prisma {
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
-  export type BorrowingCreateManyUserInput = {
+  export type ReservasiCreateManyUserInput = {
     id?: number
     bookId: number
     tanggalPinjam?: Date | string
     tanggalKembali?: Date | string | null
+    tanggalAmbil?: Date | string | null
+    jamAmbil?: string | null
     status?: string
+    catatanAdmin?: string | null
     denda?: number
   }
 
-  export type BorrowingUpdateWithoutUserInput = {
+  export type ReservasiUpdateWithoutUserInput = {
     tanggalPinjam?: DateTimeFieldUpdateOperationsInput | Date | string
     tanggalKembali?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    tanggalAmbil?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    jamAmbil?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
+    catatanAdmin?: NullableStringFieldUpdateOperationsInput | string | null
     denda?: IntFieldUpdateOperationsInput | number
-    book?: BookUpdateOneRequiredWithoutBorrowingNestedInput
+    book?: BookUpdateOneRequiredWithoutReservasiNestedInput
   }
 
-  export type BorrowingUncheckedUpdateWithoutUserInput = {
+  export type ReservasiUncheckedUpdateWithoutUserInput = {
     id?: IntFieldUpdateOperationsInput | number
     bookId?: IntFieldUpdateOperationsInput | number
     tanggalPinjam?: DateTimeFieldUpdateOperationsInput | Date | string
     tanggalKembali?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    tanggalAmbil?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    jamAmbil?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
+    catatanAdmin?: NullableStringFieldUpdateOperationsInput | string | null
     denda?: IntFieldUpdateOperationsInput | number
   }
 
-  export type BorrowingUncheckedUpdateManyWithoutUserInput = {
+  export type ReservasiUncheckedUpdateManyWithoutUserInput = {
     id?: IntFieldUpdateOperationsInput | number
     bookId?: IntFieldUpdateOperationsInput | number
     tanggalPinjam?: DateTimeFieldUpdateOperationsInput | Date | string
     tanggalKembali?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    tanggalAmbil?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    jamAmbil?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
+    catatanAdmin?: NullableStringFieldUpdateOperationsInput | string | null
     denda?: IntFieldUpdateOperationsInput | number
   }
 
-  export type BorrowingCreateManyBookInput = {
+  export type ReservasiCreateManyBookInput = {
     id?: number
     userId: string
     tanggalPinjam?: Date | string
     tanggalKembali?: Date | string | null
+    tanggalAmbil?: Date | string | null
+    jamAmbil?: string | null
     status?: string
+    catatanAdmin?: string | null
     denda?: number
   }
 
-  export type BorrowingUpdateWithoutBookInput = {
+  export type ReservasiUpdateWithoutBookInput = {
     tanggalPinjam?: DateTimeFieldUpdateOperationsInput | Date | string
     tanggalKembali?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    tanggalAmbil?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    jamAmbil?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
+    catatanAdmin?: NullableStringFieldUpdateOperationsInput | string | null
     denda?: IntFieldUpdateOperationsInput | number
-    user?: UserUpdateOneRequiredWithoutBorrowingNestedInput
+    user?: UserUpdateOneRequiredWithoutReservasiNestedInput
   }
 
-  export type BorrowingUncheckedUpdateWithoutBookInput = {
+  export type ReservasiUncheckedUpdateWithoutBookInput = {
     id?: IntFieldUpdateOperationsInput | number
     userId?: StringFieldUpdateOperationsInput | string
     tanggalPinjam?: DateTimeFieldUpdateOperationsInput | Date | string
     tanggalKembali?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    tanggalAmbil?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    jamAmbil?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
+    catatanAdmin?: NullableStringFieldUpdateOperationsInput | string | null
     denda?: IntFieldUpdateOperationsInput | number
   }
 
-  export type BorrowingUncheckedUpdateManyWithoutBookInput = {
+  export type ReservasiUncheckedUpdateManyWithoutBookInput = {
     id?: IntFieldUpdateOperationsInput | number
     userId?: StringFieldUpdateOperationsInput | string
     tanggalPinjam?: DateTimeFieldUpdateOperationsInput | Date | string
     tanggalKembali?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    tanggalAmbil?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    jamAmbil?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
+    catatanAdmin?: NullableStringFieldUpdateOperationsInput | string | null
     denda?: IntFieldUpdateOperationsInput | number
   }
 
@@ -9565,7 +9691,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     kategori?: CategoryUpdateOneRequiredWithoutBukuNestedInput
-    Borrowing?: BorrowingUpdateManyWithoutBookNestedInput
+    Reservasi?: ReservasiUpdateManyWithoutBookNestedInput
   }
 
   export type BookUncheckedUpdateWithoutPenulisInput = {
@@ -9583,7 +9709,7 @@ export namespace Prisma {
     kategoriId?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    Borrowing?: BorrowingUncheckedUpdateManyWithoutBookNestedInput
+    Reservasi?: ReservasiUncheckedUpdateManyWithoutBookNestedInput
   }
 
   export type BookUncheckedUpdateManyWithoutPenulisInput = {
@@ -9634,7 +9760,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     penulis?: AuthorUpdateOneRequiredWithoutBukuNestedInput
-    Borrowing?: BorrowingUpdateManyWithoutBookNestedInput
+    Reservasi?: ReservasiUpdateManyWithoutBookNestedInput
   }
 
   export type BookUncheckedUpdateWithoutKategoriInput = {
@@ -9652,7 +9778,7 @@ export namespace Prisma {
     penulisId?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    Borrowing?: BorrowingUncheckedUpdateManyWithoutBookNestedInput
+    Reservasi?: ReservasiUncheckedUpdateManyWithoutBookNestedInput
   }
 
   export type BookUncheckedUpdateManyWithoutKategoriInput = {

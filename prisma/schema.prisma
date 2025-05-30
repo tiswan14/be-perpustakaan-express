@@ -16,11 +16,11 @@ model User {
   nim       String?
   nid       String?
   password  String
-  role      String      @default("user")
-  status    String      @default("Active")
+  role      String      @default("mahasiswa")
+  status    String      @default("active")
   createdAt DateTime    @default(now())
-  updatedAt DateTime?    @updatedAt
-  Borrowing Borrowing[]
+  updatedAt DateTime?   @updatedAt
+  Reservasi Reservasi[]
 }
 
 model Book {
@@ -40,36 +40,41 @@ model Book {
   penulis       Author      @relation(fields: [penulisId], references: [id])
   kategori      Category    @relation(fields: [kategoriId], references: [id])
   createdAt     DateTime    @default(now())
-  updatedAt     DateTime?    @updatedAt
-  Borrowing     Borrowing[]
+  updatedAt     DateTime?   @updatedAt
+  Reservasi     Reservasi[]
 }
 
 model Author {
-  id        Int      @id @default(autoincrement())
+  id        Int       @id @default(autoincrement())
   nama      String
   bio       String?
   buku      Book[]
-  createdAt DateTime @default(now())
+  createdAt DateTime  @default(now())
   updatedAt DateTime? @updatedAt
 }
 
 model Category {
-  id        Int      @id @default(autoincrement())
-  nama      String   @unique
+  id        Int       @id @default(autoincrement())
+  nama      String    @unique
   deskripsi String?
   buku      Book[]
-  createdAt DateTime @default(now())
+  createdAt DateTime  @default(now())
   updatedAt DateTime? @updatedAt
 }
 
-model Borrowing {
+model Reservasi {
   id             Int       @id @default(autoincrement())
   userId         String
   bookId         Int
   tanggalPinjam  DateTime  @default(now())
   tanggalKembali DateTime?
-  status         String    @default("dipinjam")
+  tanggalAmbil   DateTime?
+  jamAmbil       String?
+  status         String    @default("reservasi")
+  catatanAdmin   String?
   denda          Int       @default(0)
   user           User      @relation(fields: [userId], references: [id])
   book           Book      @relation(fields: [bookId], references: [id])
+
+  @@map("reservasi")
 }
