@@ -78,6 +78,13 @@ export const login = async (req, res) => {
             where: { email },
         })
 
+        if (!user) {
+            return res.status(401).json({
+                status: false,
+                message: 'Email atau password salah',
+            })
+        }
+
         const passwordMatch = await bcrypt.compare(password, user.password)
 
         if (!passwordMatch) {
@@ -178,10 +185,14 @@ export const getProfile = async (req, res) => {
             })
         }
 
+        const filteredUser = Object.fromEntries(
+            Object.entries(user).filter(([_, v]) => v !== null)
+        )
+
         res.json({
             status: true,
             message: 'Data profil berhasil diambil',
-            user,
+            user: filteredUser,
         })
     } catch {
         res.status(401).json({

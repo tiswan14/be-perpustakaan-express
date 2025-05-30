@@ -2,6 +2,36 @@ import { PrismaClient } from '../generated/prisma/index.js'
 
 const prisma = new PrismaClient()
 
+export const createCategory = async (req, res) => {
+    const { nama, deskripsi } = req.body
+    if (!nama)
+        return res
+            .status(400)
+            .json({ success: false, message: 'Nama kategori wajib diisi' })
+
+    try {
+        const newCategory = await prisma.category.create({
+            data: { nama, deskripsi },
+        })
+        res.status(201).json({
+            success: true,
+            data: newCategory,
+            message: 'Kategori berhasil dibuat',
+        })
+    } catch (error) {
+        if (error.code === 'P2002') {
+            return res
+                .status(400)
+                .json({ success: false, message: 'Nama kategori sudah ada' })
+        }
+        res.status(500).json({
+            success: false,
+            message: 'Gagal membuat kategori',
+            error: error.message,
+        })
+    }
+}
+
 export const getAllCategories = async (req, res) => {
     try {
         const categories = await prisma.category.findMany()
@@ -28,36 +58,6 @@ export const getCategoryById = async (req, res) => {
         res.status(500).json({
             success: false,
             message: 'Gagal mengambil data kategori',
-            error: error.message,
-        })
-    }
-}
-
-export const createCategory = async (req, res) => {
-    const { nama, deskripsi } = req.body
-    if (!nama)
-        return res
-            .status(400)
-            .json({ success: false, message: 'Nama kategori wajib diisi' })
-
-    try {
-        const newCategory = await prisma.category.create({
-            data: { nama, deskripsi },
-        })
-        res.status(201).json({
-            success: true,
-            data: newCategory,
-            message: 'Kategori berhasil dibuat',
-        })
-    } catch (error) {
-        if (error.code === 'P2002') {
-            return res
-                .status(400)
-                .json({ success: false, message: 'Nama kategori sudah ada' })
-        }
-        res.status(500).json({
-            success: false,
-            message: 'Gagal membuat kategori',
             error: error.message,
         })
     }
