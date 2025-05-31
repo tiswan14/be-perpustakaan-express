@@ -37,7 +37,7 @@ export const createBook = [
 
             if (req.file) {
                 try {
-                    const namaBersih = judul.toLowerCase().replace(/\s+/g, '-') 
+                    const namaBersih = judul.toLowerCase().replace(/\s+/g, '-')
                     const ekstensi = getFileExtension(req.file.originalname)
                     const namaFileUpload = `cover-buku-universitas-sariwangi-${namaBersih}${ekstensi}`
 
@@ -99,6 +99,97 @@ export const createBook = [
     },
 ]
 
+export const updateBook = [
+    upload.single('image'),
+    async (req, res) => {
+        const id = parseInt(req.params.id)
+        const {
+            judul,
+            isbn,
+            deskripsi,
+            tahunTerbit,
+            penerbit,
+            jumlahHalaman,
+            bahasa,
+            sampul,
+            tersedia,
+            stok,
+            penulisId,
+            kategoriId,
+        } = req.body
+
+        try {
+            const existingBook = await prisma.book.findUnique({ where: { id } })
+            if (!existingBook) {
+                return res.status(404).json({
+                    success: false,
+                    message: 'Buku tidak ditemukan',
+                })
+            }
+
+            let imageUrl = existingBook.image
+
+            if (req.file) {
+                const namaBersih = (judul || existingBook.judul)
+                    .toLowerCase()
+                    .replace(/\s+/g, '-')
+                const ekstensi = getFileExtension(req.file.originalname)
+                const namaFileUpload = `cover-buku-universitas-sariwangi-${namaBersih}${ekstensi}`
+
+                imageUrl = await uploadToVercelBlob(
+                    req.file.buffer,
+                    namaFileUpload,
+                    req.file.mimetype
+                )
+            }
+
+            const updatedBook = await prisma.book.update({
+                where: { id },
+                data: {
+                    judul,
+                    isbn,
+                    deskripsi,
+                    tahunTerbit: tahunTerbit
+                        ? parseInt(tahunTerbit)
+                        : undefined,
+                    penerbit,
+                    jumlahHalaman: jumlahHalaman
+                        ? parseInt(jumlahHalaman)
+                        : null,
+                    bahasa,
+                    sampul,
+                    tersedia:
+                        tersedia !== undefined
+                            ? tersedia === 'true' || tersedia === true
+                            : undefined,
+                    stok: stok !== undefined ? parseInt(stok) : undefined,
+                    penulisId: penulisId ? parseInt(penulisId) : undefined,
+                    kategoriId: kategoriId ? parseInt(kategoriId) : undefined,
+                    image: imageUrl,
+                },
+            })
+
+            res.json({
+                success: true,
+                data: updatedBook,
+                message: 'Buku berhasil diperbarui',
+            })
+        } catch (error) {
+            if (error.code === 'P2002') {
+                return res.status(400).json({
+                    success: false,
+                    message: 'ISBN sudah digunakan',
+                })
+            }
+            res.status(500).json({
+                success: false,
+                message: 'Gagal memperbarui buku',
+                error: error.message,
+            })
+        }
+    },
+]
+
 export const getAllBooks = async (req, res) => {
     try {
         const books = await prisma.book.findMany({
@@ -136,66 +227,6 @@ export const getBookById = async (req, res) => {
         res.status(500).json({
             success: false,
             message: 'Gagal mengambil data buku',
-            error: error.message,
-        })
-    }
-}
-
-export const updateBook = async (req, res) => {
-    const id = parseInt(req.params.id)
-    const {
-        judul,
-        isbn,
-        deskripsi,
-        tahunTerbit,
-        penerbit,
-        jumlahHalaman,
-        bahasa,
-        sampul,
-        tersedia,
-        stok,
-        penulisId,
-        kategoriId,
-    } = req.body
-
-    try {
-        const existingBook = await prisma.book.findUnique({ where: { id } })
-        if (!existingBook)
-            return res
-                .status(404)
-                .json({ success: false, message: 'Buku tidak ditemukan' })
-
-        const updatedBook = await prisma.book.update({
-            where: { id },
-            data: {
-                judul,
-                isbn,
-                deskripsi,
-                tahunTerbit,
-                penerbit,
-                jumlahHalaman,
-                bahasa,
-                sampul,
-                tersedia,
-                stok,
-                penulisId,
-                kategoriId,
-            },
-        })
-        res.json({
-            success: true,
-            data: updatedBook,
-            message: 'Buku berhasil diperbarui',
-        })
-    } catch (error) {
-        if (error.code === 'P2002') {
-            return res
-                .status(400)
-                .json({ success: false, message: 'ISBN sudah digunakan' })
-        }
-        res.status(500).json({
-            success: false,
-            message: 'Gagal memperbarui buku',
             error: error.message,
         })
     }
