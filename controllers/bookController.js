@@ -1,6 +1,103 @@
+import multer from 'multer'
 import { PrismaClient } from '../generated/prisma/index.js'
+import { uploadToVercelBlob } from '../utils/vercelBlob.js'
+import { getFileExtension } from '../utils/fileHelper.js'
 
 const prisma = new PrismaClient()
+const upload = multer()
+
+export const createBook = [
+    upload.single('image'),
+    async (req, res) => {
+        try {
+            const {
+                judul,
+                isbn,
+                deskripsi,
+                tahunTerbit,
+                penerbit,
+                jumlahHalaman,
+                bahasa,
+                sampul,
+                tersedia,
+                stok,
+                penulisId,
+                kategoriId,
+            } = req.body
+
+            if (!judul || !isbn || !tahunTerbit || !penulisId || !kategoriId) {
+                return res.status(400).json({
+                    success: false,
+                    message:
+                        'Field wajib: judul, isbn, tahunTerbit, penulisId, kategoriId',
+                })
+            }
+
+            let imageUrl = null
+
+            if (req.file) {
+                try {
+                    const namaBersih = judul.toLowerCase().replace(/\s+/g, '-') 
+                    const ekstensi = getFileExtension(req.file.originalname)
+                    const namaFileUpload = `cover-buku-universitas-sariwangi-${namaBersih}${ekstensi}`
+
+                    imageUrl = await uploadToVercelBlob(
+                        req.file.buffer,
+                        namaFileUpload,
+                        req.file.mimetype
+                    )
+                } catch (uploadError) {
+                    return res.status(500).json({
+                        success: false,
+                        message: 'Gagal upload image',
+                        error: uploadError.message,
+                    })
+                }
+            }
+
+            const newBook = await prisma.book.create({
+                data: {
+                    judul,
+                    isbn,
+                    deskripsi,
+                    tahunTerbit: parseInt(tahunTerbit),
+                    penerbit,
+                    jumlahHalaman: jumlahHalaman
+                        ? parseInt(jumlahHalaman)
+                        : null,
+                    bahasa,
+                    sampul,
+                    tersedia:
+                        tersedia !== undefined
+                            ? tersedia === 'true' || tersedia === true
+                            : true,
+                    stok: stok !== undefined ? parseInt(stok) : 1,
+                    penulisId: parseInt(penulisId),
+                    kategoriId: parseInt(kategoriId),
+                    image: imageUrl,
+                },
+            })
+
+            res.status(201).json({
+                success: true,
+                data: newBook,
+                message: 'Buku berhasil dibuat',
+            })
+        } catch (error) {
+            if (error.code === 'P2002') {
+                return res.status(400).json({
+                    success: false,
+                    message: 'ISBN sudah digunakan',
+                })
+            }
+            res.status(500).json({
+                success: false,
+                message: 'Gagal membuat buku',
+                error: error.message,
+            })
+        }
+    },
+]
 
 export const getAllBooks = async (req, res) => {
     try {
@@ -39,68 +136,6 @@ export const getBookById = async (req, res) => {
         res.status(500).json({
             success: false,
             message: 'Gagal mengambil data buku',
-            error: error.message,
-        })
-    }
-}
-
-export const createBook = async (req, res) => {
-    const {
-        judul,
-        isbn,
-        deskripsi,
-        tahunTerbit,
-        penerbit,
-        jumlahHalaman,
-        bahasa,
-        sampul,
-        tersedia,
-        stok,
-        penulisId,
-        kategoriId,
-    } = req.body
-
-    if (!judul || !isbn || !tahunTerbit || !penulisId || !kategoriId) {
-        return res
-            .status(400)
-            .json({
-                success: false,
-                message:
-                    'Field wajib: judul, isbn, tahunTerbit, penulisId, kategoriId',
-            })
-    }
-
-    try {
-        const newBook = await prisma.book.create({
-            data: {
-                judul,
-                isbn,
-                deskripsi,
-                tahunTerbit,
-                penerbit,
-                jumlahHalaman,
-                bahasa,
-                sampul,
-                tersedia: tersedia !== undefined ? tersedia : true,
-                stok: stok !== undefined ? stok : 1,
-                penulisId,
-                kategoriId,
-            },
-        })
-        res.status(201).json({
-            success: true,
-            data: newBook,
-            message: 'Buku berhasil dibuat',
-        })
-    } catch (error) {
-        if (error.code === 'P2002') {
-            return res
-                .status(400)
-                .json({ success: false, message: 'ISBN sudah digunakan' })
-        }
-        res.status(500).json({
-            success: false,
-            message: 'Gagal membuat buku',
             error: error.message,
         })
     }
