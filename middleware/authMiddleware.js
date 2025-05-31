@@ -10,7 +10,10 @@ export const authenticate = async (req, res, next) => {
         if (!token) {
             return res
                 .status(401)
-                .json({ status: false, message: 'Token tidak ditemukan' })
+                .json({
+                    status: false,
+                    message: 'Akses ditolak: token tidak ditemukan',
+                })
         }
 
         const decoded = jwt.verify(token, process.env.JWT_SECRET)

@@ -26,7 +26,7 @@ app.use(cookieParser())
 app.use(bodyParser.json())
 
 app.get('/', (req, res) => {
-    res.json({ message: 'Welcome to Backend Perpustakaan!' })
+    res.json({ message: 'Welcome to Backend Perpustakaan Universitas Sariwangi!' })
 })
 
 app.use('/api/auth', authRouter)
