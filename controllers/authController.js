@@ -6,10 +6,39 @@ const prisma = new PrismaClient()
 export const register = async (req, res) => {
     const { nama, email, nim, nid, password } = req.body
 
-    if (!nama?.trim() || !email?.trim() || !password?.trim()) {
+    if (!nama?.trim()) {
         return res.status(400).json({
             status: false,
-            message: 'Nama, email, dan password wajib diisi',
+            message: 'Nama wajib diisi',
+        })
+    }
+
+    if (!email?.trim()) {
+        return res.status(400).json({
+            status: false,
+            message: 'Email wajib diisi',
+        })
+    }
+
+    const domainPattern = /@sariwangi\.ac\.id$/
+    if (!domainPattern.test(email.trim())) {
+        return res.status(400).json({
+            status: false,
+            message: 'Email harus menggunakan domain @sariwangi.ac.id',
+        })
+    }
+
+    if (!password?.trim()) {
+        return res.status(400).json({
+            status: false,
+            message: 'Kata sandi wajib diisi',
+        })
+    }
+
+    if (password.trim().length < 6) {
+        return res.status(400).json({
+            status: false,
+            message: 'Kata sandi minimal 6 karakter',
         })
     }
 

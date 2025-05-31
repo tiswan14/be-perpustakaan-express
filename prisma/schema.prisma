@@ -37,6 +37,7 @@ model Book {
   stok          Int         @default(1)
   penulisId     Int
   kategoriId    Int
+  image         String?
   penulis       Author      @relation(fields: [penulisId], references: [id])
   kategori      Category    @relation(fields: [kategoriId], references: [id])
   createdAt     DateTime    @default(now())
