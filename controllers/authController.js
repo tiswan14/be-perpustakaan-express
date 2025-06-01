@@ -7,84 +7,92 @@ export const register = async (req, res) => {
     const { nama, email, nim, nid, password } = req.body
 
     if (!nama?.trim()) {
-        return res.status(400).json({
-            status: false,
-            message: 'Nama wajib diisi',
-        })
+        return res
+            .status(400)
+            .json({ status: false, message: 'Nama wajib diisi' })
     }
 
     if (!email?.trim()) {
-        return res.status(400).json({
-            status: false,
-            message: 'Email wajib diisi',
-        })
+        return res
+            .status(400)
+            .json({ status: false, message: 'Email wajib diisi' })
     }
 
     const domainPattern = /@sariwangi\.ac\.id$/
     if (!domainPattern.test(email.trim())) {
-        return res.status(400).json({
-            status: false,
-            message: 'Email harus menggunakan domain @sariwangi.ac.id',
-        })
+        return res
+            .status(400)
+            .json({
+                status: false,
+                message: 'Email harus menggunakan domain @sariwangi.ac.id',
+            })
     }
 
     if (!password?.trim()) {
-        return res.status(400).json({
-            status: false,
-            message: 'Kata sandi wajib diisi',
-        })
+        return res
+            .status(400)
+            .json({ status: false, message: 'Kata sandi wajib diisi' })
     }
 
     if (password.trim().length < 6) {
-        return res.status(400).json({
-            status: false,
-            message: 'Kata sandi minimal 6 karakter',
-        })
+        return res
+            .status(400)
+            .json({ status: false, message: 'Kata sandi minimal 6 karakter' })
     }
 
-    if (!nim && !nid) {
-        return res.status(400).json({
-            status: false,
-            message: 'NIM atau NID harus diisi',
-        })
+    if (!nim?.trim() && !nid?.trim()) {
+        return res
+            .status(400)
+            .json({ status: false, message: 'NIM atau NID harus diisi' })
     }
 
     try {
         const existingEmail = await prisma.user.findUnique({
-            where: { email },
+            where: { email: email.trim() },
         })
 
         if (existingEmail) {
-            return res.status(409).json({
-                status: false,
-                message: 'Email sudah digunakan',
-            })
+            return res
+                .status(409)
+                .json({ status: false, message: 'Email sudah digunakan' })
         }
 
         const hashedPassword = await bcrypt.hash(password, 10)
 
+        // Tentukan role berdasarkan input nid
+        let role = 'mahasiswa' // default role
+        if (nid && nid.trim() !== '') {
+            role = 'dosen'
+        }
+
         const newUser = await prisma.user.create({
             data: {
                 nama,
-                email,
+                email: email.trim(),
                 nim: nim || null,
                 nid: nid || null,
                 password: hashedPassword,
+                role, // simpan role ke database jika ada kolom role
             },
         })
+
+        const responseUser = {
+            id: newUser.id,
+            nama: newUser.nama,
+            email: newUser.email,
+            role: newUser.role,
+        }
+
+        if (newUser.nim) responseUser.nim = newUser.nim
+        if (newUser.nid) responseUser.nid = newUser.nid
 
         res.status(201).json({
             status: true,
             message: 'Pengguna berhasil didaftarkan',
-            user: {
-                id: newUser.id,
-                nama: newUser.nama,
-                email: newUser.email,
-                nim: newUser.nim,
-                nid: newUser.nid,
-            },
+            user: responseUser,
         })
-    } catch {
+    } catch (error) {
+        console.error(error)
         res.status(500).json({
             status: false,
             error: 'Terjadi kesalahan server',
@@ -135,12 +143,15 @@ export const login = async (req, res) => {
         })
 
         const { password: _, ...userData } = user
+        const filteredUser = Object.fromEntries(
+            Object.entries(user).filter(([_, v]) => v !== null)
+        )
 
         return res.status(200).json({
             status: true,
             message: 'Login berhasil',
             data: {
-                user: userData,
+                user: filteredUser,
                 token,
             },
         })
