@@ -20,12 +20,10 @@ export const register = async (req, res) => {
 
     const domainPattern = /@sariwangi\.ac\.id$/
     if (!domainPattern.test(email.trim())) {
-        return res
-            .status(400)
-            .json({
-                status: false,
-                message: 'Email harus menggunakan domain @sariwangi.ac.id',
-            })
+        return res.status(400).json({
+            status: false,
+            message: 'Email harus menggunakan domain @sariwangi.ac.id',
+        })
     }
 
     if (!password?.trim()) {
@@ -142,9 +140,10 @@ export const login = async (req, res) => {
             maxAge: 7 * 24 * 60 * 60 * 1000,
         })
 
-        const { password: _, ...userData } = user
+        const { password: _, id, createdAt, updatedAt, ...userData } = user
+
         const filteredUser = Object.fromEntries(
-            Object.entries(user).filter(([_, v]) => v !== null)
+            Object.entries(userData).filter(([_, v]) => v !== null)
         )
 
         return res.status(200).json({

@@ -24,39 +24,26 @@ model User {
 }
 
 model Book {
-  id            Int         @id @default(autoincrement())
-  judul         String
-  isbn          String      @unique
-  deskripsi     String?
-  tahunTerbit   Int
-  penerbit      String?
-  jumlahHalaman Int?
-  bahasa        String?
-  sampul        String?
-  tersedia      Boolean     @default(true)
-  stok          Int         @default(1)
-  penulisId     Int
-  kategoriId    Int
-  penulis       Author      @relation(fields: [penulisId], references: [id])
-  kategori      Category    @relation(fields: [kategoriId], references: [id])
-  createdAt     DateTime    @default(now())
-  updatedAt     DateTime?   @updatedAt
-  Reservasi     Reservasi[]
-}
-
-model Author {
-  id        Int       @id @default(autoincrement())
-  nama      String
-  bio       String?
-  buku      Book[]
-  createdAt DateTime  @default(now())
-  updatedAt DateTime? @updatedAt
+  id          Int         @id @default(autoincrement())
+  judul       String
+  deskripsi   String?
+  isbn        String      @unique
+  penerbit    String?
+  tahunTerbit Int
+  penulis     String?
+  image       String?
+  kategoriId  Int
+  stok        Int         @default(1)
+  status      String      @default("tersedia")
+  kategori    Category    @relation(fields: [kategoriId], references: [id])
+  Reservasi   Reservasi[]
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime?   @updatedAt
 }
 
 model Category {
   id        Int       @id @default(autoincrement())
   nama      String    @unique
-  deskripsi String?
   buku      Book[]
   createdAt DateTime  @default(now())
   updatedAt DateTime? @updatedAt
@@ -68,10 +55,7 @@ model Reservasi {
   bookId         Int
   tanggalPinjam  DateTime  @default(now())
   tanggalKembali DateTime?
-  tanggalAmbil   DateTime?
-  jamAmbil       String?
   status         String    @default("reservasi")
-  catatanAdmin   String?
   denda          Int       @default(0)
   user           User      @relation(fields: [userId], references: [id])
   book           Book      @relation(fields: [bookId], references: [id])

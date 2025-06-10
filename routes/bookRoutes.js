@@ -9,10 +9,10 @@ import {
 
 const router = express.Router()
 
-router.get('/book', getAllBooks)
+router.get('/book/', getAllBooks)
 router.get('/book/:id', getBookById)
-router.post('/book', createBook)
-router.put('/book/:id', updateBook)
+router.post('/book/tambah', createBook)
+router.put('/book/edit/:id', updateBook)
 router.delete('/book/:id', deleteBook)
 
 export default router

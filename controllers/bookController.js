@@ -14,45 +14,33 @@ export const createBook = [
                 judul,
                 isbn,
                 deskripsi,
-                tahunTerbit,
                 penerbit,
-                jumlahHalaman,
-                bahasa,
-                sampul,
-                tersedia,
+                tahunTerbit,
+                penulis,
                 stok,
-                penulisId,
+                status,
                 kategoriId,
             } = req.body
 
-            if (!judul || !isbn || !tahunTerbit || !penulisId || !kategoriId) {
+            if (!judul || !isbn || !tahunTerbit || !kategoriId) {
                 return res.status(400).json({
                     success: false,
                     message:
-                        'Field wajib: judul, isbn, tahunTerbit, penulisId, kategoriId',
+                        'Field wajib: judul, isbn, tahunTerbit, kategoriId',
                 })
             }
 
             let imageUrl = null
-
             if (req.file) {
-                try {
-                    const namaBersih = judul.toLowerCase().replace(/\s+/g, '-')
-                    const ekstensi = getFileExtension(req.file.originalname)
-                    const namaFileUpload = `cover-buku-universitas-sariwangi-${namaBersih}${ekstensi}`
+                const namaBersih = judul.toLowerCase().replace(/\s+/g, '-')
+                const ekstensi = getFileExtension(req.file.originalname)
+                const namaFileUpload = `cover-buku-universitas-sariwangi-${namaBersih}${ekstensi}`
 
-                    imageUrl = await uploadToVercelBlob(
-                        req.file.buffer,
-                        namaFileUpload,
-                        req.file.mimetype
-                    )
-                } catch (uploadError) {
-                    return res.status(500).json({
-                        success: false,
-                        message: 'Gagal upload image',
-                        error: uploadError.message,
-                    })
-                }
+                imageUrl = await uploadToVercelBlob(
+                    req.file.buffer,
+                    namaFileUpload,
+                    req.file.mimetype
+                )
             }
 
             const newBook = await prisma.book.create({
@@ -60,20 +48,12 @@ export const createBook = [
                     judul,
                     isbn,
                     deskripsi,
-                    tahunTerbit: parseInt(tahunTerbit),
                     penerbit,
-                    jumlahHalaman: jumlahHalaman
-                        ? parseInt(jumlahHalaman)
-                        : null,
-                    bahasa,
-                    sampul,
-                    tersedia:
-                        tersedia !== undefined
-                            ? tersedia === 'true' || tersedia === true
-                            : true,
-                    stok: stok !== undefined ? parseInt(stok) : 1,
-                    penulisId: parseInt(penulisId),
+                    tahunTerbit: parseInt(tahunTerbit),
+                    penulis,
                     kategoriId: parseInt(kategoriId),
+                    stok: stok !== undefined ? parseInt(stok) : 1,
+                    status: status || 'tersedia',
                     image: imageUrl,
                 },
             })
@@ -107,19 +87,18 @@ export const updateBook = [
             judul,
             isbn,
             deskripsi,
-            tahunTerbit,
             penerbit,
-            jumlahHalaman,
-            bahasa,
-            sampul,
-            tersedia,
+            tahunTerbit,
+            penulis,
             stok,
-            penulisId,
+            status,
             kategoriId,
         } = req.body
 
         try {
-            const existingBook = await prisma.book.findUnique({ where: { id } })
+            const existingBook = await prisma.book.findUnique({
+                where: { id },
+            })
             if (!existingBook) {
                 return res.status(404).json({
                     success: false,
@@ -128,7 +107,6 @@ export const updateBook = [
             }
 
             let imageUrl = existingBook.image
-
             if (req.file) {
                 const namaBersih = (judul || existingBook.judul)
                     .toLowerCase()
@@ -149,22 +127,14 @@ export const updateBook = [
                     judul,
                     isbn,
                     deskripsi,
+                    penerbit,
                     tahunTerbit: tahunTerbit
                         ? parseInt(tahunTerbit)
                         : undefined,
-                    penerbit,
-                    jumlahHalaman: jumlahHalaman
-                        ? parseInt(jumlahHalaman)
-                        : null,
-                    bahasa,
-                    sampul,
-                    tersedia:
-                        tersedia !== undefined
-                            ? tersedia === 'true' || tersedia === true
-                            : undefined,
-                    stok: stok !== undefined ? parseInt(stok) : undefined,
-                    penulisId: penulisId ? parseInt(penulisId) : undefined,
+                    penulis,
                     kategoriId: kategoriId ? parseInt(kategoriId) : undefined,
+                    stok: stok !== undefined ? parseInt(stok) : undefined,
+                    status: status || undefined,
                     image: imageUrl,
                 },
             })
