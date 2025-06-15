@@ -14,7 +14,6 @@ import peminjamanRouter from './routes/peminjamanRoute.js'
 dotenv.config()
 
 const app = express()
-const PORT = process.env.PORT || 3000
 
 app.use(
     cors({
@@ -42,6 +41,8 @@ app.use('/api', bookRouter)
 app.use('/api', reservasiRouter)
 app.use('/api', peminjamanRouter)
 
+const PORT = process.env.PORT || 5000
+
 app.listen(PORT, () => {
-    console.log(`🚀 Server is running on http://localhost:${PORT}`)
+    console.log(`🚀 Server is running on port ${PORT}`)
 })
