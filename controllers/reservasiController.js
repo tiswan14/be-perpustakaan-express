@@ -6,8 +6,18 @@ export const getAllReservasi = async (req, res) => {
     try {
         const reservasi = await prisma.reservasi.findMany({
             include: {
-                user: true, // untuk data user terkait
-                book: true, // untuk data buku terkait
+                user: {
+                    select: {
+                        id: true,
+                        nama: true,
+                    },
+                },
+                book: {
+                    select: {
+                        id: true,
+                        judul: true,
+                    },
+                },
             },
         })
         res.json({ success: true, data: reservasi })

@@ -33,6 +33,11 @@ export type Category = $Result.DefaultSelection<Prisma.$CategoryPayload>
  * 
  */
 export type Reservasi = $Result.DefaultSelection<Prisma.$ReservasiPayload>
+/**
+ * Model Peminjaman
+ * 
+ */
+export type Peminjaman = $Result.DefaultSelection<Prisma.$PeminjamanPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -198,6 +203,16 @@ export class PrismaClient<
     * ```
     */
   get reservasi(): Prisma.ReservasiDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.peminjaman`: Exposes CRUD operations for the **Peminjaman** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Peminjamen
+    * const peminjamen = await prisma.peminjaman.findMany()
+    * ```
+    */
+  get peminjaman(): Prisma.PeminjamanDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -641,7 +656,8 @@ export namespace Prisma {
     User: 'User',
     Book: 'Book',
     Category: 'Category',
-    Reservasi: 'Reservasi'
+    Reservasi: 'Reservasi',
+    Peminjaman: 'Peminjaman'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -660,7 +676,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "book" | "category" | "reservasi"
+      modelProps: "user" | "book" | "category" | "reservasi" | "peminjaman"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -960,6 +976,80 @@ export namespace Prisma {
           }
         }
       }
+      Peminjaman: {
+        payload: Prisma.$PeminjamanPayload<ExtArgs>
+        fields: Prisma.PeminjamanFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.PeminjamanFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PeminjamanPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.PeminjamanFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PeminjamanPayload>
+          }
+          findFirst: {
+            args: Prisma.PeminjamanFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PeminjamanPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.PeminjamanFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PeminjamanPayload>
+          }
+          findMany: {
+            args: Prisma.PeminjamanFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PeminjamanPayload>[]
+          }
+          create: {
+            args: Prisma.PeminjamanCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PeminjamanPayload>
+          }
+          createMany: {
+            args: Prisma.PeminjamanCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.PeminjamanCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PeminjamanPayload>[]
+          }
+          delete: {
+            args: Prisma.PeminjamanDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PeminjamanPayload>
+          }
+          update: {
+            args: Prisma.PeminjamanUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PeminjamanPayload>
+          }
+          deleteMany: {
+            args: Prisma.PeminjamanDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.PeminjamanUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.PeminjamanUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PeminjamanPayload>[]
+          }
+          upsert: {
+            args: Prisma.PeminjamanUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PeminjamanPayload>
+          }
+          aggregate: {
+            args: Prisma.PeminjamanAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregatePeminjaman>
+          }
+          groupBy: {
+            args: Prisma.PeminjamanGroupByArgs<ExtArgs>
+            result: $Utils.Optional<PeminjamanGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.PeminjamanCountArgs<ExtArgs>
+            result: $Utils.Optional<PeminjamanCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1048,6 +1138,7 @@ export namespace Prisma {
     book?: BookOmit
     category?: CategoryOmit
     reservasi?: ReservasiOmit
+    peminjaman?: PeminjamanOmit
   }
 
   /* Types for Logging */
@@ -1143,10 +1234,12 @@ export namespace Prisma {
 
   export type UserCountOutputType = {
     Reservasi: number
+    Peminjaman: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     Reservasi?: boolean | UserCountOutputTypeCountReservasiArgs
+    Peminjaman?: boolean | UserCountOutputTypeCountPeminjamanArgs
   }
 
   // Custom InputTypes
@@ -1167,6 +1260,13 @@ export namespace Prisma {
     where?: ReservasiWhereInput
   }
 
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountPeminjamanArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PeminjamanWhereInput
+  }
+
 
   /**
    * Count Type BookCountOutputType
@@ -1174,10 +1274,12 @@ export namespace Prisma {
 
   export type BookCountOutputType = {
     Reservasi: number
+    Peminjaman: number
   }
 
   export type BookCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     Reservasi?: boolean | BookCountOutputTypeCountReservasiArgs
+    Peminjaman?: boolean | BookCountOutputTypeCountPeminjamanArgs
   }
 
   // Custom InputTypes
@@ -1196,6 +1298,13 @@ export namespace Prisma {
    */
   export type BookCountOutputTypeCountReservasiArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: ReservasiWhereInput
+  }
+
+  /**
+   * BookCountOutputType without action
+   */
+  export type BookCountOutputTypeCountPeminjamanArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PeminjamanWhereInput
   }
 
 
@@ -1439,6 +1548,7 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     Reservasi?: boolean | User$ReservasiArgs<ExtArgs>
+    Peminjaman?: boolean | User$PeminjamanArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -1484,6 +1594,7 @@ export namespace Prisma {
   export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "nama" | "email" | "nim" | "nid" | "password" | "role" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     Reservasi?: boolean | User$ReservasiArgs<ExtArgs>
+    Peminjaman?: boolean | User$PeminjamanArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -1493,6 +1604,7 @@ export namespace Prisma {
     name: "User"
     objects: {
       Reservasi: Prisma.$ReservasiPayload<ExtArgs>[]
+      Peminjaman: Prisma.$PeminjamanPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -1900,6 +2012,7 @@ export namespace Prisma {
   export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     Reservasi<T extends User$ReservasiArgs<ExtArgs> = {}>(args?: Subset<T, User$ReservasiArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReservasiPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    Peminjaman<T extends User$PeminjamanArgs<ExtArgs> = {}>(args?: Subset<T, User$PeminjamanArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PeminjamanPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2351,6 +2464,30 @@ export namespace Prisma {
   }
 
   /**
+   * User.Peminjaman
+   */
+  export type User$PeminjamanArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Peminjaman
+     */
+    select?: PeminjamanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Peminjaman
+     */
+    omit?: PeminjamanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PeminjamanInclude<ExtArgs> | null
+    where?: PeminjamanWhereInput
+    orderBy?: PeminjamanOrderByWithRelationInput | PeminjamanOrderByWithRelationInput[]
+    cursor?: PeminjamanWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: PeminjamanScalarFieldEnum | PeminjamanScalarFieldEnum[]
+  }
+
+  /**
    * User without action
    */
   export type UserDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2645,6 +2782,7 @@ export namespace Prisma {
     updatedAt?: boolean
     kategori?: boolean | CategoryDefaultArgs<ExtArgs>
     Reservasi?: boolean | Book$ReservasiArgs<ExtArgs>
+    Peminjaman?: boolean | Book$PeminjamanArgs<ExtArgs>
     _count?: boolean | BookCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["book"]>
 
@@ -2702,6 +2840,7 @@ export namespace Prisma {
   export type BookInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     kategori?: boolean | CategoryDefaultArgs<ExtArgs>
     Reservasi?: boolean | Book$ReservasiArgs<ExtArgs>
+    Peminjaman?: boolean | Book$PeminjamanArgs<ExtArgs>
     _count?: boolean | BookCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type BookIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2716,6 +2855,7 @@ export namespace Prisma {
     objects: {
       kategori: Prisma.$CategoryPayload<ExtArgs>
       Reservasi: Prisma.$ReservasiPayload<ExtArgs>[]
+      Peminjaman: Prisma.$PeminjamanPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -3127,6 +3267,7 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     kategori<T extends CategoryDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CategoryDefaultArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     Reservasi<T extends Book$ReservasiArgs<ExtArgs> = {}>(args?: Subset<T, Book$ReservasiArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReservasiPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    Peminjaman<T extends Book$PeminjamanArgs<ExtArgs> = {}>(args?: Subset<T, Book$PeminjamanArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PeminjamanPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3586,6 +3727,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: ReservasiScalarFieldEnum | ReservasiScalarFieldEnum[]
+  }
+
+  /**
+   * Book.Peminjaman
+   */
+  export type Book$PeminjamanArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Peminjaman
+     */
+    select?: PeminjamanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Peminjaman
+     */
+    omit?: PeminjamanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PeminjamanInclude<ExtArgs> | null
+    where?: PeminjamanWhereInput
+    orderBy?: PeminjamanOrderByWithRelationInput | PeminjamanOrderByWithRelationInput[]
+    cursor?: PeminjamanWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: PeminjamanScalarFieldEnum | PeminjamanScalarFieldEnum[]
   }
 
   /**
@@ -4713,43 +4878,41 @@ export namespace Prisma {
   export type ReservasiAvgAggregateOutputType = {
     id: number | null
     bookId: number | null
-    denda: number | null
   }
 
   export type ReservasiSumAggregateOutputType = {
     id: number | null
     bookId: number | null
-    denda: number | null
   }
 
   export type ReservasiMinAggregateOutputType = {
     id: number | null
     userId: string | null
     bookId: number | null
-    tanggalPinjam: Date | null
-    tanggalKembali: Date | null
+    tanggalAmbil: Date | null
+    jamAmbil: string | null
+    catatan: string | null
     status: string | null
-    denda: number | null
   }
 
   export type ReservasiMaxAggregateOutputType = {
     id: number | null
     userId: string | null
     bookId: number | null
-    tanggalPinjam: Date | null
-    tanggalKembali: Date | null
+    tanggalAmbil: Date | null
+    jamAmbil: string | null
+    catatan: string | null
     status: string | null
-    denda: number | null
   }
 
   export type ReservasiCountAggregateOutputType = {
     id: number
     userId: number
     bookId: number
-    tanggalPinjam: number
-    tanggalKembali: number
+    tanggalAmbil: number
+    jamAmbil: number
+    catatan: number
     status: number
-    denda: number
     _all: number
   }
 
@@ -4757,43 +4920,41 @@ export namespace Prisma {
   export type ReservasiAvgAggregateInputType = {
     id?: true
     bookId?: true
-    denda?: true
   }
 
   export type ReservasiSumAggregateInputType = {
     id?: true
     bookId?: true
-    denda?: true
   }
 
   export type ReservasiMinAggregateInputType = {
     id?: true
     userId?: true
     bookId?: true
-    tanggalPinjam?: true
-    tanggalKembali?: true
+    tanggalAmbil?: true
+    jamAmbil?: true
+    catatan?: true
     status?: true
-    denda?: true
   }
 
   export type ReservasiMaxAggregateInputType = {
     id?: true
     userId?: true
     bookId?: true
-    tanggalPinjam?: true
-    tanggalKembali?: true
+    tanggalAmbil?: true
+    jamAmbil?: true
+    catatan?: true
     status?: true
-    denda?: true
   }
 
   export type ReservasiCountAggregateInputType = {
     id?: true
     userId?: true
     bookId?: true
-    tanggalPinjam?: true
-    tanggalKembali?: true
+    tanggalAmbil?: true
+    jamAmbil?: true
+    catatan?: true
     status?: true
-    denda?: true
     _all?: true
   }
 
@@ -4887,10 +5048,10 @@ export namespace Prisma {
     id: number
     userId: string
     bookId: number
-    tanggalPinjam: Date
-    tanggalKembali: Date | null
+    tanggalAmbil: Date
+    jamAmbil: string | null
+    catatan: string | null
     status: string
-    denda: number
     _count: ReservasiCountAggregateOutputType | null
     _avg: ReservasiAvgAggregateOutputType | null
     _sum: ReservasiSumAggregateOutputType | null
@@ -4916,22 +5077,23 @@ export namespace Prisma {
     id?: boolean
     userId?: boolean
     bookId?: boolean
-    tanggalPinjam?: boolean
-    tanggalKembali?: boolean
+    tanggalAmbil?: boolean
+    jamAmbil?: boolean
+    catatan?: boolean
     status?: boolean
-    denda?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
     book?: boolean | BookDefaultArgs<ExtArgs>
+    peminjaman?: boolean | Reservasi$peminjamanArgs<ExtArgs>
   }, ExtArgs["result"]["reservasi"]>
 
   export type ReservasiSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     userId?: boolean
     bookId?: boolean
-    tanggalPinjam?: boolean
-    tanggalKembali?: boolean
+    tanggalAmbil?: boolean
+    jamAmbil?: boolean
+    catatan?: boolean
     status?: boolean
-    denda?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
     book?: boolean | BookDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["reservasi"]>
@@ -4940,10 +5102,10 @@ export namespace Prisma {
     id?: boolean
     userId?: boolean
     bookId?: boolean
-    tanggalPinjam?: boolean
-    tanggalKembali?: boolean
+    tanggalAmbil?: boolean
+    jamAmbil?: boolean
+    catatan?: boolean
     status?: boolean
-    denda?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
     book?: boolean | BookDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["reservasi"]>
@@ -4952,16 +5114,17 @@ export namespace Prisma {
     id?: boolean
     userId?: boolean
     bookId?: boolean
-    tanggalPinjam?: boolean
-    tanggalKembali?: boolean
+    tanggalAmbil?: boolean
+    jamAmbil?: boolean
+    catatan?: boolean
     status?: boolean
-    denda?: boolean
   }
 
-  export type ReservasiOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "bookId" | "tanggalPinjam" | "tanggalKembali" | "status" | "denda", ExtArgs["result"]["reservasi"]>
+  export type ReservasiOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "bookId" | "tanggalAmbil" | "jamAmbil" | "catatan" | "status", ExtArgs["result"]["reservasi"]>
   export type ReservasiInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
     book?: boolean | BookDefaultArgs<ExtArgs>
+    peminjaman?: boolean | Reservasi$peminjamanArgs<ExtArgs>
   }
   export type ReservasiIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
@@ -4977,15 +5140,16 @@ export namespace Prisma {
     objects: {
       user: Prisma.$UserPayload<ExtArgs>
       book: Prisma.$BookPayload<ExtArgs>
+      peminjaman: Prisma.$PeminjamanPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       userId: string
       bookId: number
-      tanggalPinjam: Date
-      tanggalKembali: Date | null
+      tanggalAmbil: Date
+      jamAmbil: string | null
+      catatan: string | null
       status: string
-      denda: number
     }, ExtArgs["result"]["reservasi"]>
     composites: {}
   }
@@ -5382,6 +5546,7 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     book<T extends BookDefaultArgs<ExtArgs> = {}>(args?: Subset<T, BookDefaultArgs<ExtArgs>>): Prisma__BookClient<$Result.GetResult<Prisma.$BookPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    peminjaman<T extends Reservasi$peminjamanArgs<ExtArgs> = {}>(args?: Subset<T, Reservasi$peminjamanArgs<ExtArgs>>): Prisma__PeminjamanClient<$Result.GetResult<Prisma.$PeminjamanPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -5414,10 +5579,10 @@ export namespace Prisma {
     readonly id: FieldRef<"Reservasi", 'Int'>
     readonly userId: FieldRef<"Reservasi", 'String'>
     readonly bookId: FieldRef<"Reservasi", 'Int'>
-    readonly tanggalPinjam: FieldRef<"Reservasi", 'DateTime'>
-    readonly tanggalKembali: FieldRef<"Reservasi", 'DateTime'>
+    readonly tanggalAmbil: FieldRef<"Reservasi", 'DateTime'>
+    readonly jamAmbil: FieldRef<"Reservasi", 'String'>
+    readonly catatan: FieldRef<"Reservasi", 'String'>
     readonly status: FieldRef<"Reservasi", 'String'>
-    readonly denda: FieldRef<"Reservasi", 'Int'>
   }
     
 
@@ -5814,6 +5979,25 @@ export namespace Prisma {
   }
 
   /**
+   * Reservasi.peminjaman
+   */
+  export type Reservasi$peminjamanArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Peminjaman
+     */
+    select?: PeminjamanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Peminjaman
+     */
+    omit?: PeminjamanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PeminjamanInclude<ExtArgs> | null
+    where?: PeminjamanWhereInput
+  }
+
+  /**
    * Reservasi without action
    */
   export type ReservasiDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -5829,6 +6013,1242 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: ReservasiInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Peminjaman
+   */
+
+  export type AggregatePeminjaman = {
+    _count: PeminjamanCountAggregateOutputType | null
+    _avg: PeminjamanAvgAggregateOutputType | null
+    _sum: PeminjamanSumAggregateOutputType | null
+    _min: PeminjamanMinAggregateOutputType | null
+    _max: PeminjamanMaxAggregateOutputType | null
+  }
+
+  export type PeminjamanAvgAggregateOutputType = {
+    id: number | null
+    reservasiId: number | null
+    denda: number | null
+    bookId: number | null
+  }
+
+  export type PeminjamanSumAggregateOutputType = {
+    id: number | null
+    reservasiId: number | null
+    denda: number | null
+    bookId: number | null
+  }
+
+  export type PeminjamanMinAggregateOutputType = {
+    id: number | null
+    reservasiId: number | null
+    tanggalPinjam: Date | null
+    tanggalJatuhTempo: Date | null
+    tanggalKembali: Date | null
+    status: string | null
+    denda: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    userId: string | null
+    bookId: number | null
+  }
+
+  export type PeminjamanMaxAggregateOutputType = {
+    id: number | null
+    reservasiId: number | null
+    tanggalPinjam: Date | null
+    tanggalJatuhTempo: Date | null
+    tanggalKembali: Date | null
+    status: string | null
+    denda: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    userId: string | null
+    bookId: number | null
+  }
+
+  export type PeminjamanCountAggregateOutputType = {
+    id: number
+    reservasiId: number
+    tanggalPinjam: number
+    tanggalJatuhTempo: number
+    tanggalKembali: number
+    status: number
+    denda: number
+    createdAt: number
+    updatedAt: number
+    userId: number
+    bookId: number
+    _all: number
+  }
+
+
+  export type PeminjamanAvgAggregateInputType = {
+    id?: true
+    reservasiId?: true
+    denda?: true
+    bookId?: true
+  }
+
+  export type PeminjamanSumAggregateInputType = {
+    id?: true
+    reservasiId?: true
+    denda?: true
+    bookId?: true
+  }
+
+  export type PeminjamanMinAggregateInputType = {
+    id?: true
+    reservasiId?: true
+    tanggalPinjam?: true
+    tanggalJatuhTempo?: true
+    tanggalKembali?: true
+    status?: true
+    denda?: true
+    createdAt?: true
+    updatedAt?: true
+    userId?: true
+    bookId?: true
+  }
+
+  export type PeminjamanMaxAggregateInputType = {
+    id?: true
+    reservasiId?: true
+    tanggalPinjam?: true
+    tanggalJatuhTempo?: true
+    tanggalKembali?: true
+    status?: true
+    denda?: true
+    createdAt?: true
+    updatedAt?: true
+    userId?: true
+    bookId?: true
+  }
+
+  export type PeminjamanCountAggregateInputType = {
+    id?: true
+    reservasiId?: true
+    tanggalPinjam?: true
+    tanggalJatuhTempo?: true
+    tanggalKembali?: true
+    status?: true
+    denda?: true
+    createdAt?: true
+    updatedAt?: true
+    userId?: true
+    bookId?: true
+    _all?: true
+  }
+
+  export type PeminjamanAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Peminjaman to aggregate.
+     */
+    where?: PeminjamanWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Peminjamen to fetch.
+     */
+    orderBy?: PeminjamanOrderByWithRelationInput | PeminjamanOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: PeminjamanWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Peminjamen from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Peminjamen.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Peminjamen
+    **/
+    _count?: true | PeminjamanCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: PeminjamanAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: PeminjamanSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: PeminjamanMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: PeminjamanMaxAggregateInputType
+  }
+
+  export type GetPeminjamanAggregateType<T extends PeminjamanAggregateArgs> = {
+        [P in keyof T & keyof AggregatePeminjaman]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregatePeminjaman[P]>
+      : GetScalarType<T[P], AggregatePeminjaman[P]>
+  }
+
+
+
+
+  export type PeminjamanGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PeminjamanWhereInput
+    orderBy?: PeminjamanOrderByWithAggregationInput | PeminjamanOrderByWithAggregationInput[]
+    by: PeminjamanScalarFieldEnum[] | PeminjamanScalarFieldEnum
+    having?: PeminjamanScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: PeminjamanCountAggregateInputType | true
+    _avg?: PeminjamanAvgAggregateInputType
+    _sum?: PeminjamanSumAggregateInputType
+    _min?: PeminjamanMinAggregateInputType
+    _max?: PeminjamanMaxAggregateInputType
+  }
+
+  export type PeminjamanGroupByOutputType = {
+    id: number
+    reservasiId: number
+    tanggalPinjam: Date
+    tanggalJatuhTempo: Date
+    tanggalKembali: Date | null
+    status: string | null
+    denda: number
+    createdAt: Date
+    updatedAt: Date | null
+    userId: string | null
+    bookId: number | null
+    _count: PeminjamanCountAggregateOutputType | null
+    _avg: PeminjamanAvgAggregateOutputType | null
+    _sum: PeminjamanSumAggregateOutputType | null
+    _min: PeminjamanMinAggregateOutputType | null
+    _max: PeminjamanMaxAggregateOutputType | null
+  }
+
+  type GetPeminjamanGroupByPayload<T extends PeminjamanGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<PeminjamanGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof PeminjamanGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], PeminjamanGroupByOutputType[P]>
+            : GetScalarType<T[P], PeminjamanGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type PeminjamanSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    reservasiId?: boolean
+    tanggalPinjam?: boolean
+    tanggalJatuhTempo?: boolean
+    tanggalKembali?: boolean
+    status?: boolean
+    denda?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    userId?: boolean
+    bookId?: boolean
+    reservasi?: boolean | ReservasiDefaultArgs<ExtArgs>
+    User?: boolean | Peminjaman$UserArgs<ExtArgs>
+    Book?: boolean | Peminjaman$BookArgs<ExtArgs>
+  }, ExtArgs["result"]["peminjaman"]>
+
+  export type PeminjamanSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    reservasiId?: boolean
+    tanggalPinjam?: boolean
+    tanggalJatuhTempo?: boolean
+    tanggalKembali?: boolean
+    status?: boolean
+    denda?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    userId?: boolean
+    bookId?: boolean
+    reservasi?: boolean | ReservasiDefaultArgs<ExtArgs>
+    User?: boolean | Peminjaman$UserArgs<ExtArgs>
+    Book?: boolean | Peminjaman$BookArgs<ExtArgs>
+  }, ExtArgs["result"]["peminjaman"]>
+
+  export type PeminjamanSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    reservasiId?: boolean
+    tanggalPinjam?: boolean
+    tanggalJatuhTempo?: boolean
+    tanggalKembali?: boolean
+    status?: boolean
+    denda?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    userId?: boolean
+    bookId?: boolean
+    reservasi?: boolean | ReservasiDefaultArgs<ExtArgs>
+    User?: boolean | Peminjaman$UserArgs<ExtArgs>
+    Book?: boolean | Peminjaman$BookArgs<ExtArgs>
+  }, ExtArgs["result"]["peminjaman"]>
+
+  export type PeminjamanSelectScalar = {
+    id?: boolean
+    reservasiId?: boolean
+    tanggalPinjam?: boolean
+    tanggalJatuhTempo?: boolean
+    tanggalKembali?: boolean
+    status?: boolean
+    denda?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    userId?: boolean
+    bookId?: boolean
+  }
+
+  export type PeminjamanOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "reservasiId" | "tanggalPinjam" | "tanggalJatuhTempo" | "tanggalKembali" | "status" | "denda" | "createdAt" | "updatedAt" | "userId" | "bookId", ExtArgs["result"]["peminjaman"]>
+  export type PeminjamanInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    reservasi?: boolean | ReservasiDefaultArgs<ExtArgs>
+    User?: boolean | Peminjaman$UserArgs<ExtArgs>
+    Book?: boolean | Peminjaman$BookArgs<ExtArgs>
+  }
+  export type PeminjamanIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    reservasi?: boolean | ReservasiDefaultArgs<ExtArgs>
+    User?: boolean | Peminjaman$UserArgs<ExtArgs>
+    Book?: boolean | Peminjaman$BookArgs<ExtArgs>
+  }
+  export type PeminjamanIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    reservasi?: boolean | ReservasiDefaultArgs<ExtArgs>
+    User?: boolean | Peminjaman$UserArgs<ExtArgs>
+    Book?: boolean | Peminjaman$BookArgs<ExtArgs>
+  }
+
+  export type $PeminjamanPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Peminjaman"
+    objects: {
+      reservasi: Prisma.$ReservasiPayload<ExtArgs>
+      User: Prisma.$UserPayload<ExtArgs> | null
+      Book: Prisma.$BookPayload<ExtArgs> | null
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      reservasiId: number
+      tanggalPinjam: Date
+      tanggalJatuhTempo: Date
+      tanggalKembali: Date | null
+      status: string | null
+      denda: number
+      createdAt: Date
+      updatedAt: Date | null
+      userId: string | null
+      bookId: number | null
+    }, ExtArgs["result"]["peminjaman"]>
+    composites: {}
+  }
+
+  type PeminjamanGetPayload<S extends boolean | null | undefined | PeminjamanDefaultArgs> = $Result.GetResult<Prisma.$PeminjamanPayload, S>
+
+  type PeminjamanCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<PeminjamanFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: PeminjamanCountAggregateInputType | true
+    }
+
+  export interface PeminjamanDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Peminjaman'], meta: { name: 'Peminjaman' } }
+    /**
+     * Find zero or one Peminjaman that matches the filter.
+     * @param {PeminjamanFindUniqueArgs} args - Arguments to find a Peminjaman
+     * @example
+     * // Get one Peminjaman
+     * const peminjaman = await prisma.peminjaman.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends PeminjamanFindUniqueArgs>(args: SelectSubset<T, PeminjamanFindUniqueArgs<ExtArgs>>): Prisma__PeminjamanClient<$Result.GetResult<Prisma.$PeminjamanPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Peminjaman that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {PeminjamanFindUniqueOrThrowArgs} args - Arguments to find a Peminjaman
+     * @example
+     * // Get one Peminjaman
+     * const peminjaman = await prisma.peminjaman.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends PeminjamanFindUniqueOrThrowArgs>(args: SelectSubset<T, PeminjamanFindUniqueOrThrowArgs<ExtArgs>>): Prisma__PeminjamanClient<$Result.GetResult<Prisma.$PeminjamanPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Peminjaman that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PeminjamanFindFirstArgs} args - Arguments to find a Peminjaman
+     * @example
+     * // Get one Peminjaman
+     * const peminjaman = await prisma.peminjaman.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends PeminjamanFindFirstArgs>(args?: SelectSubset<T, PeminjamanFindFirstArgs<ExtArgs>>): Prisma__PeminjamanClient<$Result.GetResult<Prisma.$PeminjamanPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Peminjaman that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PeminjamanFindFirstOrThrowArgs} args - Arguments to find a Peminjaman
+     * @example
+     * // Get one Peminjaman
+     * const peminjaman = await prisma.peminjaman.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends PeminjamanFindFirstOrThrowArgs>(args?: SelectSubset<T, PeminjamanFindFirstOrThrowArgs<ExtArgs>>): Prisma__PeminjamanClient<$Result.GetResult<Prisma.$PeminjamanPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Peminjamen that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PeminjamanFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Peminjamen
+     * const peminjamen = await prisma.peminjaman.findMany()
+     * 
+     * // Get first 10 Peminjamen
+     * const peminjamen = await prisma.peminjaman.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const peminjamanWithIdOnly = await prisma.peminjaman.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends PeminjamanFindManyArgs>(args?: SelectSubset<T, PeminjamanFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PeminjamanPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Peminjaman.
+     * @param {PeminjamanCreateArgs} args - Arguments to create a Peminjaman.
+     * @example
+     * // Create one Peminjaman
+     * const Peminjaman = await prisma.peminjaman.create({
+     *   data: {
+     *     // ... data to create a Peminjaman
+     *   }
+     * })
+     * 
+     */
+    create<T extends PeminjamanCreateArgs>(args: SelectSubset<T, PeminjamanCreateArgs<ExtArgs>>): Prisma__PeminjamanClient<$Result.GetResult<Prisma.$PeminjamanPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Peminjamen.
+     * @param {PeminjamanCreateManyArgs} args - Arguments to create many Peminjamen.
+     * @example
+     * // Create many Peminjamen
+     * const peminjaman = await prisma.peminjaman.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends PeminjamanCreateManyArgs>(args?: SelectSubset<T, PeminjamanCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Peminjamen and returns the data saved in the database.
+     * @param {PeminjamanCreateManyAndReturnArgs} args - Arguments to create many Peminjamen.
+     * @example
+     * // Create many Peminjamen
+     * const peminjaman = await prisma.peminjaman.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Peminjamen and only return the `id`
+     * const peminjamanWithIdOnly = await prisma.peminjaman.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends PeminjamanCreateManyAndReturnArgs>(args?: SelectSubset<T, PeminjamanCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PeminjamanPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Peminjaman.
+     * @param {PeminjamanDeleteArgs} args - Arguments to delete one Peminjaman.
+     * @example
+     * // Delete one Peminjaman
+     * const Peminjaman = await prisma.peminjaman.delete({
+     *   where: {
+     *     // ... filter to delete one Peminjaman
+     *   }
+     * })
+     * 
+     */
+    delete<T extends PeminjamanDeleteArgs>(args: SelectSubset<T, PeminjamanDeleteArgs<ExtArgs>>): Prisma__PeminjamanClient<$Result.GetResult<Prisma.$PeminjamanPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Peminjaman.
+     * @param {PeminjamanUpdateArgs} args - Arguments to update one Peminjaman.
+     * @example
+     * // Update one Peminjaman
+     * const peminjaman = await prisma.peminjaman.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends PeminjamanUpdateArgs>(args: SelectSubset<T, PeminjamanUpdateArgs<ExtArgs>>): Prisma__PeminjamanClient<$Result.GetResult<Prisma.$PeminjamanPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Peminjamen.
+     * @param {PeminjamanDeleteManyArgs} args - Arguments to filter Peminjamen to delete.
+     * @example
+     * // Delete a few Peminjamen
+     * const { count } = await prisma.peminjaman.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends PeminjamanDeleteManyArgs>(args?: SelectSubset<T, PeminjamanDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Peminjamen.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PeminjamanUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Peminjamen
+     * const peminjaman = await prisma.peminjaman.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends PeminjamanUpdateManyArgs>(args: SelectSubset<T, PeminjamanUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Peminjamen and returns the data updated in the database.
+     * @param {PeminjamanUpdateManyAndReturnArgs} args - Arguments to update many Peminjamen.
+     * @example
+     * // Update many Peminjamen
+     * const peminjaman = await prisma.peminjaman.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Peminjamen and only return the `id`
+     * const peminjamanWithIdOnly = await prisma.peminjaman.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends PeminjamanUpdateManyAndReturnArgs>(args: SelectSubset<T, PeminjamanUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PeminjamanPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Peminjaman.
+     * @param {PeminjamanUpsertArgs} args - Arguments to update or create a Peminjaman.
+     * @example
+     * // Update or create a Peminjaman
+     * const peminjaman = await prisma.peminjaman.upsert({
+     *   create: {
+     *     // ... data to create a Peminjaman
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Peminjaman we want to update
+     *   }
+     * })
+     */
+    upsert<T extends PeminjamanUpsertArgs>(args: SelectSubset<T, PeminjamanUpsertArgs<ExtArgs>>): Prisma__PeminjamanClient<$Result.GetResult<Prisma.$PeminjamanPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Peminjamen.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PeminjamanCountArgs} args - Arguments to filter Peminjamen to count.
+     * @example
+     * // Count the number of Peminjamen
+     * const count = await prisma.peminjaman.count({
+     *   where: {
+     *     // ... the filter for the Peminjamen we want to count
+     *   }
+     * })
+    **/
+    count<T extends PeminjamanCountArgs>(
+      args?: Subset<T, PeminjamanCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], PeminjamanCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Peminjaman.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PeminjamanAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends PeminjamanAggregateArgs>(args: Subset<T, PeminjamanAggregateArgs>): Prisma.PrismaPromise<GetPeminjamanAggregateType<T>>
+
+    /**
+     * Group by Peminjaman.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PeminjamanGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends PeminjamanGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: PeminjamanGroupByArgs['orderBy'] }
+        : { orderBy?: PeminjamanGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, PeminjamanGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPeminjamanGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Peminjaman model
+   */
+  readonly fields: PeminjamanFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Peminjaman.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__PeminjamanClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    reservasi<T extends ReservasiDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ReservasiDefaultArgs<ExtArgs>>): Prisma__ReservasiClient<$Result.GetResult<Prisma.$ReservasiPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    User<T extends Peminjaman$UserArgs<ExtArgs> = {}>(args?: Subset<T, Peminjaman$UserArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    Book<T extends Peminjaman$BookArgs<ExtArgs> = {}>(args?: Subset<T, Peminjaman$BookArgs<ExtArgs>>): Prisma__BookClient<$Result.GetResult<Prisma.$BookPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Peminjaman model
+   */
+  interface PeminjamanFieldRefs {
+    readonly id: FieldRef<"Peminjaman", 'Int'>
+    readonly reservasiId: FieldRef<"Peminjaman", 'Int'>
+    readonly tanggalPinjam: FieldRef<"Peminjaman", 'DateTime'>
+    readonly tanggalJatuhTempo: FieldRef<"Peminjaman", 'DateTime'>
+    readonly tanggalKembali: FieldRef<"Peminjaman", 'DateTime'>
+    readonly status: FieldRef<"Peminjaman", 'String'>
+    readonly denda: FieldRef<"Peminjaman", 'Int'>
+    readonly createdAt: FieldRef<"Peminjaman", 'DateTime'>
+    readonly updatedAt: FieldRef<"Peminjaman", 'DateTime'>
+    readonly userId: FieldRef<"Peminjaman", 'String'>
+    readonly bookId: FieldRef<"Peminjaman", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Peminjaman findUnique
+   */
+  export type PeminjamanFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Peminjaman
+     */
+    select?: PeminjamanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Peminjaman
+     */
+    omit?: PeminjamanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PeminjamanInclude<ExtArgs> | null
+    /**
+     * Filter, which Peminjaman to fetch.
+     */
+    where: PeminjamanWhereUniqueInput
+  }
+
+  /**
+   * Peminjaman findUniqueOrThrow
+   */
+  export type PeminjamanFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Peminjaman
+     */
+    select?: PeminjamanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Peminjaman
+     */
+    omit?: PeminjamanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PeminjamanInclude<ExtArgs> | null
+    /**
+     * Filter, which Peminjaman to fetch.
+     */
+    where: PeminjamanWhereUniqueInput
+  }
+
+  /**
+   * Peminjaman findFirst
+   */
+  export type PeminjamanFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Peminjaman
+     */
+    select?: PeminjamanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Peminjaman
+     */
+    omit?: PeminjamanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PeminjamanInclude<ExtArgs> | null
+    /**
+     * Filter, which Peminjaman to fetch.
+     */
+    where?: PeminjamanWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Peminjamen to fetch.
+     */
+    orderBy?: PeminjamanOrderByWithRelationInput | PeminjamanOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Peminjamen.
+     */
+    cursor?: PeminjamanWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Peminjamen from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Peminjamen.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Peminjamen.
+     */
+    distinct?: PeminjamanScalarFieldEnum | PeminjamanScalarFieldEnum[]
+  }
+
+  /**
+   * Peminjaman findFirstOrThrow
+   */
+  export type PeminjamanFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Peminjaman
+     */
+    select?: PeminjamanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Peminjaman
+     */
+    omit?: PeminjamanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PeminjamanInclude<ExtArgs> | null
+    /**
+     * Filter, which Peminjaman to fetch.
+     */
+    where?: PeminjamanWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Peminjamen to fetch.
+     */
+    orderBy?: PeminjamanOrderByWithRelationInput | PeminjamanOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Peminjamen.
+     */
+    cursor?: PeminjamanWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Peminjamen from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Peminjamen.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Peminjamen.
+     */
+    distinct?: PeminjamanScalarFieldEnum | PeminjamanScalarFieldEnum[]
+  }
+
+  /**
+   * Peminjaman findMany
+   */
+  export type PeminjamanFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Peminjaman
+     */
+    select?: PeminjamanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Peminjaman
+     */
+    omit?: PeminjamanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PeminjamanInclude<ExtArgs> | null
+    /**
+     * Filter, which Peminjamen to fetch.
+     */
+    where?: PeminjamanWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Peminjamen to fetch.
+     */
+    orderBy?: PeminjamanOrderByWithRelationInput | PeminjamanOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Peminjamen.
+     */
+    cursor?: PeminjamanWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Peminjamen from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Peminjamen.
+     */
+    skip?: number
+    distinct?: PeminjamanScalarFieldEnum | PeminjamanScalarFieldEnum[]
+  }
+
+  /**
+   * Peminjaman create
+   */
+  export type PeminjamanCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Peminjaman
+     */
+    select?: PeminjamanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Peminjaman
+     */
+    omit?: PeminjamanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PeminjamanInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Peminjaman.
+     */
+    data: XOR<PeminjamanCreateInput, PeminjamanUncheckedCreateInput>
+  }
+
+  /**
+   * Peminjaman createMany
+   */
+  export type PeminjamanCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Peminjamen.
+     */
+    data: PeminjamanCreateManyInput | PeminjamanCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Peminjaman createManyAndReturn
+   */
+  export type PeminjamanCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Peminjaman
+     */
+    select?: PeminjamanSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Peminjaman
+     */
+    omit?: PeminjamanOmit<ExtArgs> | null
+    /**
+     * The data used to create many Peminjamen.
+     */
+    data: PeminjamanCreateManyInput | PeminjamanCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PeminjamanIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Peminjaman update
+   */
+  export type PeminjamanUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Peminjaman
+     */
+    select?: PeminjamanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Peminjaman
+     */
+    omit?: PeminjamanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PeminjamanInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Peminjaman.
+     */
+    data: XOR<PeminjamanUpdateInput, PeminjamanUncheckedUpdateInput>
+    /**
+     * Choose, which Peminjaman to update.
+     */
+    where: PeminjamanWhereUniqueInput
+  }
+
+  /**
+   * Peminjaman updateMany
+   */
+  export type PeminjamanUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Peminjamen.
+     */
+    data: XOR<PeminjamanUpdateManyMutationInput, PeminjamanUncheckedUpdateManyInput>
+    /**
+     * Filter which Peminjamen to update
+     */
+    where?: PeminjamanWhereInput
+    /**
+     * Limit how many Peminjamen to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Peminjaman updateManyAndReturn
+   */
+  export type PeminjamanUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Peminjaman
+     */
+    select?: PeminjamanSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Peminjaman
+     */
+    omit?: PeminjamanOmit<ExtArgs> | null
+    /**
+     * The data used to update Peminjamen.
+     */
+    data: XOR<PeminjamanUpdateManyMutationInput, PeminjamanUncheckedUpdateManyInput>
+    /**
+     * Filter which Peminjamen to update
+     */
+    where?: PeminjamanWhereInput
+    /**
+     * Limit how many Peminjamen to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PeminjamanIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Peminjaman upsert
+   */
+  export type PeminjamanUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Peminjaman
+     */
+    select?: PeminjamanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Peminjaman
+     */
+    omit?: PeminjamanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PeminjamanInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Peminjaman to update in case it exists.
+     */
+    where: PeminjamanWhereUniqueInput
+    /**
+     * In case the Peminjaman found by the `where` argument doesn't exist, create a new Peminjaman with this data.
+     */
+    create: XOR<PeminjamanCreateInput, PeminjamanUncheckedCreateInput>
+    /**
+     * In case the Peminjaman was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<PeminjamanUpdateInput, PeminjamanUncheckedUpdateInput>
+  }
+
+  /**
+   * Peminjaman delete
+   */
+  export type PeminjamanDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Peminjaman
+     */
+    select?: PeminjamanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Peminjaman
+     */
+    omit?: PeminjamanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PeminjamanInclude<ExtArgs> | null
+    /**
+     * Filter which Peminjaman to delete.
+     */
+    where: PeminjamanWhereUniqueInput
+  }
+
+  /**
+   * Peminjaman deleteMany
+   */
+  export type PeminjamanDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Peminjamen to delete
+     */
+    where?: PeminjamanWhereInput
+    /**
+     * Limit how many Peminjamen to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Peminjaman.User
+   */
+  export type Peminjaman$UserArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User
+     */
+    select?: UserSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the User
+     */
+    omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    where?: UserWhereInput
+  }
+
+  /**
+   * Peminjaman.Book
+   */
+  export type Peminjaman$BookArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Book
+     */
+    select?: BookSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Book
+     */
+    omit?: BookOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BookInclude<ExtArgs> | null
+    where?: BookWhereInput
+  }
+
+  /**
+   * Peminjaman without action
+   */
+  export type PeminjamanDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Peminjaman
+     */
+    select?: PeminjamanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Peminjaman
+     */
+    omit?: PeminjamanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PeminjamanInclude<ExtArgs> | null
   }
 
 
@@ -5895,13 +7315,30 @@ export namespace Prisma {
     id: 'id',
     userId: 'userId',
     bookId: 'bookId',
-    tanggalPinjam: 'tanggalPinjam',
-    tanggalKembali: 'tanggalKembali',
-    status: 'status',
-    denda: 'denda'
+    tanggalAmbil: 'tanggalAmbil',
+    jamAmbil: 'jamAmbil',
+    catatan: 'catatan',
+    status: 'status'
   };
 
   export type ReservasiScalarFieldEnum = (typeof ReservasiScalarFieldEnum)[keyof typeof ReservasiScalarFieldEnum]
+
+
+  export const PeminjamanScalarFieldEnum: {
+    id: 'id',
+    reservasiId: 'reservasiId',
+    tanggalPinjam: 'tanggalPinjam',
+    tanggalJatuhTempo: 'tanggalJatuhTempo',
+    tanggalKembali: 'tanggalKembali',
+    status: 'status',
+    denda: 'denda',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
+    userId: 'userId',
+    bookId: 'bookId'
+  };
+
+  export type PeminjamanScalarFieldEnum = (typeof PeminjamanScalarFieldEnum)[keyof typeof PeminjamanScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -6007,6 +7444,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeNullableFilter<"User"> | Date | string | null
     Reservasi?: ReservasiListRelationFilter
+    Peminjaman?: PeminjamanListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -6021,6 +7459,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrderInput | SortOrder
     Reservasi?: ReservasiOrderByRelationAggregateInput
+    Peminjaman?: PeminjamanOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -6038,6 +7477,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeNullableFilter<"User"> | Date | string | null
     Reservasi?: ReservasiListRelationFilter
+    Peminjaman?: PeminjamanListRelationFilter
   }, "id" | "email">
 
   export type UserOrderByWithAggregationInput = {
@@ -6091,6 +7531,7 @@ export namespace Prisma {
     updatedAt?: DateTimeNullableFilter<"Book"> | Date | string | null
     kategori?: XOR<CategoryScalarRelationFilter, CategoryWhereInput>
     Reservasi?: ReservasiListRelationFilter
+    Peminjaman?: PeminjamanListRelationFilter
   }
 
   export type BookOrderByWithRelationInput = {
@@ -6109,6 +7550,7 @@ export namespace Prisma {
     updatedAt?: SortOrderInput | SortOrder
     kategori?: CategoryOrderByWithRelationInput
     Reservasi?: ReservasiOrderByRelationAggregateInput
+    Peminjaman?: PeminjamanOrderByRelationAggregateInput
   }
 
   export type BookWhereUniqueInput = Prisma.AtLeast<{
@@ -6130,6 +7572,7 @@ export namespace Prisma {
     updatedAt?: DateTimeNullableFilter<"Book"> | Date | string | null
     kategori?: XOR<CategoryScalarRelationFilter, CategoryWhereInput>
     Reservasi?: ReservasiListRelationFilter
+    Peminjaman?: PeminjamanListRelationFilter
   }, "id" | "isbn">
 
   export type BookOrderByWithAggregationInput = {
@@ -6231,24 +7674,26 @@ export namespace Prisma {
     id?: IntFilter<"Reservasi"> | number
     userId?: StringFilter<"Reservasi"> | string
     bookId?: IntFilter<"Reservasi"> | number
-    tanggalPinjam?: DateTimeFilter<"Reservasi"> | Date | string
-    tanggalKembali?: DateTimeNullableFilter<"Reservasi"> | Date | string | null
+    tanggalAmbil?: DateTimeFilter<"Reservasi"> | Date | string
+    jamAmbil?: StringNullableFilter<"Reservasi"> | string | null
+    catatan?: StringNullableFilter<"Reservasi"> | string | null
     status?: StringFilter<"Reservasi"> | string
-    denda?: IntFilter<"Reservasi"> | number
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     book?: XOR<BookScalarRelationFilter, BookWhereInput>
+    peminjaman?: XOR<PeminjamanNullableScalarRelationFilter, PeminjamanWhereInput> | null
   }
 
   export type ReservasiOrderByWithRelationInput = {
     id?: SortOrder
     userId?: SortOrder
     bookId?: SortOrder
-    tanggalPinjam?: SortOrder
-    tanggalKembali?: SortOrderInput | SortOrder
+    tanggalAmbil?: SortOrder
+    jamAmbil?: SortOrderInput | SortOrder
+    catatan?: SortOrderInput | SortOrder
     status?: SortOrder
-    denda?: SortOrder
     user?: UserOrderByWithRelationInput
     book?: BookOrderByWithRelationInput
+    peminjaman?: PeminjamanOrderByWithRelationInput
   }
 
   export type ReservasiWhereUniqueInput = Prisma.AtLeast<{
@@ -6258,22 +7703,23 @@ export namespace Prisma {
     NOT?: ReservasiWhereInput | ReservasiWhereInput[]
     userId?: StringFilter<"Reservasi"> | string
     bookId?: IntFilter<"Reservasi"> | number
-    tanggalPinjam?: DateTimeFilter<"Reservasi"> | Date | string
-    tanggalKembali?: DateTimeNullableFilter<"Reservasi"> | Date | string | null
+    tanggalAmbil?: DateTimeFilter<"Reservasi"> | Date | string
+    jamAmbil?: StringNullableFilter<"Reservasi"> | string | null
+    catatan?: StringNullableFilter<"Reservasi"> | string | null
     status?: StringFilter<"Reservasi"> | string
-    denda?: IntFilter<"Reservasi"> | number
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     book?: XOR<BookScalarRelationFilter, BookWhereInput>
+    peminjaman?: XOR<PeminjamanNullableScalarRelationFilter, PeminjamanWhereInput> | null
   }, "id">
 
   export type ReservasiOrderByWithAggregationInput = {
     id?: SortOrder
     userId?: SortOrder
     bookId?: SortOrder
-    tanggalPinjam?: SortOrder
-    tanggalKembali?: SortOrderInput | SortOrder
+    tanggalAmbil?: SortOrder
+    jamAmbil?: SortOrderInput | SortOrder
+    catatan?: SortOrderInput | SortOrder
     status?: SortOrder
-    denda?: SortOrder
     _count?: ReservasiCountOrderByAggregateInput
     _avg?: ReservasiAvgOrderByAggregateInput
     _max?: ReservasiMaxOrderByAggregateInput
@@ -6288,10 +7734,103 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter<"Reservasi"> | number
     userId?: StringWithAggregatesFilter<"Reservasi"> | string
     bookId?: IntWithAggregatesFilter<"Reservasi"> | number
-    tanggalPinjam?: DateTimeWithAggregatesFilter<"Reservasi"> | Date | string
-    tanggalKembali?: DateTimeNullableWithAggregatesFilter<"Reservasi"> | Date | string | null
+    tanggalAmbil?: DateTimeWithAggregatesFilter<"Reservasi"> | Date | string
+    jamAmbil?: StringNullableWithAggregatesFilter<"Reservasi"> | string | null
+    catatan?: StringNullableWithAggregatesFilter<"Reservasi"> | string | null
     status?: StringWithAggregatesFilter<"Reservasi"> | string
-    denda?: IntWithAggregatesFilter<"Reservasi"> | number
+  }
+
+  export type PeminjamanWhereInput = {
+    AND?: PeminjamanWhereInput | PeminjamanWhereInput[]
+    OR?: PeminjamanWhereInput[]
+    NOT?: PeminjamanWhereInput | PeminjamanWhereInput[]
+    id?: IntFilter<"Peminjaman"> | number
+    reservasiId?: IntFilter<"Peminjaman"> | number
+    tanggalPinjam?: DateTimeFilter<"Peminjaman"> | Date | string
+    tanggalJatuhTempo?: DateTimeFilter<"Peminjaman"> | Date | string
+    tanggalKembali?: DateTimeNullableFilter<"Peminjaman"> | Date | string | null
+    status?: StringNullableFilter<"Peminjaman"> | string | null
+    denda?: IntFilter<"Peminjaman"> | number
+    createdAt?: DateTimeFilter<"Peminjaman"> | Date | string
+    updatedAt?: DateTimeNullableFilter<"Peminjaman"> | Date | string | null
+    userId?: StringNullableFilter<"Peminjaman"> | string | null
+    bookId?: IntNullableFilter<"Peminjaman"> | number | null
+    reservasi?: XOR<ReservasiScalarRelationFilter, ReservasiWhereInput>
+    User?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
+    Book?: XOR<BookNullableScalarRelationFilter, BookWhereInput> | null
+  }
+
+  export type PeminjamanOrderByWithRelationInput = {
+    id?: SortOrder
+    reservasiId?: SortOrder
+    tanggalPinjam?: SortOrder
+    tanggalJatuhTempo?: SortOrder
+    tanggalKembali?: SortOrderInput | SortOrder
+    status?: SortOrderInput | SortOrder
+    denda?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrderInput | SortOrder
+    userId?: SortOrderInput | SortOrder
+    bookId?: SortOrderInput | SortOrder
+    reservasi?: ReservasiOrderByWithRelationInput
+    User?: UserOrderByWithRelationInput
+    Book?: BookOrderByWithRelationInput
+  }
+
+  export type PeminjamanWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    reservasiId?: number
+    AND?: PeminjamanWhereInput | PeminjamanWhereInput[]
+    OR?: PeminjamanWhereInput[]
+    NOT?: PeminjamanWhereInput | PeminjamanWhereInput[]
+    tanggalPinjam?: DateTimeFilter<"Peminjaman"> | Date | string
+    tanggalJatuhTempo?: DateTimeFilter<"Peminjaman"> | Date | string
+    tanggalKembali?: DateTimeNullableFilter<"Peminjaman"> | Date | string | null
+    status?: StringNullableFilter<"Peminjaman"> | string | null
+    denda?: IntFilter<"Peminjaman"> | number
+    createdAt?: DateTimeFilter<"Peminjaman"> | Date | string
+    updatedAt?: DateTimeNullableFilter<"Peminjaman"> | Date | string | null
+    userId?: StringNullableFilter<"Peminjaman"> | string | null
+    bookId?: IntNullableFilter<"Peminjaman"> | number | null
+    reservasi?: XOR<ReservasiScalarRelationFilter, ReservasiWhereInput>
+    User?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
+    Book?: XOR<BookNullableScalarRelationFilter, BookWhereInput> | null
+  }, "id" | "reservasiId">
+
+  export type PeminjamanOrderByWithAggregationInput = {
+    id?: SortOrder
+    reservasiId?: SortOrder
+    tanggalPinjam?: SortOrder
+    tanggalJatuhTempo?: SortOrder
+    tanggalKembali?: SortOrderInput | SortOrder
+    status?: SortOrderInput | SortOrder
+    denda?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrderInput | SortOrder
+    userId?: SortOrderInput | SortOrder
+    bookId?: SortOrderInput | SortOrder
+    _count?: PeminjamanCountOrderByAggregateInput
+    _avg?: PeminjamanAvgOrderByAggregateInput
+    _max?: PeminjamanMaxOrderByAggregateInput
+    _min?: PeminjamanMinOrderByAggregateInput
+    _sum?: PeminjamanSumOrderByAggregateInput
+  }
+
+  export type PeminjamanScalarWhereWithAggregatesInput = {
+    AND?: PeminjamanScalarWhereWithAggregatesInput | PeminjamanScalarWhereWithAggregatesInput[]
+    OR?: PeminjamanScalarWhereWithAggregatesInput[]
+    NOT?: PeminjamanScalarWhereWithAggregatesInput | PeminjamanScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Peminjaman"> | number
+    reservasiId?: IntWithAggregatesFilter<"Peminjaman"> | number
+    tanggalPinjam?: DateTimeWithAggregatesFilter<"Peminjaman"> | Date | string
+    tanggalJatuhTempo?: DateTimeWithAggregatesFilter<"Peminjaman"> | Date | string
+    tanggalKembali?: DateTimeNullableWithAggregatesFilter<"Peminjaman"> | Date | string | null
+    status?: StringNullableWithAggregatesFilter<"Peminjaman"> | string | null
+    denda?: IntWithAggregatesFilter<"Peminjaman"> | number
+    createdAt?: DateTimeWithAggregatesFilter<"Peminjaman"> | Date | string
+    updatedAt?: DateTimeNullableWithAggregatesFilter<"Peminjaman"> | Date | string | null
+    userId?: StringNullableWithAggregatesFilter<"Peminjaman"> | string | null
+    bookId?: IntNullableWithAggregatesFilter<"Peminjaman"> | number | null
   }
 
   export type UserCreateInput = {
@@ -6306,6 +7845,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string | null
     Reservasi?: ReservasiCreateNestedManyWithoutUserInput
+    Peminjaman?: PeminjamanCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -6320,6 +7860,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string | null
     Reservasi?: ReservasiUncheckedCreateNestedManyWithoutUserInput
+    Peminjaman?: PeminjamanUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserUpdateInput = {
@@ -6334,6 +7875,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     Reservasi?: ReservasiUpdateManyWithoutUserNestedInput
+    Peminjaman?: PeminjamanUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -6348,6 +7890,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     Reservasi?: ReservasiUncheckedUpdateManyWithoutUserNestedInput
+    Peminjaman?: PeminjamanUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -6403,6 +7946,7 @@ export namespace Prisma {
     updatedAt?: Date | string | null
     kategori: CategoryCreateNestedOneWithoutBukuInput
     Reservasi?: ReservasiCreateNestedManyWithoutBookInput
+    Peminjaman?: PeminjamanCreateNestedManyWithoutBookInput
   }
 
   export type BookUncheckedCreateInput = {
@@ -6420,6 +7964,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string | null
     Reservasi?: ReservasiUncheckedCreateNestedManyWithoutBookInput
+    Peminjaman?: PeminjamanUncheckedCreateNestedManyWithoutBookInput
   }
 
   export type BookUpdateInput = {
@@ -6436,6 +7981,7 @@ export namespace Prisma {
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     kategori?: CategoryUpdateOneRequiredWithoutBukuNestedInput
     Reservasi?: ReservasiUpdateManyWithoutBookNestedInput
+    Peminjaman?: PeminjamanUpdateManyWithoutBookNestedInput
   }
 
   export type BookUncheckedUpdateInput = {
@@ -6453,6 +7999,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     Reservasi?: ReservasiUncheckedUpdateManyWithoutBookNestedInput
+    Peminjaman?: PeminjamanUncheckedUpdateManyWithoutBookNestedInput
   }
 
   export type BookCreateManyInput = {
@@ -6552,68 +8099,164 @@ export namespace Prisma {
   }
 
   export type ReservasiCreateInput = {
-    tanggalPinjam?: Date | string
-    tanggalKembali?: Date | string | null
+    tanggalAmbil?: Date | string
+    jamAmbil?: string | null
+    catatan?: string | null
     status?: string
-    denda?: number
     user: UserCreateNestedOneWithoutReservasiInput
     book: BookCreateNestedOneWithoutReservasiInput
+    peminjaman?: PeminjamanCreateNestedOneWithoutReservasiInput
   }
 
   export type ReservasiUncheckedCreateInput = {
     id?: number
     userId: string
     bookId: number
-    tanggalPinjam?: Date | string
-    tanggalKembali?: Date | string | null
+    tanggalAmbil?: Date | string
+    jamAmbil?: string | null
+    catatan?: string | null
     status?: string
-    denda?: number
+    peminjaman?: PeminjamanUncheckedCreateNestedOneWithoutReservasiInput
   }
 
   export type ReservasiUpdateInput = {
-    tanggalPinjam?: DateTimeFieldUpdateOperationsInput | Date | string
-    tanggalKembali?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    tanggalAmbil?: DateTimeFieldUpdateOperationsInput | Date | string
+    jamAmbil?: NullableStringFieldUpdateOperationsInput | string | null
+    catatan?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
-    denda?: IntFieldUpdateOperationsInput | number
     user?: UserUpdateOneRequiredWithoutReservasiNestedInput
     book?: BookUpdateOneRequiredWithoutReservasiNestedInput
+    peminjaman?: PeminjamanUpdateOneWithoutReservasiNestedInput
   }
 
   export type ReservasiUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     userId?: StringFieldUpdateOperationsInput | string
     bookId?: IntFieldUpdateOperationsInput | number
-    tanggalPinjam?: DateTimeFieldUpdateOperationsInput | Date | string
-    tanggalKembali?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    tanggalAmbil?: DateTimeFieldUpdateOperationsInput | Date | string
+    jamAmbil?: NullableStringFieldUpdateOperationsInput | string | null
+    catatan?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
-    denda?: IntFieldUpdateOperationsInput | number
+    peminjaman?: PeminjamanUncheckedUpdateOneWithoutReservasiNestedInput
   }
 
   export type ReservasiCreateManyInput = {
     id?: number
     userId: string
     bookId: number
-    tanggalPinjam?: Date | string
-    tanggalKembali?: Date | string | null
+    tanggalAmbil?: Date | string
+    jamAmbil?: string | null
+    catatan?: string | null
     status?: string
-    denda?: number
   }
 
   export type ReservasiUpdateManyMutationInput = {
-    tanggalPinjam?: DateTimeFieldUpdateOperationsInput | Date | string
-    tanggalKembali?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    tanggalAmbil?: DateTimeFieldUpdateOperationsInput | Date | string
+    jamAmbil?: NullableStringFieldUpdateOperationsInput | string | null
+    catatan?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
-    denda?: IntFieldUpdateOperationsInput | number
   }
 
   export type ReservasiUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     userId?: StringFieldUpdateOperationsInput | string
     bookId?: IntFieldUpdateOperationsInput | number
-    tanggalPinjam?: DateTimeFieldUpdateOperationsInput | Date | string
-    tanggalKembali?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    tanggalAmbil?: DateTimeFieldUpdateOperationsInput | Date | string
+    jamAmbil?: NullableStringFieldUpdateOperationsInput | string | null
+    catatan?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type PeminjamanCreateInput = {
+    tanggalPinjam?: Date | string
+    tanggalJatuhTempo: Date | string
+    tanggalKembali?: Date | string | null
+    status?: string | null
+    denda?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+    reservasi: ReservasiCreateNestedOneWithoutPeminjamanInput
+    User?: UserCreateNestedOneWithoutPeminjamanInput
+    Book?: BookCreateNestedOneWithoutPeminjamanInput
+  }
+
+  export type PeminjamanUncheckedCreateInput = {
+    id?: number
+    reservasiId: number
+    tanggalPinjam?: Date | string
+    tanggalJatuhTempo: Date | string
+    tanggalKembali?: Date | string | null
+    status?: string | null
+    denda?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+    userId?: string | null
+    bookId?: number | null
+  }
+
+  export type PeminjamanUpdateInput = {
+    tanggalPinjam?: DateTimeFieldUpdateOperationsInput | Date | string
+    tanggalJatuhTempo?: DateTimeFieldUpdateOperationsInput | Date | string
+    tanggalKembali?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: NullableStringFieldUpdateOperationsInput | string | null
     denda?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    reservasi?: ReservasiUpdateOneRequiredWithoutPeminjamanNestedInput
+    User?: UserUpdateOneWithoutPeminjamanNestedInput
+    Book?: BookUpdateOneWithoutPeminjamanNestedInput
+  }
+
+  export type PeminjamanUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    reservasiId?: IntFieldUpdateOperationsInput | number
+    tanggalPinjam?: DateTimeFieldUpdateOperationsInput | Date | string
+    tanggalJatuhTempo?: DateTimeFieldUpdateOperationsInput | Date | string
+    tanggalKembali?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: NullableStringFieldUpdateOperationsInput | string | null
+    denda?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
+    bookId?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type PeminjamanCreateManyInput = {
+    id?: number
+    reservasiId: number
+    tanggalPinjam?: Date | string
+    tanggalJatuhTempo: Date | string
+    tanggalKembali?: Date | string | null
+    status?: string | null
+    denda?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+    userId?: string | null
+    bookId?: number | null
+  }
+
+  export type PeminjamanUpdateManyMutationInput = {
+    tanggalPinjam?: DateTimeFieldUpdateOperationsInput | Date | string
+    tanggalJatuhTempo?: DateTimeFieldUpdateOperationsInput | Date | string
+    tanggalKembali?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: NullableStringFieldUpdateOperationsInput | string | null
+    denda?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type PeminjamanUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    reservasiId?: IntFieldUpdateOperationsInput | number
+    tanggalPinjam?: DateTimeFieldUpdateOperationsInput | Date | string
+    tanggalJatuhTempo?: DateTimeFieldUpdateOperationsInput | Date | string
+    tanggalKembali?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: NullableStringFieldUpdateOperationsInput | string | null
+    denda?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
+    bookId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -6674,12 +8317,22 @@ export namespace Prisma {
     none?: ReservasiWhereInput
   }
 
+  export type PeminjamanListRelationFilter = {
+    every?: PeminjamanWhereInput
+    some?: PeminjamanWhereInput
+    none?: PeminjamanWhereInput
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
   }
 
   export type ReservasiOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type PeminjamanOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -6929,46 +8582,147 @@ export namespace Prisma {
     isNot?: BookWhereInput
   }
 
+  export type PeminjamanNullableScalarRelationFilter = {
+    is?: PeminjamanWhereInput | null
+    isNot?: PeminjamanWhereInput | null
+  }
+
   export type ReservasiCountOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
     bookId?: SortOrder
-    tanggalPinjam?: SortOrder
-    tanggalKembali?: SortOrder
+    tanggalAmbil?: SortOrder
+    jamAmbil?: SortOrder
+    catatan?: SortOrder
     status?: SortOrder
-    denda?: SortOrder
   }
 
   export type ReservasiAvgOrderByAggregateInput = {
     id?: SortOrder
     bookId?: SortOrder
-    denda?: SortOrder
   }
 
   export type ReservasiMaxOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
     bookId?: SortOrder
-    tanggalPinjam?: SortOrder
-    tanggalKembali?: SortOrder
+    tanggalAmbil?: SortOrder
+    jamAmbil?: SortOrder
+    catatan?: SortOrder
     status?: SortOrder
-    denda?: SortOrder
   }
 
   export type ReservasiMinOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
     bookId?: SortOrder
-    tanggalPinjam?: SortOrder
-    tanggalKembali?: SortOrder
+    tanggalAmbil?: SortOrder
+    jamAmbil?: SortOrder
+    catatan?: SortOrder
     status?: SortOrder
-    denda?: SortOrder
   }
 
   export type ReservasiSumOrderByAggregateInput = {
     id?: SortOrder
     bookId?: SortOrder
+  }
+
+  export type IntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type ReservasiScalarRelationFilter = {
+    is?: ReservasiWhereInput
+    isNot?: ReservasiWhereInput
+  }
+
+  export type UserNullableScalarRelationFilter = {
+    is?: UserWhereInput | null
+    isNot?: UserWhereInput | null
+  }
+
+  export type BookNullableScalarRelationFilter = {
+    is?: BookWhereInput | null
+    isNot?: BookWhereInput | null
+  }
+
+  export type PeminjamanCountOrderByAggregateInput = {
+    id?: SortOrder
+    reservasiId?: SortOrder
+    tanggalPinjam?: SortOrder
+    tanggalJatuhTempo?: SortOrder
+    tanggalKembali?: SortOrder
+    status?: SortOrder
     denda?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    userId?: SortOrder
+    bookId?: SortOrder
+  }
+
+  export type PeminjamanAvgOrderByAggregateInput = {
+    id?: SortOrder
+    reservasiId?: SortOrder
+    denda?: SortOrder
+    bookId?: SortOrder
+  }
+
+  export type PeminjamanMaxOrderByAggregateInput = {
+    id?: SortOrder
+    reservasiId?: SortOrder
+    tanggalPinjam?: SortOrder
+    tanggalJatuhTempo?: SortOrder
+    tanggalKembali?: SortOrder
+    status?: SortOrder
+    denda?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    userId?: SortOrder
+    bookId?: SortOrder
+  }
+
+  export type PeminjamanMinOrderByAggregateInput = {
+    id?: SortOrder
+    reservasiId?: SortOrder
+    tanggalPinjam?: SortOrder
+    tanggalJatuhTempo?: SortOrder
+    tanggalKembali?: SortOrder
+    status?: SortOrder
+    denda?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    userId?: SortOrder
+    bookId?: SortOrder
+  }
+
+  export type PeminjamanSumOrderByAggregateInput = {
+    id?: SortOrder
+    reservasiId?: SortOrder
+    denda?: SortOrder
+    bookId?: SortOrder
+  }
+
+  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
   export type ReservasiCreateNestedManyWithoutUserInput = {
@@ -6978,11 +8732,25 @@ export namespace Prisma {
     connect?: ReservasiWhereUniqueInput | ReservasiWhereUniqueInput[]
   }
 
+  export type PeminjamanCreateNestedManyWithoutUserInput = {
+    create?: XOR<PeminjamanCreateWithoutUserInput, PeminjamanUncheckedCreateWithoutUserInput> | PeminjamanCreateWithoutUserInput[] | PeminjamanUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: PeminjamanCreateOrConnectWithoutUserInput | PeminjamanCreateOrConnectWithoutUserInput[]
+    createMany?: PeminjamanCreateManyUserInputEnvelope
+    connect?: PeminjamanWhereUniqueInput | PeminjamanWhereUniqueInput[]
+  }
+
   export type ReservasiUncheckedCreateNestedManyWithoutUserInput = {
     create?: XOR<ReservasiCreateWithoutUserInput, ReservasiUncheckedCreateWithoutUserInput> | ReservasiCreateWithoutUserInput[] | ReservasiUncheckedCreateWithoutUserInput[]
     connectOrCreate?: ReservasiCreateOrConnectWithoutUserInput | ReservasiCreateOrConnectWithoutUserInput[]
     createMany?: ReservasiCreateManyUserInputEnvelope
     connect?: ReservasiWhereUniqueInput | ReservasiWhereUniqueInput[]
+  }
+
+  export type PeminjamanUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<PeminjamanCreateWithoutUserInput, PeminjamanUncheckedCreateWithoutUserInput> | PeminjamanCreateWithoutUserInput[] | PeminjamanUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: PeminjamanCreateOrConnectWithoutUserInput | PeminjamanCreateOrConnectWithoutUserInput[]
+    createMany?: PeminjamanCreateManyUserInputEnvelope
+    connect?: PeminjamanWhereUniqueInput | PeminjamanWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -7015,6 +8783,20 @@ export namespace Prisma {
     deleteMany?: ReservasiScalarWhereInput | ReservasiScalarWhereInput[]
   }
 
+  export type PeminjamanUpdateManyWithoutUserNestedInput = {
+    create?: XOR<PeminjamanCreateWithoutUserInput, PeminjamanUncheckedCreateWithoutUserInput> | PeminjamanCreateWithoutUserInput[] | PeminjamanUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: PeminjamanCreateOrConnectWithoutUserInput | PeminjamanCreateOrConnectWithoutUserInput[]
+    upsert?: PeminjamanUpsertWithWhereUniqueWithoutUserInput | PeminjamanUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: PeminjamanCreateManyUserInputEnvelope
+    set?: PeminjamanWhereUniqueInput | PeminjamanWhereUniqueInput[]
+    disconnect?: PeminjamanWhereUniqueInput | PeminjamanWhereUniqueInput[]
+    delete?: PeminjamanWhereUniqueInput | PeminjamanWhereUniqueInput[]
+    connect?: PeminjamanWhereUniqueInput | PeminjamanWhereUniqueInput[]
+    update?: PeminjamanUpdateWithWhereUniqueWithoutUserInput | PeminjamanUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: PeminjamanUpdateManyWithWhereWithoutUserInput | PeminjamanUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: PeminjamanScalarWhereInput | PeminjamanScalarWhereInput[]
+  }
+
   export type ReservasiUncheckedUpdateManyWithoutUserNestedInput = {
     create?: XOR<ReservasiCreateWithoutUserInput, ReservasiUncheckedCreateWithoutUserInput> | ReservasiCreateWithoutUserInput[] | ReservasiUncheckedCreateWithoutUserInput[]
     connectOrCreate?: ReservasiCreateOrConnectWithoutUserInput | ReservasiCreateOrConnectWithoutUserInput[]
@@ -7027,6 +8809,20 @@ export namespace Prisma {
     update?: ReservasiUpdateWithWhereUniqueWithoutUserInput | ReservasiUpdateWithWhereUniqueWithoutUserInput[]
     updateMany?: ReservasiUpdateManyWithWhereWithoutUserInput | ReservasiUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: ReservasiScalarWhereInput | ReservasiScalarWhereInput[]
+  }
+
+  export type PeminjamanUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<PeminjamanCreateWithoutUserInput, PeminjamanUncheckedCreateWithoutUserInput> | PeminjamanCreateWithoutUserInput[] | PeminjamanUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: PeminjamanCreateOrConnectWithoutUserInput | PeminjamanCreateOrConnectWithoutUserInput[]
+    upsert?: PeminjamanUpsertWithWhereUniqueWithoutUserInput | PeminjamanUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: PeminjamanCreateManyUserInputEnvelope
+    set?: PeminjamanWhereUniqueInput | PeminjamanWhereUniqueInput[]
+    disconnect?: PeminjamanWhereUniqueInput | PeminjamanWhereUniqueInput[]
+    delete?: PeminjamanWhereUniqueInput | PeminjamanWhereUniqueInput[]
+    connect?: PeminjamanWhereUniqueInput | PeminjamanWhereUniqueInput[]
+    update?: PeminjamanUpdateWithWhereUniqueWithoutUserInput | PeminjamanUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: PeminjamanUpdateManyWithWhereWithoutUserInput | PeminjamanUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: PeminjamanScalarWhereInput | PeminjamanScalarWhereInput[]
   }
 
   export type CategoryCreateNestedOneWithoutBukuInput = {
@@ -7042,11 +8838,25 @@ export namespace Prisma {
     connect?: ReservasiWhereUniqueInput | ReservasiWhereUniqueInput[]
   }
 
+  export type PeminjamanCreateNestedManyWithoutBookInput = {
+    create?: XOR<PeminjamanCreateWithoutBookInput, PeminjamanUncheckedCreateWithoutBookInput> | PeminjamanCreateWithoutBookInput[] | PeminjamanUncheckedCreateWithoutBookInput[]
+    connectOrCreate?: PeminjamanCreateOrConnectWithoutBookInput | PeminjamanCreateOrConnectWithoutBookInput[]
+    createMany?: PeminjamanCreateManyBookInputEnvelope
+    connect?: PeminjamanWhereUniqueInput | PeminjamanWhereUniqueInput[]
+  }
+
   export type ReservasiUncheckedCreateNestedManyWithoutBookInput = {
     create?: XOR<ReservasiCreateWithoutBookInput, ReservasiUncheckedCreateWithoutBookInput> | ReservasiCreateWithoutBookInput[] | ReservasiUncheckedCreateWithoutBookInput[]
     connectOrCreate?: ReservasiCreateOrConnectWithoutBookInput | ReservasiCreateOrConnectWithoutBookInput[]
     createMany?: ReservasiCreateManyBookInputEnvelope
     connect?: ReservasiWhereUniqueInput | ReservasiWhereUniqueInput[]
+  }
+
+  export type PeminjamanUncheckedCreateNestedManyWithoutBookInput = {
+    create?: XOR<PeminjamanCreateWithoutBookInput, PeminjamanUncheckedCreateWithoutBookInput> | PeminjamanCreateWithoutBookInput[] | PeminjamanUncheckedCreateWithoutBookInput[]
+    connectOrCreate?: PeminjamanCreateOrConnectWithoutBookInput | PeminjamanCreateOrConnectWithoutBookInput[]
+    createMany?: PeminjamanCreateManyBookInputEnvelope
+    connect?: PeminjamanWhereUniqueInput | PeminjamanWhereUniqueInput[]
   }
 
   export type IntFieldUpdateOperationsInput = {
@@ -7079,6 +8889,20 @@ export namespace Prisma {
     deleteMany?: ReservasiScalarWhereInput | ReservasiScalarWhereInput[]
   }
 
+  export type PeminjamanUpdateManyWithoutBookNestedInput = {
+    create?: XOR<PeminjamanCreateWithoutBookInput, PeminjamanUncheckedCreateWithoutBookInput> | PeminjamanCreateWithoutBookInput[] | PeminjamanUncheckedCreateWithoutBookInput[]
+    connectOrCreate?: PeminjamanCreateOrConnectWithoutBookInput | PeminjamanCreateOrConnectWithoutBookInput[]
+    upsert?: PeminjamanUpsertWithWhereUniqueWithoutBookInput | PeminjamanUpsertWithWhereUniqueWithoutBookInput[]
+    createMany?: PeminjamanCreateManyBookInputEnvelope
+    set?: PeminjamanWhereUniqueInput | PeminjamanWhereUniqueInput[]
+    disconnect?: PeminjamanWhereUniqueInput | PeminjamanWhereUniqueInput[]
+    delete?: PeminjamanWhereUniqueInput | PeminjamanWhereUniqueInput[]
+    connect?: PeminjamanWhereUniqueInput | PeminjamanWhereUniqueInput[]
+    update?: PeminjamanUpdateWithWhereUniqueWithoutBookInput | PeminjamanUpdateWithWhereUniqueWithoutBookInput[]
+    updateMany?: PeminjamanUpdateManyWithWhereWithoutBookInput | PeminjamanUpdateManyWithWhereWithoutBookInput[]
+    deleteMany?: PeminjamanScalarWhereInput | PeminjamanScalarWhereInput[]
+  }
+
   export type ReservasiUncheckedUpdateManyWithoutBookNestedInput = {
     create?: XOR<ReservasiCreateWithoutBookInput, ReservasiUncheckedCreateWithoutBookInput> | ReservasiCreateWithoutBookInput[] | ReservasiUncheckedCreateWithoutBookInput[]
     connectOrCreate?: ReservasiCreateOrConnectWithoutBookInput | ReservasiCreateOrConnectWithoutBookInput[]
@@ -7091,6 +8915,20 @@ export namespace Prisma {
     update?: ReservasiUpdateWithWhereUniqueWithoutBookInput | ReservasiUpdateWithWhereUniqueWithoutBookInput[]
     updateMany?: ReservasiUpdateManyWithWhereWithoutBookInput | ReservasiUpdateManyWithWhereWithoutBookInput[]
     deleteMany?: ReservasiScalarWhereInput | ReservasiScalarWhereInput[]
+  }
+
+  export type PeminjamanUncheckedUpdateManyWithoutBookNestedInput = {
+    create?: XOR<PeminjamanCreateWithoutBookInput, PeminjamanUncheckedCreateWithoutBookInput> | PeminjamanCreateWithoutBookInput[] | PeminjamanUncheckedCreateWithoutBookInput[]
+    connectOrCreate?: PeminjamanCreateOrConnectWithoutBookInput | PeminjamanCreateOrConnectWithoutBookInput[]
+    upsert?: PeminjamanUpsertWithWhereUniqueWithoutBookInput | PeminjamanUpsertWithWhereUniqueWithoutBookInput[]
+    createMany?: PeminjamanCreateManyBookInputEnvelope
+    set?: PeminjamanWhereUniqueInput | PeminjamanWhereUniqueInput[]
+    disconnect?: PeminjamanWhereUniqueInput | PeminjamanWhereUniqueInput[]
+    delete?: PeminjamanWhereUniqueInput | PeminjamanWhereUniqueInput[]
+    connect?: PeminjamanWhereUniqueInput | PeminjamanWhereUniqueInput[]
+    update?: PeminjamanUpdateWithWhereUniqueWithoutBookInput | PeminjamanUpdateWithWhereUniqueWithoutBookInput[]
+    updateMany?: PeminjamanUpdateManyWithWhereWithoutBookInput | PeminjamanUpdateManyWithWhereWithoutBookInput[]
+    deleteMany?: PeminjamanScalarWhereInput | PeminjamanScalarWhereInput[]
   }
 
   export type BookCreateNestedManyWithoutKategoriInput = {
@@ -7147,6 +8985,18 @@ export namespace Prisma {
     connect?: BookWhereUniqueInput
   }
 
+  export type PeminjamanCreateNestedOneWithoutReservasiInput = {
+    create?: XOR<PeminjamanCreateWithoutReservasiInput, PeminjamanUncheckedCreateWithoutReservasiInput>
+    connectOrCreate?: PeminjamanCreateOrConnectWithoutReservasiInput
+    connect?: PeminjamanWhereUniqueInput
+  }
+
+  export type PeminjamanUncheckedCreateNestedOneWithoutReservasiInput = {
+    create?: XOR<PeminjamanCreateWithoutReservasiInput, PeminjamanUncheckedCreateWithoutReservasiInput>
+    connectOrCreate?: PeminjamanCreateOrConnectWithoutReservasiInput
+    connect?: PeminjamanWhereUniqueInput
+  }
+
   export type UserUpdateOneRequiredWithoutReservasiNestedInput = {
     create?: XOR<UserCreateWithoutReservasiInput, UserUncheckedCreateWithoutReservasiInput>
     connectOrCreate?: UserCreateOrConnectWithoutReservasiInput
@@ -7161,6 +9011,80 @@ export namespace Prisma {
     upsert?: BookUpsertWithoutReservasiInput
     connect?: BookWhereUniqueInput
     update?: XOR<XOR<BookUpdateToOneWithWhereWithoutReservasiInput, BookUpdateWithoutReservasiInput>, BookUncheckedUpdateWithoutReservasiInput>
+  }
+
+  export type PeminjamanUpdateOneWithoutReservasiNestedInput = {
+    create?: XOR<PeminjamanCreateWithoutReservasiInput, PeminjamanUncheckedCreateWithoutReservasiInput>
+    connectOrCreate?: PeminjamanCreateOrConnectWithoutReservasiInput
+    upsert?: PeminjamanUpsertWithoutReservasiInput
+    disconnect?: PeminjamanWhereInput | boolean
+    delete?: PeminjamanWhereInput | boolean
+    connect?: PeminjamanWhereUniqueInput
+    update?: XOR<XOR<PeminjamanUpdateToOneWithWhereWithoutReservasiInput, PeminjamanUpdateWithoutReservasiInput>, PeminjamanUncheckedUpdateWithoutReservasiInput>
+  }
+
+  export type PeminjamanUncheckedUpdateOneWithoutReservasiNestedInput = {
+    create?: XOR<PeminjamanCreateWithoutReservasiInput, PeminjamanUncheckedCreateWithoutReservasiInput>
+    connectOrCreate?: PeminjamanCreateOrConnectWithoutReservasiInput
+    upsert?: PeminjamanUpsertWithoutReservasiInput
+    disconnect?: PeminjamanWhereInput | boolean
+    delete?: PeminjamanWhereInput | boolean
+    connect?: PeminjamanWhereUniqueInput
+    update?: XOR<XOR<PeminjamanUpdateToOneWithWhereWithoutReservasiInput, PeminjamanUpdateWithoutReservasiInput>, PeminjamanUncheckedUpdateWithoutReservasiInput>
+  }
+
+  export type ReservasiCreateNestedOneWithoutPeminjamanInput = {
+    create?: XOR<ReservasiCreateWithoutPeminjamanInput, ReservasiUncheckedCreateWithoutPeminjamanInput>
+    connectOrCreate?: ReservasiCreateOrConnectWithoutPeminjamanInput
+    connect?: ReservasiWhereUniqueInput
+  }
+
+  export type UserCreateNestedOneWithoutPeminjamanInput = {
+    create?: XOR<UserCreateWithoutPeminjamanInput, UserUncheckedCreateWithoutPeminjamanInput>
+    connectOrCreate?: UserCreateOrConnectWithoutPeminjamanInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type BookCreateNestedOneWithoutPeminjamanInput = {
+    create?: XOR<BookCreateWithoutPeminjamanInput, BookUncheckedCreateWithoutPeminjamanInput>
+    connectOrCreate?: BookCreateOrConnectWithoutPeminjamanInput
+    connect?: BookWhereUniqueInput
+  }
+
+  export type ReservasiUpdateOneRequiredWithoutPeminjamanNestedInput = {
+    create?: XOR<ReservasiCreateWithoutPeminjamanInput, ReservasiUncheckedCreateWithoutPeminjamanInput>
+    connectOrCreate?: ReservasiCreateOrConnectWithoutPeminjamanInput
+    upsert?: ReservasiUpsertWithoutPeminjamanInput
+    connect?: ReservasiWhereUniqueInput
+    update?: XOR<XOR<ReservasiUpdateToOneWithWhereWithoutPeminjamanInput, ReservasiUpdateWithoutPeminjamanInput>, ReservasiUncheckedUpdateWithoutPeminjamanInput>
+  }
+
+  export type UserUpdateOneWithoutPeminjamanNestedInput = {
+    create?: XOR<UserCreateWithoutPeminjamanInput, UserUncheckedCreateWithoutPeminjamanInput>
+    connectOrCreate?: UserCreateOrConnectWithoutPeminjamanInput
+    upsert?: UserUpsertWithoutPeminjamanInput
+    disconnect?: UserWhereInput | boolean
+    delete?: UserWhereInput | boolean
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutPeminjamanInput, UserUpdateWithoutPeminjamanInput>, UserUncheckedUpdateWithoutPeminjamanInput>
+  }
+
+  export type BookUpdateOneWithoutPeminjamanNestedInput = {
+    create?: XOR<BookCreateWithoutPeminjamanInput, BookUncheckedCreateWithoutPeminjamanInput>
+    connectOrCreate?: BookCreateOrConnectWithoutPeminjamanInput
+    upsert?: BookUpsertWithoutPeminjamanInput
+    disconnect?: BookWhereInput | boolean
+    delete?: BookWhereInput | boolean
+    connect?: BookWhereUniqueInput
+    update?: XOR<XOR<BookUpdateToOneWithWhereWithoutPeminjamanInput, BookUpdateWithoutPeminjamanInput>, BookUncheckedUpdateWithoutPeminjamanInput>
+  }
+
+  export type NullableIntFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -7324,21 +9248,50 @@ export namespace Prisma {
     not?: NestedFloatFilter<$PrismaModel> | number
   }
 
+  export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type NestedFloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  }
+
   export type ReservasiCreateWithoutUserInput = {
-    tanggalPinjam?: Date | string
-    tanggalKembali?: Date | string | null
+    tanggalAmbil?: Date | string
+    jamAmbil?: string | null
+    catatan?: string | null
     status?: string
-    denda?: number
     book: BookCreateNestedOneWithoutReservasiInput
+    peminjaman?: PeminjamanCreateNestedOneWithoutReservasiInput
   }
 
   export type ReservasiUncheckedCreateWithoutUserInput = {
     id?: number
     bookId: number
-    tanggalPinjam?: Date | string
-    tanggalKembali?: Date | string | null
+    tanggalAmbil?: Date | string
+    jamAmbil?: string | null
+    catatan?: string | null
     status?: string
-    denda?: number
+    peminjaman?: PeminjamanUncheckedCreateNestedOneWithoutReservasiInput
   }
 
   export type ReservasiCreateOrConnectWithoutUserInput = {
@@ -7348,6 +9301,41 @@ export namespace Prisma {
 
   export type ReservasiCreateManyUserInputEnvelope = {
     data: ReservasiCreateManyUserInput | ReservasiCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type PeminjamanCreateWithoutUserInput = {
+    tanggalPinjam?: Date | string
+    tanggalJatuhTempo: Date | string
+    tanggalKembali?: Date | string | null
+    status?: string | null
+    denda?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+    reservasi: ReservasiCreateNestedOneWithoutPeminjamanInput
+    Book?: BookCreateNestedOneWithoutPeminjamanInput
+  }
+
+  export type PeminjamanUncheckedCreateWithoutUserInput = {
+    id?: number
+    reservasiId: number
+    tanggalPinjam?: Date | string
+    tanggalJatuhTempo: Date | string
+    tanggalKembali?: Date | string | null
+    status?: string | null
+    denda?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+    bookId?: number | null
+  }
+
+  export type PeminjamanCreateOrConnectWithoutUserInput = {
+    where: PeminjamanWhereUniqueInput
+    create: XOR<PeminjamanCreateWithoutUserInput, PeminjamanUncheckedCreateWithoutUserInput>
+  }
+
+  export type PeminjamanCreateManyUserInputEnvelope = {
+    data: PeminjamanCreateManyUserInput | PeminjamanCreateManyUserInput[]
     skipDuplicates?: boolean
   }
 
@@ -7374,10 +9362,43 @@ export namespace Prisma {
     id?: IntFilter<"Reservasi"> | number
     userId?: StringFilter<"Reservasi"> | string
     bookId?: IntFilter<"Reservasi"> | number
-    tanggalPinjam?: DateTimeFilter<"Reservasi"> | Date | string
-    tanggalKembali?: DateTimeNullableFilter<"Reservasi"> | Date | string | null
+    tanggalAmbil?: DateTimeFilter<"Reservasi"> | Date | string
+    jamAmbil?: StringNullableFilter<"Reservasi"> | string | null
+    catatan?: StringNullableFilter<"Reservasi"> | string | null
     status?: StringFilter<"Reservasi"> | string
-    denda?: IntFilter<"Reservasi"> | number
+  }
+
+  export type PeminjamanUpsertWithWhereUniqueWithoutUserInput = {
+    where: PeminjamanWhereUniqueInput
+    update: XOR<PeminjamanUpdateWithoutUserInput, PeminjamanUncheckedUpdateWithoutUserInput>
+    create: XOR<PeminjamanCreateWithoutUserInput, PeminjamanUncheckedCreateWithoutUserInput>
+  }
+
+  export type PeminjamanUpdateWithWhereUniqueWithoutUserInput = {
+    where: PeminjamanWhereUniqueInput
+    data: XOR<PeminjamanUpdateWithoutUserInput, PeminjamanUncheckedUpdateWithoutUserInput>
+  }
+
+  export type PeminjamanUpdateManyWithWhereWithoutUserInput = {
+    where: PeminjamanScalarWhereInput
+    data: XOR<PeminjamanUpdateManyMutationInput, PeminjamanUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type PeminjamanScalarWhereInput = {
+    AND?: PeminjamanScalarWhereInput | PeminjamanScalarWhereInput[]
+    OR?: PeminjamanScalarWhereInput[]
+    NOT?: PeminjamanScalarWhereInput | PeminjamanScalarWhereInput[]
+    id?: IntFilter<"Peminjaman"> | number
+    reservasiId?: IntFilter<"Peminjaman"> | number
+    tanggalPinjam?: DateTimeFilter<"Peminjaman"> | Date | string
+    tanggalJatuhTempo?: DateTimeFilter<"Peminjaman"> | Date | string
+    tanggalKembali?: DateTimeNullableFilter<"Peminjaman"> | Date | string | null
+    status?: StringNullableFilter<"Peminjaman"> | string | null
+    denda?: IntFilter<"Peminjaman"> | number
+    createdAt?: DateTimeFilter<"Peminjaman"> | Date | string
+    updatedAt?: DateTimeNullableFilter<"Peminjaman"> | Date | string | null
+    userId?: StringNullableFilter<"Peminjaman"> | string | null
+    bookId?: IntNullableFilter<"Peminjaman"> | number | null
   }
 
   export type CategoryCreateWithoutBukuInput = {
@@ -7399,20 +9420,22 @@ export namespace Prisma {
   }
 
   export type ReservasiCreateWithoutBookInput = {
-    tanggalPinjam?: Date | string
-    tanggalKembali?: Date | string | null
+    tanggalAmbil?: Date | string
+    jamAmbil?: string | null
+    catatan?: string | null
     status?: string
-    denda?: number
     user: UserCreateNestedOneWithoutReservasiInput
+    peminjaman?: PeminjamanCreateNestedOneWithoutReservasiInput
   }
 
   export type ReservasiUncheckedCreateWithoutBookInput = {
     id?: number
     userId: string
-    tanggalPinjam?: Date | string
-    tanggalKembali?: Date | string | null
+    tanggalAmbil?: Date | string
+    jamAmbil?: string | null
+    catatan?: string | null
     status?: string
-    denda?: number
+    peminjaman?: PeminjamanUncheckedCreateNestedOneWithoutReservasiInput
   }
 
   export type ReservasiCreateOrConnectWithoutBookInput = {
@@ -7422,6 +9445,41 @@ export namespace Prisma {
 
   export type ReservasiCreateManyBookInputEnvelope = {
     data: ReservasiCreateManyBookInput | ReservasiCreateManyBookInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type PeminjamanCreateWithoutBookInput = {
+    tanggalPinjam?: Date | string
+    tanggalJatuhTempo: Date | string
+    tanggalKembali?: Date | string | null
+    status?: string | null
+    denda?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+    reservasi: ReservasiCreateNestedOneWithoutPeminjamanInput
+    User?: UserCreateNestedOneWithoutPeminjamanInput
+  }
+
+  export type PeminjamanUncheckedCreateWithoutBookInput = {
+    id?: number
+    reservasiId: number
+    tanggalPinjam?: Date | string
+    tanggalJatuhTempo: Date | string
+    tanggalKembali?: Date | string | null
+    status?: string | null
+    denda?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+    userId?: string | null
+  }
+
+  export type PeminjamanCreateOrConnectWithoutBookInput = {
+    where: PeminjamanWhereUniqueInput
+    create: XOR<PeminjamanCreateWithoutBookInput, PeminjamanUncheckedCreateWithoutBookInput>
+  }
+
+  export type PeminjamanCreateManyBookInputEnvelope = {
+    data: PeminjamanCreateManyBookInput | PeminjamanCreateManyBookInput[]
     skipDuplicates?: boolean
   }
 
@@ -7465,6 +9523,22 @@ export namespace Prisma {
     data: XOR<ReservasiUpdateManyMutationInput, ReservasiUncheckedUpdateManyWithoutBookInput>
   }
 
+  export type PeminjamanUpsertWithWhereUniqueWithoutBookInput = {
+    where: PeminjamanWhereUniqueInput
+    update: XOR<PeminjamanUpdateWithoutBookInput, PeminjamanUncheckedUpdateWithoutBookInput>
+    create: XOR<PeminjamanCreateWithoutBookInput, PeminjamanUncheckedCreateWithoutBookInput>
+  }
+
+  export type PeminjamanUpdateWithWhereUniqueWithoutBookInput = {
+    where: PeminjamanWhereUniqueInput
+    data: XOR<PeminjamanUpdateWithoutBookInput, PeminjamanUncheckedUpdateWithoutBookInput>
+  }
+
+  export type PeminjamanUpdateManyWithWhereWithoutBookInput = {
+    where: PeminjamanScalarWhereInput
+    data: XOR<PeminjamanUpdateManyMutationInput, PeminjamanUncheckedUpdateManyWithoutBookInput>
+  }
+
   export type BookCreateWithoutKategoriInput = {
     judul: string
     deskripsi?: string | null
@@ -7478,6 +9552,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string | null
     Reservasi?: ReservasiCreateNestedManyWithoutBookInput
+    Peminjaman?: PeminjamanCreateNestedManyWithoutBookInput
   }
 
   export type BookUncheckedCreateWithoutKategoriInput = {
@@ -7494,6 +9569,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string | null
     Reservasi?: ReservasiUncheckedCreateNestedManyWithoutBookInput
+    Peminjaman?: PeminjamanUncheckedCreateNestedManyWithoutBookInput
   }
 
   export type BookCreateOrConnectWithoutKategoriInput = {
@@ -7552,6 +9628,7 @@ export namespace Prisma {
     status?: string
     createdAt?: Date | string
     updatedAt?: Date | string | null
+    Peminjaman?: PeminjamanCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutReservasiInput = {
@@ -7565,6 +9642,7 @@ export namespace Prisma {
     status?: string
     createdAt?: Date | string
     updatedAt?: Date | string | null
+    Peminjaman?: PeminjamanUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutReservasiInput = {
@@ -7585,6 +9663,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string | null
     kategori: CategoryCreateNestedOneWithoutBukuInput
+    Peminjaman?: PeminjamanCreateNestedManyWithoutBookInput
   }
 
   export type BookUncheckedCreateWithoutReservasiInput = {
@@ -7601,11 +9680,42 @@ export namespace Prisma {
     status?: string
     createdAt?: Date | string
     updatedAt?: Date | string | null
+    Peminjaman?: PeminjamanUncheckedCreateNestedManyWithoutBookInput
   }
 
   export type BookCreateOrConnectWithoutReservasiInput = {
     where: BookWhereUniqueInput
     create: XOR<BookCreateWithoutReservasiInput, BookUncheckedCreateWithoutReservasiInput>
+  }
+
+  export type PeminjamanCreateWithoutReservasiInput = {
+    tanggalPinjam?: Date | string
+    tanggalJatuhTempo: Date | string
+    tanggalKembali?: Date | string | null
+    status?: string | null
+    denda?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+    User?: UserCreateNestedOneWithoutPeminjamanInput
+    Book?: BookCreateNestedOneWithoutPeminjamanInput
+  }
+
+  export type PeminjamanUncheckedCreateWithoutReservasiInput = {
+    id?: number
+    tanggalPinjam?: Date | string
+    tanggalJatuhTempo: Date | string
+    tanggalKembali?: Date | string | null
+    status?: string | null
+    denda?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+    userId?: string | null
+    bookId?: number | null
+  }
+
+  export type PeminjamanCreateOrConnectWithoutReservasiInput = {
+    where: PeminjamanWhereUniqueInput
+    create: XOR<PeminjamanCreateWithoutReservasiInput, PeminjamanUncheckedCreateWithoutReservasiInput>
   }
 
   export type UserUpsertWithoutReservasiInput = {
@@ -7630,6 +9740,7 @@ export namespace Prisma {
     status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Peminjaman?: PeminjamanUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutReservasiInput = {
@@ -7643,6 +9754,7 @@ export namespace Prisma {
     status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Peminjaman?: PeminjamanUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type BookUpsertWithoutReservasiInput = {
@@ -7669,6 +9781,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     kategori?: CategoryUpdateOneRequiredWithoutBukuNestedInput
+    Peminjaman?: PeminjamanUpdateManyWithoutBookNestedInput
   }
 
   export type BookUncheckedUpdateWithoutReservasiInput = {
@@ -7685,76 +9798,427 @@ export namespace Prisma {
     status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Peminjaman?: PeminjamanUncheckedUpdateManyWithoutBookNestedInput
+  }
+
+  export type PeminjamanUpsertWithoutReservasiInput = {
+    update: XOR<PeminjamanUpdateWithoutReservasiInput, PeminjamanUncheckedUpdateWithoutReservasiInput>
+    create: XOR<PeminjamanCreateWithoutReservasiInput, PeminjamanUncheckedCreateWithoutReservasiInput>
+    where?: PeminjamanWhereInput
+  }
+
+  export type PeminjamanUpdateToOneWithWhereWithoutReservasiInput = {
+    where?: PeminjamanWhereInput
+    data: XOR<PeminjamanUpdateWithoutReservasiInput, PeminjamanUncheckedUpdateWithoutReservasiInput>
+  }
+
+  export type PeminjamanUpdateWithoutReservasiInput = {
+    tanggalPinjam?: DateTimeFieldUpdateOperationsInput | Date | string
+    tanggalJatuhTempo?: DateTimeFieldUpdateOperationsInput | Date | string
+    tanggalKembali?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: NullableStringFieldUpdateOperationsInput | string | null
+    denda?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    User?: UserUpdateOneWithoutPeminjamanNestedInput
+    Book?: BookUpdateOneWithoutPeminjamanNestedInput
+  }
+
+  export type PeminjamanUncheckedUpdateWithoutReservasiInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    tanggalPinjam?: DateTimeFieldUpdateOperationsInput | Date | string
+    tanggalJatuhTempo?: DateTimeFieldUpdateOperationsInput | Date | string
+    tanggalKembali?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: NullableStringFieldUpdateOperationsInput | string | null
+    denda?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
+    bookId?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type ReservasiCreateWithoutPeminjamanInput = {
+    tanggalAmbil?: Date | string
+    jamAmbil?: string | null
+    catatan?: string | null
+    status?: string
+    user: UserCreateNestedOneWithoutReservasiInput
+    book: BookCreateNestedOneWithoutReservasiInput
+  }
+
+  export type ReservasiUncheckedCreateWithoutPeminjamanInput = {
+    id?: number
+    userId: string
+    bookId: number
+    tanggalAmbil?: Date | string
+    jamAmbil?: string | null
+    catatan?: string | null
+    status?: string
+  }
+
+  export type ReservasiCreateOrConnectWithoutPeminjamanInput = {
+    where: ReservasiWhereUniqueInput
+    create: XOR<ReservasiCreateWithoutPeminjamanInput, ReservasiUncheckedCreateWithoutPeminjamanInput>
+  }
+
+  export type UserCreateWithoutPeminjamanInput = {
+    id?: string
+    nama: string
+    email: string
+    nim?: string | null
+    nid?: string | null
+    password: string
+    role?: string
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+    Reservasi?: ReservasiCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutPeminjamanInput = {
+    id?: string
+    nama: string
+    email: string
+    nim?: string | null
+    nid?: string | null
+    password: string
+    role?: string
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+    Reservasi?: ReservasiUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutPeminjamanInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutPeminjamanInput, UserUncheckedCreateWithoutPeminjamanInput>
+  }
+
+  export type BookCreateWithoutPeminjamanInput = {
+    judul: string
+    deskripsi?: string | null
+    isbn: string
+    penerbit?: string | null
+    tahunTerbit: number
+    penulis?: string | null
+    image?: string | null
+    stok?: number
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+    kategori: CategoryCreateNestedOneWithoutBukuInput
+    Reservasi?: ReservasiCreateNestedManyWithoutBookInput
+  }
+
+  export type BookUncheckedCreateWithoutPeminjamanInput = {
+    id?: number
+    judul: string
+    deskripsi?: string | null
+    isbn: string
+    penerbit?: string | null
+    tahunTerbit: number
+    penulis?: string | null
+    image?: string | null
+    kategoriId: number
+    stok?: number
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+    Reservasi?: ReservasiUncheckedCreateNestedManyWithoutBookInput
+  }
+
+  export type BookCreateOrConnectWithoutPeminjamanInput = {
+    where: BookWhereUniqueInput
+    create: XOR<BookCreateWithoutPeminjamanInput, BookUncheckedCreateWithoutPeminjamanInput>
+  }
+
+  export type ReservasiUpsertWithoutPeminjamanInput = {
+    update: XOR<ReservasiUpdateWithoutPeminjamanInput, ReservasiUncheckedUpdateWithoutPeminjamanInput>
+    create: XOR<ReservasiCreateWithoutPeminjamanInput, ReservasiUncheckedCreateWithoutPeminjamanInput>
+    where?: ReservasiWhereInput
+  }
+
+  export type ReservasiUpdateToOneWithWhereWithoutPeminjamanInput = {
+    where?: ReservasiWhereInput
+    data: XOR<ReservasiUpdateWithoutPeminjamanInput, ReservasiUncheckedUpdateWithoutPeminjamanInput>
+  }
+
+  export type ReservasiUpdateWithoutPeminjamanInput = {
+    tanggalAmbil?: DateTimeFieldUpdateOperationsInput | Date | string
+    jamAmbil?: NullableStringFieldUpdateOperationsInput | string | null
+    catatan?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    user?: UserUpdateOneRequiredWithoutReservasiNestedInput
+    book?: BookUpdateOneRequiredWithoutReservasiNestedInput
+  }
+
+  export type ReservasiUncheckedUpdateWithoutPeminjamanInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    userId?: StringFieldUpdateOperationsInput | string
+    bookId?: IntFieldUpdateOperationsInput | number
+    tanggalAmbil?: DateTimeFieldUpdateOperationsInput | Date | string
+    jamAmbil?: NullableStringFieldUpdateOperationsInput | string | null
+    catatan?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type UserUpsertWithoutPeminjamanInput = {
+    update: XOR<UserUpdateWithoutPeminjamanInput, UserUncheckedUpdateWithoutPeminjamanInput>
+    create: XOR<UserCreateWithoutPeminjamanInput, UserUncheckedCreateWithoutPeminjamanInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutPeminjamanInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutPeminjamanInput, UserUncheckedUpdateWithoutPeminjamanInput>
+  }
+
+  export type UserUpdateWithoutPeminjamanInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    nama?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    nim?: NullableStringFieldUpdateOperationsInput | string | null
+    nid?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: StringFieldUpdateOperationsInput | string
+    role?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Reservasi?: ReservasiUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutPeminjamanInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    nama?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    nim?: NullableStringFieldUpdateOperationsInput | string | null
+    nid?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: StringFieldUpdateOperationsInput | string
+    role?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Reservasi?: ReservasiUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type BookUpsertWithoutPeminjamanInput = {
+    update: XOR<BookUpdateWithoutPeminjamanInput, BookUncheckedUpdateWithoutPeminjamanInput>
+    create: XOR<BookCreateWithoutPeminjamanInput, BookUncheckedCreateWithoutPeminjamanInput>
+    where?: BookWhereInput
+  }
+
+  export type BookUpdateToOneWithWhereWithoutPeminjamanInput = {
+    where?: BookWhereInput
+    data: XOR<BookUpdateWithoutPeminjamanInput, BookUncheckedUpdateWithoutPeminjamanInput>
+  }
+
+  export type BookUpdateWithoutPeminjamanInput = {
+    judul?: StringFieldUpdateOperationsInput | string
+    deskripsi?: NullableStringFieldUpdateOperationsInput | string | null
+    isbn?: StringFieldUpdateOperationsInput | string
+    penerbit?: NullableStringFieldUpdateOperationsInput | string | null
+    tahunTerbit?: IntFieldUpdateOperationsInput | number
+    penulis?: NullableStringFieldUpdateOperationsInput | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    stok?: IntFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    kategori?: CategoryUpdateOneRequiredWithoutBukuNestedInput
+    Reservasi?: ReservasiUpdateManyWithoutBookNestedInput
+  }
+
+  export type BookUncheckedUpdateWithoutPeminjamanInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    judul?: StringFieldUpdateOperationsInput | string
+    deskripsi?: NullableStringFieldUpdateOperationsInput | string | null
+    isbn?: StringFieldUpdateOperationsInput | string
+    penerbit?: NullableStringFieldUpdateOperationsInput | string | null
+    tahunTerbit?: IntFieldUpdateOperationsInput | number
+    penulis?: NullableStringFieldUpdateOperationsInput | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    kategoriId?: IntFieldUpdateOperationsInput | number
+    stok?: IntFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Reservasi?: ReservasiUncheckedUpdateManyWithoutBookNestedInput
   }
 
   export type ReservasiCreateManyUserInput = {
     id?: number
     bookId: number
-    tanggalPinjam?: Date | string
-    tanggalKembali?: Date | string | null
+    tanggalAmbil?: Date | string
+    jamAmbil?: string | null
+    catatan?: string | null
     status?: string
+  }
+
+  export type PeminjamanCreateManyUserInput = {
+    id?: number
+    reservasiId: number
+    tanggalPinjam?: Date | string
+    tanggalJatuhTempo: Date | string
+    tanggalKembali?: Date | string | null
+    status?: string | null
     denda?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+    bookId?: number | null
   }
 
   export type ReservasiUpdateWithoutUserInput = {
-    tanggalPinjam?: DateTimeFieldUpdateOperationsInput | Date | string
-    tanggalKembali?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    tanggalAmbil?: DateTimeFieldUpdateOperationsInput | Date | string
+    jamAmbil?: NullableStringFieldUpdateOperationsInput | string | null
+    catatan?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
-    denda?: IntFieldUpdateOperationsInput | number
     book?: BookUpdateOneRequiredWithoutReservasiNestedInput
+    peminjaman?: PeminjamanUpdateOneWithoutReservasiNestedInput
   }
 
   export type ReservasiUncheckedUpdateWithoutUserInput = {
     id?: IntFieldUpdateOperationsInput | number
     bookId?: IntFieldUpdateOperationsInput | number
-    tanggalPinjam?: DateTimeFieldUpdateOperationsInput | Date | string
-    tanggalKembali?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    tanggalAmbil?: DateTimeFieldUpdateOperationsInput | Date | string
+    jamAmbil?: NullableStringFieldUpdateOperationsInput | string | null
+    catatan?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
-    denda?: IntFieldUpdateOperationsInput | number
+    peminjaman?: PeminjamanUncheckedUpdateOneWithoutReservasiNestedInput
   }
 
   export type ReservasiUncheckedUpdateManyWithoutUserInput = {
     id?: IntFieldUpdateOperationsInput | number
     bookId?: IntFieldUpdateOperationsInput | number
-    tanggalPinjam?: DateTimeFieldUpdateOperationsInput | Date | string
-    tanggalKembali?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    tanggalAmbil?: DateTimeFieldUpdateOperationsInput | Date | string
+    jamAmbil?: NullableStringFieldUpdateOperationsInput | string | null
+    catatan?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type PeminjamanUpdateWithoutUserInput = {
+    tanggalPinjam?: DateTimeFieldUpdateOperationsInput | Date | string
+    tanggalJatuhTempo?: DateTimeFieldUpdateOperationsInput | Date | string
+    tanggalKembali?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: NullableStringFieldUpdateOperationsInput | string | null
     denda?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    reservasi?: ReservasiUpdateOneRequiredWithoutPeminjamanNestedInput
+    Book?: BookUpdateOneWithoutPeminjamanNestedInput
+  }
+
+  export type PeminjamanUncheckedUpdateWithoutUserInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    reservasiId?: IntFieldUpdateOperationsInput | number
+    tanggalPinjam?: DateTimeFieldUpdateOperationsInput | Date | string
+    tanggalJatuhTempo?: DateTimeFieldUpdateOperationsInput | Date | string
+    tanggalKembali?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: NullableStringFieldUpdateOperationsInput | string | null
+    denda?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    bookId?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type PeminjamanUncheckedUpdateManyWithoutUserInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    reservasiId?: IntFieldUpdateOperationsInput | number
+    tanggalPinjam?: DateTimeFieldUpdateOperationsInput | Date | string
+    tanggalJatuhTempo?: DateTimeFieldUpdateOperationsInput | Date | string
+    tanggalKembali?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: NullableStringFieldUpdateOperationsInput | string | null
+    denda?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    bookId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type ReservasiCreateManyBookInput = {
     id?: number
     userId: string
-    tanggalPinjam?: Date | string
-    tanggalKembali?: Date | string | null
+    tanggalAmbil?: Date | string
+    jamAmbil?: string | null
+    catatan?: string | null
     status?: string
+  }
+
+  export type PeminjamanCreateManyBookInput = {
+    id?: number
+    reservasiId: number
+    tanggalPinjam?: Date | string
+    tanggalJatuhTempo: Date | string
+    tanggalKembali?: Date | string | null
+    status?: string | null
     denda?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+    userId?: string | null
   }
 
   export type ReservasiUpdateWithoutBookInput = {
-    tanggalPinjam?: DateTimeFieldUpdateOperationsInput | Date | string
-    tanggalKembali?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    tanggalAmbil?: DateTimeFieldUpdateOperationsInput | Date | string
+    jamAmbil?: NullableStringFieldUpdateOperationsInput | string | null
+    catatan?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
-    denda?: IntFieldUpdateOperationsInput | number
     user?: UserUpdateOneRequiredWithoutReservasiNestedInput
+    peminjaman?: PeminjamanUpdateOneWithoutReservasiNestedInput
   }
 
   export type ReservasiUncheckedUpdateWithoutBookInput = {
     id?: IntFieldUpdateOperationsInput | number
     userId?: StringFieldUpdateOperationsInput | string
-    tanggalPinjam?: DateTimeFieldUpdateOperationsInput | Date | string
-    tanggalKembali?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    tanggalAmbil?: DateTimeFieldUpdateOperationsInput | Date | string
+    jamAmbil?: NullableStringFieldUpdateOperationsInput | string | null
+    catatan?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
-    denda?: IntFieldUpdateOperationsInput | number
+    peminjaman?: PeminjamanUncheckedUpdateOneWithoutReservasiNestedInput
   }
 
   export type ReservasiUncheckedUpdateManyWithoutBookInput = {
     id?: IntFieldUpdateOperationsInput | number
     userId?: StringFieldUpdateOperationsInput | string
-    tanggalPinjam?: DateTimeFieldUpdateOperationsInput | Date | string
-    tanggalKembali?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    tanggalAmbil?: DateTimeFieldUpdateOperationsInput | Date | string
+    jamAmbil?: NullableStringFieldUpdateOperationsInput | string | null
+    catatan?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type PeminjamanUpdateWithoutBookInput = {
+    tanggalPinjam?: DateTimeFieldUpdateOperationsInput | Date | string
+    tanggalJatuhTempo?: DateTimeFieldUpdateOperationsInput | Date | string
+    tanggalKembali?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: NullableStringFieldUpdateOperationsInput | string | null
     denda?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    reservasi?: ReservasiUpdateOneRequiredWithoutPeminjamanNestedInput
+    User?: UserUpdateOneWithoutPeminjamanNestedInput
+  }
+
+  export type PeminjamanUncheckedUpdateWithoutBookInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    reservasiId?: IntFieldUpdateOperationsInput | number
+    tanggalPinjam?: DateTimeFieldUpdateOperationsInput | Date | string
+    tanggalJatuhTempo?: DateTimeFieldUpdateOperationsInput | Date | string
+    tanggalKembali?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: NullableStringFieldUpdateOperationsInput | string | null
+    denda?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type PeminjamanUncheckedUpdateManyWithoutBookInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    reservasiId?: IntFieldUpdateOperationsInput | number
+    tanggalPinjam?: DateTimeFieldUpdateOperationsInput | Date | string
+    tanggalJatuhTempo?: DateTimeFieldUpdateOperationsInput | Date | string
+    tanggalKembali?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: NullableStringFieldUpdateOperationsInput | string | null
+    denda?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type BookCreateManyKategoriInput = {
@@ -7785,6 +10249,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     Reservasi?: ReservasiUpdateManyWithoutBookNestedInput
+    Peminjaman?: PeminjamanUpdateManyWithoutBookNestedInput
   }
 
   export type BookUncheckedUpdateWithoutKategoriInput = {
@@ -7801,6 +10266,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     Reservasi?: ReservasiUncheckedUpdateManyWithoutBookNestedInput
+    Peminjaman?: PeminjamanUncheckedUpdateManyWithoutBookNestedInput
   }
 
   export type BookUncheckedUpdateManyWithoutKategoriInput = {

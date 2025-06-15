@@ -160,10 +160,24 @@ exports.Prisma.ReservasiScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
   bookId: 'bookId',
+  tanggalAmbil: 'tanggalAmbil',
+  jamAmbil: 'jamAmbil',
+  catatan: 'catatan',
+  status: 'status'
+};
+
+exports.Prisma.PeminjamanScalarFieldEnum = {
+  id: 'id',
+  reservasiId: 'reservasiId',
   tanggalPinjam: 'tanggalPinjam',
+  tanggalJatuhTempo: 'tanggalJatuhTempo',
   tanggalKembali: 'tanggalKembali',
   status: 'status',
-  denda: 'denda'
+  denda: 'denda',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  userId: 'userId',
+  bookId: 'bookId'
 };
 
 exports.Prisma.SortOrder = {
@@ -186,7 +200,8 @@ exports.Prisma.ModelName = {
   User: 'User',
   Book: 'Book',
   Category: 'Category',
-  Reservasi: 'Reservasi'
+  Reservasi: 'Reservasi',
+  Peminjaman: 'Peminjaman'
 };
 
 /**

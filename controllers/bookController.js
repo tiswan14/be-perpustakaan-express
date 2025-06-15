@@ -164,10 +164,14 @@ export const getAllBooks = async (req, res) => {
     try {
         const books = await prisma.book.findMany({
             include: {
-                penulis: true,
                 kategori: true,
+                Reservasi: true,
+            },
+            orderBy: {
+                judul: 'asc', // urutkan berdasarkan judul secara ascending (A-Z)
             },
         })
+
         res.json({ success: true, data: books })
     } catch (error) {
         res.status(500).json({
@@ -184,7 +188,6 @@ export const getBookById = async (req, res) => {
         const book = await prisma.book.findUnique({
             where: { id },
             include: {
-                penulis: true,
                 kategori: true,
             },
         })
@@ -219,6 +222,20 @@ export const deleteBook = async (req, res) => {
             success: false,
             message: 'Gagal menghapus buku',
             error: error.message,
+        })
+    }
+}
+
+export const totalBook = async (req, res) => {
+    try {
+        const total = await prisma.book.count()
+        res.json({ total })
+    } catch (err) {
+        console.error('Total Book Error:', err)
+        res.status(500).json({
+            success: false,
+            message: 'Gagal menghitung total buku',
+            error: err.message,
         })
     }
 }

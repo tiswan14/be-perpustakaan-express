@@ -10,9 +10,9 @@ import {
 const router = express.Router()
 
 router.get('/reservasi', getAllReservasi)
-router.get('/reservasi/:id', getReservasiById)
-router.post('/reservasi', createReservasi)
-router.put('/reservasi/:id', updateReservasi)
-router.delete('/reservasi/:id', deleteReservasi)
+router.get('/reservasi/detail/:id', getReservasiById)
+router.post('/reservasi/tambah', createReservasi)
+router.put('/reservasi/edit/:id', updateReservasi)
+router.delete('/reservasi/hapus/:id', deleteReservasi)
 
 export default router

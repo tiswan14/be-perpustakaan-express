@@ -34,7 +34,12 @@ export const createCategory = async (req, res) => {
 
 export const getAllCategories = async (req, res) => {
     try {
-        const categories = await prisma.category.findMany()
+        const categories = await prisma.category.findMany({
+            orderBy: {
+                nama: 'asc', 
+            },
+        })
+
         res.json({ success: true, data: categories })
     } catch (error) {
         res.status(500).json({
