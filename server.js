@@ -9,6 +9,7 @@ import authRouter from './routes/authRoutes.js'
 import categoryRouter from './routes/categoryRoutes.js'
 import bookRouter from './routes/bookRoutes.js'
 import reservasiRouter from './routes/reservasiRoutes.js'
+import peminjamanRouter from './routes/peminjamanRoute.js'
 
 dotenv.config()
 
@@ -33,6 +34,7 @@ app.use('/api/auth', authRouter)
 app.use('/api', categoryRouter)
 app.use('/api', bookRouter)
 app.use('/api', reservasiRouter)
+app.use('/api', peminjamanRouter)
 
 app.listen(PORT, () => {
     console.log(`🚀 Server is running on http://localhost:${PORT}`)
