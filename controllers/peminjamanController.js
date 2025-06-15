@@ -6,6 +6,11 @@ const prisma = new PrismaClient()
 export const getAllPeminjaman = async (req, res) => {
     try {
         const peminjaman = await prisma.peminjaman.findMany({
+            where: {
+                reservasi: {
+                    status: 'Disetujui',
+                },
+            },
             include: {
                 reservasi: {
                     include: {
