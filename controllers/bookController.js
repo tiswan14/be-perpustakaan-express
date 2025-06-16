@@ -4,80 +4,63 @@ import { uploadToVercelBlob } from '../utils/vercelBlob.js'
 import { getFileExtension } from '../utils/fileHelper.js'
 
 const prisma = new PrismaClient()
-const upload = multer()
 
-export const createBook = [
-    upload.single('image'),
-    async (req, res) => {
-        try {
-            const {
+export const createBook = async (req, res) => {
+    try {
+        const {
+            judul,
+            isbn,
+            deskripsi,
+            penerbit,
+            tahunTerbit,
+            penulis,
+            stok,
+            status,
+            kategoriId,
+            image, // ini URL dari Vercel Blob
+        } = req.body
+
+        if (!judul || !isbn || !tahunTerbit || !kategoriId) {
+            return res.status(400).json({
+                success: false,
+                message: 'Field wajib: judul, isbn, tahunTerbit, kategoriId',
+            })
+        }
+
+        const newBook = await prisma.book.create({
+            data: {
                 judul,
                 isbn,
                 deskripsi,
                 penerbit,
-                tahunTerbit,
+                tahunTerbit: parseInt(tahunTerbit),
                 penulis,
-                stok,
-                status,
-                kategoriId,
-            } = req.body
+                kategoriId: parseInt(kategoriId),
+                stok: stok !== undefined ? parseInt(stok) : 1,
+                status: status || 'tersedia',
+                image: image || null,
+            },
+        })
 
-            if (!judul || !isbn || !tahunTerbit || !kategoriId) {
-                return res.status(400).json({
-                    success: false,
-                    message:
-                        'Field wajib: judul, isbn, tahunTerbit, kategoriId',
-                })
-            }
-
-            let imageUrl = null
-            if (req.file) {
-                const namaBersih = judul.toLowerCase().replace(/\s+/g, '-')
-                const ekstensi = getFileExtension(req.file.originalname)
-                const namaFileUpload = `cover-buku-universitas-sariwangi-${namaBersih}${ekstensi}`
-
-                imageUrl = await uploadToVercelBlob(
-                    req.file.buffer,
-                    namaFileUpload,
-                    req.file.mimetype
-                )
-            }
-
-            const newBook = await prisma.book.create({
-                data: {
-                    judul,
-                    isbn,
-                    deskripsi,
-                    penerbit,
-                    tahunTerbit: parseInt(tahunTerbit),
-                    penulis,
-                    kategoriId: parseInt(kategoriId),
-                    stok: stok !== undefined ? parseInt(stok) : 1,
-                    status: status || 'tersedia',
-                    image: imageUrl,
-                },
-            })
-
-            res.status(201).json({
-                success: true,
-                data: newBook,
-                message: 'Buku berhasil dibuat',
-            })
-        } catch (error) {
-            if (error.code === 'P2002') {
-                return res.status(400).json({
-                    success: false,
-                    message: 'ISBN sudah digunakan',
-                })
-            }
-            res.status(500).json({
+        res.status(201).json({
+            success: true,
+            data: newBook,
+            message: 'Buku berhasil dibuat',
+        })
+    } catch (error) {
+        if (error.code === 'P2002') {
+            return res.status(400).json({
                 success: false,
-                message: 'Gagal membuat buku',
-                error: error.message,
+                message: 'ISBN sudah digunakan',
             })
         }
-    },
-]
+        res.status(500).json({
+            success: false,
+            message: 'Gagal membuat buku',
+            error: error.message,
+        })
+    }
+}
 
 export const updateBook = [
     upload.single('image'),
