@@ -55,48 +55,34 @@ export const getReservasiById = async (req, res) => {
 }
 
 export const createReservasi = async (req, res) => {
-    const {
-        userId,
-        bookId,
-        tanggalPinjam,
-        tanggalKembali,
-        tanggalAmbil,
-        jamAmbil,
-        status,
-        catatanAdmin,
-        denda,
-    } = req.body
+    const { userId, bookId, tanggalAmbil, jamAmbil, catatan, status } = req.body
 
-    if (!userId || !bookId)
+    if (!userId || !bookId) {
         return res.status(400).json({
             success: false,
             message: 'userId dan bookId wajib diisi',
         })
+    }
 
     try {
         const newReservasi = await prisma.reservasi.create({
             data: {
                 userId,
                 bookId,
-                tanggalPinjam: tanggalPinjam
-                    ? new Date(tanggalPinjam)
-                    : undefined,
-                tanggalKembali: tanggalKembali
-                    ? new Date(tanggalKembali)
-                    : undefined,
                 tanggalAmbil: tanggalAmbil ? new Date(tanggalAmbil) : undefined,
                 jamAmbil,
-                status: status || 'reservasi',
-                catatanAdmin,
-                denda: denda || 0,
+                catatan,
+                status: status || 'Tunggu',
             },
         })
+
         res.status(201).json({
             success: true,
-            data: newReservasi,
             message: 'Reservasi berhasil dibuat',
+            data: newReservasi,
         })
     } catch (error) {
+        console.error('❌ Gagal membuat reservasi:', error)
         res.status(500).json({
             success: false,
             message: 'Gagal membuat reservasi',
