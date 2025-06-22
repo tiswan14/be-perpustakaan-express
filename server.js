@@ -10,6 +10,7 @@ import categoryRouter from './routes/categoryRoutes.js'
 import bookRouter from './routes/bookRoutes.js'
 import reservasiRouter from './routes/reservasiRoutes.js'
 import peminjamanRouter from './routes/peminjamanRoute.js'
+import userRouter from './routes/userRoutes.js'
 
 dotenv.config()
 
@@ -36,9 +37,15 @@ app.get('/', (req, res) => {
 })
 
 app.use('/api/auth', authRouter)
+
+app.use('/api', userRouter)
+
 app.use('/api', categoryRouter)
+
 app.use('/api', bookRouter)
+
 app.use('/api', reservasiRouter)
+
 app.use('/api', peminjamanRouter)
 
 const PORT = process.env.PORT || 5000
