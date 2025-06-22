@@ -240,3 +240,43 @@ export const getProfile = async (req, res) => {
         })
     }
 }
+
+export const getAllUserByRole = async (req, res) => {
+    try {
+        const users = await prisma.user.findMany({
+            where: {
+                role: {
+                    in: ['mahasiswa', 'dosen'],
+                },
+            },
+            select: {
+                id: true,
+                nama: true,
+                email: true,
+                nim: true,
+                nid: true,
+                role: true,
+            },
+        })
+
+        if (!users || users.length === 0) {
+            return res.status(404).json({
+                status: false,
+                message:
+                    'Tidak ada pengguna dengan peran mahasiswa atau dosen ditemukan',
+            })
+        }
+
+        res.status(200).json({
+            status: true,
+            message: 'Data pengguna berhasil diambil',
+            data: users,
+        })
+    } catch (error) {
+        res.status(500).json({
+            status: false,
+            message: 'Gagal mengambil data pengguna',
+            error: error.message,
+        })
+    }
+}
