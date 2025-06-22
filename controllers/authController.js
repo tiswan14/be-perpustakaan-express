@@ -70,7 +70,7 @@ export const register = async (req, res) => {
                 nim: nim || null,
                 nid: nid || null,
                 password: hashedPassword,
-                role, // simpan role ke database jika ada kolom role
+                role, 
             },
         })
 
