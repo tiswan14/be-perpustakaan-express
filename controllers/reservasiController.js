@@ -91,6 +91,66 @@ export const createReservasi = async (req, res) => {
     }
 }
 
+export const updateReservasiStatus = async (req, res) => {
+    const id = parseInt(req.params.id)
+    const { status } = req.body
+
+    try {
+        const existingReservasi = await prisma.reservasi.findUnique({
+            where: { id },
+            include: {
+                peminjaman: true,
+            },
+        })
+
+        if (!existingReservasi) {
+            return res.status(404).json({
+                success: false,
+                message: 'Reservasi tidak ditemukan',
+            })
+        }
+
+        // Update status reservasi
+        const updatedReservasi = await prisma.reservasi.update({
+            where: { id },
+            data: { status },
+        })
+
+        // Jika status Disetujui dan belum ada peminjaman, buat peminjaman
+        if (status === 'Disetujui' && !existingReservasi.peminjaman) {
+            const tanggalPinjam = new Date()
+            const tanggalJatuhTempo = new Date()
+            tanggalJatuhTempo.setDate(tanggalPinjam.getDate() + 7)
+
+            await prisma.peminjaman.create({
+                data: {
+                    reservasiId: id,
+                    userId: existingReservasi.userId,
+                    bookId: existingReservasi.bookId,
+                    tanggalPinjam,
+                    tanggalJatuhTempo,
+                },
+            })
+        }
+
+        res.json({
+            success: true,
+            message: 'Status reservasi berhasil diperbarui',
+            data: updatedReservasi,
+        })
+    } catch (error) {
+        console.error(
+            '❌ Gagal memperbarui status atau membuat peminjaman:',
+            error
+        )
+        res.status(500).json({
+            success: false,
+            message: 'Gagal memperbarui status reservasi',
+            error: error.message,
+        })
+    }
+}
+
 export const updateReservasi = async (req, res) => {
     const id = parseInt(req.params.id)
     const {
@@ -142,41 +202,6 @@ export const updateReservasi = async (req, res) => {
         res.status(500).json({
             success: false,
             message: 'Gagal memperbarui reservasi',
-            error: error.message,
-        })
-    }
-}
-
-export const updateReservasiStatus = async (req, res) => {
-    const id = parseInt(req.params.id)
-    const { status } = req.body
-
-    try {
-        const existingReservasi = await prisma.reservasi.findUnique({
-            where: { id },
-        })
-
-        if (!existingReservasi) {
-            return res.status(404).json({
-                success: false,
-                message: 'Reservasi tidak ditemukan',
-            })
-        }
-
-        const updatedReservasi = await prisma.reservasi.update({
-            where: { id },
-            data: { status },
-        })
-
-        res.json({
-            success: true,
-            message: 'Status reservasi berhasil diperbarui',
-            data: updatedReservasi,
-        })
-    } catch (error) {
-        res.status(500).json({
-            success: false,
-            message: 'Gagal memperbarui status reservasi',
             error: error.message,
         })
     }

@@ -163,7 +163,9 @@ exports.Prisma.ReservasiScalarFieldEnum = {
   tanggalAmbil: 'tanggalAmbil',
   jamAmbil: 'jamAmbil',
   catatan: 'catatan',
-  status: 'status'
+  status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 };
 
 exports.Prisma.PeminjamanScalarFieldEnum = {

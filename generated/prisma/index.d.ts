@@ -4893,6 +4893,8 @@ export namespace Prisma {
     jamAmbil: string | null
     catatan: string | null
     status: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
   }
 
   export type ReservasiMaxAggregateOutputType = {
@@ -4903,6 +4905,8 @@ export namespace Prisma {
     jamAmbil: string | null
     catatan: string | null
     status: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
   }
 
   export type ReservasiCountAggregateOutputType = {
@@ -4913,6 +4917,8 @@ export namespace Prisma {
     jamAmbil: number
     catatan: number
     status: number
+    createdAt: number
+    updatedAt: number
     _all: number
   }
 
@@ -4935,6 +4941,8 @@ export namespace Prisma {
     jamAmbil?: true
     catatan?: true
     status?: true
+    createdAt?: true
+    updatedAt?: true
   }
 
   export type ReservasiMaxAggregateInputType = {
@@ -4945,6 +4953,8 @@ export namespace Prisma {
     jamAmbil?: true
     catatan?: true
     status?: true
+    createdAt?: true
+    updatedAt?: true
   }
 
   export type ReservasiCountAggregateInputType = {
@@ -4955,6 +4965,8 @@ export namespace Prisma {
     jamAmbil?: true
     catatan?: true
     status?: true
+    createdAt?: true
+    updatedAt?: true
     _all?: true
   }
 
@@ -5052,6 +5064,8 @@ export namespace Prisma {
     jamAmbil: string | null
     catatan: string | null
     status: string
+    createdAt: Date
+    updatedAt: Date | null
     _count: ReservasiCountAggregateOutputType | null
     _avg: ReservasiAvgAggregateOutputType | null
     _sum: ReservasiSumAggregateOutputType | null
@@ -5081,6 +5095,8 @@ export namespace Prisma {
     jamAmbil?: boolean
     catatan?: boolean
     status?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
     book?: boolean | BookDefaultArgs<ExtArgs>
     peminjaman?: boolean | Reservasi$peminjamanArgs<ExtArgs>
@@ -5094,6 +5110,8 @@ export namespace Prisma {
     jamAmbil?: boolean
     catatan?: boolean
     status?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
     book?: boolean | BookDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["reservasi"]>
@@ -5106,6 +5124,8 @@ export namespace Prisma {
     jamAmbil?: boolean
     catatan?: boolean
     status?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
     book?: boolean | BookDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["reservasi"]>
@@ -5118,9 +5138,11 @@ export namespace Prisma {
     jamAmbil?: boolean
     catatan?: boolean
     status?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
   }
 
-  export type ReservasiOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "bookId" | "tanggalAmbil" | "jamAmbil" | "catatan" | "status", ExtArgs["result"]["reservasi"]>
+  export type ReservasiOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "bookId" | "tanggalAmbil" | "jamAmbil" | "catatan" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["reservasi"]>
   export type ReservasiInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
     book?: boolean | BookDefaultArgs<ExtArgs>
@@ -5150,6 +5172,8 @@ export namespace Prisma {
       jamAmbil: string | null
       catatan: string | null
       status: string
+      createdAt: Date
+      updatedAt: Date | null
     }, ExtArgs["result"]["reservasi"]>
     composites: {}
   }
@@ -5583,6 +5607,8 @@ export namespace Prisma {
     readonly jamAmbil: FieldRef<"Reservasi", 'String'>
     readonly catatan: FieldRef<"Reservasi", 'String'>
     readonly status: FieldRef<"Reservasi", 'String'>
+    readonly createdAt: FieldRef<"Reservasi", 'DateTime'>
+    readonly updatedAt: FieldRef<"Reservasi", 'DateTime'>
   }
     
 
@@ -7318,7 +7344,9 @@ export namespace Prisma {
     tanggalAmbil: 'tanggalAmbil',
     jamAmbil: 'jamAmbil',
     catatan: 'catatan',
-    status: 'status'
+    status: 'status',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
   };
 
   export type ReservasiScalarFieldEnum = (typeof ReservasiScalarFieldEnum)[keyof typeof ReservasiScalarFieldEnum]
@@ -7678,6 +7706,8 @@ export namespace Prisma {
     jamAmbil?: StringNullableFilter<"Reservasi"> | string | null
     catatan?: StringNullableFilter<"Reservasi"> | string | null
     status?: StringFilter<"Reservasi"> | string
+    createdAt?: DateTimeFilter<"Reservasi"> | Date | string
+    updatedAt?: DateTimeNullableFilter<"Reservasi"> | Date | string | null
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     book?: XOR<BookScalarRelationFilter, BookWhereInput>
     peminjaman?: XOR<PeminjamanNullableScalarRelationFilter, PeminjamanWhereInput> | null
@@ -7691,6 +7721,8 @@ export namespace Prisma {
     jamAmbil?: SortOrderInput | SortOrder
     catatan?: SortOrderInput | SortOrder
     status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrderInput | SortOrder
     user?: UserOrderByWithRelationInput
     book?: BookOrderByWithRelationInput
     peminjaman?: PeminjamanOrderByWithRelationInput
@@ -7707,6 +7739,8 @@ export namespace Prisma {
     jamAmbil?: StringNullableFilter<"Reservasi"> | string | null
     catatan?: StringNullableFilter<"Reservasi"> | string | null
     status?: StringFilter<"Reservasi"> | string
+    createdAt?: DateTimeFilter<"Reservasi"> | Date | string
+    updatedAt?: DateTimeNullableFilter<"Reservasi"> | Date | string | null
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     book?: XOR<BookScalarRelationFilter, BookWhereInput>
     peminjaman?: XOR<PeminjamanNullableScalarRelationFilter, PeminjamanWhereInput> | null
@@ -7720,6 +7754,8 @@ export namespace Prisma {
     jamAmbil?: SortOrderInput | SortOrder
     catatan?: SortOrderInput | SortOrder
     status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrderInput | SortOrder
     _count?: ReservasiCountOrderByAggregateInput
     _avg?: ReservasiAvgOrderByAggregateInput
     _max?: ReservasiMaxOrderByAggregateInput
@@ -7738,6 +7774,8 @@ export namespace Prisma {
     jamAmbil?: StringNullableWithAggregatesFilter<"Reservasi"> | string | null
     catatan?: StringNullableWithAggregatesFilter<"Reservasi"> | string | null
     status?: StringWithAggregatesFilter<"Reservasi"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"Reservasi"> | Date | string
+    updatedAt?: DateTimeNullableWithAggregatesFilter<"Reservasi"> | Date | string | null
   }
 
   export type PeminjamanWhereInput = {
@@ -8103,6 +8141,8 @@ export namespace Prisma {
     jamAmbil?: string | null
     catatan?: string | null
     status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
     user: UserCreateNestedOneWithoutReservasiInput
     book: BookCreateNestedOneWithoutReservasiInput
     peminjaman?: PeminjamanCreateNestedOneWithoutReservasiInput
@@ -8116,6 +8156,8 @@ export namespace Prisma {
     jamAmbil?: string | null
     catatan?: string | null
     status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
     peminjaman?: PeminjamanUncheckedCreateNestedOneWithoutReservasiInput
   }
 
@@ -8124,6 +8166,8 @@ export namespace Prisma {
     jamAmbil?: NullableStringFieldUpdateOperationsInput | string | null
     catatan?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     user?: UserUpdateOneRequiredWithoutReservasiNestedInput
     book?: BookUpdateOneRequiredWithoutReservasiNestedInput
     peminjaman?: PeminjamanUpdateOneWithoutReservasiNestedInput
@@ -8137,6 +8181,8 @@ export namespace Prisma {
     jamAmbil?: NullableStringFieldUpdateOperationsInput | string | null
     catatan?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     peminjaman?: PeminjamanUncheckedUpdateOneWithoutReservasiNestedInput
   }
 
@@ -8148,6 +8194,8 @@ export namespace Prisma {
     jamAmbil?: string | null
     catatan?: string | null
     status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
   }
 
   export type ReservasiUpdateManyMutationInput = {
@@ -8155,6 +8203,8 @@ export namespace Prisma {
     jamAmbil?: NullableStringFieldUpdateOperationsInput | string | null
     catatan?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type ReservasiUncheckedUpdateManyInput = {
@@ -8165,6 +8215,8 @@ export namespace Prisma {
     jamAmbil?: NullableStringFieldUpdateOperationsInput | string | null
     catatan?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type PeminjamanCreateInput = {
@@ -8595,6 +8647,8 @@ export namespace Prisma {
     jamAmbil?: SortOrder
     catatan?: SortOrder
     status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type ReservasiAvgOrderByAggregateInput = {
@@ -8610,6 +8664,8 @@ export namespace Prisma {
     jamAmbil?: SortOrder
     catatan?: SortOrder
     status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type ReservasiMinOrderByAggregateInput = {
@@ -8620,6 +8676,8 @@ export namespace Prisma {
     jamAmbil?: SortOrder
     catatan?: SortOrder
     status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type ReservasiSumOrderByAggregateInput = {
@@ -9280,6 +9338,8 @@ export namespace Prisma {
     jamAmbil?: string | null
     catatan?: string | null
     status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
     book: BookCreateNestedOneWithoutReservasiInput
     peminjaman?: PeminjamanCreateNestedOneWithoutReservasiInput
   }
@@ -9291,6 +9351,8 @@ export namespace Prisma {
     jamAmbil?: string | null
     catatan?: string | null
     status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
     peminjaman?: PeminjamanUncheckedCreateNestedOneWithoutReservasiInput
   }
 
@@ -9366,6 +9428,8 @@ export namespace Prisma {
     jamAmbil?: StringNullableFilter<"Reservasi"> | string | null
     catatan?: StringNullableFilter<"Reservasi"> | string | null
     status?: StringFilter<"Reservasi"> | string
+    createdAt?: DateTimeFilter<"Reservasi"> | Date | string
+    updatedAt?: DateTimeNullableFilter<"Reservasi"> | Date | string | null
   }
 
   export type PeminjamanUpsertWithWhereUniqueWithoutUserInput = {
@@ -9424,6 +9488,8 @@ export namespace Prisma {
     jamAmbil?: string | null
     catatan?: string | null
     status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
     user: UserCreateNestedOneWithoutReservasiInput
     peminjaman?: PeminjamanCreateNestedOneWithoutReservasiInput
   }
@@ -9435,6 +9501,8 @@ export namespace Prisma {
     jamAmbil?: string | null
     catatan?: string | null
     status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
     peminjaman?: PeminjamanUncheckedCreateNestedOneWithoutReservasiInput
   }
 
@@ -9842,6 +9910,8 @@ export namespace Prisma {
     jamAmbil?: string | null
     catatan?: string | null
     status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
     user: UserCreateNestedOneWithoutReservasiInput
     book: BookCreateNestedOneWithoutReservasiInput
   }
@@ -9854,6 +9924,8 @@ export namespace Prisma {
     jamAmbil?: string | null
     catatan?: string | null
     status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
   }
 
   export type ReservasiCreateOrConnectWithoutPeminjamanInput = {
@@ -9948,6 +10020,8 @@ export namespace Prisma {
     jamAmbil?: NullableStringFieldUpdateOperationsInput | string | null
     catatan?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     user?: UserUpdateOneRequiredWithoutReservasiNestedInput
     book?: BookUpdateOneRequiredWithoutReservasiNestedInput
   }
@@ -9960,6 +10034,8 @@ export namespace Prisma {
     jamAmbil?: NullableStringFieldUpdateOperationsInput | string | null
     catatan?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type UserUpsertWithoutPeminjamanInput = {
@@ -10052,6 +10128,8 @@ export namespace Prisma {
     jamAmbil?: string | null
     catatan?: string | null
     status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
   }
 
   export type PeminjamanCreateManyUserInput = {
@@ -10072,6 +10150,8 @@ export namespace Prisma {
     jamAmbil?: NullableStringFieldUpdateOperationsInput | string | null
     catatan?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     book?: BookUpdateOneRequiredWithoutReservasiNestedInput
     peminjaman?: PeminjamanUpdateOneWithoutReservasiNestedInput
   }
@@ -10083,6 +10163,8 @@ export namespace Prisma {
     jamAmbil?: NullableStringFieldUpdateOperationsInput | string | null
     catatan?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     peminjaman?: PeminjamanUncheckedUpdateOneWithoutReservasiNestedInput
   }
 
@@ -10093,6 +10175,8 @@ export namespace Prisma {
     jamAmbil?: NullableStringFieldUpdateOperationsInput | string | null
     catatan?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type PeminjamanUpdateWithoutUserInput = {
@@ -10140,6 +10224,8 @@ export namespace Prisma {
     jamAmbil?: string | null
     catatan?: string | null
     status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
   }
 
   export type PeminjamanCreateManyBookInput = {
@@ -10160,6 +10246,8 @@ export namespace Prisma {
     jamAmbil?: NullableStringFieldUpdateOperationsInput | string | null
     catatan?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     user?: UserUpdateOneRequiredWithoutReservasiNestedInput
     peminjaman?: PeminjamanUpdateOneWithoutReservasiNestedInput
   }
@@ -10171,6 +10259,8 @@ export namespace Prisma {
     jamAmbil?: NullableStringFieldUpdateOperationsInput | string | null
     catatan?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     peminjaman?: PeminjamanUncheckedUpdateOneWithoutReservasiNestedInput
   }
 
@@ -10181,6 +10271,8 @@ export namespace Prisma {
     jamAmbil?: NullableStringFieldUpdateOperationsInput | string | null
     catatan?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type PeminjamanUpdateWithoutBookInput = {
