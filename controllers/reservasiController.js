@@ -100,6 +100,7 @@ export const updateReservasiStatus = async (req, res) => {
             where: { id },
             include: {
                 peminjaman: true,
+                book: true,
             },
         })
 
@@ -110,42 +111,84 @@ export const updateReservasiStatus = async (req, res) => {
             })
         }
 
-        // Update status reservasi
-        const updatedReservasi = await prisma.reservasi.update({
-            where: { id },
-            data: { status },
+        const statusSebelumnya = existingReservasi.status
+        let newPeminjaman = null
+        let updatedBook = null
+
+        const result = await prisma.$transaction(async (prisma) => {
+            if (status === 'Disetujui' && statusSebelumnya !== 'Disetujui') {
+                if (existingReservasi.book.stok <= 0) {
+                    throw new Error(
+                        'Stok buku habis, tidak bisa menyetujui reservasi'
+                    )
+                }
+
+                if (existingReservasi.peminjaman) {
+                    throw new Error('Reservasi ini sudah memiliki peminjaman')
+                }
+
+                const tanggalPinjam = new Date()
+                const tanggalJatuhTempo = new Date()
+                tanggalJatuhTempo.setDate(tanggalPinjam.getDate() + 7)
+
+                newPeminjaman = await prisma.peminjaman.create({
+                    data: {
+                        reservasiId: id,
+                        userId: existingReservasi.userId,
+                        bookId: existingReservasi.bookId,
+                        tanggalPinjam,
+                        tanggalJatuhTempo,
+                    },
+                })
+
+                updatedBook = await prisma.book.update({
+                    where: { id: existingReservasi.bookId },
+                    data: {
+                        stok: {
+                            decrement: 1,
+                        },
+                    },
+                })
+            }
+            else if (status === 'Ditolak' && statusSebelumnya === 'Disetujui') {
+                if (existingReservasi.peminjaman) {
+                    await prisma.peminjaman.delete({
+                        where: { reservasiId: id },
+                    })
+
+                    updatedBook = await prisma.book.update({
+                        where: { id: existingReservasi.bookId },
+                        data: {
+                            stok: {
+                                increment: 1,
+                            },
+                        },
+                    })
+                }
+            }
+
+            const updatedReservasi = await prisma.reservasi.update({
+                where: { id },
+                data: { status },
+            })
+
+            return { updatedReservasi, newPeminjaman, updatedBook }
         })
 
-        // Jika status Disetujui dan belum ada peminjaman, buat peminjaman
-        if (status === 'Disetujui' && !existingReservasi.peminjaman) {
-            const tanggalPinjam = new Date()
-            const tanggalJatuhTempo = new Date()
-            tanggalJatuhTempo.setDate(tanggalPinjam.getDate() + 7)
-
-            await prisma.peminjaman.create({
-                data: {
-                    reservasiId: id,
-                    userId: existingReservasi.userId,
-                    bookId: existingReservasi.bookId,
-                    tanggalPinjam,
-                    tanggalJatuhTempo,
-                },
-            })
-        }
-
-        res.json({
+        return res.json({
             success: true,
-            message: 'Status reservasi berhasil diperbarui',
-            data: updatedReservasi,
+            message: '✅ Status reservasi berhasil diperbarui',
+            data: {
+                reservasi: result.updatedReservasi,
+                peminjamanBaru: result.newPeminjaman,
+                bukuTerbaru: result.updatedBook,
+            },
         })
     } catch (error) {
-        console.error(
-            '❌ Gagal memperbarui status atau membuat peminjaman:',
-            error
-        )
+        console.error('❌ Gagal memperbarui status:', error)
         res.status(500).json({
             success: false,
-            message: 'Gagal memperbarui status reservasi',
+            message: error.message || 'Gagal memperbarui status reservasi',
             error: error.message,
         })
     }
