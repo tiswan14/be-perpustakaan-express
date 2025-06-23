@@ -68,6 +68,7 @@ export const getAllUser = async (req, res) => {
                 nim: true,
                 nid: true,
                 role: true,
+                status: true,
             },
         })
 
