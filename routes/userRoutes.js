@@ -16,6 +16,6 @@ router.get('/user/profile', getProfile)
 
 router.get('/user', authorizeRoles('admin'), getAllUser)
 
-router.delete('/user/:id', authorizeRoles('admin'), deleteUser)
+router.delete('/user/hapus/:id', authorizeRoles('admin'), deleteUser)
 
 export default router

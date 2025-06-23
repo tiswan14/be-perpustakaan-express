@@ -61,6 +61,9 @@ export const getAllUser = async (req, res) => {
                     in: ['mahasiswa', 'dosen'],
                 },
             },
+            orderBy: {
+                nama: 'asc',
+            },
             select: {
                 id: true,
                 nama: true,
