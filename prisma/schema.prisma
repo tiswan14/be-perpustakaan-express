@@ -16,8 +16,8 @@ model User {
   nim        String?
   nid        String?
   password   String
-  role       String       @default("mahasiswa")
-  status     String       @default("active")
+  role       String       @default("Mahasiswa")
+  status     String       @default("Aktif")
   createdAt  DateTime     @default(now())
   updatedAt  DateTime?    @updatedAt
   Reservasi  Reservasi[]
