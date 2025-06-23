@@ -3,6 +3,7 @@ import {
     getProfile,
     getAllUser,
     deleteUser,
+    editUser,
 } from '../controllers/userController.js'
 
 import { authenticate } from '../middleware/authMiddleware.js'
@@ -17,5 +18,7 @@ router.get('/user/profile', getProfile)
 router.get('/user', authorizeRoles('admin'), getAllUser)
 
 router.delete('/user/hapus/:id', authorizeRoles('admin'), deleteUser)
+
+router.put('/user/edit/:id', authorizeRoles('admin'), editUser)
 
 export default router

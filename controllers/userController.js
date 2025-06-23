@@ -135,3 +135,57 @@ export const deleteUser = async (req, res) => {
         })
     }
 }
+
+export const editUser = async (req, res) => {
+    const { id } = req.params
+    const { nama, email, password, role, status, nim, nid } = req.body
+
+    if (!id) {
+        return res.status(400).json({
+            status: false,
+            message: 'ID pengguna wajib disertakan',
+        })
+    }
+
+    try {
+        const existingUser = await prisma.user.findUnique({ where: { id } })
+
+        if (!existingUser) {
+            return res.status(404).json({
+                status: false,
+                message: 'Pengguna tidak ditemukan',
+            })
+        }
+
+        // Jika password tidak diberikan, gunakan password lama
+        let hashedPassword = existingUser.password
+        if (password && password.trim() !== '') {
+            hashedPassword = await bcrypt.hash(password, 10)
+        }
+
+        const updatedUser = await prisma.user.update({
+            where: { id },
+            data: {
+                nama,
+                email,
+                role,
+                status,
+                password: hashedPassword,
+                nim: role === 'mahasiswa' ? nim : null,
+                nid: role === 'dosen' ? nid : null,
+            },
+        })
+
+        res.status(200).json({
+            status: true,
+            message: 'Pengguna berhasil diperbarui',
+            data: updatedUser,
+        })
+    } catch (error) {
+        console.error('Gagal mengedit user:', error)
+        res.status(500).json({
+            status: false,
+            message: 'Terjadi kesalahan saat memperbarui data pengguna',
+        })
+    }
+}
