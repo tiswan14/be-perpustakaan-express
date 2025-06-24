@@ -289,7 +289,12 @@ export const getReservasiByUserId = async (req, res) => {
                     select: {
                         id: true,
                         judul: true,
-                    },
+                        image: true,
+                        status: true,
+                        deskripsi: true,
+                        penulis: true,
+                        penerbit: true,
+                    }
                 },
                 user: {
                     select: {
