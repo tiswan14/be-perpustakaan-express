@@ -5,6 +5,7 @@ import {
     createPeminjaman,
     updatePeminjaman,
     deletePeminjaman,
+    getPeminjamanByUserId,
 } from '../controllers/peminjamanController.js'
 import { authenticate } from '../middleware/authMiddleware.js'
 import { authorizeRoles } from '../middleware/roleMiddleware.js'
@@ -26,5 +27,7 @@ router.delete(
     authorizeRoles('admin'),
     deletePeminjaman
 )
+
+router.get('/peminjaman/user/:userId', getPeminjamanByUserId)
 
 export default router

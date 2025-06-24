@@ -172,3 +172,67 @@ export const deletePeminjaman = async (req, res) => {
         })
     }
 }
+
+export const getPeminjamanByUserId = async (req, res) => {
+    const userId = req.params.userId
+
+    try {
+        const peminjaman = await prisma.peminjaman.findMany({
+            where: {
+                userId: userId,
+            },
+            include: {
+                User: {
+                    select: {
+                        id: true,
+                        nama: true,
+                    },
+                },
+                Book: {
+                    select: {
+                        id: true,
+                        judul: true,
+                    },
+                },
+                reservasi: {
+                    include: {
+                        book: {
+                            select: {
+                                id: true,
+                                judul: true,
+                            },
+                        },
+                        user: {
+                            select: {
+                                id: true,
+                                nama: true,
+                            },
+                        },
+                    },
+                },
+            },
+        })
+
+        if (peminjaman.length === 0) {
+            return res.status(404).json({
+                success: false,
+                message: 'Tidak ada data peminjaman untuk user ini',
+            })
+        }
+
+        res.json({
+            success: true,
+            data: peminjaman,
+        })
+    } catch (error) {
+        console.error(
+            '❌ Gagal mengambil data peminjaman berdasarkan userId:',
+            error
+        )
+        res.status(500).json({
+            success: false,
+            message: 'Gagal mengambil data peminjaman',
+            error: error.message,
+        })
+    }
+}
