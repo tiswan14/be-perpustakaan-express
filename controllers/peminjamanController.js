@@ -64,7 +64,6 @@ export const getPeminjamanById = async (req, res) => {
     }
 }
 
-// Buat data peminjaman baru
 export const createPeminjaman = async (req, res) => {
     const { reservasiId, tanggalJatuhTempo, tanggalKembali, status, denda } =
         req.body
@@ -110,7 +109,6 @@ export const createPeminjaman = async (req, res) => {
     }
 }
 
-// Update data peminjaman
 export const updatePeminjaman = async (req, res) => {
     const id = parseInt(req.params.id)
     const { tanggalJatuhTempo, tanggalKembali, status, denda } = req.body
@@ -152,7 +150,6 @@ export const updatePeminjaman = async (req, res) => {
     }
 }
 
-// Hapus data peminjaman
 export const deletePeminjaman = async (req, res) => {
     const id = parseInt(req.params.id)
 

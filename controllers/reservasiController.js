@@ -149,8 +149,10 @@ export const updateReservasiStatus = async (req, res) => {
                         },
                     },
                 })
-            }
-            else if (status === 'Ditolak' && statusSebelumnya === 'Disetujui') {
+            } else if (
+                status === 'Ditolak' &&
+                statusSebelumnya === 'Disetujui'
+            ) {
                 if (existingReservasi.peminjaman) {
                     await prisma.peminjaman.delete({
                         where: { reservasiId: id },
@@ -269,6 +271,54 @@ export const deleteReservasi = async (req, res) => {
         res.status(500).json({
             success: false,
             message: 'Gagal menghapus reservasi',
+            error: error.message,
+        })
+    }
+}
+
+export const getReservasiByUserId = async (req, res) => {
+    const userId = req.params.userId
+
+    try {
+        const reservasi = await prisma.reservasi.findMany({
+            where: {
+                userId: userId,
+            },
+            include: {
+                book: {
+                    select: {
+                        id: true,
+                        judul: true,
+                    },
+                },
+                user: {
+                    select: {
+                        id: true,
+                        nama: true,
+                    },
+                },
+            },
+        })
+
+        if (reservasi.length === 0) {
+            return res.status(404).json({
+                success: false,
+                message: 'Tidak ada reservasi untuk user ini',
+            })
+        }
+
+        res.json({
+            success: true,
+            data: reservasi,
+        })
+    } catch (error) {
+        console.error(
+            '❌ Gagal mengambil data reservasi berdasarkan userId:',
+            error
+        )
+        res.status(500).json({
+            success: false,
+            message: 'Gagal mengambil data reservasi',
             error: error.message,
         })
     }
