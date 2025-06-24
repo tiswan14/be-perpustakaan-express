@@ -19,6 +19,6 @@ router.get('/user', authorizeRoles('admin'), getAllUser)
 
 router.delete('/user/hapus/:id', authorizeRoles('admin'), deleteUser)
 
-router.put('/user/edit/:id', authorizeRoles('admin'), editUser)
+router.put('/user/edit/:id', editUser)
 
 export default router

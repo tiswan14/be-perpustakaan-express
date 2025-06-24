@@ -236,3 +236,63 @@ export const getPeminjamanByUserId = async (req, res) => {
         })
     }
 }
+
+export const kembalikanPeminjaman = async (req, res) => {
+    const id = parseInt(req.params.id)
+
+    try {
+        const peminjaman = await prisma.peminjaman.findUnique({
+            where: { id },
+        })
+
+        if (!peminjaman) {
+            return res.status(404).json({
+                success: false,
+                message: 'Data peminjaman tidak ditemukan',
+            })
+        }
+
+        // Ambil tanggal dari body (format: "2025-06-26")
+        const inputTanggal = req.body.tanggalKembali
+        if (!inputTanggal) {
+            return res.status(400).json({
+                success: false,
+                message: 'tanggalKembali harus diisi dalam format YYYY-MM-DD',
+            })
+        }
+
+        const tanggalKembali = new Date(`${inputTanggal}T00:00:00.000Z`)
+        const jatuhTempo = new Date(peminjaman.tanggalJatuhTempo)
+
+        // Hitung denda
+        let denda = 0
+        if (tanggalKembali > jatuhTempo) {
+            const selisihHari = Math.ceil(
+                (tanggalKembali - jatuhTempo) / (1000 * 60 * 60 * 24)
+            )
+            denda = selisihHari * 1000
+        }
+
+        const updated = await prisma.peminjaman.update({
+            where: { id },
+            data: {
+                tanggalKembali,
+                status: 'dikembalikan',
+                denda,
+            },
+        })
+
+        res.json({
+            success: true,
+            message: 'Peminjaman berhasil dikembalikan',
+            data: updated,
+        })
+    } catch (error) {
+        console.error('❌ Gagal mengembalikan peminjaman:', error)
+        res.status(500).json({
+            success: false,
+            message: 'Gagal mengupdate data peminjaman',
+            error: error.message,
+        })
+    }
+}

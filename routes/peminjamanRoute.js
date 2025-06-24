@@ -6,6 +6,7 @@ import {
     updatePeminjaman,
     deletePeminjaman,
     getPeminjamanByUserId,
+    kembalikanPeminjaman,
 } from '../controllers/peminjamanController.js'
 import { authenticate } from '../middleware/authMiddleware.js'
 import { authorizeRoles } from '../middleware/roleMiddleware.js'
@@ -29,5 +30,7 @@ router.delete(
 )
 
 router.get('/peminjaman/user/:userId', getPeminjamanByUserId)
+
+router.patch('/peminjaman/kembalikan/:id', kembalikanPeminjaman)
 
 export default router
