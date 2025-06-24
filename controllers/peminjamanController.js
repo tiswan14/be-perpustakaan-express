@@ -200,6 +200,7 @@ export const getPeminjamanByUserId = async (req, res) => {
                             select: {
                                 id: true,
                                 judul: true,
+                                image: true, 
                             },
                         },
                         user: {
@@ -212,6 +213,7 @@ export const getPeminjamanByUserId = async (req, res) => {
                 },
             },
         })
+
 
         if (peminjaman.length === 0) {
             return res.status(404).json({
