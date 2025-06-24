@@ -296,3 +296,53 @@ export const kembalikanPeminjaman = async (req, res) => {
         })
     }
 }
+
+export const getTotalPeminjamanDipinjam = async (req, res) => {
+    try {
+        const totalDipinjam = await prisma.peminjaman.count({
+            where: {
+                status: 'dipinjam',
+            },
+        })
+
+        res.status(200).json({
+            success: true,
+            message: 'Total peminjaman yang sedang dipinjam berhasil diambil',
+            total: totalDipinjam,
+        })
+    } catch (error) {
+        console.error('❌ Gagal mengambil total peminjaman dipinjam:', error)
+        res.status(500).json({
+            success: false,
+            message: 'Gagal mengambil data',
+            error: error.message,
+        })
+    }
+}
+
+export const getTotalPeminjamanDikembalikan = async (req, res) => {
+    try {
+        const totalDikembalikan = await prisma.peminjaman.count({
+            where: {
+                status: 'dikembalikan',
+            },
+        })
+
+        res.status(200).json({
+            success: true,
+            message:
+                'Total peminjaman yang sudah dikembalikan berhasil diambil',
+            total: totalDikembalikan,
+        })
+    } catch (error) {
+        console.error(
+            '❌ Gagal mengambil total peminjaman dikembalikan:',
+            error
+        )
+        res.status(500).json({
+            success: false,
+            message: 'Gagal mengambil data',
+            error: error.message,
+        })
+    }
+}

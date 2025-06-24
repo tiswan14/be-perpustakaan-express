@@ -189,3 +189,28 @@ export const editUser = async (req, res) => {
         })
     }
 }
+
+export const getTotalMahasiswaDanDosen = async (req, res) => {
+    try {
+        const total = await prisma.user.count({
+            where: {
+                role: {
+                    in: ['mahasiswa', 'dosen'],
+                },
+            },
+        })
+
+        res.status(200).json({
+            status: true,
+            message: 'Total mahasiswa dan dosen berhasil dihitung',
+            total,
+        })
+    } catch (error) {
+        console.error('Gagal menghitung total:', error)
+        res.status(500).json({
+            status: false,
+            message: 'Gagal menghitung total mahasiswa dan dosen',
+            error: error.message,
+        })
+    }
+}
