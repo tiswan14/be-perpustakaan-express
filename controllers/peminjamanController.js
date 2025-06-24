@@ -252,7 +252,6 @@ export const kembalikanPeminjaman = async (req, res) => {
             })
         }
 
-        // Ambil tanggal dari body (format: "2025-06-26")
         const inputTanggal = req.body.tanggalKembali
         if (!inputTanggal) {
             return res.status(400).json({
@@ -264,7 +263,7 @@ export const kembalikanPeminjaman = async (req, res) => {
         const tanggalKembali = new Date(`${inputTanggal}T00:00:00.000Z`)
         const jatuhTempo = new Date(peminjaman.tanggalJatuhTempo)
 
-        // Hitung denda
+        // Hitung denda jika lewat jatuh tempo
         let denda = 0
         if (tanggalKembali > jatuhTempo) {
             const selisihHari = Math.ceil(
@@ -273,6 +272,7 @@ export const kembalikanPeminjaman = async (req, res) => {
             denda = selisihHari * 1000
         }
 
+        // Update status peminjaman
         const updated = await prisma.peminjaman.update({
             where: { id },
             data: {
@@ -282,9 +282,19 @@ export const kembalikanPeminjaman = async (req, res) => {
             },
         })
 
+        // Tambahkan stok buku kembali
+        if (peminjaman.bookId) {
+            await prisma.book.update({
+                where: { id: peminjaman.bookId },
+                data: {
+                    stok: { increment: 1 },
+                },
+            })
+        }
+
         res.json({
             success: true,
-            message: 'Peminjaman berhasil dikembalikan',
+            message: 'Peminjaman berhasil dikembalikan & stok buku diperbarui',
             data: updated,
         })
     } catch (error) {
