@@ -25,6 +25,7 @@ router.get('/peminjaman/detail/:id', getPeminjamanById)
 // Hanya admin yang boleh buat, ubah, dan hapus peminjaman
 router.post('/peminjaman/', authorizeRoles('admin'), createPeminjaman)
 router.put('/peminjaman/edit/:id', authorizeRoles('admin'), updatePeminjaman)
+
 router.delete(
     '/peminjaman/hapus/:id',
     authorizeRoles('admin'),
