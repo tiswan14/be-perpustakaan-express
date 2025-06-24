@@ -256,21 +256,39 @@ export const deleteReservasi = async (req, res) => {
     const id = parseInt(req.params.id)
 
     try {
+        // Cek apakah reservasi ada
         const existingReservasi = await prisma.reservasi.findUnique({
             where: { id },
         })
-        if (!existingReservasi)
+
+        if (!existingReservasi) {
             return res.status(404).json({
                 success: false,
                 message: 'Reservasi tidak ditemukan',
             })
+        }
 
+        // Coba hapus
         await prisma.reservasi.delete({ where: { id } })
-        res.json({ success: true, message: 'Reservasi berhasil dihapus' })
+
+        return res.json({
+            success: true,
+            message: 'Reservasi berhasil dihapus',
+        })
     } catch (error) {
-        res.status(500).json({
+        // Tangani error constraint (foreign key) dari Prisma
+        if (error.code === 'P2003') {
+            return res.status(400).json({
+                success: false,
+                message:
+                    'Reservasi tidak dapat dihapus karena masih digunakan dalam peminjaman.',
+            })
+        }
+
+        // Tangani error umum lainnya
+        return res.status(500).json({
             success: false,
-            message: 'Gagal menghapus reservasi',
+            message: 'Terjadi kesalahan saat menghapus reservasi.',
             error: error.message,
         })
     }
