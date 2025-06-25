@@ -64,6 +64,22 @@ export const createReservasi = async (req, res) => {
         })
     }
 
+    if (tanggalAmbil) {
+        const tanggalAmbilDate = new Date(tanggalAmbil)
+        tanggalAmbilDate.setHours(0, 0, 0, 0)
+
+        const hariIni = new Date()
+        hariIni.setHours(0, 0, 0, 0)
+
+        if (tanggalAmbilDate < hariIni) {
+            return res.status(400).json({
+                success: false,
+                message:
+                    'Tanggal ambil tidak boleh di hari kemarin atau sebelumnya',
+            })
+        }
+    }
+
     try {
         const newReservasi = await prisma.reservasi.create({
             data: {
