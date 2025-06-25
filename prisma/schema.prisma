@@ -35,7 +35,6 @@ model Book {
   image       String?
   kategoriId  Int
   stok        Int          @default(1)
-  status      String       @default("tersedia")
   kategori    Category     @relation(fields: [kategoriId], references: [id])
   Reservasi   Reservasi[]
   createdAt   DateTime     @default(now())

@@ -2543,7 +2543,6 @@ export namespace Prisma {
     image: string | null
     kategoriId: number | null
     stok: number | null
-    status: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -2559,7 +2558,6 @@ export namespace Prisma {
     image: string | null
     kategoriId: number | null
     stok: number | null
-    status: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -2575,7 +2573,6 @@ export namespace Prisma {
     image: number
     kategoriId: number
     stok: number
-    status: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -2607,7 +2604,6 @@ export namespace Prisma {
     image?: true
     kategoriId?: true
     stok?: true
-    status?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -2623,7 +2619,6 @@ export namespace Prisma {
     image?: true
     kategoriId?: true
     stok?: true
-    status?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -2639,7 +2634,6 @@ export namespace Prisma {
     image?: true
     kategoriId?: true
     stok?: true
-    status?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -2742,7 +2736,6 @@ export namespace Prisma {
     image: string | null
     kategoriId: number
     stok: number
-    status: string
     createdAt: Date
     updatedAt: Date | null
     _count: BookCountAggregateOutputType | null
@@ -2777,7 +2770,6 @@ export namespace Prisma {
     image?: boolean
     kategoriId?: boolean
     stok?: boolean
-    status?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     kategori?: boolean | CategoryDefaultArgs<ExtArgs>
@@ -2797,7 +2789,6 @@ export namespace Prisma {
     image?: boolean
     kategoriId?: boolean
     stok?: boolean
-    status?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     kategori?: boolean | CategoryDefaultArgs<ExtArgs>
@@ -2814,7 +2805,6 @@ export namespace Prisma {
     image?: boolean
     kategoriId?: boolean
     stok?: boolean
-    status?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     kategori?: boolean | CategoryDefaultArgs<ExtArgs>
@@ -2831,12 +2821,11 @@ export namespace Prisma {
     image?: boolean
     kategoriId?: boolean
     stok?: boolean
-    status?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type BookOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "judul" | "deskripsi" | "isbn" | "penerbit" | "tahunTerbit" | "penulis" | "image" | "kategoriId" | "stok" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["book"]>
+  export type BookOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "judul" | "deskripsi" | "isbn" | "penerbit" | "tahunTerbit" | "penulis" | "image" | "kategoriId" | "stok" | "createdAt" | "updatedAt", ExtArgs["result"]["book"]>
   export type BookInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     kategori?: boolean | CategoryDefaultArgs<ExtArgs>
     Reservasi?: boolean | Book$ReservasiArgs<ExtArgs>
@@ -2868,7 +2857,6 @@ export namespace Prisma {
       image: string | null
       kategoriId: number
       stok: number
-      status: string
       createdAt: Date
       updatedAt: Date | null
     }, ExtArgs["result"]["book"]>
@@ -3307,7 +3295,6 @@ export namespace Prisma {
     readonly image: FieldRef<"Book", 'String'>
     readonly kategoriId: FieldRef<"Book", 'Int'>
     readonly stok: FieldRef<"Book", 'Int'>
-    readonly status: FieldRef<"Book", 'String'>
     readonly createdAt: FieldRef<"Book", 'DateTime'>
     readonly updatedAt: FieldRef<"Book", 'DateTime'>
   }
@@ -7319,7 +7306,6 @@ export namespace Prisma {
     image: 'image',
     kategoriId: 'kategoriId',
     stok: 'stok',
-    status: 'status',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -7554,7 +7540,6 @@ export namespace Prisma {
     image?: StringNullableFilter<"Book"> | string | null
     kategoriId?: IntFilter<"Book"> | number
     stok?: IntFilter<"Book"> | number
-    status?: StringFilter<"Book"> | string
     createdAt?: DateTimeFilter<"Book"> | Date | string
     updatedAt?: DateTimeNullableFilter<"Book"> | Date | string | null
     kategori?: XOR<CategoryScalarRelationFilter, CategoryWhereInput>
@@ -7573,7 +7558,6 @@ export namespace Prisma {
     image?: SortOrderInput | SortOrder
     kategoriId?: SortOrder
     stok?: SortOrder
-    status?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrderInput | SortOrder
     kategori?: CategoryOrderByWithRelationInput
@@ -7595,7 +7579,6 @@ export namespace Prisma {
     image?: StringNullableFilter<"Book"> | string | null
     kategoriId?: IntFilter<"Book"> | number
     stok?: IntFilter<"Book"> | number
-    status?: StringFilter<"Book"> | string
     createdAt?: DateTimeFilter<"Book"> | Date | string
     updatedAt?: DateTimeNullableFilter<"Book"> | Date | string | null
     kategori?: XOR<CategoryScalarRelationFilter, CategoryWhereInput>
@@ -7614,7 +7597,6 @@ export namespace Prisma {
     image?: SortOrderInput | SortOrder
     kategoriId?: SortOrder
     stok?: SortOrder
-    status?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrderInput | SortOrder
     _count?: BookCountOrderByAggregateInput
@@ -7638,7 +7620,6 @@ export namespace Prisma {
     image?: StringNullableWithAggregatesFilter<"Book"> | string | null
     kategoriId?: IntWithAggregatesFilter<"Book"> | number
     stok?: IntWithAggregatesFilter<"Book"> | number
-    status?: StringWithAggregatesFilter<"Book"> | string
     createdAt?: DateTimeWithAggregatesFilter<"Book"> | Date | string
     updatedAt?: DateTimeNullableWithAggregatesFilter<"Book"> | Date | string | null
   }
@@ -7979,7 +7960,6 @@ export namespace Prisma {
     penulis?: string | null
     image?: string | null
     stok?: number
-    status?: string
     createdAt?: Date | string
     updatedAt?: Date | string | null
     kategori: CategoryCreateNestedOneWithoutBukuInput
@@ -7998,7 +7978,6 @@ export namespace Prisma {
     image?: string | null
     kategoriId: number
     stok?: number
-    status?: string
     createdAt?: Date | string
     updatedAt?: Date | string | null
     Reservasi?: ReservasiUncheckedCreateNestedManyWithoutBookInput
@@ -8014,7 +7993,6 @@ export namespace Prisma {
     penulis?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     stok?: IntFieldUpdateOperationsInput | number
-    status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     kategori?: CategoryUpdateOneRequiredWithoutBukuNestedInput
@@ -8033,7 +8011,6 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     kategoriId?: IntFieldUpdateOperationsInput | number
     stok?: IntFieldUpdateOperationsInput | number
-    status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     Reservasi?: ReservasiUncheckedUpdateManyWithoutBookNestedInput
@@ -8051,7 +8028,6 @@ export namespace Prisma {
     image?: string | null
     kategoriId: number
     stok?: number
-    status?: string
     createdAt?: Date | string
     updatedAt?: Date | string | null
   }
@@ -8065,7 +8041,6 @@ export namespace Prisma {
     penulis?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     stok?: IntFieldUpdateOperationsInput | number
-    status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
@@ -8081,7 +8056,6 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     kategoriId?: IntFieldUpdateOperationsInput | number
     stok?: IntFieldUpdateOperationsInput | number
-    status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
@@ -8518,7 +8492,6 @@ export namespace Prisma {
     image?: SortOrder
     kategoriId?: SortOrder
     stok?: SortOrder
-    status?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -8541,7 +8514,6 @@ export namespace Prisma {
     image?: SortOrder
     kategoriId?: SortOrder
     stok?: SortOrder
-    status?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -8557,7 +8529,6 @@ export namespace Prisma {
     image?: SortOrder
     kategoriId?: SortOrder
     stok?: SortOrder
-    status?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -9616,7 +9587,6 @@ export namespace Prisma {
     penulis?: string | null
     image?: string | null
     stok?: number
-    status?: string
     createdAt?: Date | string
     updatedAt?: Date | string | null
     Reservasi?: ReservasiCreateNestedManyWithoutBookInput
@@ -9633,7 +9603,6 @@ export namespace Prisma {
     penulis?: string | null
     image?: string | null
     stok?: number
-    status?: string
     createdAt?: Date | string
     updatedAt?: Date | string | null
     Reservasi?: ReservasiUncheckedCreateNestedManyWithoutBookInput
@@ -9680,7 +9649,6 @@ export namespace Prisma {
     image?: StringNullableFilter<"Book"> | string | null
     kategoriId?: IntFilter<"Book"> | number
     stok?: IntFilter<"Book"> | number
-    status?: StringFilter<"Book"> | string
     createdAt?: DateTimeFilter<"Book"> | Date | string
     updatedAt?: DateTimeNullableFilter<"Book"> | Date | string | null
   }
@@ -9727,7 +9695,6 @@ export namespace Prisma {
     penulis?: string | null
     image?: string | null
     stok?: number
-    status?: string
     createdAt?: Date | string
     updatedAt?: Date | string | null
     kategori: CategoryCreateNestedOneWithoutBukuInput
@@ -9745,7 +9712,6 @@ export namespace Prisma {
     image?: string | null
     kategoriId: number
     stok?: number
-    status?: string
     createdAt?: Date | string
     updatedAt?: Date | string | null
     Peminjaman?: PeminjamanUncheckedCreateNestedManyWithoutBookInput
@@ -9845,7 +9811,6 @@ export namespace Prisma {
     penulis?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     stok?: IntFieldUpdateOperationsInput | number
-    status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     kategori?: CategoryUpdateOneRequiredWithoutBukuNestedInput
@@ -9863,7 +9828,6 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     kategoriId?: IntFieldUpdateOperationsInput | number
     stok?: IntFieldUpdateOperationsInput | number
-    status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     Peminjaman?: PeminjamanUncheckedUpdateManyWithoutBookNestedInput
@@ -9975,7 +9939,6 @@ export namespace Prisma {
     penulis?: string | null
     image?: string | null
     stok?: number
-    status?: string
     createdAt?: Date | string
     updatedAt?: Date | string | null
     kategori: CategoryCreateNestedOneWithoutBukuInput
@@ -9993,7 +9956,6 @@ export namespace Prisma {
     image?: string | null
     kategoriId: number
     stok?: number
-    status?: string
     createdAt?: Date | string
     updatedAt?: Date | string | null
     Reservasi?: ReservasiUncheckedCreateNestedManyWithoutBookInput
@@ -10097,7 +10059,6 @@ export namespace Prisma {
     penulis?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     stok?: IntFieldUpdateOperationsInput | number
-    status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     kategori?: CategoryUpdateOneRequiredWithoutBukuNestedInput
@@ -10115,7 +10076,6 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     kategoriId?: IntFieldUpdateOperationsInput | number
     stok?: IntFieldUpdateOperationsInput | number
-    status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     Reservasi?: ReservasiUncheckedUpdateManyWithoutBookNestedInput
@@ -10323,7 +10283,6 @@ export namespace Prisma {
     penulis?: string | null
     image?: string | null
     stok?: number
-    status?: string
     createdAt?: Date | string
     updatedAt?: Date | string | null
   }
@@ -10337,7 +10296,6 @@ export namespace Prisma {
     penulis?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     stok?: IntFieldUpdateOperationsInput | number
-    status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     Reservasi?: ReservasiUpdateManyWithoutBookNestedInput
@@ -10354,7 +10312,6 @@ export namespace Prisma {
     penulis?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     stok?: IntFieldUpdateOperationsInput | number
-    status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     Reservasi?: ReservasiUncheckedUpdateManyWithoutBookNestedInput
@@ -10371,7 +10328,6 @@ export namespace Prisma {
     penulis?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     stok?: IntFieldUpdateOperationsInput | number
-    status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }

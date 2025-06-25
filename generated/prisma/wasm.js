@@ -144,7 +144,6 @@ exports.Prisma.BookScalarFieldEnum = {
   image: 'image',
   kategoriId: 'kategoriId',
   stok: 'stok',
-  status: 'status',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
