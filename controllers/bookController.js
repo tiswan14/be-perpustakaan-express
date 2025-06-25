@@ -18,7 +18,6 @@ export const createBook = [
                 tahunTerbit,
                 penulis,
                 stok,
-                status,
                 kategoriId,
             } = req.body
 
@@ -53,7 +52,6 @@ export const createBook = [
                     penulis,
                     kategoriId: parseInt(kategoriId),
                     stok: stok !== undefined ? parseInt(stok) : 1,
-                    status: status || 'tersedia',
                     image: imageUrl,
                 },
             })
@@ -91,7 +89,6 @@ export const updateBook = [
             tahunTerbit,
             penulis,
             stok,
-            status,
             kategoriId,
         } = req.body
 
@@ -134,7 +131,6 @@ export const updateBook = [
                     penulis,
                     kategoriId: kategoriId ? parseInt(kategoriId) : undefined,
                     stok: stok !== undefined ? parseInt(stok) : undefined,
-                    status: status || undefined,
                     image: imageUrl,
                 },
             })
